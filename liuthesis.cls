@@ -192,7 +192,7 @@
   \level{G}
   \gdef\@thesistypenameenglish{Bachelor}
   \gdef\@thesistypenameswedish{grundnivå}
-  \thesiscredits{16}
+  \thesiscredits{15}
   \PassOptionsToClass{oneside}{memoir}
 }
 
