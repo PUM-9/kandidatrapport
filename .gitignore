@@ -9,6 +9,7 @@
 *.toc
 *.cb
 *.rel
+*.pdf
 
 # Emacs aux files
 
