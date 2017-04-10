@@ -23,6 +23,8 @@ Följande frågeställningar ska behandlas och besvaras i denna rapport.
 	\item Hur påverkade valet att använda ROS uppbyggnaden av systemet?
 	
 	\item Vilka insikter kan man få av att ta fram en arkitektur?
+	
+	\item Hur kan en arkitektur designas för att uppfylla en kravspecifikation?
 \end{enumerate}
 
 \section{Bakgrund}
@@ -35,31 +37,47 @@ I ett sent skede i projektet behövde stora ändringar göras i arkitekturen vil
 \section{Teori}
 \label{sec:theory-lundberg}
 
-ROS står för Robot Operating System men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra flera processer och kommunicera mellan dessa. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det finns även verktyg för att på ett smidigt och strukturerat sätt kommunicera mellan noder genom meddelanden. Den här rapporten ska utforska hur dessa verktyg kan användas för att bygga upp ett system.
+ROS står för Robot Operating System men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra flera processer och kommunicera mellan dessa. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det finns även verktyg för att på ett smidigt och strukturerat sätt kommunicera mellan noder genom meddelanden. Den här rapporten ska utforska hur dessa verktyg kan användas för att bygga upp ett system. \cite{quigley2009ros}
 
-\cite{quigley2009ros}
+Pipe and filter \cite{garlan1993introduction}. Förenklad modell som passar vårt system.
 
 \section{Metod}
 \label{sec:method-lundberg}
 
-Arkitekturen för systemet har tagits fram under flera iterationer. Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet togs det fram en pipe-and-filter modell där resultatet från ett steg skickas vidare som indata till nästa steg. Garlan och Shaw \cite{garlan1993introduction} beskriver att 
+\subsection{Arkitekturens framtagande}
+Arkitekturen för systemet har tagits fram under flera iterationer. Det första steget var att tänka igenom olika use cases för systemet och utifrån det ta fram de funktioner som programvaran måste innehålla. Detta inledande arbete resulterade i en systemanatomi som användes i det kommande arbetet.
 
+Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet togs det fram en pipe and filter-modell där resultatet från ett steg skickas vidare som indata till nästa steg. En stor fördel med denna modell är att den gör det möjligt att byta ut enskilda delar utan att göra om hela systemet. \cite{garlan1993introduction}. Detta är något som uppfyller de krav på moduläritet och underhållbarhet som ställdes på systemet.
+
+Nästa steg var att bestämma vilka noder systemet skulle bestå av och hur dessa skulle kommunicera med varandra. Det var tydligt att programmets funktionalitet kunde delas upp i tre distinkta delar:
+
+\begin{enumerate}
+	\item punktmolnshantering
+	\item meshgenerering
+	\item hantering av 3D-skrivare.
+\end{enumerate}
+
+Utöver de delar behövdes även ett sätt att styra processen. För detta ändamål infördes ett grafiskt användargränssnitt och även ett kommandoradsgränssnitt som skulle kunna initiera hela eller delar av processen.
+
+Då projektet byggde vidare på ett system från förra året för att styra hårdvaran behövde även det tidigare systemet tas i åtanke när arkitekturen togs fram. Fler alternativ för att kommunicera med det tidigare systemet utforskades men i slutändan beslutades det att en egen nod skulle kalla på det tidigare systemets kommandoradsgränssnitt för att på så vis slippa sätta sig in i tidigare kod för att lista ut vilka funktioner som behövde kallas.
+
+\subsection{Användandet av ROS}
 
 
 \section{Resultat}
 \label{sec:results-lundberg}
 
-%% Skriv här
+
 
 \section{Diskussion}
 \label{sec:discussion-lundberg}
 
-En viktig insikt under arbetet var att en prestigelös dialog mellan gruppmedlemmarna är väldigt viktigt för att få ut det bästa resultatet.
+
 
 \section{Slutsatser}
 \label{sec:conclusions-lundberg}
 
-%% Skriv här
+En viktig insikt under arbetet var att en prestigelös dialog mellan gruppmedlemmarna är väldigt viktigt för att få ut det bästa resultatet.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% person-report.tex ends here
