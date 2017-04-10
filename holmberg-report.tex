@@ -1,42 +1,42 @@
-\chapter{Testning av ett system byggt på ROS}
+\chapter{}
 \chapterprecis{\LARGE{---- Olof Holmberg ----}}
 \label{cha:indiv-report-holmberg}
 
 \section{Inledning}
 \label{sec:introduction-holmberg}
 
-Testning av mjukvara är viktigt för att hitta eventuella buggar samt säkerställa kvalité och kravuppfyllnad hos mjukvaran. Men komplexiteten av testningen ökar när antalet enheter i systemet ökar. I den här rapporten kommer testning av ett system som bygger på ROS att undersökas. Vilka tester bör man använda? Hur testar man ett system med flera noder som kommunicerar?
+När man interagerar med mjukvara så gör man det oftast genom ett grafiskt användargränssnitt. När man interagerar så uppstår också en sekvens av interaktioner som bara blir längre och längre under tiden som man interagerar med mjukvaran. Då varje interaktion påverkar mjukvaran olika kan det uppstå fel som beror på sekvensen av interaktioner. Dessa fel behöver nödvändigtvis inte uppstå förrän sekvensen består av flera hundra olika interaktioner.
+
+Detta gör att det är väldigt svårt att testa ett GUI. Det är nästintill omöjligt att testa alla olika kombinationer av interaktioner som användarna kommer att utsätta mjukvaran för. Därför är det viktigt att vid test av GUI:t ta fram testfall som testar så många olika sekvenser som möjligt utan att det tar för lång tid. Den här utredningen undersöker hur man kan ta fram de sekvenser som är mest kritiska att testa samt hur det tillämpades på projektet.
 
 \subsection{Syfte}
 \label{sec:purpose-holmberg}
 
-Syftet med denna rapport är att utforska de tekniker som man kan använda sig av när man testar ett system som bygger på ROS. Den undersöker också vilka testtekniker som rekommenderas och tar fram riktlinjer för hur man bör gå tillväga när man testar ett system byggt på ROS.
+Syftet med den här utredningen är att undersöka hur man tar fram de sekvenser som är viktigast att testa för att maximera testningen. Utredningen kommer också att undersöka för vilka GUI:n som den här formen av testning lämpar sig för samt hur gruppen använde sig av den under testning av projektets GUI.
 
 \subsection{Frågeställning}
 \label{sec:issue-holmberg}
 
 \begin{itemize}
-	\item Hur testar man ett system som bygger på ROS?
-	\item Hur påverkas utvecklingen av systemet utifrån testningen av systemet?
+	\item [1] Hur tar man fram sekvenser av interaktioner som maximerar testningen av GUI:t?
+	\item [2] Fungerar denna metod för alla typer av GUI:n? 
+	\item [3] Vilka testfall/sekvenser användes under de test som utfördes på projektets GUI?
+\end{itemize}
+
+\subsection{Definitioner, akronym och förkortningar}
+Följande definitioner och förkortningar används på flera ställen i denna del av rapporten:
+\begin{itemize}
+	\item GUI (Graphical user interface) - Det grafiska användargränssnittet som används för att interagera med mjukvaran.
 \end{itemize}
 
 \subsection{Eventuella tänkta referenser}
 
-Rapporten kommer att samla information utifrån artiklar som är publicerade på konferenser. De artiklar som är av intresse är de som tar upp testning av ett system byggt på ROS samt de som tar upp testning av system med flera separata komponenter. Nedan listas de artiklar och källor som eventuellt kommer att användas till rapporten.
+Rapporten kommer att samla information utifrån artiklar som är publicerade på konferenser. De artiklar som är av intresse är de som tar upp testning relaterat till användargränssnitt samt användarvänlighet hos grafiska användargränssnitt. Något som också är av intresse är hur vi i gruppen testar vårt gränssnitt och hur vi ser till att det är användarvänligt.
 
 \begin{itemize}
-	\item [1] \textquotedblright Documentation - ROS Wiki," in ROS.org, 2017. [Online]. Available: \url{http://wiki.ros.org}. Accessed: Mar. 06, 2017.
-	\item [2] J. Ernits, E. Halling, G. Kanter, J. Vain, \textquotedblright Model-based integration testing of ROS packages:
-	a mobile robot case study", 2015. [IEEE]. Available: \url{http://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=7324210}.	
+	\item [1] X. Yuan, M.B. Cohen, A.M. Memon \textquotedblright GUI Interation Testing: Incorporating Event Context", 2011. [IEEE]. Available: \url{http://ieeexplore.ieee.org/abstract/document/5444885}.	
 \end{itemize}
 
-\subsection{Definitioner, akronym och förkortningar}
-
-Följande definitioner och förkortningar används på flera ställen i denna del av rapporten:
-
-\begin{itemize}
-	\item ROS - Robot operating system
-\end{itemize}
 
 \section{Bakgrund}
 \label{sec:background-holmberg}
