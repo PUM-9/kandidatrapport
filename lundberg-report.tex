@@ -28,7 +28,9 @@ Följande frågeställningar ska behandlas och besvaras i denna rapport.
 \section{Bakgrund}
 \label{sec:background-lundberg}
 
-Förklara bakgrunden till projektet, vad som gjorts och varför.
+I denna rapport utreds hur ROS kan användas i implementationen av en arkitektur. Arkitekturen hade som mål att vara så modulär som möjligt då det skulle underlätta för projektets kund som ville kunna vidareutveckla olika delar av systemet i framtiden.
+
+I ett sent skede i projektet behövde stora ändringar göras i arkitekturen vilket gjorde att ROS uteslöts helt. Detta gav ytterligare ett perspektiv att utgå från i utredningen.
 
 \section{Teori}
 \label{sec:theory-lundberg}
@@ -40,7 +42,7 @@ ROS står för Robot Operating System men är inte ett fullt operativsystem i de
 \section{Metod}
 \label{sec:method-lundberg}
 
-Arkitekturen för systemet har tagits fram under flera iterationer. Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet togs en pipe-and-filter modell (källa) fram, där resultatet från ett steg skickas vidare som indata till nästa steg. 
+Arkitekturen för systemet har tagits fram under flera iterationer. Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet togs det fram en pipe-and-filter modell där resultatet från ett steg skickas vidare som indata till nästa steg. Garlan och Shaw \cite{garlan1993introduction} beskriver att 
 
 
 
