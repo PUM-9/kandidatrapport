@@ -27,6 +27,7 @@ Följande frågeställningar ska behandlas och besvaras i denna rapport.
 	\item Hur kan en arkitektur designas för att uppfylla en kravspecifikation?
 \end{enumerate}
 
+
 \section{Bakgrund}
 \label{sec:background-lundberg}
 
@@ -34,30 +35,48 @@ I denna rapport utreds hur ROS kan användas i implementationen av en arkitektur
 
 I ett sent skede i projektet behövde stora ändringar göras i arkitekturen vilket gjorde att ROS uteslöts helt. Detta gav ytterligare ett perspektiv att utgå från i utredningen.
 
+
 \section{Teori}
 \label{sec:theory-lundberg}
 
-ROS står för Robot Operating System men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra flera processer och kommunicera mellan dessa. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det finns även verktyg för att på ett smidigt och strukturerat sätt kommunicera mellan noder genom meddelanden. Den här rapporten ska utforska hur dessa verktyg kan användas för att bygga upp ett system. \cite{quigley2009ros}
+\subsection{ROS}
+ROS står för Robot Operating System men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra flera processer och kommunicera mellan dessa \cite{quigley2009ros}. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det är ofta en bra tumregel att tänka att en nod motsvarar en modul i arkitekturen.
 
-Pipe and filter \cite{garlan1993introduction}. Förenklad modell som passar vårt system.
+ROS har även verktyg för att på ett enkelt och strukturerat sätt kommunicera mellan noder genom meddelanden (eng. messages). Dessa meddelanden kan skickas på två olika sätt:
+
+\begin{enumerate}
+	\item Genom att en nod publicerar på ett ämne (eng. topic) som en annan nod kan lyssna på.
+	
+	\item En nod kan tillhandahålla en service som en annan nod kan kalla på för att utföra något arbete och få tillbaka resultatet i form av ett meddelande.
+\end{enumerate}
+
+Den här rapporten ska utforska hur dessa verktyg kan användas för att bygga upp ett system.
+
+\subsection{Pipe and filter-modellen}
+En välkänd modell för att bygga upp mjukvarusystem är pipe and filter-modellen. Den beskrivs av Garlan och Shaw \cite{garlan1993introduction} som en modell där varje komponent i systemet har bestämda indata och utdata. Komponenterna behandlar indatan och producerar utdata som kan skickas vidare till nästa steg i modellen.
+
+I en traditionell pipe and filter-modell behandlas indatan kontinuerligt så att utdata produceras innan hela strömmen av indata har nått fram. I detta projekt användes dock ett specialfall av modellen där varje komponent kräver ett helt block av indata som sedan behandlas för att producera ett block av utdata. Det ska noteras att trots att varje modul endast tar kompletta block av indata snarare än strömmar så kan modulerna internt arbeta med strömmar av data.
+
 
 \section{Metod}
 \label{sec:method-lundberg}
 
-\subsection{Arkitekturens framtagande}
-Arkitekturen för systemet har tagits fram under flera iterationer. Det första steget var att tänka igenom olika use cases för systemet och utifrån det ta fram de funktioner som programvaran måste innehålla. Detta inledande arbete resulterade i en systemanatomi som användes i det kommande arbetet.
+\subsection{Arkitekturens utveckling}
+Arkitekturen för systemet har tagits fram med en iterativ process. Det första steget var att tänka igenom olika use cases för systemet och utifrån det ta fram de funktioner som programvaran måste innehålla. Detta inledande arbete resulterade i en systemanatomi som användes i det kommande arbetet.
 
 Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet togs det fram en pipe and filter-modell där resultatet från ett steg skickas vidare som indata till nästa steg. En stor fördel med denna modell är att den gör det möjligt att byta ut enskilda delar utan att göra om hela systemet. \cite{garlan1993introduction}. Detta är något som uppfyller de krav på moduläritet och underhållbarhet som ställdes på systemet.
 
-Nästa steg var att bestämma vilka noder systemet skulle bestå av och hur dessa skulle kommunicera med varandra. Det var tydligt att programmets funktionalitet kunde delas upp i tre distinkta delar:
+Nästa steg var att se vilka funktioner som var relaterade till varandra och bestämma vilka noder systemet skulle bestå av och även hur dessa skulle kommunicera med varandra. Det var tydligt att programmets funktionalitet kunde delas upp i tre distinkta delar:
 
 \begin{enumerate}
 	\item punktmolnshantering
+	
 	\item meshgenerering
+	
 	\item hantering av 3D-skrivare.
 \end{enumerate}
 
-Utöver de delar behövdes även ett sätt att styra processen. För detta ändamål infördes ett grafiskt användargränssnitt och även ett kommandoradsgränssnitt som skulle kunna initiera hela eller delar av processen.
+Utöver de delarna behövdes även ett sätt att styra processen. För detta ändamål infördes ett grafiskt användargränssnitt och även ett kommandoradsgränssnitt som skulle kunna initiera hela eller delar av processen.
 
 Då projektet byggde vidare på ett system från förra året för att styra hårdvaran behövde även det tidigare systemet tas i åtanke när arkitekturen togs fram. Fler alternativ för att kommunicera med det tidigare systemet utforskades men i slutändan beslutades det att en egen nod skulle kalla på det tidigare systemets kommandoradsgränssnitt för att på så vis slippa sätta sig in i tidigare kod för att lista ut vilka funktioner som behövde kallas.
 
@@ -67,15 +86,47 @@ Då projektet byggde vidare på ett system från förra året för att styra hå
 \section{Resultat}
 \label{sec:results-lundberg}
 
+\subsection{Arkitekturen i ROS}
+Den ROS-baserade arkitektur som togs fram för projektet visas i figur \ref{fig:arkitektur}. Varje block i figuren motsvarar en nod i ROS och kommunikationsvägarna mellan noderna illustreras med pilar.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=15cm]{figures/arkitektur.png}
+	\caption{Systemets arkitektur i ROS.}
+	\label{fig:arkitektur}
+\end{figure}
+
+\subsection{Arkitekturen utan ROS}
+
 
 
 \section{Diskussion}
 \label{sec:discussion-lundberg}
 
+– 6.1 Resultat
+• Fanns alternativa implementationssätt?
+• Vad återstår för att kunden skall få ut fullt värde av
+produkten?
+• Lyckades ni förbättra/fortsätt något från tidigare projekt?
+• Viktigaste lärdomar inför framtiden.
+– 6.2 Metod
+• Vilka konsekvenser fick de valda metoderna för resultaten?
+• Fanns det alternativ?
+• Källkritik
+– 6.3 Arbetet i ett vidare sammanhang
+• Samhälleliga aspekter
+• Miljöaspekter
+• Etiska aspekter
+
+Stelt system med services, kan inte se delresultat
 
 
 \section{Slutsatser}
 \label{sec:conclusions-lundberg}
+
+- Återkoppling till frågeställningar
+– Nåddes syftet?
+– Viktigaste lärdomar
 
 En viktig insikt under arbetet var att en prestigelös dialog mellan gruppmedlemmarna är väldigt viktigt för att få ut det bästa resultatet.
 
