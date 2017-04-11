@@ -10,7 +10,7 @@ I ROS finns det många verktyg för att bygga upp ett system. ROS gör det enkel
 \subsection{Syfte}
 \label{sec:purpose-lundberg}
 
-Syftet med den här rapporten är att utforska olika metoder i ROS för att bygga upp ett system. Rapporten ska även jämföra lösningarna i ROS med några andra metoder för att ge fler perspektiv på hur ett system kan byggas upp.
+Syftet med den här rapporten är att utforska olika metoder i ROS för att bygga upp ett system. Rapporten ska även jämföra lösningarna i ROS med några andra metoder för att ge fler perspektiv på hur ett system kan byggas upp. Slutligen ska det undersökas vilka generella erfarenheter och lärdomar man kan dra av att ta fram och implementera en arkitektur.
 
 \subsection{Frågeställning}
 \label{sec:issue-lundberg}
@@ -22,9 +22,7 @@ Följande frågeställningar ska behandlas och besvaras i denna rapport.
 	
 	\item Hur påverkade valet att använda ROS uppbyggnaden av systemet?
 	
-	\item Vilka insikter kan man få av att ta fram en arkitektur?
-	
-	\item Hur kan en arkitektur designas för att uppfylla en kravspecifikation?
+	\item Vilka erfarenheter kan man få av att ta fram och implementera en arkitektur?
 \end{enumerate}
 
 
@@ -55,13 +53,13 @@ Den här rapporten ska utforska hur dessa verktyg kan användas för att bygga u
 \subsection{Pipe and filter-modellen}
 En välkänd modell för att bygga upp mjukvarusystem är pipe and filter-modellen. Den beskrivs av Garlan och Shaw \cite{garlan1993introduction} som en modell där varje komponent i systemet har bestämda indata och utdata. Komponenterna behandlar indatan och producerar utdata som kan skickas vidare till nästa steg i modellen.
 
-I en traditionell pipe and filter-modell behandlas indatan kontinuerligt så att utdata produceras innan hela strömmen av indata har nått fram. I detta projekt användes dock ett specialfall av modellen där varje komponent kräver ett helt block av indata som sedan behandlas för att producera ett block av utdata. Det ska noteras att trots att varje modul endast tar kompletta block av indata snarare än strömmar så kan modulerna internt arbeta med strömmar av data.
+I en traditionell pipe and filter-modell behandlas indatan kontinuerligt så att utdata produceras innan hela strömmen av indata har nått fram, därav namnet filter. I detta projekt användes dock ett specialfall av modellen där varje komponent kräver ett helt block av indata som sedan behandlas för att producera ett block av utdata. Det ska noteras att trots att varje modul endast tar kompletta block av indata snarare än strömmar så kan modulerna internt arbeta med strömmar av data.
 
 
 \section{Metod}
 \label{sec:method-lundberg}
 
-\subsection{Arkitekturens utveckling}
+\subsection{Arkitekturens framtagande}
 Arkitekturen för systemet har tagits fram med en iterativ process. Det första steget var att tänka igenom olika use cases för systemet och utifrån det ta fram de funktioner som programvaran måste innehålla. Detta inledande arbete resulterade i en systemanatomi som användes i det kommande arbetet.
 
 Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet togs det fram en pipe and filter-modell där resultatet från ett steg skickas vidare som indata till nästa steg. En stor fördel med denna modell är att den gör det möjligt att byta ut enskilda delar utan att göra om hela systemet. \cite{garlan1993introduction}. Detta är något som uppfyller de krav på moduläritet och underhållbarhet som ställdes på systemet.
@@ -82,9 +80,14 @@ Då projektet byggde vidare på ett system från förra året för att styra hå
 
 \subsection{Användandet av ROS}
 
+\subsection{Dokumentering av processen}
+Under framtagandet av arkitekturen dokumenterades arbetet kontinuerligt i form av mötesprotokoll och diverse skisser och blockscheman som togs fram. Stora delar av arbetet med arkitekturen finns dokumenterat i projektets arkitekturbeskrivning (KÄLLA?) där alla beslut som tagits om arkitekturen finns. Den innehåller även motiveringar till de beslut som fattats och, i relevanta fall, alternativa lösningar som diskuterades men som inte kom med i den slutgiltiga arkitekturen.
+
 
 \section{Resultat}
 \label{sec:results-lundberg}
+
+I detta avsnitt visas de arkitekturer som togs fram för projektet. Sent i projektet stötte gruppen på problem som inte gick att lösa inom en rimlig tidsram. Därför behövde projektets mål omdefinieras och på grund av det togs även ny arkitektur fram, denna gång utan ROS.
 
 \subsection{Arkitekturen i ROS}
 Den ROS-baserade arkitektur som togs fram för projektet visas i figur \ref{fig:arkitektur}. Varje block i figuren motsvarar en nod i ROS och kommunikationsvägarna mellan noderna illustreras med pilar.
