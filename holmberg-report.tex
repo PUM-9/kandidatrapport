@@ -1,4 +1,4 @@
-\chapter{}
+\chapter{Effektivisering av GUI testning}
 \chapterprecis{\LARGE{---- Olof Holmberg ----}}
 \label{cha:indiv-report-holmberg}
 
@@ -12,15 +12,15 @@ Detta gör att det är väldigt svårt att testa ett GUI. Det är nästintill om
 \subsection{Syfte}
 \label{sec:purpose-holmberg}
 
-Syftet med den här utredningen är att undersöka hur man tar fram de sekvenser som är viktigast att testa för att maximera testningen. Utredningen kommer också att undersöka för vilka GUI:n som den här formen av testning lämpar sig för samt hur gruppen använde sig av den under testning av projektets GUI.
+Syftet med den här utredningen är att undersöka hur man tar fram de sekvenser som är viktigast att testa för att maximera testningen. Utredningen kommer också att undersöka för vilka GUI:n som den här formen av testning lämpar sig för samt hur gruppen använde sig av informationen under testning av projektets GUI.
 
 \subsection{Frågeställning}
 \label{sec:issue-holmberg}
 
 \begin{itemize}
-	\item [1] Hur tar man fram sekvenser av interaktioner som maximerar testningen av GUI:t?
-	\item [2] Fungerar denna metod för alla typer av GUI:n? 
-	\item [3] Vilka testfall/sekvenser användes under de test som utfördes på projektets GUI?
+	\item [1] Hur ser processen ut för att ta fram de testfall som behövs?
+	\item [2] (Fungerar denna metod för alla typer av GUI:n?)
+	\item [3] Hur testades 3DCopys GUI?
 \end{itemize}
 
 \subsection{Definitioner, akronym och förkortningar}
@@ -34,22 +34,48 @@ Följande definitioner och förkortningar används på flera ställen i denna de
 Rapporten kommer att samla information utifrån artiklar som är publicerade på konferenser. De artiklar som är av intresse är de som tar upp testning relaterat till användargränssnitt samt användarvänlighet hos grafiska användargränssnitt. Något som också är av intresse är hur vi i gruppen testar vårt gränssnitt och hur vi ser till att det är användarvänligt.
 
 \begin{itemize}
-	\item [1] X. Yuan, M.B. Cohen, A.M. Memon \textquotedblright GUI Interation Testing: Incorporating Event Context", 2011. [IEEE]. Available: \url{http://ieeexplore.ieee.org/abstract/document/5444885}.	
+	\item [1] X. Yuan, M.B. Cohen, A.M. Memon \textquotedblright GUI Interaction Testing: Incorporating Event Context", 2011. [IEEE]. Available: \url{http://ieeexplore.ieee.org/abstract/document/5444885}.	[Hämtad: 2017-04-10]
+	\item [2] L.J. White \textquotedblright Regression Testing of GUI Event Interactions", 1996. [IEEE]. Available: \url{http://ieeexplore.ieee.org/abstract/document/565038}.	[Hämtad: 2017-04-10]
+	\item [3] A.M. Memon, M.E. Pollack, M.L. Soffa \textquotedblright Using a goal-driven approach to generate test cases for GUIs", 1999. [IEEE]. Available: \url{citeseerx.ist.psu.edu/viewdoc/summary?doi=10.1.1.471.1295#?} [Hämtad: 2017-04-10]
+	\item [4] A.M. Memon, M.L. Soffa, M.E. Pollack \textquotedblright Coverage criteria for GUI Testing", 2001. [ACM]. Available: \url{citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.21.4835\&rep=rep1\&type=pdf} [Hämtad: 2017-04-11] [EVENT FLOW GRAPHS (EFGs)]
+	\item [5] Q. Xie, A.M. Memon \textquotedblright 
 \end{itemize}
 
 
 \section{Bakgrund}
 \label{sec:background-holmberg}
 
-%% Skriv här
+Ett av kraven för projektet var att det skulle finnas ett grafiskt användargränssnitt för mjukvaran som utvecklades. Då projektet ska utföras inom ett visst antal timmar måste man begränsa tiden en uppgift får ta och eftersom att test av ett grafiskt användargränssnitt kan ta i princip obegränsad tid måste man på något sätt hitta en gräns då testningen ska anses som klar.
+
+Som testledare är man ansvarig för alla tester som ska utföras på systemet och det känns därför relevant att undersöka detta område då det är en viktig del av projektet.
 
 \section{Teori}
 \label{sec:theory-holmberg}
 
-%% Skriv här
+Detta kapitel tar upp relevanta teoriaspekter om varför det är nödvändigt att kunna begränsa testning av ett grafiskt användargränssnitt.
+
+\subsection{Betydelsen av kontext för interaktioner}
+
+Enligt X. Yuan et al. [1] är kontexten i vilken en interaktion med GUI:t utförs extremt viktigt och medför problem gällande testning av ett GUI. Kontexten ges i detta fall av de interaktioner som tidigare har gjorts med GUI:t. Kontexten kommer då att påverka framtida interaktioner och deras resultat. De definierar kontexten för en interaktion som sekvensen av de tidigare interaktionerna. Ordningen av dessa interaktioner är essentiella för kontexten till en interaktion. För testning av ett GUI innebär detta att varje interaktion måste testas i flera kontexter.
+
+X. Yuan et al. [1] tar också upp vikten av att testa sekvenser som en subsekvens och illustrerar detta med följande exempel. Om
+
+\subsection{Modellering av GUI}
+
+Man kan modellera GUI:n på många sätt och för att göra effektiviseringen behövs enligt X. Yuan et al. [1] två sätt att representera GUI:t som en graf. Det första sättet är att representera GUI:t som en event-flow-graph (EFG). En EFG representerar alla möjliga sekvenser av interaktioner som är möjliga att göra med GUI:t. 
+
+EFG, CFG, Exempel GUI
+
+\subsection{Generering av testfall}
+
+
 
 \section{Metod}
 \label{sec:method-holmberg}
+
+Insamlandet av information om hur testningen av GUI kan effektiviseras genom att ta hänsyn till kontexten för interaktioner har skett genom att leta artiklar som är relaterade till området och behandlar teori som är viktig för förståelsen.
+
+\subsection{Testning av 3DCopys GUI}
 
 %% Skriv här
 
