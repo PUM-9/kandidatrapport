@@ -15,25 +15,34 @@ Syftet med den här rapporten är att utforska olika metoder i ROS för att bygg
 \subsection{Frågeställning}
 \label{sec:issue-lundberg}
 
-\begin{itemize}
+Följande frågeställningar ska behandlas och besvaras i denna rapport.
+
+\begin{enumerate}
 	\item Hur kan en arkitektur implementeras i ROS?
-	\item Hur hade arkitekturen för systemet kunnat se ut utan ROS?
-\end{itemize}
+	
+	\item Hur påverkade valet att använda ROS uppbyggnaden av systemet?
+	
+	\item Vilka insikter kan man få av att ta fram en arkitektur?
+\end{enumerate}
 
 \section{Bakgrund}
 \label{sec:background-lundberg}
 
-%% Skriv här
+Förklara bakgrunden till projektet, vad som gjorts och varför.
 
 \section{Teori}
 \label{sec:theory-lundberg}
 
-Om ROS och kommunikation i ROS.
+ROS står för Robot Operating System men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra flera processer och kommunicera mellan dessa. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det finns även verktyg för att på ett smidigt och strukturerat sätt kommunicera mellan noder genom meddelanden. Den här rapporten ska utforska hur dessa verktyg kan användas för att bygga upp ett system.
+
+\cite{quigley2009ros}
 
 \section{Metod}
 \label{sec:method-lundberg}
 
-%% Skriv här
+Arkitekturen för systemet har tagits fram under flera iterationer. Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet togs en pipe-and-filter modell (källa) fram, där resultatet från ett steg skickas vidare som indata till nästa steg. 
+
+
 
 \section{Resultat}
 \label{sec:results-lundberg}
@@ -43,7 +52,7 @@ Om ROS och kommunikation i ROS.
 \section{Diskussion}
 \label{sec:discussion-lundberg}
 
-%% Skriv här
+En viktig insikt under arbetet var att en prestigelös dialog mellan gruppmedlemmarna är väldigt viktigt för att få ut det bästa resultatet.
 
 \section{Slutsatser}
 \label{sec:conclusions-lundberg}
