@@ -35,11 +35,12 @@ Följande definitioner och förkortningar används på flera ställen i denna de
 \begin{itemize}
 	\item elicitering av krav - Identifiering och uppsamling av krav, översatt från det engelska ordet ”requirements elicitation”
 	\item kravhantering - systematisk arbete med behov som ska uppfyllas av tekniska system. Översatt från det engelska ordet "requirements engineering"
+	\item IEEE - Institute of Electrical and Electronics Engineers, en icke-vinstorienterad organisation bestående av ingenjörer och vetenskapspersoner. Upprätthåller standarder inom ingenjörsvetenskap.
 \end{itemize}
 \section{Bakgrund}
 \label{sec:background-jannering}
 
-Arbetet med kravhantering och elicitering av krav i projektet började vid det första mötet med kunden. Detta var ett möte dels för att träffa kunden efter att projektgruppen hade blivit tilldelade projektet och dels för att starta kravinsamlingsfasen. Kunden i projektet, CVL, sade vid detta möte att de helst ville styra projektet med en lös hand och att det var mer eller mindre upp till projektgruppen att komma med en lista på förslag till krav (i form av ett första utkast till en kravspecifikation). För att skapa denna lista med förslag till krav på den slutgiltiga produkten så gick gruppen gemensamt igenom det projektdirektiv som CVL tidigare hade presenterat (återfinns i Bilaga X) för att identifiera vilka funktioner som produkten skulle ha. Utifrån dessa funktioner kom gruppen med förslag på krav. Denna metod kallas i facklitteratur för "introspektion" \cite{goguen1993techniques}. Användandet av denna metod innebar att kunden bara var involverad i att godkänna de krav som gruppen föreslog och var minimalt involverade i kravidentifieringsprocessen. Denna metod kan också leda till att kund och utvecklingsgruppen har olika uppfattningar om hur den slutgiltiga produkten ska se ut. 
+Arbetet med kravhantering och elicitering av krav i projektet (som presenteras tidigare i denna rapport) började vid det första mötet med kunden. Detta var ett möte, dels för att träffa kunden efter att projektgruppen hade blivit tilldelade projektet, och dels för att starta kravinsamlingsfasen. Kunden i projektet, CVL, sade vid detta möte att de helst ville styra projektet med en lös hand och att det var mer eller mindre upp till projektgruppen att komma med en lista på förslag till krav (i form av ett första utkast till en kravspecifikation). För att skapa denna lista med förslag till krav på den slutgiltiga produkten så gick gruppen gemensamt igenom det projektdirektiv som CVL tidigare hade presenterat (återfinns i Bilaga X) för att identifiera vilka funktioner som produkten skulle ha. Utifrån dessa funktioner kom gruppen med förslag på krav. Denna metod kallas i facklitteratur för "introspektion" \cite{goguen1993techniques}. Användandet av denna metod innebar att kunden bara var involverad i att godkänna de krav som gruppen föreslog och var minimalt involverade i kravidentifieringsprocessen. Denna metod kan också leda till att kund och utvecklingsgruppen har olika uppfattningar om hur den slutgiltiga produkten ska se ut. 
 
 Examinatorn i kursen (TDDD96 Kandidatprojekt i programvaruutveckling, Linköpings universitet), som detta projekt genomfördes under, hade bestämt att IEEE std 830 var den standard som kravspecifikationen skulle följa (för mer information om IEEE std 830 se kap C.3). Som kan ses i kap C.3 är denna standard väldigt utförlig, och behöver i många fall skräddarsys för det specifika projektet. Detta projekt var första gången då någon i projektgruppen använde standarden. Det medförde att vi inte hade tillräcklig kunskap för att skräddarsy standarden till projektet, istället så följde vi standarden så gott vi kunde. Målet med en kravspecifikation är att identifiera kundens vision på hur den slutgiltiga produkten ska se ut. Se över om detta faktiskt är det som kunden vill ha eller behöver och sedan specificera de krav som produkten ska vara bunden av. 
 
@@ -52,9 +53,11 @@ Examinatorn i kursen (TDDD96 Kandidatprojekt i programvaruutveckling, Linköping
 \section{Metod}
 \label{sec:method-jannering}
 
-För att undersöka vilka metoder som används för kravhantering har en litteraturstudie genomförts för att identifiera vilka metoder som är populära och hur dessa används. Efter att etablerade metoder för kravhantering och elicitering av krav identifierats så genomfördes ett par experiment med övriga gruppmedlemmar för att undersöka en given metods fördelar och nackdelar. Efter experimenten så utvärderade gruppen metoden som användes för att identifiera för- och nackdelar. 
+För att undersöka vilka metoder som används för kravhantering har en litteraturstudie av publicerade vetenskapliga rapporter genomförts för att identifiera vilka metoder som har studerats och hur dessa används idag. Svårigheten med denna ansats har varit att begränsa antalet källor och försöka göra relevanta avgränsningar för att passa arbetes begränsningar. De rapporter som har studerats har uteslutande fokuserat på eliciteringsprocessen av kravhantering. Vidare har endast de artiklar som presenterat eller studerat generella metoder använts. Dessa avgränsningar är gjorda för att göra denna rapport relevant för både mindre och större utvecklingsprojekt.
+  
+För att identifiera för- och nackdelar med IEEE std 830 \cite{ieee1998ieee} så har dels gruppen och dels analysansvariga från andra projektgrupper i denna kurs intervjuats.
 
-För att identifiera för- och nackdelar med IEEE std 830 \cite{ieee1998ieee} så har dels gruppen och dels analysansvariga från andra projektgrupper i denna kurs svarat på en kort undersökning.
+
 
 
 \section{Resultat}
@@ -73,7 +76,7 @@ För att identifiera för- och nackdelar med IEEE std 830 \cite{ieee1998ieee} s�
 %% Skriv här
 
 \section{Tänkta referenser}
-[1]  "IEEE recommended practice for software requirements specifications - IEEE Xplore document," 2017. [Online]. Available: http://ieeexplore.ieee.org/servlet/opac?punumber=5841. Accessed: Mar. 6, 2017.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Jannering-report.tex ends here
