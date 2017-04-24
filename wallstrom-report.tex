@@ -79,7 +79,7 @@ Resultaten ifrån den genomförda enkäten presenteras nedan:
 	\item \textbf{88\%} har jobbat med den specifika metoden kodgranskningen för att säkerställa kvaliten på en produkt.
 	\item \textbf{100\%} anser att kodgranskning hjälper till att kvalitetssäkra en produkt.
 \end{itemize}
-Figur G.1 nedan visar resultatet från frågan om graden av deltagande människor i en kodgranskningsprocess hjälper eller försäkrar kvaliten hos en produkt.
+Figur G.1 nedan visar resultatet från frågan om graden av deltagande människor i en kodgranskningsprocess hjälper eller försämrar kvaliten hos en produkt.
 
 \begin{figure}[H]
 	\includegraphics[width=100mm]{figures/grade_participation.png}
@@ -89,14 +89,19 @@ Figur G.1 nedan visar resultatet från frågan om graden av deltagande människo
 
 \section{Diskussion}
 \label{sec:discussion-wallstrom}
-%% Skriv här
+Resultatet av den genomförda enkäten visar att effekterna av en kodgranskningsprocess är positiva. 100\% anser att det är kodgranskning hjälper till att kvalitetssäkra en produkt. Det är endast få personer som inte använt sig av den specifika metoden kodgranskning för att kvalitetssäkra en produkt, utan istället använt sig av pargprogrammering vid utveckling av en produkt. Den här datan är inte tillräcklig och är en avgränsning i denna studie, för en mer representativ bild skulle det krävas större mängd data. 
+
+Det intressanta med resultatet ifrån enkäten är att 44,4\% av de som deltog anser att om fler än 3 personer deltar i en kodgranskningsprocess finns det risk att tidsåtgången inte kompenserar för den faktiska vinsten med granskningen. Detta är också något som Beller \cite{beller2014modern} kommer fram till i sin studie angående vilka problem som löses med hjälp av kodgranskning. Beller anser att en homogen kodgranskning leder till samma antalet ändringar i koden, oberoende av vem som granskar. Det spelar alltså inte någon roll vem som granskar koden, den kommer heller inte blir bättre desto fler som granskar. Resultatet tyder alltså på att en kodgranskningsprocess inte bör innehålla fler deltagande personer än tre för att kvalitetssäkra produkten. 
+
+Samtidigt visar McIntosh \cite{mcintosh2014impact} att kodgranskningsprocesser med lågt deltagande uppskattningsvis innehåller upp till 5 stycken defekter efter lansering, vilket kan låta som en kontradiktion till Bellers \cite{beller2014modern} resultat. McIntosh specificerar dock inte att det finns ett optimalt antal personer som ska delta i en kodgranskningsprocess för att göra den så effektiv och kvalitetssäkrande som möjligt. Den intressanta fråga som jag då ställer mig är om det finns ett optimalt antal deltagande personer i en kodgranskningsprocess? Det är en fråga som utifrån egna slutsatser inte finns något svar på. Det är en bred fråga och beror på hur stort projektet är och vad det finns för kvalitetsmål på produkten. Desto högre kvalitetsmål, desto fler personer bör delta i kodgranskningsprocesserna känns intuitivt som en bra approach. Denna studie visar dock att så inte är fallet, kodgranskningen riskerar bli ineffektiv vilket således kan leda till icke komplett produkt. Det här är en intressant frågeställning som kräver vidare efterforskning. Även här finns det såklart avgränsningar som bör tas med i åtanke. Dels innehåller inte enkäten tillräckligt med data och därtill skulle det även behövas göra en mer omfattande litteraturstudie för att få en representativ bild över situationen.
+
+ 
 
 \section{Slutsatser}
 \label{sec:conclusions-wallstrom}
 Utifrån den genomförda enkäten men framförallt utifrån den gjorda literatustudien visar denna rapport att kvalité och kodgranskning har en stark relation. Att genomföra en kodgranskningsprocess visar sig tydligt ha positiva effekter på produktens kvalité. För att svara på fråga 1 i \eqref{sec:issue-wallstrom} så tyder resultatet från denna studie på att effekterna av en kodgranskningsprocess är positiva ur kvalitetssynpunkt. McIntosh \cite{mcintosh2014impact} visar att en dåligt granskad kod ger upphov till 2-5 stycken extra defekter efter produktlansering.
 
-För att svara på fråga 2 i \eqref{sec:issue-wallstrom} så tyder resultatet från denna studie att kostnaden för en kodgranskningsprocess kompeserar för den faktiska tidsåtgången. Den genomförda enkäten visade att 100\% av deltagarna anser att kodgranskning hjälper till att kvalitetssäkra en produkt. Enkäten visar också att graden av deltagande människor i kodgranskningen inte behöver överstiga 3 stycken, detta kan leda till onödig tidsåtgång. Det här är även något som Beller \cite{beller2014modern} kommer fram till i sin studie, han anser att en homogen kodgranskning leder till samma antalet ändringar i koden, oberoende av vem som granskar. Det är intressant eftersom det då inte spelar någon roll vem som granskar koden, den kommer inte heller bli bättre desto fler personer som granskar den. Slutsatsen av detta är att effekterna av en kodgranskningsprocess kompeserar den faktiska tidsåtgången så länge antalet personer som granskar inte överstigar 3 stycken.
- 
+För att svara på fråga 2 i \eqref{sec:issue-wallstrom} så tyder resultatet från denna studie att kostnaden för en kodgranskningsprocess kompeserar för den faktiska tidsåtgången. Den genomförda enkäten visade att 100\% av deltagarna anser att kodgranskning hjälper till att kvalitetssäkra en produkt. Enkäten visar också att graden av deltagande människor i kodgranskningen inte behöver överstiga 3 stycken, detta kan leda till onödig tidsåtgång. Det här är även något som bekräftas av Bellers studie \cite{beller2014modern}. Slutsatsen av detta är att effekterna av en kodgranskningsprocess kompeserar den faktiska tidsåtgången så länge antalet personer som granskar inte överstigar 3 stycken.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
