@@ -48,7 +48,7 @@ in particular. One can also search for the web sites of
 important authors and investigate what they have published
 in general.
 
-This chapter is called either \emph{Theory, Related Work}, or
+This chapter is called either \emph{Theory, Related Work}, 
 \emph{Related Research}. Check with your supervisor.
 
 
@@ -59,7 +59,7 @@ Hållbar utveckling är en relevant aspekt i dagens utveckling av programvaror e
 \begin{itemize}
 	\item Ekonomiskt -  Systemet ska bevara kapital och värde.
 	\item Socialt - Systemet ska underhålla samhället.
-	\item Miljö - Systemet ska skydda mänskliga välförden genom att skydda naturens tillgångar.
+	\item Miljö - Systemet ska skydda mänskliga välfärden genom att skydda naturens tillgångar.
 	\item Tekniskt - Systemet ska utvecklas för att stödja långtidsanvändning.
 \end{itemize}
 
@@ -68,22 +68,20 @@ Ett system för 3D-kopiering har många positiva effekter på samhället. System
 Det finns dessutom relaterade studier som visar att det blir billigare att skriva ut en produkt i en 3D-skrivare istället för att köpa en fabrikstillverkad \cite{wittbrodt2013life}. Det här främjar samhället i positiv beaktning eftersom det helt enkelt blir billigare för konsumenter att införskaffa sig de produkter de önskar. 
 
 \subsection{Förbättringspunkter till vårat system}
+Vårat system för 3D-kopiering är som tidigare nämnts ett generellt bra system för att främja hållbar utveckling. Det finns däremot en del aspekter som skulle kunna gjorts annorlunda vid systemets uppbyggnad för att ytterligare främja hållbar utveckling. För att utveckla detta har vi valt att titta på hur våra krav framställdes, närmare bestämt besvara dessa frågor:
 
-Hur skulle vi kunna göra annorlunda i kravprocessen? 
-
-Vad har vi tagit hänsyn till och vad skulle vi kunna gjort annorlunda?
-
-Hur kan vi bedöma de krav vi satt på systemet?
-
-...
-
-Eventuella förbättringar gällande vår kravhantering:
 \begin{itemize}
-	\item Sätta upp icke funktionella krav som främjar hållbar utveckling
-	\item Systemet ska klara av att producera en komplett produkt på så få skanningar som möjligt. Det är slöseri med energi att skanna för många gånger
-	\item optimera tiden det tar att göra en skanning. Detta är också bra för energisynpunkt (dumt att systemet står på i onödan eftersom det tar en stund att skriva ut någonting).
-	\item 
+	\item Hur skulle vi kunna göra annorlunda i kravprocessen?
+	\item Vad har vi tagit hänsyn till i kravprocessen?
+	\item Hur kan vi bedöma de krav vi satt på systemet med hållbar utveckling i åtanke?
 \end{itemize}
+Vid framställning av kraven till systemet fanns det inga tankar på att ta fram krav som främjar hållbar utveckling, det på grund av att ingen i projektgruppen hade erfarenheter från hållbar utveckling tidigare och således inte någon tanke på det. Vid framtagning av krav till systemet har alltså ingen hänsyn tagits till att främja hållbar utveckling. Det som har tagits hänsyn till i kravprocessen är endast funktionaliteten av systemet. Att utveckla icke funktionella krav för att främja denna aspekt är något som vi kunnat gjort annorlunda, det är också ett bra tillvägagångssätt enligt Raturi \cite{raturi2014developing}. 
+
+En förbättring som vi kunde gjort är att systemet ska ha ett icke funktionellt krav att systemets beräkningar får ta en viss maximal tid. Detta är bra för energi- och miljösynpunkt eftersom hög processoranvändning under en lång tid leder till hög energiförbrukning för systemet. Det finns även en relation mellan hur systemet energianvändningen påverkas av hårdvaran i systemet. Den största energianvändande komponenten är processorn och därför skulle systemet även kunna ha ett icke funktionellt krav att optimera processoranvändningen, detta leder till energianvändningen för systemet minskar vilket är bra ur miljösynpunkt. Enligt Fan, Weber och Barroso \cite{fan2007power} ökar energiförbrukningen linjärt med processoranvändningen, detta är inte helt rättvisande och beror givetvis på vilken processor som används. 
+
+För vårat system innebär det här att vi skulle vilja kombinera dessa två aspekter till ett gemensamt icke funktionellt krav. En kombination av dessa innebär att vi som grupp skulle behövt göra en studie över hur vi kan optimera processoranvändningen med avseende på energiförbrukning samtidigt som systemet inte får för lång körtid. Det optimala ur energispar synpunkt kanske skulle vara att låta systemet använda 70\% av processorn och istället få lite längre körtid. Detta är någonting som vi skulle kunna undersökt i förstudiefasen för senare användning till kravprocessen.
+
+För att bedöma de krav som vi har med hållbar utveckling i åtanke kommer endast de krav som inte har med kärnfunktionaliteten att göra bedömas, eftersom de är nödvändiga för systemets funktionalitet. Andra krav bedöms ur energisynpunkt, om koden är tillräckligt optimerad för att uppfylla kravet eller om det blir för tungt beräkningsmässigt som gör att kravet inte uppfylls. Det skulle även vara möjligt att sätta upp icke funktionella krav med avseende på det sociala området som gör att användaren känner sig tillfredsställd med produkten och på så vis underhåller samhället. Detta bedöms genom att testa systemet med några användare och se huruvida det uppfyller användarens förväntningar eller inte. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
