@@ -33,44 +33,62 @@ Syftet med denna rapport är att undersöka hur olika metoder för kravhantering
 \subsection{Definitioner, akronym och förkortningar}
 Följande definitioner och förkortningar används på flera ställen i denna del av rapporten:
 \begin{itemize}
-	\item elicitering av krav - Identifiering och uppsamling av krav, översatt från det engelska ordet ”requirements elicitation”
-	\item kravhantering - systematisk arbete med behov som ska uppfyllas av tekniska system. Översatt från det engelska ordet "requirements engineering"
+	\item Elicitering av krav - Identifiering och uppsamling av krav, översatt från det engelska ordet ”requirements elicitation”
+	\item Kravhantering - systematisk arbete med behov som ska uppfyllas av tekniska system. Översatt från det engelska ordet "requirements engineering"
+	\item IEEE - Institute of Electrical and Electronics Engineers, en icke-vinstorienterad organisation bestående av ingenjörer och vetenskapspersoner. Upprätthåller standarder inom ingenjörsvetenskap.
+	\item Gamification - Processen att lägga till spel eller spellika element till något (som en uppgift) för att uppmuntra deltagande
 \end{itemize}
 \section{Bakgrund}
 \label{sec:background-jannering}
 
-%% Skriv här
+Arbetet med kravhantering och elicitering av krav i projektet (som presenteras tidigare i denna rapport) började vid det första mötet med kunden. Detta var ett möte, dels för att träffa kunden efter att projektgruppen hade blivit tilldelade projektet, och dels för att starta kravinsamlingsfasen. Kunden i projektet, CVL, sade vid detta möte att de helst ville styra projektet med en lös hand och att det var mer eller mindre upp till projektgruppen att komma med en lista på förslag till krav (i form av ett första utkast till en kravspecifikation). För att skapa denna lista med förslag till krav på den slutgiltiga produkten så gick gruppen gemensamt igenom det projektdirektiv som CVL tidigare hade presenterat (återfinns i Bilaga X) för att identifiera vilka funktioner som produkten skulle ha. Utifrån dessa funktioner kom gruppen med förslag på krav. Denna metod kallas i facklitteratur för "introspektion" \cite{goguen1993techniques}. Användandet av denna metod innebar att kunden bara var involverad i att godkänna de krav som gruppen föreslog och var minimalt involverade i kravidentifieringsprocessen. Denna metod kan också leda till att kund och utvecklingsgruppen har olika uppfattningar om hur den slutgiltiga produkten ska se ut. 
+
+Examinatorn i kursen (TDDD96 Kandidatprojekt i programvaruutveckling, Linköpings universitet), som detta projekt genomfördes under, hade bestämt att IEEE std 830 var den standard som kravspecifikationen skulle följa (för mer information om IEEE std 830 se kap C.3). Som kan ses i kap C.3 är denna standard väldigt utförlig, och behöver i många fall skräddarsys för det specifika projektet. Detta projekt var första gången då någon i projektgruppen använde standarden. Det medförde att vi inte hade tillräcklig kunskap för att skräddarsy standarden till projektet, istället så följde vi standarden så gott vi kunde. Målet med en kravspecifikation är att identifiera kundens vision på hur den slutgiltiga produkten ska se ut. Se över om detta faktiskt är det som kunden vill ha eller behöver och sedan specificera de krav som produkten ska vara bunden av. 
+
 
 \section{Teori}
 \label{sec:theory-jannering}
-
-%% Skriv här
+Kravhantering kan definieras som ” systematisk arbete med behov som ska uppfyllas av tekniska system”. Detta arbete ligger ofta tidigt i ett projekt, då det är viktigt att specificera de krav som skall uppfyllas. Kravhanteringsprocessen är ofta uppdelad i fyra delar: elicitering, analys, specifikation och godkännande. Detta arbete tar främst upp de tre första delarna. I detta arbetes syfte så definieras elicitering som: ”insamlingen av krav eller information för senare specificering av krav från användare, kunder och andra intressenter”. I analysfasen analyseras de kraven och den informationen som samlades in under eliciterinsfasen för att undersöka huruvida dessa krav är relevanta och huruvida informationen går att använda för specificera krav. Under specificeringsfasen så ska de slutgiltiga kraven specificeras. Detta innebär att varje krav numreras och att en kort text skrivs som detaljerar kravet.
+\subsection{IEEE standard 830}
+IEEE standard 830 är en standard, publicerad av IEEE, som specificerar Innehållet och kvaliteterna för en ”bra” kravspecifikation. Standarden specificerar både hur en kravspecifikation borde skrivas (hur involverad kund/intressenter ska vara, hur kravspecifikationen borde utvecklas med tiden m.m.) och vilka avsnitt som borde finnas med och deras syften. Kraven som skapas med standarden ska vara: Korrekta (eller relevanta), Entydiga, Kompletta, Konsekventa, Klassificerade för betydelse, Verifierbara, Modifierbara, Spårbara.
 
 \section{Metod}
 \label{sec:method-jannering}
 
-För att undersöka vilka metoder som används för kravhantering har en litteraturstudie genomförts för att identifiera vilka metoder som är populära och hur dessa används. Efter att etablerade metoder för kravhantering och elicitering av krav identifierats så genomfördes ett par experiment med övriga gruppmedlemmar för att undersöka en given metods fördelar och nackdelar. Efter experimenten så utvärderade gruppen metoden som användes för att identifiera för- och nackdelar. 
+För att undersöka vilka metoder som används för kravhantering har en litteraturstudie av publicerade vetenskapliga rapporter genomförts för att identifiera vilka metoder som har studerats och hur dessa används idag. Svårigheten med denna ansats har varit att begränsa antalet källor och försöka göra relevanta avgränsningar för att passa arbetes begränsningar. De rapporter som har studerats har uteslutande fokuserat på eliciteringsprocessen av kravhantering. Vidare har endast de artiklar som presenterat eller studerat generella metoder använts. Dessa avgränsningar är gjorda för att göra denna rapport relevant för både mindre och större utvecklingsprojekt.
+  
+För att identifiera för- och nackdelar med IEEE std 830 \cite{ieee1998ieee} så har dels gruppen och dels analysansvariga från andra projektgrupper i denna kurs intervjuats.
 
-För att identifiera för- och nackdelar med IEEE std 830 [1] så har dels gruppen och dels analysansvariga från andra projektgrupper i denna kurs svarat på en kort undersökning.
+
 
 
 \section{Resultat}
 \label{sec:results-jannering}
+\subsection{Metoder för elicitering av krav}
+På en vetenskaplig konferens i San Diego 1993 presenterade C. Linde och J. A. Goguen en rapport som detaljerade författarnas undersökning och utvärdering av olika metoder för elicitera krav.\cite{goguen1993techniques} I rapporten detaljerar författarna följande metoder: Introspektion, intervjuer, frågeformulär, konversation, interaktion och diskursanalys.
 
-%% Skriv här
+Introspektion kallas den metod som användes i projektarbetet som presenterats tidigare i denna rapport. För att elicitera krav med introspektion så föreställer sig personen som eliciterar krav vilket system som den skulle vilja ha om hen var kunden. Detta är den mest uppenbara metoden för att specificera krav men liksom C. Linde och J. A. Goguen skriver i sin rapport så finns det fall då introspektion misslyckas med att specificera viktiga krav.\cite{goguen1993techniques} Detta kan ofta bero på personenliga fördomar (från eng. bias). Två personer med olika bakgrund (både personlig och professionell) kan komma med olika krav då de använder introspektion för att elicitera krav.  C. Linde och J. A. Goguens slutsats är att introspektion är en duglig metod för elicitering av krav om den kombineras med andra metoder och att de eliciterar krav med hjälp av introspektion kommer från olika bakgrunder.
+
+Frågeformulärsintervjuer används inom många forskningsområden. Formulär där försökspersoner får svara på frågor med förbestämda svar är ett bra sätt för forskare att få statistisk information. Detta tillvägagångssätt kan anpassas för att användas till att elicitera och specificera krav. Tänkta användare, kunder och andra intressenter får, med hjälp av den som eliciterar krav, fylla i ett formulär, vars data senare analyseras för att identifiera vad som är relevant för de som svarade på formuläret. Liksom i forskningsvärlden så är detta ett sätt att få statistik information som kan visas för kunden och användas som underlag i en mängd situationer under utvecklingen av ett system. Det finns ett fundamentalt problem med detta tillvägagångssätt, Vad händer om den som skapar formuläret och frågorna och den som svarar på frågorna inte har samma uppfattning? Detta tillvägagångsätt, liksom introspektion, är beroende av att den som eliciterar krav (och i detta fall skapar frågorna och svaren) har en korrekt bild av vad kunden, tänkta användare och andra intressenter vill ha för system. Om denna bild inte är korrekt så finns det en stor risk att de krav som eliciteras inte är relevanta.
+ 
+Ett sätt att lindra problemet med frågeformulärsmetoden är att istället hålla s.k. öppna intervjuer. Intervjuaren ställer en fråga och låter försökspersonen svara på frågan med egna ord. Intervjun fortskrider med ett antal förskriva frågor som ska ställas och besvaras men intervjuaren kan ställa följdfrågor och egna frågor emellan de förskriva frågorna. Denna metod används ofta av psykologer, antropologer och andra som forskare inom liknande områden. För att anpassa denna metod för elicitering av krav så ändrar man vilka frågor man ställer och vilka personer man ställer frågorna till. Frågorna kommer att handla om hur försökspersonen använder system som liknar det system som ska utvecklas. Det är viktigt att frågorna är konstruerade så att de inte leder till att försökspersonen använder introspektion för att själv föreställa vilka krav som personen tycker systemet bör ha. Försökspersonerna kommer, liksom med frågeformulärsmetoden, att vara tänkta användare, kunder och andra intressenter. Även om denna metod lindrar problemet med frågeformulärsmetoden så finns detta problem kvar. Om intervjuaren och försökspersonen inte har samma uppfattning om vad som ska utvecklas eller vilka systemets fundamentala aspekter är så finns risken att kraven som specificeras med hjälp av intervjun inte är relevanta.
+ 
+
+\subsection{Erfarenheter}
 
 \section{Diskussion}
 \label{sec:discussion-jannering}
+\subsection{För- och nackdelar med metoder för elicitering av krav}
+\subsection{För- och nackdelar med IEEE std 830}
 
-%% Skriv här
 
 \section{Slutsatser}
 \label{sec:conclusions-jannering}
+\subsection{IEEE std 830}
+\subsection{Elicitering av krav}
+\subsection{Erfarenheter}
 
-%% Skriv här
 
-\section{Tänkta referenser}
-[1]  "IEEE recommended practice for software requirements specifications - IEEE Xplore document," 2017. [Online]. Available: http://ieeexplore.ieee.org/servlet/opac?punumber=5841. Accessed: Mar. 6, 2017.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Jannering-report.tex ends here

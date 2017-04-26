@@ -2,23 +2,28 @@
 \label{cha:background}
 
 %% Varför vill kunden utveckla system X?
-%% Vilka är era tidigare projekterfarenheter? Förbättringspunkter? %% Bra erfarenhet?
+%% Vilka är era tidigare projekterfarenheter? Förbättringspunkter? 
+%% Bra erfarenhet?
 
 Kunden i detta projekt var avdelningen för datorseende (CVL), institutionen för systemteknik (ISY) vid Linköpings universitet. CVL bedriver utbildning och forskning inom dessa områden:
 \begin{itemize}
-\item signalbehandling
-\item bildanalys
-\item datorseende
-\item beräkningsfotografi
-\item detektion, följning och igenkänning av objekt
-\item skattning av pose och 3D-struktur
-\item robotseende och autonoma system
-\item medicinsk bildanalys och bildrekonstruktion.
+	\item signalbehandling
+	\item bildanalys
+	\item datorseende
+	\item beräkningsfotografi
+	\item detektion, följning och igenkänning av objekt
+	\item skattning av pose och 3D-struktur
+	\item robotseende och autonoma system
+	\item medicinsk bildanalys och bildrekonstruktion.
 \end{itemize}
- 
-Hårdvaran som används i projektet består av ett rotationsbord, en linjärenhet, en avståndskamera samt två datorer för att styra dessa. Detta system byggdes up av doktorand som använde det i ett forskningsprojekt. Efter detta bestämde CVL att systemet skulle användas vidare till kurser i bildsensorteknik. CVL utlyste ett kandidatprojekt för att vidareutveckla systemet för att kunna använda det till att skanna tredimensionella objekt. Detta projekt hade som mål att dekonstruera rotationsbordet (som var specialbeställt och levererades utan teknisk dokumentation) och sedan implementera styrning av systemet och generering av punktmoln. Detta projekt genomfördes våren 2016.
 
-Efter att systemet utvecklats till att skanna tredimensionella objekt, utlyste CVL ett nytt kandidatprojekt. Det är detta projekt som vi genomförde och det är en uppföljning på projektet som genomfördes våren 2016. CVLs mål med det nya kandidatarbetet som nu är utvecklat är att använda det i forskning kring punktmoln, vidare forskning inom Point Cloud Library (PCL) som är ett bibliotek till C++ samt annan forskning kring avståndskamerateknik och 3D-skrivarteknik. CVL har även en tanke om att använda systemet för att skapa hinder som kommer att användas i deras nya labb för obemannade farkoster och att konstruera laborationer som använder systemet.
+CVL utlyste ett kandidatprojekt våren 2016. Detta projekt hade som mål utveckla ett system till att skanna tredimensionella objekt. Till förfogande för projektet fanns det ett rotationsbord, en linjärenhet, en avståndskamera samt två datorer för att styra dessa. Detta system byggdes upp av en doktorand som använde det i ett forskningsprojekt. Efter det bestämde CVL att systemet skulle användas vidare till kurser i bildsensorteknik och utlyste därför detta kandidatprojekt. Projektet i sig bestod av att dekonstruera rotationsbordet, som var specialbeställt och levererades utan teknisk dokumentation, för att sedan implementera styrning av systemet. 
+
+Efter att detta system utvecklats till att skanna tredimensionella objekt, utlyste CVL ett nytt kandidatprojekt. Det var detta projekt som vi genomförde och det är en uppföljning av projektet som genomfördes våren 2016. Denna gång hade CVL som mål att använda det i forskning kring punktmoln, 3D-skrivarteknik, avståndskamerateknik samt vidare forskning inom Point Cloud Library (PCL), som är ett bibliotek till C++. CVL har även en tanke om att använda systemet för att skapa hinder som kommer att användas i deras nya labb för obemannade farkoster och att konstruera laborationer som använder systemet. 
+
+Halvvägs in i projektet bestämdes i samråd med kund, handledare och examinator att en omförhandling av projektets mål bör göras. Detta på grund av att projektet som genomfördes våren 2016 inte motsvarade de krav och förväntningar som var ställda. Målet med detta projekt reviderades därför till vidare forskning kring punktmoln, 3D-skrivarteknik, PCL och meshning, där meshning innebär att bygga en 3D-modell uppbyggd av polygoner ifrån ett komplett punktmoln. Det nya projektet genomfördes således oberoende av det projekt som gjordes våren 2016 på grund av att det systemet var oanvändbart. Vid önskan om ett komplett system, ifrån att skanna ett objekt till utskrift, krävs en genomgång och revidering av projektet som genomfördes våren 2016, det tog vi alltså inte hänsyn till i detta projekt. 
+
+Den största förändringen som skedde för oss var att de uppsatta kraven fick revideras till att inte bero på det tidigare projektet som genomfördes våran 2016. Istället fick vi sätta upp krav där vi antog att vi fick färdiga punktmoln som indata, utan att skanna hela objektet som en del av systemet. 
 
 Projektgruppen består av studenter vid civilingenjörsutbildningen i datateknik och mjukvaruteknik vid Linköpings universitet. Tidigare mjukvaruutvecklingserfarenhet har alla gruppmedlemmar fått genom kurser på respektive program. För de medlemmar som läser datateknik är projektkursen ”Konstruktion med mikrodatorer” den kurs som gett mest erfarenhet av att jobba med ett utvecklingsprojekt i grupp. Kursen gick ut på att konstruera en robot tillsammans i grupper om 6 studenter. För de medlemmar som läser mjukvaruteknik är det kursen ”Artificiell intelligens - projekt” som gett mest erfarenhet av att jobba med ett utvecklingsprojekt i grupp. Kursen gick ut på att identifiera relevanta AI-tekniker och literatur som beskriver dem för att sedan utvärdera och jämföra dessa tekniker relativt varandra. Detta gjordes i grupper om 4-6 personer. Slutligen implementerades och integrerades dessa AI-tekniker i ett valfritt system. Samtliga gruppmedlemmar har tidigare haft dåliga erfarenheter av projekt som styrs med en för lös hand. Gruppen beslutade därför i ett tidigt skede för en strikt uppdelning av roller med förbestämda möten, kommunikationskanaler och aktivitetsuppdelning.
 

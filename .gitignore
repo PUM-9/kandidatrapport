@@ -1,4 +1,4 @@
-≈≈#All from https://github.com/github/gitignore/blob/master/TeX.gitignore
+﻿≈≈#All from https://github.com/github/gitignore/blob/master/TeX.gitignore
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
@@ -156,3 +156,7 @@ pythontex-files-*/
 
 # Emacs aux files
 *~
+
+# Windows thumbnails
+Thumbs.db
+figures/Thumbs.db
