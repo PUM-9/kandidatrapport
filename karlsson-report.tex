@@ -30,13 +30,13 @@ Denna rapport kommer begränsas till hur processen fungerat med den hårdvara so
 
 \section{Bakgrund}
 \label{sec:background-karlsson}
-I ett tidigt stadie av projektet upptäckte vi att en stor del skulle handla om att få registreringen att funka bra. Tidiga tester visade dessutom att meshningen, som görs efter registreringen var förhållandevis enkel att utföra. Meshning innebär att man, utifrån det kompletta punktmolnet, skapar en vattentät 3D-modell.
+I ett tidigt stadie av projektet upptäckte vi att en stor del skulle handla om att få registreringen att funka bra. Tidiga tester visade dessutom att meshningen, en annan del som tidigt verkade väldigt stor, som görs efter registreringen var förhållandevis enkel att utföra. Meshning innebär att man, utifrån det kompletta punktmolnet, skapar en vattentät 3D-modell. Jag blev intresserad efter att ha jobbat en del med tidiga försök till registrering och beslutade mig för att djupdyka i ämnet.
 
 
 \section{Teori}
 \label{sec:theory-karlsson}
 
-När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det inte finns några bra verktyg för att läsa in 3-dimensionella objekt. Man behöver då ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion. Den metod vi använt oss av har dock bestått av en avståndskamera på linjärenhet med objektet monterat på ett rotationsbord med 2 rotationsaxlar. Med detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt.
+När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det inte finns några bra verktyg för att läsa in tredimensionella objekt. Man behöver då ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion. Den metod vi använt oss av har dock bestått av en avståndskamera på linjärenhet med objektet monterat på ett rotationsbord med 2 rotationsaxlar. Med hjälp av detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt.
 
 
 \subsection{Registrering}
@@ -50,7 +50,7 @@ Kinect fusion använder sig av Microsofts egna avstånds- och RGB-kamera, Kinect
 \section{Metod}
 \label{sec:method-karlsson}
 
-
+Initialt gjordes en litteraturstudie för att hitta information om hur man registrerar samt exempelkod som vi kunde använda oss av. 
 TODO: rewrite
 Metoden för att samla in data kommer i första hand ske genom den undersökning som gruppen gör på ämnet. Vid behov kommer en intervjustudie i ämnet göras internt i gruppen. 
 
@@ -59,6 +59,7 @@ Metoden för att samla in data kommer i första hand ske genom den undersökning
 \label{sec:results-karlsson}
 
 %% Skriv här
+Vi började med att införskaffa oss en uppsättning punktmoln på objektet och försökte med den exempelkod vi hittat sätta ihop punktmolnen. 
 
 \section{Diskussion}
 \label{sec:discussion-karlsson}
