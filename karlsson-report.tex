@@ -13,7 +13,7 @@ I detta kapitel behandlas Michael Karlssons undersökning av olika registrerings
 \label{sec:purpose-karlsson}
 
 %% Skriv här
-Syftet med denna delen är att väga olika algoritmer mot varandra och hur väl de fungerade för de projekt som beskrivs i rapporten samt vilka problem gruppen hade med de olika algoritmer som testades. Gruppens tillvägagångssätt för val av algoritm undersöks också.
+Syftet med denna delen är att väga olika algoritmer mot varandra och hur väl de fungerade för det projekt som beskrivs i rapporten samt vilka problem gruppen hade med de olika algoritmer som testades. Gruppens tillvägagångssätt för val av algoritm undersöks också.
 
 
 \subsection{Frågeställning}
@@ -30,27 +30,28 @@ Denna rapport kommer begränsas till hur processen fungerat med den hårdvara so
 
 \section{Bakgrund}
 \label{sec:background-karlsson}
-
+I ett tidigt stadie av projektet upptäckte vi att en stor del skulle handla om att få registreringen att funka bra. Tidiga tester visade dessutom att meshningen, som görs efter registreringen var förhållandevis enkel att utföra. Meshning innebär att man, utifrån det kompletta punktmolnet, skapar en vattentät 3D-modell.
 
 
 \section{Teori}
 \label{sec:theory-karlsson}
 
+När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det inte finns några bra verktyg för att läsa in 3-dimensionella objekt. Man behöver då ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion. Den metod vi använt oss av har dock bestått av en avståndskamera på linjärenhet med objektet monterat på ett rotationsbord med 2 rotationsaxlar. Med detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt.
 
 
 \subsection{Registrering}
 
-När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det inte finns några bra verktyg för att läsa in 3-dimensionella objekt. Man behöver då ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion. Den metod vi använt oss av har dock bestått av en avståndskamera på linjärenhet med objektet monterat på ett rotationsbord med 2 rotationsaxlar. Med detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt.
-
+Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett koordinatsystem med all information från indatan. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, \textit{Iterative Closest Point}. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel så lider ICP av så kallad \textit{felutrbredning} och JRM-PC \textit{Joint Registration of Multiple Point Clouds} lider av längre körtid.[]
 
 \subsection{Kinect Fusion}
 
-Kinect fusion använder sig av Microsofts egna avstånds- och RGB-kamera för att mappa upp ett 3d objekt i den verkliga världen. 
+Kinect fusion använder sig av Microsofts egna avstånds- och RGB-kamera, Kinect, för att mappa upp ett 3D objekt i den verkliga världen. 
 
 \section{Metod}
 \label{sec:method-karlsson}
 
 
+TODO: rewrite
 Metoden för att samla in data kommer i första hand ske genom den undersökning som gruppen gör på ämnet. Vid behov kommer en intervjustudie i ämnet göras internt i gruppen. 
 
 
