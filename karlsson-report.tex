@@ -7,7 +7,7 @@
 \label{sec:introduction-karlsson}
 
 %% Skriv här
-I denna del behandlas Michael Karlssons undersökning av olika registreringsalgoritmer och de problem gruppen stött på i samband med registrering av punktmoln.
+I detta kapitel behandlas Michael Karlssons undersökning av olika registreringsalgoritmer och de problem gruppen stött på i samband med registrering av punktmoln.
 
 \subsection{Syfte}
 \label{sec:purpose-karlsson}
@@ -21,6 +21,7 @@ Syftet med denna delen är att väga olika algoritmer mot varandra och hur väl 
 
 \begin{itemize}
 	\item Hur skapar man ett enhetligt punktmoln från enstaka bilder från en fast \newline avståndskamera?
+	\item Hur gör man för att välja algoritm och hur resonerade gruppen när de valde ICP?	
 \end{itemize}
 \subsection{Avgränsningar}
 
@@ -30,16 +31,21 @@ Denna rapport kommer begränsas till hur processen fungerat med den hårdvara so
 \section{Bakgrund}
 \label{sec:background-karlsson}
 
-\subsection{Registrering}
 
-\subsection{Kinect Fusion}
-
-Kinect fusion använder sig av Microsofts egna avstånds- och RGB-kamera för att mappa upp ett 3d objekt i den verkliga världen. 
 
 \section{Teori}
 \label{sec:theory-karlsson}
 
+
+
+\subsection{Registrering}
+
 När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det inte finns några bra verktyg för att läsa in 3-dimensionella objekt. Man behöver då ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion. Den metod vi använt oss av har dock bestått av en avståndskamera på linjärenhet med objektet monterat på ett rotationsbord med 2 rotationsaxlar. Med detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt.
+
+
+\subsection{Kinect Fusion}
+
+Kinect fusion använder sig av Microsofts egna avstånds- och RGB-kamera för att mappa upp ett 3d objekt i den verkliga världen. 
 
 \section{Metod}
 \label{sec:method-karlsson}
