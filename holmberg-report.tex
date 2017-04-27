@@ -113,15 +113,35 @@ Utifrån EFG:n så ska sedan EIG:n skapas. Det som händer vid skapandet av EIG:
 
 Nu när EIG:n är framtagen så ska styrka väljas på testen. För att testerna ska skilja sig lite mer från de testerna utan hänsyn till kontext men åndå inte ta för lång tid så väljs styrka 3 på dessa tester. Det innebär att vi får följande sekvenser som ska användas för att ta fram testfallen.
 
+\begin{table}[h]
+	\caption{De sekvenser som ska användas för att ta fram testfallen.}
+	\centering
 \begin{tabular}{|l|l|}
 	\hline
 	\textbf{Nr} & \textbf{Sekvens} \\
 	\hline
-	1 & <> \\
+	1 & <Mesh, Mesh, Mesh> \\
 	\hline
-	2 & <> \\
+	2 & <Mesh, Mesh, Register> \\
+	\hline
+	3 & <Mesh, Register, Mesh> \\
+	\hline
+	4 & <Mesh, Register, Register> \\
+	\hline
+	5 & <Register, Mesh, Mesh> \\
+	\hline
+	6 & <Register, Mesh, Register> \\
+	\hline
+	7 & <Register, Register, Mesh> \\
+	\hline
+	8 & <Register, Register, Register> \\
 	\hline
 \end{tabular}
+\end{table}
+
+Dessa sekvenser kombineras sedan för att testfallen ska uppnå 3-cover och 3\textsuperscript{+}-cover och därför också 3\textsuperscript{*}-cover.
+
+
 
 \subsection{Testning av 3DCopys GUI utan hänsyn till kontext}
 
