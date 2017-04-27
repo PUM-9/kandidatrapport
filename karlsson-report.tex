@@ -45,26 +45,27 @@ Registrering är den generella metoden att sätta ihop två eller flera punktmol
 
 \subsection{Kinect Fusion}
 
-Kinect fusion använder sig av Microsofts egna avstånds- och RGB-kamera, Kinect, för att mappa upp ett 3D objekt i den verkliga världen. 
+Kinect fusion använder sig av Microsofts egna avstånds- och RGB-kamera, Kinect, för att mappa upp ett 3D objekt i den verkliga världen. Avståndskameran mäter upp punktmolnet för scenen framför den samtidigt som den synkroniserade RGB-kameran ger färgdata till varje punkt. 
+Varje punktmoln som Kinect kameran skickar består av ca 307 000 punkter. Det kan jämföras med hårdvaran som vi använts oss av där maximala antalet punkter i en skan är ca 786 000 punkter. De punktmoln som vi arbetat med har dock generellt innehållit ca 30-60 000 punkter efter filtrering av skräpdata.
 
 \section{Metod}
 \label{sec:method-karlsson}
 
-Initialt gjordes en litteraturstudie för att hitta information om hur man registrerar samt exempelkod som vi kunde använda oss av. 
-TODO: rewrite
-Metoden för att samla in data kommer i första hand ske genom den undersökning som gruppen gör på ämnet. Vid behov kommer en intervjustudie i ämnet göras internt i gruppen. 
+Initialt gjordes en litteraturstudie för att hitta information om hur man registrerar. PCL ger en bra sammanfattning men utöver det finns inte jättemånga relevanta källor. PCL ger också många handledningsexempel med exempelkod som blev utgångspunkten för utbildningen om registrering i gruppen. 
+
+ADD: ICP och JR-MPC begränsade källor
 
 
 \section{Resultat}
 \label{sec:results-karlsson}
 
 %% Skriv här
-Vi började med att införskaffa oss en uppsättning punktmoln på objektet och försökte med den exempelkod vi hittat sätta ihop punktmolnen. 
+Vi började med att införskaffa oss en uppsättning punktmoln på objektet och försökte med den exempelkod vi hittat sätta ihop punktmolnen. De första objektet vi började testa med var en porslinskyrka, mestadels på grund av att det var det enda vi hade att tillgå. Efter ett par veckor fick vi en låda med träklossar som vi började arbeta med och som blev vårat primära mål att registrera. Den primära algoritm vi använde var ICP. Valet av ICP var initiallt helt baserat på att det var den algoritm vi hittade först samt den som vi fick tag på exempelkod för. 
 
 \section{Diskussion}
 \label{sec:discussion-karlsson}
 
-%% Skriv här
+
 
 \section{Slutsatser}
 \label{sec:conclusions-karlsson}
