@@ -4,63 +4,6 @@
 
 %% Vad behöver läsaren veta för att förstå resten av rapporten? %%
 
-The main purpose of this chapter is to make it obvious for
-the reader that the report authors have made an effort to read
-up on related research and other information of relevance for
-the research questions. It is a question of trust. Can I as a
-reader rely on what the authors are saying? If it is obvious
-that the authors know the topic area well and clearly present
-their lessons learned, it raises the perceived quality of the
-entire report.
-
-After having read the theory chapter it shall be obvious for
-the reader that the research questions are both well
-formulated and relevant.
-
-The chapter must contain theory of use for the intended
-study, both in terms of technique and method. If a final thesis
-project is about the development of a new search engine for
-a certain application domain, the theory must bring up related
-work on search algorithms and related techniques, but also
-methods for evaluating search engines, including
-performance measures such as precision, accuracy and
-recall.
-
-The chapter shall be structured thematically, not per author.
-A good approach to making a review of scientific literature
-is to use \emph{Google Scholar} (which also has the useful function
-\emph{Cite}). By iterating between searching for articles and reading
-abstracts to find new terms to guide further searches, it is
-fairly straight forward to locate good and relevant
-information, such as \cite{test}.
-
-Having found a relevant article one can use the function for
-viewing other articles that have cited this particular article,
-and also go through the article’s own reference list. Among
-these articles on can often find other interesting articles and
-thus proceed further.
-
-It can also be a good idea to consider which sources seem
-most relevant for the problem area at hand. Are there any
-special conference or journal that often occurs one can search
-in more detail in lists of published articles from these venues
-in particular. One can also search for the web sites of
-important authors and investigate what they have published
-in general. 
-
-This chapter is called either \emph{Theory, Related Work}, 
-\emph{Related Research}. Check with your supervisor.
-\newpage
-
-
-
-
-
-
-
-
-
-
 \section{Punktmoln}
 På senare år har det blivit möjligt att representera objekt i form av ett 3D-representerat punktmoln. Detta har blivit möjligt på grund av utvecklandet av kameror samt laserskannrar. Ett punktmoln är alltså en mängd av punkter i ett tredimensionellt koordinatsystem som representerar ett objekt, se figur \ref{fig:point_cloud_torus}. Punkterna i punktmolnet representerar ofta de yttre kanterna av objektet.
 
@@ -101,11 +44,28 @@ PCLs filtreringsbibliotek innehåller algoritmer för att filtrera ett punktmoln
 \subsection{Segmentering}
 PCLs segmenteringsbibliotek innehåller algoritmer för att dela in ett punktmoln i olika kluster. Dessa kluster används för att bryta ner molnet i olika beståndsdelar som kan behandlas oberoende av andra delar. Detta görs ofta för att bearbeta olika eller en specifik del av ett punktmoln. Till exempel kan ett plan segmenteras utifrån en uppsättning av punkter om så önskas \cite{pcl_segmentation}. 
  
-\subsection{Modellanpassning}
-\subsection{Ytrekonstruering}
-\subsection{Funktionskalkylering}
+\subsection{Modell anpassning}
+Modell anpassning i PCL innebär att det finns färdiga metoder och modeller, till exempel plan och cylindrar, som kan kombineras och användas för att upptäcka specifika modeller i ett punktmoln. Detta sub-bibliotek används flitigt av segmenteringsbiblioteket för att upptäcka segment av vanliga geometriska figurer \cite{pcl_model_fitting}.
+
 \subsection{Registrering}
 Registrering behandlas ingående av Michael Karlssons utredning, se kapitel \ref{cha:indiv-report-karlsson}.
+
+\subsection{Ytrekonstruering}
+PCLs ytrekonstrueringsbibliotek innehåller algoritmer för att rekonstruera de ursprungliga ytorna från 3D-skanningar. Beroende på uppgiften kan PCL rekonstruera till exempel rekonstruera en ojämn yta till en jämn, en meshrepresentation av ett komplett punktmoln eller en yta med normaler \cite{pcl_surface_reconstruction}. 
+
+Att rekonstruera en ojämn yta till en jämn kan vara viktigt om molnet är bullrigt, eller om det består av flera skanningar som inte är perfekt anpassade. PCLs ytrekonstrueringsbibliotek kan även skapa en konkav modell av ett punktmoln. Detta kan vara bra om till exempel gränserna i ett punktmoln behöver extraheras \cite{pcl_surface_reconstruction}.
+
+Att mesha ett punktmoln görs efter att punktmolnen har registreras så de bildar ett komplett punktmoln. Att skapa en meshrepresentation av ett komplett punktmoln innebär att skapa en yta utan punkter. Meshrepresentationen av punktmolnet är alltså en vattentät 3D-modell uppbyggd av polygoner. Den algoritm som används för att mesha ett punktmoln i detta projekt är en trianguleringsalgoritm som körs på ett punktmoln med normaler för att erhålla en yta baserad på grannarna till respektive punkt. För detta krävs alltså ett punktmolnsobjekt som innehåller normalerna till varje punkt i punktmolnet. I detta punktmoln med normaler kan sedan önskade parametrar sättas innan själva trianguleringsalgoritm körs för att generera den önskade meshen \cite{pcl_surface_reconstruction}\cite{pcl_triangulation_algorithm}. 
+
+\subsection{Funktionskalkylering}
+
+\section{3D-skrivare}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%			Hur fungerar processen med att skriva ut ett objekt?				%
+%			Ifrån 3D-mesh till färdig utskrivet objekt.						%	
+%			Martin Lundberg?										%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \section{Hållbar utveckling}
 Hållbar utveckling är en relevant aspekt i dagens utveckling av programvaror eftersom de används kontinuerligt av samhället. Effekterna som en programvara bidrar med i samhället beror på hur den har producerats och hur den används av konsumenterna. Detta gör att effekterna som en programvara bidrar med i samhället kan vara både positiva men också djupt negativa \cite{raturi2014developing}. Hållbarhet definieras som \textit{förmåga att uthärda} och \textit{bevara funktionen hos ett system under en utsträckt tidsperiod}. Att analysera hållbarhet hos ett mjukvarusystem innebär för de som utvecklar systemet att ha dessa fyra områden i åtanke \cite{lago2015framing}:
