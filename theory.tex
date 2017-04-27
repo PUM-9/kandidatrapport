@@ -73,25 +73,39 @@ På senare år har det blivit möjligt att representera objekt i form av ett 3D-
 
 
 \section{Point Cloud Library}
-Point Cloud Library (PCL) är ett bibliotek till C++. PCL presenterar ett avancerat tillvägagångssätt angående ämnet 3D-uppfattning och är tänkt att ge stöd för vanliga 3D-byggstenar som olika applikationer behöver. Biblioteket innehåller algoritmer för att lösa problem med:
+Point Cloud Library (PCL) är ett bibliotek till C++. PCL presenterar ett avancerat tillvägagångssätt angående ämnet 3D-uppfattning och är tänkt att ge stöd för vanliga 3D-byggstenar som olika applikationer behöver. Biblioteket innehåller algoritmer för:
 
 \begin{itemize}
-	\item Filtrering
-	\item Registrering
-	\item Segmentering
-	\item Modell anpassning
+	\item filtrering
+	\item registrering
+	\item segmentering
+	\item modell anpassning
 	\item ytrekonstruering
-	\item funktionskalkylering
+	\item funktionskalkylering.
 \end{itemize}
+PCL är alltså ett bibliotek avsett att ge stöd till att behandla punktmolnsdata, iform av olika bearbetningsalgoritmer \cite{rusu20113d}.
 
-PCL är alltså ett bibliotek avsett att ge stöd till att behandla punktmolnsdata, iform av olika bearbetningsalgoritmer.
-\section{Registrering}
+Varje algoritm i PCL är definierad via basklasser. Dessa basklasser försöker integrera all vanlig funktionalitet tillsammans med algoritmerna som sedan används igenom hela kedjan i den önskade processen. Detta gör att implementeringen av den aktuella algoritm hålls modulär och tydlig. Den grundläggande kedjan för en önskad process i PCL är som följer:
 
-Registrering behandlas ingående av Michael Karlssons utredning, se kapitel  \ref{cha:indiv-report-karlsson}.
-\section{Meshning}
-Att 
+\begin{itemize}
+	\item skapa bearbetningsobjektet (filtrering, registrering, segmentering, etc.)
+	\item skicka in det givna punktmolnets data till modulen
+	\item ange parametrar
+	\item gör beräkningen för att få resultatet.
+\end{itemize}
+Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
 
-
+\subsection{Filtrering}
+PCLs filtreringsbibliotek innehåller algoritmer för att filtrera ett punktmoln ifrån skräppunkter. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Det gör att skräppunkter infaller i punkmolnet. Dessa skräppunkter kan filtreras genom att titta på varje punkts grannskap och filtrera ut de som inte uppfyller vissa kriterier. PCLs implementering av filtering är baserad på att beräkna medelavståndet från en punkt till varje granne, för att sedan kolla om detta avstånd ligger inom ett visst intervall. Om inte punkten ligger inom intervallet så filtreras den bort \cite{pcl_filtering}. 
+ 
+\subsection{Segmentering}
+PCLs segmenteringsbibliotek innehåller algoritmer för att dela in ett punktmoln i olika kluster. Dessa kluster används för att bryta ner molnet i olika beståndsdelar som kan behandlas oberoende av andra delar. Detta görs ofta för att bearbeta olika eller en specifik del av ett punktmoln. Till exempel kan ett plan segmenteras utifrån en uppsättning av punkter om så önskas \cite{pcl_segmentation}. 
+ 
+\subsection{Modell anpassning}
+\subsection{Ytrekonstruering}
+\subsection{Funktionskalkylering}
+\subsection{Registrering}
+Registrering behandlas ingående av Michael Karlssons utredning, se kapitel \ref{cha:indiv-report-karlsson}.
 
 \section{Hållbar utveckling}
 Hållbar utveckling är en relevant aspekt i dagens utveckling av programvaror eftersom de används kontinuerligt av samhället. Effekterna som en programvara bidrar med i samhället beror på hur den har producerats och hur den används av konsumenterna. Detta gör att effekterna av som en programvara bidrar med i samhället kan vara både positiva men också djupt negativa \cite{raturi2014developing}. Hållbarhet definieras som \textit{förmåga att uthärda} och \textit{bevara funktionen hos ett system under en utsträckt tidsperiod}. Att analysera hållbarhet hos ett mjukvarusystem innebär för de som utvecklar systemet att väga in dessa fyra områden i åtanke \cite{lago2015framing}:
