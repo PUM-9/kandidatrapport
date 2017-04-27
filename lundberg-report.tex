@@ -22,10 +22,6 @@ Följande frågeställningar ska behandlas och besvaras i denna rapport.
 	\item Hur kan en arkitektur implementeras i ROS?
 	
 	\item Hur påverkade valet att använda ROS uppbyggnaden av systemet?
-	
-	\begin{comment}
-		\item Vilka erfarenheter kan man få av att ta fram och implementera en arkitektur?
-	\end{comment}
 \end{enumerate}
 
 
@@ -47,7 +43,7 @@ I ett sent skede i projektet behövde stora ändringar göras i arkitekturen vil
 \label{sec:theory-lundberg}
 
 \subsection{ROS}
-ROS står för Robot Operating System men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra fler processer och kommunicera mellan dessa \cite{quigley2009ros}. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det är ofta en bra tumregel att tänka att en nod motsvarar en modul i arkitekturen.
+ROS står för Robot Operating System men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra fler processer och kommunicera mellan dessa \cite{quigley2009ros}. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det är ofta en bra tumregel att tänka att en nod motsvarar en modul i arkitekturen, men en modul skulle även kunna bestå av ett flertal noder.
 
 ROS har även verktyg för att på ett enkelt och strukturerat sätt kommunicera mellan noder genom meddelanden (eng. messages). Dessa meddelanden är strikt typade och kan skickas mellan noder på två olika sätt:
 
@@ -67,11 +63,12 @@ I en traditionell pipe and filter-modell behandlas indatan kontinuerligt så att
 
 \section{Metod}
 \label{sec:method-lundberg}
+I detta kapitel beskrivs metoden som användes för att ta fram systemets arkitektur och hur beslut fattades om systemets uppbyggnad.
 
 \subsection{Arkitekturens framtagande}
 Arkitekturen för systemet har tagits fram med en iterativ process. Det första steget var att tänka igenom olika use cases för systemet och utifrån det ta fram de funktioner som programvaran måste innehålla. Detta resulterade i en systemanatomi som användes i det kommande arbetet.
 
-Nästa steg var att se vilka funktioner som var relaterade till varandra och bestämma vilka noder systemet skulle bestå av och även hur dessa skulle kommunicera med varandra. Det var tydligt att programmets funktionalitet kunde delas upp i tre distinkta delar:
+Nästa steg var att se vilka funktioner som var relaterade till varandra och bestämma vilka noder systemet skulle bestå av och även hur dessa skulle kommunicera med varandra. Det var tydligt att programmets funktionalitet kunde delas upp i tre distinkta moduler:
 
 \begin{enumerate}
 	\item punktmolnshantering
@@ -87,19 +84,18 @@ Då projektet byggde vidare på ett system kallat TreeD från förra året för 
 
 Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet bestämdes det att en variant av pipe and filter-modellen skulle vara lämplig. Där skickas resultatet från ett steg vidare som indata till nästa steg. En stor fördel med denna modell är att den gör det möjligt att byta ut enskilda delar utan att göra om hela systemet \cite{garlan1993introduction}. Detta är något som uppfyller de krav på moduläritet och underhållbarhet som ställdes på systemet.
 
-\subsection{Användandet av ROS}
+\subsection{Systemet i ROS}
 För att bygga systemet i ROS togs ett första förslag på en arkitektur fram där de moduler som beskrevs ovan motsvarade en varsin ROS-nod. För att kommunicera med varandra skulle noderna använda sig av topics för att ta emot kommandon och skicka resultatet av utförda beräkningar. Att använda topics hade fördelen att det är ett enkelt och snabbt sätt att komma igång med kommunikation mellan noder. Det var dock ett naivt sätt att implementera systemet i det här fallet då en topic-baserad lösning gör väldigt lite för att upprätthålla den tänkta arkitekturen. Eftersom vilken nod som helst kan lyssna på en topic blir det svårare att se kommunikationsvägarna mellan olika noder och därför blir det även svårare för en utomstående att förstå systemets uppbyggnad och vidareutveckla systemet.
 
 För att göra systemet tydligare togs en ny arkitektur fram som istället var baserad på service-anrop. I denna arkitektur tillhandahåller modulerna en service som en annan nod kan kalla på för att utföra ett specifikt arbete. När arbetet är utfört returneras resultatet till noden som utförde service-anropet. Detta system gör det mycket tydligare vad de olika noderna gör och hur de kommunicerar med varandra och det är den slutgiltiga arkitekturen i ROS som togs fram för projektet.
 
-\subsection{Utan ROS}
+\subsection{Systemet utan ROS}
 Då projektets förutsättningar ändrades långt in i utvecklingsfasen behövde en ny arkitektur tas fram. Den nya arkitekturen behövde inte kommunicera med hårdvaran på något sätt utan skulle endast läsa in punktmoln från filer på disk. För att underlätta utvecklingsarbetet och för att det inte längre var lika aktuellt att använda ROS bestämdes det att den nya arkitekturen inte skulle vara baserad på ROS. Systemets uppbyggnad på modulnivå behölls dock så lik den tidigare arkitekturen som möjligt där den största skillnaden är att någon koppling till TreeD inte längre finns.
 
 För att göra det fortsatta arbetet så enkelt som möjligt då det var begränsat med tid kvar beslutades det att systemet skulle byggas upp med klasser i C++, där varje modul motsvarar en klass som tillhandahåller modulens funktionalitet.
 
 \subsection{Dokumentering av processen}
-TODO: Ha med detta avsnitt?
-Under framtagandet av arkitekturen dokumenterades arbetet kontinuerligt i form av mötesprotokoll och diverse skisser och blockscheman som togs fram. Stora delar av arbetet med arkitekturen finns dokumenterat i projektets arkitekturbeskrivning (KÄLLA?) där alla beslut som tagits om arkitekturen finns. Den innehåller även motiveringar till de beslut som fattats och, i relevanta fall, alternativa lösningar som diskuterades men som inte kom med i den slutgiltiga arkitekturen. Denna dokumentation ligger som underlag för denna rapport.
+Under framtagandet av arkitekturen dokumenterades arbetet kontinuerligt i form av mötesprotokoll och diverse skisser och blockscheman som togs fram. Stora delar av arbetet med arkitekturen finns dokumenterat i projektets arkitekturbeskrivning där alla beslut som tagits om arkitekturen finns. Den innehåller även motiveringar till de beslut som fattats och, i relevanta fall, alternativa lösningar som diskuterades men som inte kom med i den slutgiltiga arkitekturen. Denna dokumentation används som underlag för att kunna svarar på frågeställningarna i denna rapport.
 
 
 \section{Resultat}
@@ -117,8 +113,12 @@ Den ROS-baserade arkitektur som togs fram för projektet visas i figur \ref{fig:
 	\label{fig:arkitektur}
 \end{figure}
 
+Tidigt i projektet togs ett annat förslag på en arkitektur fram i ROS som är väsentligen samma som den i figur \ref{fig:arkitektur} men med den enda skillnaden att kommunikationen skulle skötas via topics istället för service-anrop. Detta skulle innebära att en egen topic skapades för varje kommunikationsväg som visas i figuren. 
+
+Detta arkitekturförslag är också intressant för denna rapport då det visar på en del skillnader mellan olika sätt att 
+
 \subsection{Arkitekturen utan ROS}
-Den nya arkitekturen som togs fram utan ROS är uppbyggd enligt samma modell i grunden. Dock är den skriven helt i C++ och uppbyggd med hjälp av klasser som tillhandahåller den funktionalitet som tidigare låg i noder. Den nya arkitekturen använder inte heller det tidigare projektet TreeD så wrappern för den mjukvaran är borttagen. I detta system läses punktmolnsfiler in av klienten som sedan använder funktionaliteten i klasserna för att behandla punktmolnen. Klassindelningen och kopplingen mellan dem beskrivs i figur \ref{fig:klasser}.
+Den nya arkitekturen som togs fram utan ROS är uppbyggd enligt samma modell i grunden. Dock är den skriven helt i C++ och uppbyggd med hjälp av klasser som tillhandahåller den funktionalitet som tidigare låg i ROS-noder. Den nya arkitekturen använder inte heller det tidigare projektet TreeD så wrappern för den mjukvaran är borttagen. I detta system läses punktmolnsfiler in av klienten som sedan använder funktionaliteten i klasserna för att behandla punktmolnen. Klassindelningen och kopplingen mellan dem beskrivs i figur \ref{fig:klasser}.
 
 \begin{figure}[h]
 	\centering
@@ -137,12 +137,12 @@ Under arbetet med att ta fram och implementera dessa arkitekturer framkom en del
 
 Det ROS-baserade systemet implementerades med service-anrop som beskrevs i avsnitt \ref{sec:results-lundberg}. Detta sätt att kommunicera gör det tydligt hur en nod kommunicerar med andra noder och hur systemet hänger ihop. Det undviker även så kallad spaghettikod där olika data och funktionsanrop skickas runt lite hur som helst utan någon tydlig struktur, vilket gör koden väldigt svår att förstå och underhålla. Dock märktes det senare under utvecklingsarbetet att det gjorde systemet stelt och det resulterade i mycket mer arbete för att till exempel kunna kommunicera delresultat från en nod som tar väldigt lång tid att köra. För att kunna se delresultat från en nod som körs genom ett service-anrop skulle noden behöva publicera delresultaten på en topic som en annan nod kan lyssna på. Detta gör dock att systemets modell bryts vilket gör att många av de fördelar som finns med att använda service-anrop går förlorade.
 
-Det klassbaserade systemet däremot har mer flexibilitet i hur det implementeras. Det krävs dock lite tanke för att bibehålla moduläriteten.
+Det klassbaserade systemet däremot har mer flexibilitet i hur det implementeras. Det krävs dock lite tanke för att bibehålla moduläriteten i en sådan implementation.
 
-\subsection{Integration med existerande system / Portabilitet}
+\subsection{Portabilitet}
 En viktig fördel med ROS är då man vill använda systemet tillsammans med andra ROS-baserade system. Eftersom kommunikation inom ROS är tydligt definierad kan man skriva en egen ROS-nod som använder sig av andra existerande noder och på så vis enkelt använda existerande system. Det kräver dock att det existerande systemet antingen är utförligt dokumenterat eller har en så pass tydlig struktur att det går att förstå hur man ska kommunicera med olika noder.
 
-Den klassbaserade implementationen kan dock ses som mer portabel då den inte ska integreras med andra ROS-system. 
+Den klassbaserade implementationen kan dock ses som mer portabel då den inte ska integreras med andra ROS-system. Klasserna som systemet är uppbyggt av kan importeras och användas i ett annat projekt oavsett om det använder ROS eller inte.
 
 \subsection{Att gå från ROS till klasser}
 En stor fördel med att systemet byggts upp så modulärt redan från början var att det var relativt smärtfritt att gå från den ROS-baserade arkitekturen till den klassbaserade. Mycket av den kod som hade skrivits kunde återanvändas och det var inga problem att implementera i grunden samma arkitektur både med och utan ROS.
