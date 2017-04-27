@@ -1,48 +1,83 @@
-\chapter{Att använda sig av LaTeX för dokument}
+\chapter{Att använda sig av \latex för större dokument}
 \label{cha:indiv-report-tuhkala}
 \chapterprecis{\LARGE{---- Hannes Tuhkala ----}}
 
 \section{Inledning}
 \label{sec:introduction-tuhkala}
-Att skapa bra och stiliga dokument är viktigt för att det ska se professionellt ut. I den här rapporten kommer en undersökning om LaTeX är bra att använda jämfört med Microsoft Word och Google Docs. Rapporten tar också upp hur det skiljer sig med att flera personer skriver i samma dokument samtidigt utan versionshantering jämfört med lokalt och med versionshantering.
+Att skapa bra och stiliga dokument är viktigt för att det ska se professionellt ut. I den här rapporten kommer en undersökning om \latex är bra att använda jämfört med Microsoft Word för större dokument. Rapporten tar också upp hur det skiljer sig med att flera personer skriver i samma dokument samtidigt utan versionshantering jämfört med lokalt och med versionshantering.
 
 \subsection{Syfte}
 \label{sec:purpose-tuhkala}
-Huvudsyftet med den här rapporten är att ta reda på om LaTeX är bra att använda sig av för att skriva dokument jämfört med andra tekniker som Microsoft Word och Google Docs. Det andra syftet är att undersöka hur arbetet på dokument påverkas av att arbeta med dem online jämfört med att arbeta med dem lokalt.
+Huvudsyftet med den här rapporten är att ta reda på om \latex är bra att använda sig av för att skriva större dokument jämfört med andra typsättningssystem som Microsoft Word. Det andra syftet är att undersöka hur arbetet på dokument påverkas av att arbeta med dem online då flera personer ändrar i dokumentet samtidigt utan att se vilka ändringar som utförts jämfört med att arbeta med dem lokalt, en och en, där dokumenten är versionshanterade och man kan se varje enskild ändring.
 
 \subsection{Frågeställning}
 \label{sec:issue-tuhkala}
-De frågeställningar jag tänkt att ta upp i den här rapporten är:
+De frågeställningar som jag tänkt att ta upp i den här rapporten är:
 
 \begin{itemize}
-	\item Hur hjälper LaTeX att skriva dokument jämfört med Microsoft Word och Google Docs?
-	\item Hur påverkas arbetet på dokument om man jobbar online, dvs, med flera personer samtidigt jämfört med offline/lokalt?
+	\item [1] Hur hjälper \latex att skriva dokument jämfört med Microsoft Word?
+	\item [2] Hur påverkas arbetet på dokument om man jobbar med synkrona verktyg, jämfört med asynkrona verktyg?
+	\item [3] Vilka erfarenheter kan tas med ifrån det här projektet gällande dokument?
 \end{itemize}
+
+\subsection{Definitioner, akronym och förkortningar}
+Följande definitioner och förkortningar används på flertalet ställen i den här rapporten:
+\begin{itemize}
+	\item Synkront verktyg - Ett program eller en tjänst som flera personer kan skriva samtidigt på utan att man behöver vänta på att någon annan skrivit färdigt.
+	\item Asynkront verktyg - Ett program eller en tjänst som en person skriver sin del på och skickar det till andra personer efteråt.
+\end{itemize}
+
+\subsection{Avgränsningar}
+Denna rapport kommer endast att ta upp de två vanligaste och mest användna typsättningssystem, \latex och Microsoft Word. Det finns liknande system till dessa och kommer inte att behandlas alls. Rapporten kommer också bara ta upp de vanligaste versionshanteringssystem: Git, Subversion (SVN).
 
 \section{Bakgrund}
 \label{sec:background-tuhkala}
 
-%% Skriv här
+
 
 \section{Teori}
 \label{sec:theory-tuhkala}
+Nedan listas ett par program som används för typsättning och som kommer användas i rapporten.
+\subsection{\latex}
+\latex är ett typsättningssystem som är baserat på TeX och skapades för att göra det enklare att skapa generella böcker och artiklar inom TeX. Till skillnad från till exempel Microsoft Word eller Google Docs, programmerar man dokumentet, istället för att skriva formatterad text. \latex bygger på att den som skriver inte ska formatera texten, utan ska bara skriva det den vill, utan att behöva bry sig om hur det ser ut.  Det är därför väldigt enkelt att få "fina" dokument även om man skriver lite i \latex. Att specifiera dokumentets struktur istället för att krångla med hur dokumentet ska se ut, är mer vad \latex går ut på. Det är öppen källkod och används mest av dem som är för öppen källkod, universitet, med mera.
 
-%% Skriv här
+\subsection{Git}
+Git är ett versionshanteringsprogram som skapades för att hantera källkoden till Linuxkärnan. Git är ett så kallat distribuerat versionshanteringssystem, vilket innebär att alla Git-repositories har en komplett historik och full versionshantering. Git behöver inte heller nätverkstillgång eller en central server. Varje repository är sin egen server, även om man kan sätta upp en central server som är master. Git används främst för mjukvaruutveckling men kan användas för att ha reda på vilka filer som ändrats. I just den här rapporten används det för att versionshantera \latex filer.
+
+\subsection{Subversion}
+Subversion (SVN) är en också ett versionshanteringsprogram, som är öppen källkod. Man kan versionshantera källkod, webbsidor och dokumentation. 
 
 \section{Metod}
 \label{sec:method-tuhkala}
 
-%% Skriv här
+För min första frågeställning gjordes en litteraturstudie för att samla in information om frågan. Detta för att se hur tidigare arbeten ställer sig till för de tre olika typsättningssystemen som jag tar upp i rapporten.
+
+För min andra frågeställning gjordes en enkätundersökning som skickades ut till alla som läser kursen TDDD96, Kandidatprojekt i programvaruutveckling. I enkäten ställdes relevanta frågor som hör till frågeställningen.
+
+För min tredje frågeställning gjordes också en enkätundersökning men enbart i projektgruppen. Där ställdes relevanta frågor om hur vi gjorde i projektet och hur vi skulle vilja arbeta med dokument i framtiden.
 
 \section{Resultat}
 \label{sec:results-tuhkala}
 
-%% Skriv här
+\subsection{Litteraturstudie}
+Knauff et al. \cite{knauff2014efficiency} visar med hjälp av en empirisk studie hur effektivt det är att använda sig av \latex jämfört med Microsoft Word.
+
+\subsection{Enkät 1}
+
+
+\subsection{Enkät 2}
+
 
 \section{Diskussion}
 \label{sec:discussion-tuhkala}
 
-%% Skriv här
+\subsection{För- och nackdelar med att använda \latex över andra typsättingssystem}
+
+
+
+Litteraturstudien för frågeställning 1 kunde kanske ha gett ett annat eller mer utförligare svar om fler artiklar, bloggar och liknande funnits. Nu när det är rätt så få källor som jag hittat kan det ge en missrepresentativ bild av det.
+
+Enkätundersökningen som gjordes för frågeställning 2 kunde ha gjorts mer utförligare, genom att ställa bättre eller fråga om mer utförligare svar. Till exempel "Rangordna de olika alternativen från det du hade helst använt till det du helst inte velat använda." istället för att endast bara fråga om "Vilka alternativ hade du använt i framtiden för större dokument?".
 
 \section{Slutsatser}
 \label{sec:conclusions-tuhkala}
