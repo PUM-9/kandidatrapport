@@ -35,6 +35,8 @@ Följande definitioner och förkortningar används på flera ställen i denna de
 	\item Kravhantering - systematisk arbete med behov som ska uppfyllas av tekniska system. Översatt från det engelska ordet "requirements engineering"
 	\item IEEE - Institute of Electrical and Electronics Engineers, en icke-vinstorienterad organisation bestående av ingenjörer och vetenskapspersoner. Upprätthåller standarder inom ingenjörsvetenskap.
 	\item Gamification - Processen att lägga till spel eller spellika element till något (som en uppgift) för att uppmuntra deltagande
+	\item User story - En informell, naturlig språkbeskrivning av en eller flera funktioner i ett mjukvarusystem.
+	\item Acceptance test - Ett test utfört för att avgöra om kraven i en specifikation eller ett kontrakt är uppfyllda.
 \end{itemize}
 \section{Bakgrund}
 \label{sec:background-jannering}
@@ -48,14 +50,14 @@ Examinatorn i kursen (TDDD96 Kandidatprojekt i programvaruutveckling, Linköping
 \label{sec:theory-jannering}
 Kravhantering kan definieras som ” systematisk arbete med behov som ska uppfyllas av tekniska system”. Detta arbete ligger ofta tidigt i ett projekt, då det är viktigt att specificera de krav som skall uppfyllas. Kravhanteringsprocessen är ofta uppdelad i fyra delar: elicitering, analys, specifikation och godkännande. Detta arbete tar främst upp de tre första delarna. I detta arbetes syfte så definieras elicitering som: ”insamlingen av krav eller information för senare specificering av krav från användare, kunder och andra intressenter”. I analysfasen analyseras de kraven och den informationen som samlades in under eliciterinsfasen för att undersöka huruvida dessa krav är relevanta och huruvida informationen går att använda för specificera krav. Under specificeringsfasen så ska de slutgiltiga kraven specificeras. Detta innebär att varje krav numreras och att en kort text skrivs som detaljerar kravet.
 \subsection{IEEE standard 830}
-IEEE standard 830 är en standard, publicerad av IEEE, som specificerar Innehållet och kvaliteterna för en ”bra” kravspecifikation. Standarden specificerar både hur en kravspecifikation borde skrivas (hur involverad kund/intressenter ska vara, hur kravspecifikationen borde utvecklas med tiden m.m.) och vilka avsnitt som borde finnas med och deras syften. Kraven som skapas med standarden ska vara: Korrekta (eller relevanta), Entydiga, Kompletta, Konsekventa, Klassificerade för betydelse, Verifierbara, Modifierbara, Spårbara.
+IEEE standard 830 är en standard, publicerad av IEEE, som specificerar Innehållet och kvaliteterna för en ”bra” kravspecifikation.\cite{ieee1998ieee} Standarden specificerar både hur en kravspecifikation borde skrivas (hur involverad kund/intressenter ska vara, hur kravspecifikationen borde utvecklas med tiden m.m.) och vilka avsnitt som borde finnas med och deras syften. Kraven som skapas med standarden ska vara: Korrekta (eller relevanta), Entydiga, Kompletta, Konsekventa, Klassificerade för betydelse, Verifierbara, Modifierbara, Spårbara.
 
 \section{Metod}
 \label{sec:method-jannering}
 
 För att undersöka vilka metoder som används för kravhantering har en litteraturstudie av publicerade vetenskapliga rapporter genomförts för att identifiera vilka metoder som har studerats och hur dessa används idag. Svårigheten med denna ansats har varit att begränsa antalet källor och försöka göra relevanta avgränsningar för att passa arbetes begränsningar. De rapporter som har studerats har uteslutande fokuserat på eliciteringsprocessen av kravhantering. Vidare har endast de artiklar som presenterat eller studerat generella metoder använts. Dessa avgränsningar är gjorda för att göra denna rapport relevant för både mindre och större utvecklingsprojekt.
   
-För att identifiera för- och nackdelar med IEEE std 830 \cite{ieee1998ieee} så har dels gruppen och dels analysansvariga från andra projektgrupper i denna kurs intervjuats i en öppen interjvu.
+För att identifiera för- och nackdelar med IEEE std 830 \cite{ieee1998ieee} så har dels gruppen och dels analysansvariga från andra projektgrupper i denna kurs intervjuats i en öppen interjvu. Se Bilaga X för den intervju guide som användes vid intervjuerna
 
 För att dokumentera erfarenheter från arbetet med kravhantering och elicitering av krav så gick jag tillsammans med övriga projektgruppen gått igenom den kravspecifikation som framställdes i projektet och utvärderade vårt arbete. Efter detta tillfälle har jag också själv dokumenterat erfarenheter under mitt arbete med denna rapport.
 
@@ -79,8 +81,12 @@ Ett sätt att lindra problemet med frågeformulärsmetoden är att istället hå
 \subsubsection{Fokusgrupper}
 Den sista metoden för elicitering av krav som C. Linde och J. A. Goguen tar upp i sin rapport är fokusgrupper (från eng. focus groups). Fokusgrupper är mycket vanligt i marknadsundersökningar. Tanken bakom fokusgrupper är att samla en grupp intressenter (potentiella kunder om en marknadsundersökning utförs) med olika bakgrunder. Gruppen får sen diskutera ett ämne som är av intresse (t.ex. en ny produkt om en marknadsundersökning utförs). Arrangören för protokoll på vad som sägs i gruppen och använder senare denna data som underlag.  För att applicera denna metod för att elicitera krav så skapas JAD (”Joint Application Development”) eller RAD (”Rapid Application Development,”) grupper bestående av utvecklare kunder och andra intressenter som i grupp diskuterar det system som ska utvecklas. Författarna pointerar att det är svårt att inkludera personer som saknar teknisk bakgrund i dessa samtal då de ha svårigheter att bedöma betydelsen av tekniska beslut. Författarnas slutsats är att denna metod är lovande men att dess begränsningar bör studeras. 
 
- 
+\subsubsection{GREM}
+I en rapport som presenterades på International Working Conference on Requirements Engineering: Foundation for Software Quality I Göteborg 2016 skriver P. Lombriser, F. Dalpiaz, G Lucassen och S Brinkkemper om en ny metod för elicitering av krav som bygger på gamification (se definitioner).\cite{lombriser2016gamified} Rapporten beskriver metod som ska öka engagemanget hos interessenter vid elicitering av krav som författarna kallar ”gamified requirements engineering model” eller ”GREM”. I rapporten presenterar författarna ett experiment där en webbaserad plattform, som har spellika element, använts för att elicitera krav genom att skapa user stories och acceptence tests. Författarnas slutsats är att deras experiment visar att användandet av spellika element kan ha en positiv inverkan på intressenters engagemang men att denna inverkan kan variera baserat på vilka spellika element som används.
 
+\subsubsection{Kravkategorisering}
+I sin doktorsavhandling definierar M. Karlsson tre olika kategorier för krav: fångade krav (från eng. captured requirements), eliciterade krav (från eng. elicited requirements) och framväxande krav (från eng. emerget requirements).\cite{lkp.26083619960101} Fångade krav är krav som är relativt lätta att specificera eller som är relativt uppenbara. Eliciterade krav är krav som identifierats efter att grävt djupare i vad som tänkta användare, kunder och andra intressenter förväntar sig av systemet. Dessa krav kan klassas som icke uppenbara och kräver en grad av utredning för att identifieras. Framväxande krav är krav som växer fram under utvecklingen av systemet allt efter att tänkta användare, kunder och andra intressenter fått testa systemet. Dessa krav är svåra att identifiera i ett utvecklingsprojekts tidiga stadier om utvecklingsgruppen inte håller prototypdemonstationer där tänkta användare får komma med feedback. 
+ 
 \subsection{Erfarenheter}
 Följande är en sammanfattning av de erfarenheter om kravhantering och elicitering av krav som dokumenterats under projektets gång.
 \begin{itemize}
