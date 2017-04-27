@@ -86,6 +86,43 @@ Först genomfördes en litteraturstudie för att samla information. Sedan testas
 
 Som test av GUI:t med hänsyn till kontext tas testfallen fram via den metod som presenteras i avsnitt B.3.3.
 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=130mm]{figures/3DCopyGUI.PNG}
+	\caption{GUI:t för 3DCopy i slutet av iteration 2.}
+	\label{fig:3dcopy_gui}
+\end{figure}
+
+GUI:t har 5 olika interaktioner som kan utföras. Man kan trycka på någon av de tre knapparna eller skriva i någon av de två input fälten. Det stora vita fältet är till för att visa meddelanden från mjukvaran och kan ej interageras med. Utifrån dessa 5 interaktioner kan vi ta fram EFG:n för GUI:t.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=50mm]{figures/3DCopyGUIEFG.png}
+	\caption{EFG:n för 3DCopys GUI.}
+	\label{fig:3dcopy_guiefg}
+\end{figure}
+
+Utifrån EFG:n så ska sedan EIG:n skapas. Det som händer vid skapandet av EIG:n är att noderna GUI, Edit MCD och Edit MI tas bort eftersom att de inte interagerar med systemet.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=50mm]{figures/3DCopyGUIEIG.png}
+	\caption{EIG:n för 3DCopys GUI.}
+	\label{fig:3dcopy_guieig}
+\end{figure}
+
+Nu när EIG:n är framtagen så ska styrka väljas på testen. För att testerna ska skilja sig lite mer från de testerna utan hänsyn till kontext men åndå inte ta för lång tid så väljs styrka 3 på dessa tester. Det innebär att vi får följande sekvenser som ska användas för att ta fram testfallen.
+
+\begin{tabular}{|l|l|}
+	\hline
+	\textbf{Nr} & \textbf{Sekvens} \\
+	\hline
+	1 & <> \\
+	\hline
+	2 & <> \\
+	\hline
+\end{tabular}
+
 \subsection{Testning av 3DCopys GUI utan hänsyn till kontext}
 
 Som test av GUI:t utan hänsyn till kontext kan man tänka sig att en så kallad full-branch coverage kan vara tillräcklig. Det vill säga att alla olika vägar som man kan gå i GUI:t testas. Det blir alltså totalt N! antal test där N är antalet interaktioner som kan utföras på GUI:t.
