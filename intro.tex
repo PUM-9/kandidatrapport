@@ -6,7 +6,9 @@
 \section{Motivering}
 \label{sec:motivation}
 
-Denna rapport redogör för hur ett system för 3D-kopiering har konstruerats. Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först på 2010-talet har 3D-skrivare kommit ner i pris så pass att vanliga konsumenter kan köpa en. Även i industrin har det blivit allt vanligare att använda 3D-skrivare för prototyper. Det finns dock ett problem: för att kunna använda 3D-skrivaren måste man antingen kunna CAD-mjukvara eller förlita sig på andra människors 3D-modeller. Genom att använda ett system för 3D-kopiering kan ett verkligt objekt istället kopieras.
+Denna rapport redogör för hur ett system för 3D-kopiering har konstruerats. 
+
+Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först på 2010-talet har 3D-skrivare kommit ner i pris så pass att vanliga konsumenter kan köpa en. Även i industrin har det blivit allt vanligare att använda 3D-skrivare för prototyper. Det finns dock ett problem: för att kunna använda 3D-skrivaren måste man antingen kunna CAD-mjukvara eller förlita sig på andra människors 3D-modeller. Genom att använda ett system för 3D-kopiering kan ett verkligt objekt istället kopieras.
 
 
 %% Vad skall rapporten leda till? (Beskriva projekt, samla 
@@ -14,7 +16,7 @@ Denna rapport redogör för hur ett system för 3D-kopiering har konstruerats. T
 \section{Syfte}
 \label{sec:aim}
 
-Syftet med detta projekt var att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Projektet bygger vidare på ett tidigare kandidatarbete som utfördes våren 2016. Resultatet av det tidigare projektet var en mjukvara som styr ett rotationsbord och en linjärenhet med avståndskamera och genererar ett punktmoln (se definitioner). Syftet var alltså att vidareutveckla resultatet från det tidigare projektet till ett system som kan kopiera ett tredimensionellt objekt. Detta görs genom att ett flertal skanningar tas med olika rotationer och lutningar för att sedan registrera de resulterande punktmolnen till ett komplett punktmoln för objektet. Detta kompletta punktmoln omvandlas sedan till en 3D-mesh (se definitioner) och sparas i ett format som kan användas för att skriva ut objektet på en 3D-skrivare. Systemet är modulärt, välbyggt och enkelt att förstå för att göra det möjligt för vidareutveckling, forskning samt för eventuell användning till laborationer.   
+Syftet med detta projekt var att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Projektet bygger vidare på ett tidigare kandidatarbete som utfördes våren 2016. Resultatet av det tidigare projektet var en mjukvara som styr ett rotationsbord och en linjärenhet med avståndskamera och genererar ett punktmoln (se kap. \ref{cha:theory}). Syftet var alltså att vidareutveckla resultatet från det tidigare projektet till ett system som kan kopiera ett tredimensionellt objekt. Detta görs genom att ett flertal skanningar tas med olika rotationer och lutningar för att sedan registrera de resulterande punktmolnen till ett komplett punktmoln för objektet. Detta kompletta punktmoln omvandlas sedan till en 3D-mesh (se definitioner) och sparas i ett format som kan användas för att skriva ut objektet på en 3D-skrivare. Systemet är modulärt, välbyggt och enkelt att förstå för att göra det möjligt för vidareutveckling, forskning samt för eventuell användning till laborationer.   
 
 
 \section{Frågeställning}
