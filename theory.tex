@@ -1,9 +1,6 @@
 \chapter{Teori}
 \label{cha:theory}
 
-
-%% Vad behöver läsaren veta för att förstå resten av rapporten? %%
-
 \section{Punktmoln}
 På senare år har det blivit möjligt att representera objekt i form av ett 3D-representerat punktmoln. Detta har blivit möjligt på grund av utvecklandet av kameror samt laserskannrar. Ett punktmoln är alltså en mängd av punkter i ett tredimensionellt koordinatsystem som representerar ett objekt, se figur \ref{fig:point_cloud_torus}. Punkterna i punktmolnet representerar ofta de yttre kanterna av objektet.
 
@@ -24,7 +21,7 @@ Point Cloud Library (PCL) är ett bibliotek till C++. PCL presenterar ett avance
 	\item segmentering
 	\item modellanpassning
 	\item ytrekonstruering
-	\item funktionskalkylering.
+	\item funktionsestimering.
 \end{itemize}
 PCL är alltså ett bibliotek avsett att ge stöd till att behandla punktmolnsdata, iform av olika bearbetningsalgoritmer \cite{rusu20113d}.
 
@@ -36,7 +33,8 @@ Varje algoritm i PCL är definierad via basklasser. Dessa basklasser försöker 
 	\item ange parametrar
 	\item gör beräkningen för att få resultatet.
 \end{itemize}
-Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
+
+PCL använder sig av sitt egna visualiseringsbibliotek, baserat på visualiseringsverktyget VTK \cite{VTK_book}, för att visualisera punktmoln. PCL visualiseringsbibliotek integrerar PCL med VTK med syftet att snabbt kunna visualisera resultaten av de olika algoritmernas arbete. Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
 
 \subsection{Filtrering}
 PCLs filtreringsbibliotek innehåller algoritmer för att filtrera ett punktmoln ifrån skräppunkter. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Det gör att skräppunkter infaller i punkmolnet. Dessa skräppunkter kan filtreras genom att titta på varje punkts grannskap och filtrera ut de som inte uppfyller vissa kriterier. PCLs implementering av filtering är baserad på att beräkna medelavståndet från en punkt till varje granne, för att sedan kolla om detta avstånd ligger inom ett visst intervall. Om inte punkten ligger inom intervallet så filtreras den bort \cite{pcl_filtering}. 
@@ -57,7 +55,8 @@ Att rekonstruera en ojämn yta till en jämn kan vara viktigt om molnet är bull
 
 Att mesha ett punktmoln görs efter att punktmolnen har registreras så de bildar ett komplett punktmoln. Att skapa en meshrepresentation av ett komplett punktmoln innebär att skapa en yta utan punkter. Meshrepresentationen av punktmolnet är alltså en vattentät 3D-modell uppbyggd av polygoner. Den algoritm som används för att mesha ett punktmoln i detta projekt är en trianguleringsalgoritm som körs på ett punktmoln med normaler för att erhålla en yta baserad på grannarna till respektive punkt. För detta krävs alltså ett punktmolnsobjekt som innehåller normalerna till varje punkt i punktmolnet. I detta punktmoln med normaler kan sedan önskade parametrar sättas innan själva trianguleringsalgoritm körs för att generera den önskade meshen \cite{pcl_surface_reconstruction}\cite{pcl_triangulation_algorithm}. 
 
-\subsection{Funktionskalkylering}
+\subsection{Funktionsestimering}
+PCLs funktionsbibliotek innehåller datastrukturer och mekanismer för att estimera 3D-funktioner från punktmolnsdata. 3D-funktioner beskriver geometriska mönster vid en viss punkt baserat på informationen som finns tillgänglig kring punkten \cite{pcl_feature_estimation}.
 
 \section{3D-skrivare}
 En 3D-skrivare kan användas för att skriva ut 3D-objekt i plast utifrån modeller i en dator. För att kunna göra detta har skrivaren ett styrkort som exekverar så kallad G-code \cite{gcode} vilken säger vilka motorer som ska flyttas och hur mycket. En 3D-modell som är sparad i datorn i form av en mesh måste alltså behandlas genom att använda en algoritm för att generera G-code utifrån modellen. Detta görs ofta genom en typ av programvara som kallas för slicer. Namnet kommer av att programmet delar upp modellen i olika lager och sedan genererar hur skrivaren måste röra för att skriva ut ett lager. På detta sätt byggs sedan hela den ursprungliga modellen upp lager för lager.
