@@ -4,11 +4,11 @@
 
 \section{Inledning}
 \label{sec:introduction-tuhkala}
-Att skapa bra och stiliga dokument är viktigt för att det ska se professionellt ut. I den här rapporten kommer en undersökning om \latex är bra att använda jämfört med Microsoft Word för större dokument. Rapporten tar också upp hur det skiljer sig med att flera personer skriver i samma dokument samtidigt utan versionshantering jämfört med lokalt och med versionshantering.
+Att skapa bra och stiliga dokument är viktigt för att det ska se professionellt ut. I den här rapporten kommer en undersökning om \latex är bra att använda jämfört med Microsoft Word för större dokument. Rapporten tar också upp vilka verktyg som lämpar sig för att skriva större dokument.
 
 \subsection{Syfte}
 \label{sec:purpose-tuhkala}
-Huvudsyftet med den här rapporten är att ta reda på om \latex är bra att använda sig av för att skriva större dokument jämfört med andra typsättningssystem som Microsoft Word. Det andra syftet är att undersöka hur arbetet på dokument påverkas av att arbeta med dem online då flera personer ändrar i dokumentet samtidigt utan att se vilka ändringar som utförts jämfört med att arbeta med dem lokalt, en och en, där dokumenten är versionshanterade och man kan se varje enskild ändring.
+Huvudsyftet med den här rapporten är att ta reda på om \latex är bra att använda sig av för att skriva större dokument jämfört med andra typsättningssystem som till exempel Microsoft Word. Det andra syftet är att undersöka om det är bättre att använda sig av asynkrona verktyg eller synkrona verktyg.
 
 \subsection{Frågeställning}
 \label{sec:issue-tuhkala}
@@ -17,18 +17,20 @@ De frågeställningar som jag tänkt att ta upp i den här rapporten är:
 \begin{itemize}
 	\item [1] Hur hjälper \latex att skriva dokument jämfört med Microsoft Word?
 	\item [2] Vilka verktyg lämpar sig för att skriva större dokument?
-	\item [3] Vilka erfarenheter kan tas med ifrån det här projektet gällande större dokument?
+	\item [3] Vilka erfarenheter kan tas med ifrån det här projektet gällande framställning av större dokument?
 \end{itemize}
 
 \subsection{Definitioner, akronym och förkortningar}
 Följande definitioner och förkortningar används på flertalet ställen i den här rapporten:
 \begin{itemize}
 	\item Synkront verktyg - Ett program eller en tjänst som flera personer kan skriva samtidigt på utan att man behöver vänta på att någon annan skrivit färdigt.
-	\item Asynkront verktyg - Ett program eller en tjänst som en person skriver sin del på och skickar det till andra personer efteråt.
+	\item Asynkront verktyg - Ett program eller en tjänst som en person skriver text på och skickar det till andra personer efteråt.
+	\item SVN - Apache Subversion
+	\item Word - Microsoft Word
 \end{itemize}
 
 \subsection{Avgränsningar}
-Denna rapport kommer endast att ta upp de två vanligaste och mest användna typsättningssystem, \latex och Microsoft Word. Det finns liknande system till dessa och kommer inte att behandlas alls. Rapporten kommer också bara ta upp de vanligaste versionshanteringssystem: Git, Subversion (SVN).
+Denna rapport kommer endast att ta upp de två vanligaste och mest användna typsättningssystem, \latex och Microsoft Word. Det finns liknande system till dessa och kommer inte att behandlas alls. Rapporten kommer också att ta upp olika asynkrona verktyg som Git, Subversion och Mercurial samt synkrona verktyg som Google Docs, ShareLaTeX och Overleaf.
 
 \section{Bakgrund}
 \label{sec:background-tuhkala}
@@ -39,19 +41,20 @@ Vi har arbetat med olika verktyg för att framställa större dokument i projekt
 Nedan listas lite information om det som kommer att tas upp i rapporten och som alla kanske inte riktigt vet vad det är. Det som tas upp är vad \latex, Git och SVN är.
 
 \subsection{\latex}
-\latex är ett typsättningssystem som är baserat på TeX och skapades för att göra det enklare att skapa generella böcker och artiklar inom TeX. Till skillnad från till exempel Microsoft Word eller Google Docs, programmerar man dokumentet, istället för att skriva formatterad text. \latex bygger på att den som skriver inte ska formatera texten, utan ska bara skriva det den vill, utan att behöva bry sig om hur det ser ut.  Det är därför väldigt enkelt att få "fina" dokument även om man skriver lite i \latex. Att specifiera dokumentets struktur istället för att krångla med hur dokumentet ska se ut, är mer vad \latex går ut på. Det är öppen källkod och används mest av dem som är för öppen källkod, universitet, med mera.
+\latex är ett typsättningssystem som är baserat på TeX och skapades för att göra det enklare att skapa generella böcker och artiklar inom TeX. Till skillnad från till exempel Microsoft Word, programmerar man dokumentet, istället för att skriva formatterad text. \latex bygger på att den som skriver inte ska formattera texten, utan ska bara skriva det den vill få sagd, utan att behöva bry sig om hur dokumentet ser ut.  Det är därför väldigt enkelt att få stiliga dokument i \latex genom att bara specifiera dokumentets struktur istället för att krångla med hur dokumentet ska se ut.
 
 \subsection{Git}
-Git är ett versionshanteringsprogram som skapades för att hantera källkoden till Linuxkärnan. Git är ett så kallat distribuerat versionshanteringssystem, vilket innebär att alla Git-repositories har en komplett historik och full versionshantering. Git behöver inte heller nätverkstillgång eller en central server. Varje repository är sin egen server, även om man kan sätta upp en central server som är master. Git används främst för mjukvaruutveckling men kan användas för att ha reda på vilka filer som ändrats. I just den här rapporten används det för att versionshantera \latex filer.
+Git är ett versionshanteringsprogram som skapades av Linus Torvalds för att hantera källkoden till Linuxkärnan. Git är ett så kallat distribuerat versionshanteringssystem vilket innebär att ett Git repository har en komplett historik över alla ändringar som skett och man kan gå tillbaka till en tidigare version.
 
-\subsection{Subversion}
-Subversion (SVN) är en också ett versionshanteringsprogram, som är öppen källkod. Man kan versionshantera källkod, webbsidor och dokumentation. 
+\subsection{Apache Subversion}
+Subversion (SVN) är också ett versionshanteringsprogram för mjukvara, likt Git, förutom att SVN är ett centraliserat versionshanteringssystem. Man kan bland annat versionshantera källkod, webbsidor och dokumentation. 
 
 \section{Metod}
 \label{sec:method-tuhkala}
+För att kunna besvara frågeställningarna har jag delat upp dem i tre sektioner för hur jag gick tillväga för att svara på dem.
 
 \subsection{Första frågeställningen}
-För min första frågeställning gjordes en litteraturstudie för att samla in information om frågan. Detta för att se hur tidigare arbeten ställer sig till för de tre olika typsättningssystemen som jag tar upp i rapporten.
+För den första frågeställningen gjordes en litteraturstudie för att samla in information om frågan. Detta för att se hur tidigare arbeten ställer sig till för de tre olika typsättningssystemen som jag tar upp i rapporten.
 
 \subsection{Andra frågeställningen}
 För min andra frågeställning gjordes en enkätundersökning som skickades ut till alla som läser kursen TDDD96, Kandidatprojekt i programvaruutveckling. I enkäten ställdes först dessa frågor:
@@ -103,12 +106,14 @@ Resultatet som jag kommit fram till från min litteraturstudie och de två enkä
 Knauff och Nejasmic \cite{knauff2014efficiency} visar med hjälp av ett mjukvaruanvändbarhetstest hur effektivt det är att använda sig av \latex jämfört med Microsoft Word. Testet gick ut på att 40 deltagare över olika vetenskapsgrenar skulle skriva olika vetenskapliga texter.
 Det visar sig att \latex användare var långsammare än Word användare, skrev mindre text på samma tid och gjorde fler grammatiska-, formatterings- och typsättningsfel. På de flesta tester var experter i \latex sämre än nybörjare i Word. \latex användare säger sig tycka om att använda det än andra typsättningssystem. Författarna kom till slutsatsen att erfarna \latex användare kan drabbas av produktivitetsförlusta än andra typsättningssystem.
 
+Loch et al. \cite{loch2014master} tar upp om Word är ett lämpligt verktyg för studenter att typsätta matematik istället för \latex. Den artikeln tar också upp hur Word jämför sig med andra matematiska typsättningspaket som studenter har använt. 
 
+Wright \cite{wright2010technical} jämför en generell affärsorienterad ordbehandlare, Word med \latex.  
 
 \subsection{Enkät 1}
 Resultaten från den första enkäten, den om hur det är att använda sig av synkrona respektive asynkrona verktyg när man skriver dokument visas i listan under. Om mer detaljerade resultat önskas se Bilaga (Ej inlagd än).
 
-Totalt sett var det 32 personer av totalt 98 som svarade på enkäten. Det ger ett något på 32,7%.
+Totalt sett var det 35 personer av 98 som läser kursen, som svarade på enkäten. Det ger ett deltagande på 35,7%.
 
 \subsection{Enkät 2}
 Resultaten från den andra enkäten, den om vilka erfarenheter gruppen kan ta ifrån det här projektet visas nedan. Om mer detaljerade resultat önskas se Bilaga (Ej inlagd än).
@@ -116,17 +121,12 @@ Resultaten från den andra enkäten, den om vilka erfarenheter gruppen kan ta if
 \section{Diskussion}
 \label{sec:discussion-tuhkala}
 
-\subsection{Litteraturstudie}
-
-\subsection{Enkät 1}
-
-\subsection{Enkät 2}
-
 
 \subsection{Metod}
 Litteraturstudien för frågeställning 1 kunde kanske ha gett ett annat eller mer utförligare svar om fler artiklar, bloggar och liknande funnits. Nu när det är rätt så få källor som jag hittat kan det ge en missrepresentativ bild av det.
 
-Enkätundersökningen som gjordes för frågeställning 2 kunde ha gjorts mer utförligare, genom att ställa bättre eller fråga om mer utförligare svar. Till exempel "Rangordna de olika alternativen från det du hade helst använt till det du helst inte velat använda." istället för att endast bara fråga om "Vilka alternativ hade du använt i framtiden för större dokument?". Om fler personer hade svarat på den första enkäten akunde det ha gett en bättre bild på hur det ser ut.
+Enkätundersökningen som gjordes för frågeställning 2 kunde ha gjorts mer utförligare, genom att ställa bättre eller fråga om mer utförligare svar. Till exempel "Rangordna de olika alternativen från det du hade helst använt till det du helst inte velat använda." istället för att endast bara fråga om "Vilka alternativ hade du använt i framtiden för större dokument?". Om fler personer hade svarat på den första enkäten kunde det ha gett en bättre bild på hur det ser ut.
+
 
 \section{Slutsatser}
 \label{sec:conclusions-tuhkala}
