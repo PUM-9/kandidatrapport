@@ -34,7 +34,8 @@ Här listas de definitioner och förkortningar som används i kapitlet.
 	\item PCL - Point Cloud Library.
 	\item Iterative Closest Point - En algoritm för punktmolnsregistrering.
 	\item ICP - Iterative Closest Point.
-	\item JR-MPC - En algoritm för punktmolnsregistrering.
+	\item JR-MPC - Joint Registration of Multiple Point Clouds
+	\item SeqICP - SequentialICP
 \end{itemize}
 
 
@@ -51,22 +52,22 @@ I ett tidigt stadie av projektet upptäckte vi att en stor del skulle handla om 
 \section{Teori}
 \label{sec:theory-karlsson}
 
-När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det inte finns några bra verktyg för att läsa in tredimensionella objekt. Man behöver då ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion. Den metod vi använt oss av har dock bestått av en avståndskamera på linjärenhet med objektet monterat på ett rotationsbord med 2 rotationsaxlar. Med hjälp av detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt.
+När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det inte finns några bra verktyg för att läsa in tredimensionella objekt. Man behöver då ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion. Den metod vi använt oss av har dock bestått av en avståndskamera på linjärenhet med objektet monterat på ett rotationsbord med 2 rotationsaxlar. Med hjälp av detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt. Dessa punktmoln har vi haft som moln att enhetligt registrera till en komplett representation av objektet som skannats.
 
 
 \subsection{Registrering}
 
-Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett koordinatsystem med all information från indatan. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, \textit{Iterative Closest Point} eller MatLab's SimReg. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel så lider ICP av så kallad \textit{felutrbredning} och JRM-PC \textit{Joint Registration of Multiple Point Clouds} lider av längre körtid.[]
+Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett koordinatsystem med all information från indatan. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, \textit{Iterative Closest Point} eller GMMReg. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel så lider ICP av så kallad \textit{felutrbredning} och JR-MPC \textit{Joint Registration of Multiple Point Clouds} lider av längre körtid.[]
 
 \subsection{Kinect Fusion}
 
 Kinect fusion använder sig av Microsofts egna avstånds- och RGB-kamera, Kinect, för att mappa upp ett 3D objekt i den verkliga världen. Avståndskameran mäter upp punktmolnet för scenen framför den samtidigt som den synkroniserade RGB-kameran ger färgdata till varje punkt. 
-Varje punktmoln som Kinect kameran skickar består av ca 307 000 punkter. Det kan jämföras med hårdvaran som vi använts oss av där maximala antalet punkter i en skan är ca 786 000 punkter. De punktmoln som vi arbetat med har dock generellt innehållt ca 30-60 000 punkter efter filtrering av skräpdata.
+Varje punktmoln som Kinect kameran skickar består av ca 307 000 punkter. Det kan jämföras med hårdvaran som vi använts oss av där maximala antalet punkter i en skanning är ca 786 000 punkter. De punktmoln som vi arbetat med har dock generellt innehållit ca 30-60 000 punkter efter filtrering av skräpdata.
 
 \section{Metod}
 \label{sec:method-karlsson}
 
-Initialt gjordes en litteraturstudie för att hitta information om hur man registrerar. PCL ger en bra sammanfattning men utöver det finns inte jättemånga relevanta källor. PCL ger också många handledningsexempel med exempelkod som blev utgångspunkten för utbildningen om registrering i gruppen. Då utredningen är begränsad till framförallt ICP och JR-MPC begränsas antalet ytterligare. Det finns enormt många varianter av ICP, såsom SequentialICP, Point-to-Plane ICP Point-to-Point ICP m.fl. Jag har inte hittat någon referens i PCL, vars ICP implementation gruppen använder sig av, till vilken av dessa PCL implementerar. På grund av det här kommer den generella ICP algoritmen utvärderas. JR-MPC är resultatet av en forskningsstudie som tagit fram algoritmen och därmed finns enbart den källa som används här för den algoritmen. Det finns snarlika algoritmer med sina forskningsdokument men dessa kommer alltså inte behandlas här.
+Initialt gjordes en litteraturstudie för att hitta information om hur man registrerar. PCL ger en bra sammanfattning men utöver det finns inte jättemånga relevanta källor. PCL ger också många handledningsexempel med exempelkod som blev utgångspunkten för utbildningen om registrering i gruppen. Då utredningen är begränsad till framförallt ICP och JR-MPC begränsas antalet ytterligare. Det finns enormt många varianter av ICP, såsom SeqICP, Point-to-Plane ICP Point-to-Point ICP m.fl. Jag har inte hittat någon referens i PCL, vars ICP-implementation gruppen använder sig av, till vilken av dessa PCL implementerar. På grund av det här kommer en generell ICP algoritmen utvärderas. JR-MPC är resultatet av en forskningsstudie som tagit fram algoritmen och därmed finns enbart den källa som används här för den algoritmen. Det finns snarlika algoritmer med enbart sina forskningsdokument som källa men dessa kommer alltså inte behandlas här.
 
 
 
