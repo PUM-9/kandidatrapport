@@ -20,7 +20,7 @@ Syftet är att undersöka hur viktigt kontexten för interaktioner är vid testn
 \begin{itemize}
 	\item [1] Hur viktig är kontexten för interaktioner vid testning av GUI?
 	\item [2] Hur utformar man testfall som tar hänsyn till kontexten?
-	\item [3] Hur testades 3DCopys GUI?
+	\item [3] Hade hänsyn till kontexter någon påverkan vid testning av 3DCopys GUI?
 \end{itemize}
 
 \subsection{Definitioner, akronym och förkortningar}
@@ -139,28 +139,114 @@ Nu när EIG:n är framtagen så ska styrka väljas på testen. För att testerna
 \end{tabular}
 \end{table}
 
-Dessa sekvenser kombineras sedan för att testfallen ska uppnå 3-cover och 3\textsuperscript{+}-cover och därför också 3\textsuperscript{*}-cover.
+Dessa sekvenser kombineras sedan för att testfallen ska uppnå 3-cover och 3\textsuperscript{+}-cover och därför också 3\textsuperscript{*}-cover. Först så genererades 2 st olika  mängder med testfall som enskillt uppfyllde antingen 3-cover eller 3\textsuperscript{+}-cover. Dessa kombinerades sedan för att få fram den mängd testfall som ska utföras på GUI:t.
 
+\begin{table}[h]
+	\caption{De testfall genomfördes på GUI:t med hänsyn till kontext.}
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Nr} & \textbf{Testfall} \\
+		\hline
+		1 & <Register, Mesh, Register, Mesh, Register, Mesh> \\
+		\hline
+		2 & <Mesh, Register, Mesh, Register, Mesh, Register> \\
+		\hline
+		3 & <Register, Mesh, Mesh, Mesh, Register, Mesh> \\
+		\hline
+		4 & <Mesh, Mesh, Register, Register, Register, Mesh> \\
+		\hline
+		5 & <Mesh, Mesh, Register, Mesh, Register, Mesh> \\
+		\hline
+		6 & <Register, Mesh, Mesh, Register, Mesh, Register> \\
+		\hline
+		7 & <Register, Mesh, Register, Register, Register, Mesh> \\
+		\hline
+		8 & <Mesh, Register, Register, Mesh, Mesh, Register> \\
+		\hline
+		9 & <Mesh, Register, Register, Mesh, Register, Mesh> \\
+		\hline
+		10 & <Mesh, Register, Mesh, Register, Register, Mesh> \\
+		\hline
+		11 & <Register, Mesh, Mesh, Register, Register, Mesh> \\
+		\hline
+		12 & <Register, Register, Mesh, Register, Mesh, Register> \\
+		\hline
+	\end{tabular}
+\end{table}
 
+GUI:t testas sedan genom att utföra dessa testfall i den ordning som visas i tabell B.2. GUI:t startas om mellan varje testfall. Dessa tester utfördes manuellt på GUI:t.
 
 \subsection{Testning av 3DCopys GUI utan hänsyn till kontext}
 
 Som test av GUI:t utan hänsyn till kontext kan man tänka sig att en så kallad full-branch coverage kan vara tillräcklig. Det vill säga att alla olika vägar som man kan gå i GUI:t testas. Det blir alltså totalt N! antal test där N är antalet interaktioner som kan utföras på GUI:t.
 
+\begin{table}[h]
+	\caption{De testfall som genomfördes på GUI:t utan hänsyn till kontext.}
+	\centering
+	\begin{tabular}{|l|l|}
+		\hline
+		\textbf{Nr} & \textbf{Testfall} \\
+		\hline
+		1 & <Register, Mesh> \\
+		\hline
+		2 & <Mesh, Register> \\
+		\hline
+	\end{tabular}
+\end{table}
+
+GUI:t testas sedan genom att utföra dessa testfall i den ordning som visas i tabell B.3. GUI:t startas om mellan varje testfall. Dessa tester utfördes manuellt på GUI:t.
+
 \section{Resultat}
 \label{sec:results-holmberg}
 
+Här presenteras de resultat som erhölls från både litteraturstudien och de tester som genomfördes på GUI:t.
+
 Litteraturstudien visar ett tydligt samband mellan kontexten och vilka fel som testerna lyckas hitta. Kontexten är alltså avgörande för hur interaktionen kommer att påverka mjukvaran.
+
+\subsection{Testresultat}
+
+I detta avsnitt presenteras de resultat som erhölls vid den testning av GUI:t som genomfördes.
+
+\subsubsection{Med hänsyn till kontext}
+
+Testfallen med hänsyn till kontext lyckades identifiera ett fel i meshningen. Den klarar bara av att mesha en viss fil, first\_registered\_church.pcd. Eftersom att den tar lång tid att mesha så utfördes enbart test nummer 1 i tabell B.2 med denna fil. Resterande tester utfördes med andra filer som fick fel i meshningen. Alltså exekverades inte meshningskoden i de flesta fall utan bara tills felet uppstod.
+
+\subsubsection{Utan hänsyn till kontext}
+
+De tester som utfördes utan hänsyn till kontext hittade samma fel som de med hänsyn till kontext. Alltså att meshningen enbart klarade av en av filerna. Dessa tester utfördes båda med filer som klarade eller fick fel i meshningen.
 
 \section{Diskussion}
 \label{sec:discussion-holmberg}
 
-%% Skriv här
+I detta avsnitt diskuteras resultatet, den metod som användes samt källkritik.
+
+\subsection{Resultat}
+
+Som resultatet visar lyckades de båda testen identifiera samma fel trots att det med hänsyn till kontext var mycket mer omfattande. Och detta resultat kan bero på många olika saker. Dels så hade systemet som testades enbart två systeminteraktioner och dessa två använder ingen delad kod så sannolikheten för att de påverkar något i koden som förstör för den andra interaktionen är väldigt liten.
+
+Dessa interaktioner är också testade sedan tidigare i andra systemtest och därför kan alla fel i koden redan vara lösta. Så sannolikheten för att det skulle finnas något fel kvar minskar ytterligare. Så det resultat som erhölls är ganska sannolikt med tanke på omständigheterna. Hade systemet varit större med fler interaktioner som delvis använder samma kod hade testningen med hänsyn till kontext eventuellt hittat fler fel.
+
+\subsection{Metod}
+
+Den främsta bristen i metoden är att felet i meshningen inte hade hittats och blivit löst innan dessa tester. Eftersom att den enda filen som kunde meshas tog väldigt lång tid var det inte realistiskt att genomföra alla tester med den och därför är inte alla testfall med hänsyn till kontext genomförda med den filen. Det medför i sin tur att de testerna aldrig exekverade koden som utför meshningen och det kan därför finnas kontextkänsliga fel i den biten av koden som inte hittades.
+
+Den kontextkänsliga testningen begränsades också vid t\textsuperscript{*}-cover. Det finns ytterligare ett steg som är ännu kraftfullare som kanske skulle ha hittat fel som inte identifierades.
+
+Den kontextkänsliga testningen borde också jämförts med en annan GUI testnings metod, inte bara en testning som uppnår full path coverage. Detta för att kunna jämföra olika GUI testnings metoder.
+
+\subsection{Källkritik}
+
+För litteraturstudien så hittades bara en relevant artikel som berörde den bit som var mest kritisk för att utföra testerna, nämligen en som tog upp hur man testar GUI:n med hänsyn till kontext. Den artikeln är dock skriven av personer med lång erfarenhet inom just GUI testning vilket framgick när sökandet efter ytterligare artiklar genomfördes eftersom många artiklar som dök upp var skrivna av samma personer. En anledning  till att det var svårt att hitta ytterligare artiklar kan vara att X. Yuan et al. \cite{yuan2011gui} har valt att kalla det för kontext. Då de också definierar begreppet kontext i sin artikel indikerar det att de eventuellt är en av få eller den enda artikeln inom just detta ämne. Eller så har andra artiklar valt en annan benämning.
 
 \section{Slutsatser}
 \label{sec:conclusions-holmberg}
 
-%% Skriv här
+Att ta hänsyn till kontexten vid GUI testning är definitivt något som bör göras. Den är ofta avgörande för att hitta vissa fel. Det hade varit intressant att skapa exempel GUI:n med medvetet placerade fel som beror på andra interaktioner för att kunna undersöka detta noggrannare. Det fanns dock inte tid att göra en sådan undersökning i denna rapport. Därför får betydelsen av kontexter begränsas till litteraturstudien.
+
+Gällande metoden för att ta fram testfall med hänsyn till kontext så användes samma metod som i X. Yuan et al. \cite{yuan2011gui}]. Något som blev tydligt då testerna utfördes manuellt är att metoden inte tar hänsyn till hur resurs- eller tidskrävande en interaktion är när man placerar den i sekvensen. Det är något som man skulle kunna bygga vidare på. Att undersöka hur de mest krävande interaktionerna ska placeras i sekvenserna för att testa så många kontexter som möjligt och samtidigt minimera tids- och resurskostnader.
+
+Testerna visade att för projektets GUI, i det stadie som GUI:t befann sig i vid testningen, så spelade inte kontexten någon roll för att hitta fel. Det beror sannolikt på att mängden interaktioner var liten samt att systeminteraktionerna var väl separerade och inte delade någon kod. Det indikerar att hänsyn till kontexten blir viktigare ju större mängd interaktioner GUI:t har samt hur stor del av koden som interaktionerna har gemensamt. Hade mer tid funnits så skulle en undersökning med olika GUI:n med varierande antal interaktioner varit intressant för att vidare kunna undersöka denna teori.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% person-report.tex ends here
+%%% holmberg-report.tex ends here
