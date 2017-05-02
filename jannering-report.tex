@@ -27,6 +27,8 @@ Syftet med denna rapport är att undersöka hur olika metoder för kravhantering
 	\item Vilka erfarenheter kan dokumenteras från arbetet med krav i projektet som kan vara intressanta för framtida projekt?
 	
 \end{enumerate}
+\subsection{Avgränsningar}
+Denna rapport kommer att begränsas till de frågeställningar som presenterats ovan. För metoder för elicitering av krav har följande avgränsning gjorts: endast generella metoder som har studerats vetenskapligt har studerats. Inga andra metoder (icke generella eller metoder som inte studerats vetenskapligt) kommer att presenteras i denna rapport. De erfarenheter som dokumenteras senare in denna rapport kommer uteslutande från kursen \textbf{TDDD96 	Kandidatprojekt i programvaruutveckling} och mer specifikt från det projekt i kursen som presenterats tidigare i denna rapport.   
 \subsection{Definitioner, akronym och förkortningar}
 Följande definitioner och förkortningar används på flera ställen i denna del av rapporten:
 \begin{itemize}
@@ -113,7 +115,7 @@ Min åsikt om för- och nackdelarna med introspektion stämmer överens med C. L
 Detta tillvägagångsätt, liksom introspektion, är beroende av att den som eliciterar krav (och i detta fall skapar frågorna och svaren) har en korrekt bild av vad kunden, tänkta användare och andra intressenter vill ha för system. Om denna bild inte är korrekt så finns det en stor risk att de krav som eliciteras inte är relevanta. Liksom introspektion så klarar frågeformulär av att elicitera ”fångade krav”, men om den som skapar frågorna och svaren inte och försökspersonen inte delar samma referensram så finns risken att vissa ”eliciterade krav” missas 
 
 \subsubsection{Öppna intervjuer}
-Även om denna metod lindrar problemet med frågeformulärsmetoden så finns detta problem kvar. Om intervjuaren och försökspersonen inte har samma uppfattning om vad som ska utvecklas eller vilka systemets fundamentala aspekter är så finns risken att kraven som specificeras med hjälp av intervjun inte är relevanta. Öppna intervjuer kommer nästan alltid att identifiera alla ”fångade krav”, men liksom frågeformulär finns det en risk (som är minde i detta fall) att vissa ”eliciterade krav” inte specificeras.
+Även om denna metod lindrar problemet med frågeformulärsmetoden så finns detta problem kvar. Om intervjuaren och försökspersonen inte har samma uppfattning om vad som ska utvecklas eller vilka systemets fundamentala aspekter är så finns risken att kraven som specificeras med hjälp av intervjun inte är relevanta. Öppna intervjuer kommer nästan alltid att identifiera alla ”fångade krav”, men liksom frågeformulär finns det en risk (som är mindre i detta fall) att vissa ”eliciterade krav” inte specificeras. Ett annat problem med denna metod är tidsaspekten. Öppna intervjuer tar tid. Eftersom intervjuerna görs en och en kommer tiden det tar att elicitera krav från samma mängd intressenter att ta mycket längre tid om man använder öppna intervjuer istället för frågeformulär.  
 
 \subsubsection{Fokusgrupper}
 En risk med fokusgrupper är att deltagarna i gruppen inte representerar verkligheten, d.v.s. att deltagarna inte lyckas representera en eller flera grupper av intressenter, vilket leder till att vissa relevanta krav inte identifieras. Det finns också andra risker med fokusgrupper. Eftersom en fokusgrupp ska starta en diskussion kring ett ämne så finns risken att en minoritet av gruppen inte blir hörda eller att de hörs för mycket. Det kan vara lätt för en majoritet att utesluta en minoritet från diskussionen eller att en minoritet tar över diskussionen. Detta kan leda till att de som representerar en grupp intressenter inte blir hörda och att relevanta krav inte blir eliciterade. Fokusgrupper har enligt min uppfattning störst chans att korrekt identifiera samtliga ”eliciterade krav” så länge gruppen fungerar korrekt.
@@ -132,9 +134,30 @@ Det finns en uppsjö  med metoder som skulle kunna använts för att besvara de 
 \section{Slutsatser}
 \label{sec:conclusions-jannering}
 \subsection{Vilka metoder finns för kravhantering och elicitering av krav och vilka fördelar och nackdelar finns med dessa?}
+De metoder för elicitering av krav som presenterats är: introspektion, Frågeformulär, öppna intervjuer, fokusgrupper och GREM.
+
+\subsubsection{Introspektion}
+Introspektion är den vanligaste metoden för att eliceitera krav men min slutsats är att i många fall så är detta inte den bästa metoden att använda. Det finns för många felkällor med denna metod för att säga att man borde använda "ren introspektion" (bara introspektion) för att elicitera krav. Denna metod bygger på att den som eliciterar krav lyckas få en komplett bild av det system som kunden/användaren vill ha. Denna bild kommer att vara komplex, även i mindre projekt, vilket betyder att många "eliciterade krav" kan falla längst vägkanten.
+
+\subsubsection{Frågeformulär}
+Frågeformulär har fördelen att kunna samla in statistisk information om vad /kunder/användare vill ha för system men som tidigare presenterats finns ett ganska fundamentalt problem med denna metod: "Vad händer om den som skapar formuläret och frågorna och den som svarar på frågorna inte har samma referensram?". Min slutsats är att frågeformulär är en bättre metod för att elicitera krav än introspektion då man involverar kunder och användare mer. Men att även den är bristfällig.
+
+\subsubsection{Öppna intervjuer}
+Min slutsats är att Öppna intervjuer kan vara en de bättre metoderna för elicitering av krav eftersom kunder och användare är mer engagerade i eliciteringsprocessen. Dock finns det två problem med metoden. Dels samma problem som med frågeformulär (och introspektion) och dels tidsaspekten. att utföra tillräckligt många öppna intervjuer för att identifiera alla relevanta krav kan ta för lång tid och kosta för mycket för ett mindre utvecklingsprojekt.
+
+\subsubsection{Fokusgrupper}
+Fokusgrupper har potentialen att vara den bästa metoden för elicitering av krav (så länge en eller flera gruppen, med rätt komposition, kan samlas). Fokusgrupper lider inte av samma problem med tid som öppna intervjuer och den referensram som gruppen har borde vara uppenbar efter att gruppen har träffats. Problemen med fokusgrupper (som presenterats tidigare) och C. Lindes och J. A. Goguens slutsats \cite{goguen1993techniques}, att metodens begränsningar bör studeras, får mig att tveka att rekommendera metoden.
+
+\subsubsection{GREM}
+GREM är den metod som är svårast för mig att rekommendera. Utifrån den data som presenterats av P. Lombriser et al. verkar metoden lovande men eftersom metoden är beroende av extern mjukvara för elicitera krav och metoden är så pass ny så kan jag inte komma till slutsatsen att denna metod kan rekomenderas.
+
+\subsubsection{Slutsats}
+Alla metoder har sina egna styrkor och svagheter.
+
+Min slutsats är att det bästa tillvägagångssättet för att elicitera krav är att använda flera av de metoder som presenterats för att säkerställa att alla krav som bör ställas på ett system identifieras och specificeras        
+
 \subsection{Vilka fördelar och nackdelar finns med att använda IEEE std 830 i ett programvaruutvecklings projekt av den storleken som detta projekt?}
-\subsection{Vilka erfarenheter kan dokumenteras från kravhantering och elicitering av krav i projektet som kan vara intressanta
-	för framtida projekt?}
+\subsection{Vilka erfarenheter kan dokumenteras från kravhantering och elicitering av krav i projektet som kan vara intressanta för framtida projekt?}
 
 
 
