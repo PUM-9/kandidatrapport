@@ -2,7 +2,7 @@
 \label{cha:theory}
 
 \section{Punktmoln}
-På senare år har det blivit möjligt att representera objekt i form av ett 3D-representerat punktmoln. Detta har blivit möjligt på grund av utvecklandet av kameror samt laserskannrar. Ett punktmoln är alltså en mängd av punkter i ett tredimensionellt koordinatsystem som representerar ett objekt. Punkterna i punktmolnet representerar ofta de yttre kanterna av objektet \cite{point_cloud}.
+På senare år har det blivit möjligt att representera objekt i form av ett 3D-representerat punkt\-moln. Detta har blivit möjligt på grund av utvecklandet av kameror samt laserskannrar. Ett punktmoln är alltså en mängd av punkter i ett tredimensionellt koordinatsystem som representerar ett objekt. Punkterna i punktmolnet representerar ofta de yttre kanterna av objektet \cite{point_cloud}.
 
 Det finns två stycken typer av punktmoln, ett så kallat komplett punktmoln och ett icke komplett punktmoln. Ett komplett punktmoln, se figur \ref{fig:point_cloud_torus}, betyder att punktmolnet innehåller samtliga punkter som behövs för att representera objektet. Ett icke komplett punktmoln, se figur \ref{fig:point_cloud_church}, betyder att punktmolnet inte innehåller tillräckligt med punkter för att representera objektet. 
 
@@ -34,7 +34,7 @@ Point Cloud Library (PCL) är ett bibliotek till C++. PCL presenterar ett avance
 	\item ytrekonstruering
 	\item funktionsestimering.
 \end{itemize}
-PCL är alltså ett bibliotek avsett att ge stöd till att behandla punktmolnsdata, iform av olika bearbetningsalgoritmer \cite{rusu20113d}.
+PCL är alltså ett bibliotek avsett att ge stöd till att behandla punktmolnsdata, i form av olika bearbetningsalgoritmer \cite{rusu20113d}.
 
 Varje algoritm i PCL är definierad via basklasser. Dessa basklasser försöker integrera all vanlig funktionalitet tillsammans med algoritmerna som sedan används igenom hela kedjan i den önskade processen. Detta gör att implementeringen av den aktuella algoritm hålls modulär och tydlig. Den grundläggande kedjan för en önskad process i PCL är som följer:
 
