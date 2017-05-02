@@ -48,7 +48,11 @@ Varje algoritm i PCL är definierad via basklasser. Dessa basklasser försöker 
 PCL använder sig av sitt egna visualiseringsbibliotek, baserat på visualiseringsverktyget VTK \cite{VTK_book}, för att visualisera punktmoln. PCL visualiseringsbibliotek integrerar PCL med VTK med syftet att snabbt kunna visualisera resultaten av de olika algoritmernas arbete. Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
 
 \subsection{Filtrering}
-PCLs filtreringsbibliotek innehåller algoritmer för att filtrera ett punktmoln ifrån skräppunkter. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Det gör att skräppunkter infaller i punkmolnet. Dessa skräppunkter kan filtreras genom att titta på varje punkts grannskap och filtrera ut de som inte uppfyller vissa kriterier. PCLs implementering av filtering är baserad på att beräkna medelavståndet från en punkt till varje granne, för att sedan kolla om detta avstånd ligger inom ett visst intervall. Om inte punkten ligger inom intervallet så filtreras den bort \cite{pcl_filtering}. 
+PCLs filtreringsbibliotek innehåller algoritmer för att filtrera ett punktmoln ifrån skräppunkter. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Det gör att skräppunkter infaller i punkmolnet. För att kunna behandla punktmolnet måste dessa skräppunkter först filtreras bort.
+
+PCL har stöd för fler olika metoder för filtrering. Första steget är att ta bort alla punkter som ligger utanför ett visst intervall av koordinater för att ta bort sådant som måste ligga utanför det skannade objektet. I nästa steg kontrolleras det för varje punkt hur många grannar den punkten har inom en viss radie. Alla punkter som har under ett visst antal grannar tas bort vilket leder till att enstaka punkter som inte ligger i närheten av något objekt tas bort \cite{pcl_filtering}.
+
+För att undvika att punktmoln blir för stora, det vill säga får för många punkter så att de tar för lång tid att behandla, kan nedsampling användas för att ta bort punkter och samtidigt uppskatta den yta som representeras så nära som möjligt. För att göra detta i PCL delas punktmolnet som ska nedsamplas in i voxels, vilket kan ses som att punktmolnet delas in i ett antal kuber. Sedan ersätts alla punkter i varje kub med en punkt som ligger i centrum för alla punkterna i kuben. På detta sätt ges en nära uppskattning av den representerade ytan med mycket färre punkter än det ursprungliga punktmolnet \cite{voxel_grid}.
  
 \subsection{Segmentering}
 PCLs segmenteringsbibliotek innehåller algoritmer för att dela in ett punktmoln i olika kluster. Dessa kluster används för att bryta ner molnet i olika beståndsdelar som kan behandlas oberoende av andra delar. Detta görs ofta för att bearbeta olika eller en specifik del av ett punktmoln. Till exempel kan ett plan segmenteras utifrån en uppsättning av punkter om så önskas \cite{pcl_segmentation}. 
@@ -71,6 +75,9 @@ PCLs funktionsbibliotek innehåller datastrukturer och mekanismer för att estim
 
 \section{3D-skrivare}
 En 3D-skrivare kan användas för att skriva ut 3D-objekt i plast utifrån modeller i en dator. För att kunna göra detta har skrivaren ett styrkort som exekverar så kallad G-code \cite{gcode} vilken säger vilka motorer som ska flyttas och hur mycket. En 3D-modell som är sparad i datorn i form av en mesh måste alltså behandlas genom att använda en algoritm för att generera G-code utifrån modellen. Detta görs ofta genom en typ av programvara som kallas för slicer. Namnet kommer av att programmet delar upp modellen i olika lager och sedan genererar hur skrivaren måste röra för att skriva ut ett lager. På detta sätt byggs sedan hela den ursprungliga modellen upp lager för lager. Två vanliga slicer-programvaror är \textit{Cura} \cite{cura} och \textit{Slic3r} \cite{slic3r}.
+
+\section{Systemanatomi}
+En systemanatomi, vars viktigaste egenskap är enkelheten, är en visuell beskrivning av ett system som gör det enkelt för samtliga i utvecklingsgruppen att förstå systemet och dess interna beroenden. Systemanatomin är särskilt användbar vid utveckling av stora komplexa system i agila utvecklingsgrupper eftersom det ger en gemensam syn över systemet. En systemanatomi kan inte ersätta andra modeller eller designverktyg utan det är enbart ett annat sätt att beskriva designen av systemet \cite{system_anatomy}.
 
 
 \section{Hållbar utveckling}
