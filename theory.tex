@@ -45,7 +45,7 @@ Varje algoritm i PCL är definierad via basklasser. Dessa basklasser försöker 
 	\item gör beräkningen för att få resultatet.
 \end{itemize}
 
-PCL använder sig av sitt egna visualiseringsbibliotek, baserat på visualiseringsverktyget VTK \cite{VTK_book}, för att visualisera punktmoln. PCL visualiseringsbibliotek integrerar PCL med VTK med syftet att snabbt kunna visualisera resultaten av de olika algoritmernas arbete. Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
+PCL använder sig av sitt egna visualiseringsbibliotek, baserat på visualiseringsverktyget VTK \cite{VTK_book}, för att visualisera punktmoln. PCLs visualiseringsbibliotek integrerar PCL med VTK med syftet att snabbt kunna visualisera resultaten av de olika algoritmernas arbete. Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
 
 \subsection{Filtrering}
 PCLs filtreringsbibliotek innehåller algoritmer för att filtrera ett punktmoln ifrån skräppunkter. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Det gör att skräppunkter infaller i punkmolnet. För att kunna behandla punktmolnet måste dessa skräppunkter först filtreras bort.
@@ -61,7 +61,7 @@ PCLs segmenteringsbibliotek innehåller algoritmer för att dela in ett punktmol
 Modellanpassning i PCL innebär att det finns färdiga metoder och modeller, till exempel plan och cylindrar, som kan kombineras och användas för att upptäcka specifika modeller i ett punktmoln. Detta sub-bibliotek används flitigt av segmenteringsbiblioteket för att upptäcka segment av vanliga geometriska figurer \cite{pcl_model_fitting}.
 
 \subsection{Registrering}
-Att anpassa olika punkter i ett punktmoln så att de representerar en komplett modell över objektet kallas för att punktmolnsregistrering. Det är ett stort problem inom området och PCL erbjuder ett registreringsbibliotek för ändamålet. Målet med registreringen är alltså hitta de relativa positionerna och orienteringarna för de separata punkmolnen (tagna från olika vyer) så att varje punkt i respektive moln överlappar perfekt med varandra \cite{pcl_registration}. För mer information angående registreringen och dess algoritmer, så behandlas det området i Michaels Karlssons individuella utredning, se avsnitt \ref{cha:indiv-report-karlsson}.
+Att anpassa olika punkter i ett punktmoln så att de representerar en komplett modell över objektet kallas för punktmolnsregistrering. Det är ett stort problem inom området och PCL erbjuder ett registreringsbibliotek för ändamålet. Målet med registreringen är att hitta de relativa positionerna och orienteringarna för de separata punktmolnen (tagna från olika vyer) så att varje punkt i respektive moln överlappar perfekt med varandra \cite{pcl_registration}. För mer information angående registreringen och dess algoritmer, så behandlas det området i Michaels Karlssons individuella utredning, se avsnitt \ref{cha:indiv-report-karlsson}.
 
 \subsection{Ytrekonstruering}
 PCLs ytrekonstrueringsbibliotek innehåller algoritmer för att rekonstruera de ursprungliga ytorna från 3D-skanningar. Beroende på uppgiften kan PCL till exempel rekonstruera en ojämn yta till en jämn, en meshrepresentation av ett komplett punktmoln eller en yta med normaler \cite{pcl_surface_reconstruction}. 
