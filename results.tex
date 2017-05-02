@@ -1,23 +1,22 @@
 \chapter{Resultat}
 \label{cha:results}
 
-\section{Systembeskrivning - gammal}
+\section{Systembeskrivning - ROS system}
 %% Översiktlig beskrivning system, dokument
 %% Vad har kunden för värde hos det som skapats?
 
-Systemet består hårdvarumässigt av ett rotationsbord, en avståndskamera och en linjärenhet för att flytta avståndskameran längs en axel. För att styra detta fanns det sedan tidigare mjukvara som kan utföra en enskild skanning. Detta projekt har resulterat i mjukvara för att utföra fler skanningar från olika vinklar och sammanfoga dessa till ett komplett objekt som kan skrivas ut på en 3D-skrivare. Resultatet av projektet består av en mjukvara som kan användas för att skanna ett fysiskt objekt och skriva ut en kopia av objektet på en 3D-skrivare.
+Nedan följer en beskrivning av det ROS-baserade system som utvecklades innan kraven i projektet omförhandlades med kunden.
+  
+Systemet bestod hårdvarumässigt av ett rotationsbord, en avståndskamera och en linjärenhet för att flytta avståndskameran längs en axel. För att styra detta fanns det sedan tidigare mjukvara som kan utföra en enskild skanning. Projektet skulle ha resulterat i en mjukvara för att utföra fler skanningar från olika vinklar och sammanfoga dessa till ett komplett objekt som kan skrivas ut på en 3D-skrivare. Det tänkta systemet bestod av en mjukvara som kan användas för att skanna ett fysiskt objekt och skriva ut en kopia av objektet på en 3D-skrivare.
 
-I nuläget finns en väl genomtänkt plan för hur projektet ska genomföras och hur systemet ska fungera. Det finns en projektplan som beskriver hur utvecklingsarbetet ska gå till och en kravspecifikation som säger vad systemet måste uppfylla för att bli godkänt av kunden.
 
-Det har även tagits fram en arkitekturbeskrivning som förklarar hur systemet ska fungera och vilka moduler som ska finnas. Arkitekturen ger en bra utgångspunkt för hur systemet ska implementeras. I arkitekturbeskrivningen finns det förklarat vilka noder systemet ska bestå av och hur de ska kommunicera med varandra. Det underlättar under utvecklingen då varje nod har tydligt definierad in- och utdata och det är tydligt specificerat vad noden ska utföra. Det är möjligt att ändringar kommer att göras i arkitekturen längre fram i projektet men troligen kommer inga större förändringar att behövas.
+Det togs fram en arkitekturbeskrivning som förklarar hur systemet skulle fungera och vilka moduler som skulle finnas. Arkitekturen gav en bra utgångspunkt för hur systemet skulle implementeras. I arkitekturbeskrivningen finns det förklarat vilka noder systemet skulle bestå av och hur de skulle kommunicera med varandra.
 
-Arkitekturen är uppbyggd i ROS vilket innebär att de flesta noder i systemet fungerar som en service som tar emot en request för att utföra någonting och när den är klar svarar den med en response. Detta gör att alla noder har tydliga gränssnitt mellan varandra vilket resulterar i en bra separation mellan olika moduler.
+Denna arkitektur är uppbyggd i ROS vilket innebär att de flesta noder i det tänkta systemet fungerar som en service som tar emot en request för att utföra någonting och när den är klar svarar den med en response. Detta gör att alla noder har tydliga gränssnitt mellan varandra vilket resulterar i en bra separation mellan olika moduler.
 
-Noden för att wrappa TreeDs kommandoradsgränssnitt för att utföra enskilda skanningar är färdigimplementerad och testad. Den kan användas av det övriga systemet genom att kalla på en service i ROS och ange vilka vinklar man vill ha en skanning från. TreeD-wrapper-noden utför då skanningen och returnerar det enskilda punktmolnet.
+Det tänkta systemet kunde samla in fler punktmoln. Detta gjordes av punktmolnsnoden som tar in ett värde för hur noggrant objektet ska skannas. Sedan utförs ett antal skanningar genom att en nod som kallas "TreeD-wrapper" kallas. Nästa steg var att dessa inkompletta punktmoln ska registreras till ett punktmoln.
 
-Systemet kan även samla in fler punktmoln. Detta görs av punktmolnsnoden som tar in ett värde för hur noggrant objektet ska skannas. Sedan utförs ett antal skanningar genom att TreeD-wrappern kallas. Nästa steg är att dessa inkompletta punktmoln ska registreras till ett punktmoln för hela objektet men det är inte implementerat än. Trots att punktmolnen inte registreras i nuläget finns det ett värde för kunden att kunna utföra fler skanningar.
-
-Mycket tid under den första iterationen av projektet har lagts på att utforska och undersöka olika tekniker och algoritmer. Som resultat av det finns det mycket nyttig kunskap i projektgruppen och även en del testkod för att utföra olika delar. Testkoden kommer till stor del kunna användas som utgångspunkt för det riktiga systemet.
+Mycket tid under de första iterationerna av projektet  lades på att utforska och undersöka olika tekniker och algoritmer. Som resultat av det finns det mycket nyttig kunskap i projektgruppen och även en del testkod för att utföra olika delar. Testkoden kommer till stor del kunna användas som utgångspunkt för det riktiga systemet.
 
 \section{Systembeskrivning - ny}
 \subsection{Kommandoradsgränssnitt (CLI)}
@@ -76,7 +75,7 @@ Här listas de individuella bidrag som gruppens medlemmar har bidragit med till 
 	\item Jannering, Gustav - Hur kravhanteringsmetoder påverkar ett utvecklingsprojekt
 	\item Karlsson, Michael - Analys av punktmolnsregistrering
 	\item Lundberg, Martin - Att bygga ett system i ROS
-	\item Tuhkala, Hannes - Att använda sig av LaTeX för större dokument
+	\item Tuhkala, Hannes - Att använda sig av \latex för större dokument
 	\item Wallström, Fredrik - Kvalitetsarbete i praktiken
 \end{itemize}
 
