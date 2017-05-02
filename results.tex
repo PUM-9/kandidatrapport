@@ -14,9 +14,26 @@ Det togs fram en arkitekturbeskrivning som förklarar hur systemet skulle funger
 
 Denna arkitektur är uppbyggd i ROS vilket innebär att de flesta noder i det tänkta systemet fungerar som en service som tar emot en request för att utföra någonting och när den är klar svarar den med en response. Detta gör att alla noder har tydliga gränssnitt mellan varandra vilket resulterar i en bra separation mellan olika moduler.
 
-Det tänkta systemet kunde samla in fler punktmoln. Detta gjordes av punktmolnsnoden som tar in ett värde för hur noggrant objektet ska skannas. Sedan utförs ett antal skanningar genom att en nod som kallas "TreeD-wrapper" kallas. Nästa steg var att dessa inkompletta punktmoln ska registreras till ett punktmoln.
+Det tänkta systemet kunde samla in fler punktmoln. Detta gjordes av punktmolnsnoden som tar in ett värde för hur noggrant objektet ska skannas. Sedan utförs ett antal skanningar genom att en nod som kallas "TreeD-wrapper" kallas. Nästa steg var att dessa inkompletta punktmoln ska registreras till ett punktmoln. Se fig. \ref{fig:noddiagram} för ett diagram som visar hur dessa ROS noder var tänkta att vara uppbyggda.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=130mm]{figures/Noddiagram.png}
+	\caption{Ett diagram som visar hur ROS noderna var tänkta att vara uppbyggda}
+	\label{fig:noddiagram}
+\end{figure}
 
 Mycket tid under de första iterationerna av projektet  lades på att utforska och undersöka olika tekniker och algoritmer. Som resultat av det finns det mycket nyttig kunskap i projektgruppen och även en del testkod för att utföra olika delar. Testkoden kommer till stor del kunna användas som utgångspunkt för det riktiga systemet.
+
+Se fig. \ref{fig:systembeskrivning_gamla} för en bild på hur det tänkta systemet var planerat att vara strukturerat.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=130mm]{figures/Systemskiss_gamla.png}
+	\caption{En skiss av det tänkte systemet}
+	\label{fig:systembeskrivning_gamla}
+\end{figure}
+
 
 \section{Systembeskrivning - ny}
 \subsection{Kommandoradsgränssnitt (CLI)}
