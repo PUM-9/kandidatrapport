@@ -26,12 +26,31 @@ Systemet kan kontrolleras av ett CLI som kan ta in olika parametrar för att anp
 \textit{3DCopy -v --max-corr-dist 15 path/to/register/ output}\\\\
 Det anropet kommer registrera och sedan mesha .pcd filerna i mappen path/to/register/ och döpa det kompletta punktmolnet respektive färdiga meshen till output.pcd och output.stl. Under registreringen och meshningen kommer programmet att skriva ut information om processen på grund av -v flaggan som står för \textit{verbose mode}. Om man undrar vilka alternativ som finns kan man använda -h flaggan så skriver programmet ut vilka alternativ som finns och hur man använder programmet med hjälp av kommandoradsgränssnittet. 
 
+\subsection{GUI}
+För att lättare kunna styra mjukvaran utvecklades också ett GUI. GUI:t har nästintill samma funktionalitet som CLI:t och målet med att ha samma funktionalitet är att det inte ska spela någon roll om man använder CLI eller GUI.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=130mm]{figures/3DCopyGUI.PNG}
+	\caption{GUI:t för 3DCopy i slutet av iteration 2.}
+	\label{fig:3dcopy_gui}
+\end{figure}
+
+De funktioner som finns i GUI:t just nu är Register som öppnar en dialog där man får välja en mapp som innehåller de punktmoln som man vill registrera. Det finns också en Mesh funktion där en dialog öppnas och man får välja det punktmoln som man vill mesha. Det finns också en funktion för att återställa parametervärdena för registreringen, Reset Values.
+
 \section{Gemensamma erfarenheter}
 %% Goda, mindre bra
 %% I projektets alla faser
 %% Tekniska, process-relaterade
 
+I detta avsnitt presenteras de erfarenheter som gruppen har samlat på sig under projektets gång.
+
+\subsection{Övergripande projekterfarenheter}
+
 Att göra efterforskningar innan man börjar med någonting är väldigt viktigt och det märktes direkt i projektets början. Både genom att större delen av våra efterforskningar kom till stor hjälp direkt i projektet och bara några dagar in i första iterationen märktes det att det fanns några områden vi behövde läsa på mer om innan vi kunde skriva kod. Ett exempel på bra efterforskning som gjordes i förstudien var efterforskningarna kring ROS där alla gruppmedlemmar gick igenom tutorials och läste dokumentation som utvecklingsledaren gått igenom och tagit fram. I slutet av förstudien gjordes en gemensam kodutmaning där alla fick skriva varsin chattklient med hjälp av ROS. Kodutmaningen ledde till att alla kom in i ROS, Git, Python och andra verktyg som skulle användas under resten av projektet.
+
+
+\subsection{Erfarenheter gällande kommunikation}
 
 Betydelsen av kommunikation var stor under projektets gång. Verktygen Slack och Trello har använts flitigt och varit givande för gruppen. Med Slack har vi alltid kunnat nå varandra snabbt och smidigt. Vi har kunnat hålla informationsflöden skilda och sorterade i olika kanaler. Funktioner som påminnelser och trådar har också varit till stor hjälp för att lätt kunna komma åt den informationen som man vill åt i flödena. För att ha en översikt i hur det går med olika delar av projektet har man använt Trello. Genom att ha olika listor för statusen av dokument och funktioner under utveckling har gjort att man som gruppmedlem lätt kunnat se hur det går och vad man behöver göra. 
 
@@ -57,7 +76,7 @@ Här listas de individuella bidrag som gruppens medlemmar har bidragit med till 
 	\item Jannering, Gustav - Hur kravhanteringsmetoder påverkar ett utvecklingsprojekt
 	\item Karlsson, Michael - Analys av punktmolnsregistrering
 	\item Lundberg, Martin - Att bygga ett system i ROS
-	\item Tuhkala, Hannes - Att använda sig av LaTeX för dokument
+	\item Tuhkala, Hannes - Att använda sig av LaTeX för större dokument
 	\item Wallström, Fredrik - Kvalitetsarbete i praktiken
 \end{itemize}
 
