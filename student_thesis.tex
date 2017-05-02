@@ -15,9 +15,19 @@
 \setcounter{tocdepth}{2}
 
 \addto\captionsenglish{% Replace "english" with the language you use
-	\renewcommand{\contentsname}%
-	{Innehållsförteckning}%
+	\renewcommand{\contentsname}
+	{Innehållsförteckning}
 }
+
+\addto\captionsenglish{
+	\renewcommand{\listfigurename}
+	{Lista av figurer}
+}
+
+\addto\captionsenglish{
+	\renewcommand{\listtablename}{Lista av tabeller}
+}
+
 
 \department{Institutionen för datavetenskap}
 \departmentenglish{Department of Computer Science}
@@ -31,9 +41,6 @@
 \publicationyear{2017}
 \currentyearthesisnumber{001}
 \dateofpublication{2017-01-01}
-
-%% One author
-%%\author{\texttt{\textbackslash author}}
 
 %% Two authors
  \author{\parbox{\textwidth}{Hampus Dunström\\
