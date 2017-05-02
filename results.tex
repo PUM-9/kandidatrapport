@@ -19,17 +19,41 @@ Systemet kan även samla in fler punktmoln. Detta görs av punktmolnsnoden som t
 
 Mycket tid under den första iterationen av projektet har lagts på att utforska och undersöka olika tekniker och algoritmer. Som resultat av det finns det mycket nyttig kunskap i projektgruppen och även en del testkod för att utföra olika delar. Testkoden kommer till stor del kunna användas som utgångspunkt för det riktiga systemet.
 
+\subsection{GUI}
+
+För att lättare kunna styra mjukvaran utvecklades också ett GUI. GUI:t har nästintill samma funktionalitet som CLI:t och målet med att ha samma funktionalitet är att det inte ska spela någon roll om man använder CLI eller GUI.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=130mm]{figures/3DCopyGUI.PNG}
+	\caption{GUI:t för 3DCopy i slutet av iteration 2.}
+	\label{fig:3dcopy_gui}
+\end{figure}
+
+De funktioner som finns i GUI:t just nu är Register som öppnar en dialog där man får välja en mapp som innehåller de punktmoln som man vill registrera. Det finns också en Mesh funktion där en dialog öppnas och man får välja det punktmoln som man vill mesha. Det finns också en funktion för att återställa parametervärdena för registreringen, Reset Values.
 
 \section{Gemensamma erfarenheter}
 %% Goda, mindre bra
 %% I projektets alla faser
 %% Tekniska, process-relaterade
 
+I detta avsnitt presenteras de erfarenheter som gruppen har samlat på sig under projektets gång.
+
+\subsection{Övergripande projekterfarenheter}
+
 Att göra efterforskningar innan man börjar med någonting är väldigt viktigt och det märktes direkt i projektets början. Både genom att större delen av våra efterforskningar kom till stor hjälp direkt i projektet och bara några dagar in i första iterationen märktes det att det fanns några områden vi behövde läsa på mer om innan vi kunde skriva kod. Ett exempel på bra efterforskning som gjordes i förstudien var efterforskningarna kring ROS där alla gruppmedlemmar gick igenom tutorials och läste dokumentation som utvecklingsledaren gått igenom och tagit fram. I slutet av förstudien gjordes en gemensam kodutmaning där alla fick skriva varsin chattklient med hjälp av ROS. Kodutmaningen ledde till att alla kom in i ROS, Git, Python och andra verktyg som skulle användas under resten av projektet.
+
+\subsection{Erfarenheter gällande kommunikation}
 
 Betydelsen av kommunikation var stor under projektets gång. Verktygen Slack och Trello har använts flitigt och varit givande för gruppen. Med Slack har vi alltid kunnat nå varandra snabbt och smidigt. Vi har kunnat hålla informationsflöden skilda och sorterade i olika kanaler. Funktioner som påminnelser och trådar har också varit till stor hjälp för att lätt kunna komma åt den informationen som man vill åt i flödena. För att ha en översikt i hur det går med olika delar av projektet har man använt Trello. Genom att ha olika listor för statusen av dokument och funktioner under utveckling har gjort att man som gruppmedlem lätt kunnat se hur det går och vad man behöver göra. 
 
-Kvalité har varit viktigt för gruppen och kvalitetsansvarig har gjort ett bra jobb med att se till att projektets kod och dokument håller en hög standard. Detta framförallt genom granskning av dokument och kod. All kod i projektet har genomgått granskning för att säkerställa god kvalité. Till detta har Githubs pull request-funktion använts där alla gruppmedlemmar kunnat kommentera och diskutera koden innan den går in i master branchen hos repositoriet. Dokumenten har också granskats, då genom korrekturläsning. All denna granskning har varit mycket bra för att se hur andra skriver dokument och kod.  
+\subsection{Erfarenheter gällande kvalité}
+
+Kvalité har varit viktigt för gruppen och kvalitetsansvarig har gjort ett bra jobb med att se till att projektets kod och dokument håller en hög standard. Detta framförallt genom granskning av dokument och kod. All kod i projektet har genomgått granskning för att säkerställa god kvalité. Till detta har Githubs pull request-funktion använts där alla gruppmedlemmar kunnat kommentera och diskutera koden innan den går in i master branchen hos repositoriet. Dokumenten har också granskats, då genom korrekturläsning. All denna granskning har varit mycket bra för att se hur andra skriver dokument och kod.
+
+\subsection{Erfarenheter av att bygga vidare på ett projekt}
+
+
 
 \section{Översikt över individuella bidrag}
 
