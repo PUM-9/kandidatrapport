@@ -1,7 +1,7 @@
 \chapter{Resultat}
 \label{cha:results}
 
-\section{Systembeskrivning}
+\section{Systembeskrivning - gammal}
 %% Översiktlig beskrivning system, dokument
 %% Vad har kunden för värde hos det som skapats?
 
@@ -19,9 +19,10 @@ Systemet kan även samla in fler punktmoln. Detta görs av punktmolnsnoden som t
 
 Mycket tid under den första iterationen av projektet har lagts på att utforska och undersöka olika tekniker och algoritmer. Som resultat av det finns det mycket nyttig kunskap i projektgruppen och även en del testkod för att utföra olika delar. Testkoden kommer till stor del kunna användas som utgångspunkt för det riktiga systemet.
 
+\section{Systembeskrivning - ny}
 \subsection{Kommandoradsgränssnitt (CLI)}
 
-Systemet kan kontrolleras av ett CLI som kan ta in olika parametrar för att anpassa registreringen. Det finns även alternativ för att bara registrera eller bara mesha objekt. När man kör programmet med hjälp av kommandoradsgränssnittet så väljer man vilka filer eller mappar med filer programmet ska läsa in och använda. Hur de används beror på alternativen. Ett exempel på ett anrop är:\\\\
+Systemet kan kontrolleras av ett CLI som kan ta in olika parametrar för att anpassa registreringen. Det finns även alternativ för att bara registrera eller bara mesha objekt. När man kör programmet med hjälp av kommandoradsgränssnittet väljer man vilka filer eller mappar med filer programmet ska läsa in och använda. Hur de används beror på alternativen. Ett exempel på ett anrop är:\\\\
 \textit{3DCopy -v --max-corr-dist 15 path/to/register/ output}\\\\
 Det anropet kommer registrera och sedan mesha .pcd filerna i mappen path/to/register/ och döpa det kompletta punktmolnet respektive färdiga meshen till output.pcd och output.stl. Under registreringen och meshningen kommer programmet att skriva ut information om processen på grund av -v flaggan som står för \textit{verbose mode}. Om man undrar vilka alternativ som finns kan man använda -h flaggan så skriver programmet ut vilka alternativ som finns och hur man använder programmet med hjälp av kommandoradsgränssnittet. 
 
