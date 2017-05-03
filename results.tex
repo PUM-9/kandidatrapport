@@ -1,41 +1,48 @@
 \chapter{Resultat}
 \label{cha:results}
 
-\section{Systembeskrivning - ROS system}
+\section{Systembeskrivning - vidareutveckling av TreeD}
 %% Översiktlig beskrivning system, dokument
 %% Vad har kunden för värde hos det som skapats?
 
-Nedan följer en beskrivning av det ROS-baserade system som utvecklades innan kraven i projektet omförhandlades med kunden.
-  
+Nedan följer en beskrivning av det ROS-baserade system som byggde vidare på TreeD och som utvecklades innan kraven i projektet omförhandlades med kunden.
+
 Systemet bestod hårdvarumässigt av ett rotationsbord, en avståndskamera och en linjärenhet för att flytta avståndskameran längs en axel. För att styra detta fanns det sedan tidigare mjukvara som kan utföra en enskild skanning. Projektet skulle ha resulterat i en mjukvara för att utföra fler skanningar från olika vinklar och sammanfoga dessa till ett komplett objekt som kan skrivas ut på en 3D-skrivare. Det tänkta systemet bestod av en mjukvara som kan användas för att skanna ett fysiskt objekt och skriva ut en kopia av objektet på en 3D-skrivare.
 
+Tidigt i arbetet togs en systemanatomi fram som beskriver vilken funktionalitet systemet skulle ha. Denna hjälpte även till med att dela in närliggande funktionalitet i moduler och låg som underlag för arkitekturbeskrivningen.
 
-Det togs fram en arkitekturbeskrivning som förklarar hur systemet skulle fungera och vilka moduler som skulle finnas. Arkitekturen gav en bra utgångspunkt för hur systemet skulle implementeras. I arkitekturbeskrivningen finns det förklarat vilka noder systemet skulle bestå av och hur de skulle kommunicera med varandra.
+Arkitekturbeskrivningen som togs fram för systemet förklarar hur systemet skulle fungera och vilka moduler som skulle finnas. Arkitekturen gav en bra utgångspunkt för hur systemet skulle implementeras. I arkitekturbeskrivningen finns det förklarat vilka noder systemet skulle bestå av och hur de skulle kommunicera med varandra.
 
-Denna arkitektur är uppbyggd i ROS vilket innebär att de flesta noder i det tänkta systemet fungerar som en service som tar emot en request för att utföra någonting och när den är klar svarar den med en response. Detta gör att alla noder har tydliga gränssnitt mellan varandra vilket resulterar i en bra separation mellan olika moduler.
+Denna arkitektur är uppbyggd i ROS vilket innebär att de flesta noder i det tänkta systemet fungerar som en service som tar emot ett anrop för att utföra någonting och när den är klar svarar den med resultatet av arbetet. Detta gör att alla noder har tydliga gränssnitt mellan varandra vilket resulterar i en bra separation mellan olika moduler.
 
-Det tänkta systemet kunde samla in fler punktmoln. Detta gjordes av punktmolnsnoden som tar in ett värde för hur noggrant objektet ska skannas. Sedan utförs ett antal skanningar genom att en nod som kallas "TreeD-wrapper" kallas. Nästa steg var att dessa inkompletta punktmoln ska registreras till ett punktmoln. Se fig. \ref{fig:noddiagram} för ett diagram som visar hur dessa ROS noder var tänkta att vara uppbyggda.
+Systemet var uppbyggt enligt en förenklad variant av pipe and filter-modellen där resultatet av ett steg skickas vidare som indata till nästa steg i modellen. Detta flöde styrs av klienten så att användaren kan välja att köra hela eller delar av processen. Figur \ref{fig:noddiagram} visar hur systemet var uppbyggt.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=130mm]{figures/Noddiagram.png}
-	\caption{Ett diagram som visar hur ROS noderna var tänkta att vara uppbyggda}
+	\caption{Diagram över ROS-noderna i första versionen av systemet}
 	\label{fig:noddiagram}
 \end{figure}
 
-Mycket tid under de första iterationerna av projektet  lades på att utforska och undersöka olika tekniker och algoritmer. Som resultat av det finns det mycket nyttig kunskap i projektgruppen och även en del testkod för att utföra olika delar. Testkoden kommer till stor del kunna användas som utgångspunkt för det riktiga systemet.
+Det tänkta systemet kunde samla in fler punktmoln. Detta gjordes av punktmolnsnoden som tar in ett värde för hur noggrant objektet ska skannas. Punktmolnsnoden utför ett antal skanningar genom att noden TreeD-wrapper kallas. Sedan registrerar punktmolnsnoden dessa inkompletta punktmoln till ett punktmoln som representerar hela objektet.
 
-Se fig. \ref{fig:systembeskrivning_gamla} för en bild på hur det tänkta systemet var planerat att vara strukturerat.
+När ett komplett punktmoln har genererats skickas det vidare till meshgenereringsnoden som uppskattar en tredimensionell yta, även kallad mesh, bestående av polygoner utifrån punktmolnet. Denna mesh kan sedan användas för att generera kod som kan köras på en 3D-skrivare för att skriva ut objektet.
+
+Mycket tid under de första iterationerna av projektet spenderades på att utforska och undersöka olika tekniker och algoritmer. Som resultat av det finns det mycket nyttig kunskap i projektgruppen och även en del testkod för att utföra olika delar. Testkoden kommer till stor del kunna användas som utgångspunkt för det riktiga systemet.
+
+Det ROS-baserade systemet var uppdelat i en serverdel och en klient. Tanken var att servern skulle köras på en dator som var fysiskt kopplad till hårdvaran och på så sätt kunde styra den genom TreeD-Wrappern. Klienten skulle i första hand köras på samma dator och styra servern men med möjligheten att köra klienten på en annan dator och styra servern över nätverket. Se figur \ref{fig:systembeskrivning_gamla} för en bild på hur det tänkta systemet var planerat att vara strukturerat.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=130mm]{figures/Systemskiss_gamla.png}
-	\caption{En skiss av det tänkte systemet}
+	\caption{En skiss av det tänkta ROS-baserade systemet}
 	\label{fig:systembeskrivning_gamla}
 \end{figure}
 
+Som kan ses i figurerna \ref{fig:systembeskrivning_gamla} och \ref{fig:noddiagram} så är klienten den centrala delen i programmet. Den hanterar användarens indata och använder sig av de olika noderna för att utföra de användaren vill. Konceptet var att systemet skulle använda en \textit{pipe and filter} arkitektur. Där klienten skickade runt data i pipen. Men att användaren, genom klienten hade möjlighet att granska resultatet och göra viss handpåläggning mellan de olika stegen. Detta genom att klienten alltid kan spara resultatet från ett steg till fil och använda andra program för handpåläggningen innan den skickas vidare i systemet.
 
 \section{Systembeskrivning - ny}
+Som kan läsas tidigare i denna rapport så omförhandlades projektets krav och mål med kunden under projektets gång. Detta ledde till att gruppen gjorde om systemets arkitektur. ROS arkitekturen som presenterats ovan (se kap. 5.1) byttes ut mot att istället skapa ett klassbaserat program, skrivet i C++, som utför de operationer som behövs: registrering, filtrering och meshning. till detta program finns också ett CLI och ett GUI. 
 \subsection{Kommandoradsgränssnitt (CLI)}
 
 Systemet kan kontrolleras av ett CLI som kan ta in olika parametrar för att anpassa registreringen. Det finns även alternativ för att bara registrera eller bara mesha objekt. När man kör programmet med hjälp av kommandoradsgränssnittet väljer man vilka filer eller mappar med filer programmet ska läsa in och använda. Hur de används beror på alternativen. Ett exempel på ett anrop är:\\\\
@@ -79,7 +86,7 @@ Kvalité har varit viktigt för gruppen och kvalitetsansvarig har gjort ett bra 
 
 I mitten av projektet upptäckte gruppen att det system som skulle vidareutvecklas inte fungerade tillräckligt stabilt för att det skulle vara möjligt att integrera med det system som gruppen utvecklade. Gruppen litade på att kunden hade god insikt i det tidigare systemet och eftersom att dessa fel inte togs upp i början av projektet förutsatte gruppen att det tidigare systemet inte innehöll några fel.
 
-Eftersom att gruppen inte hade någon anledning qtt tro att det tidigare systemet innehöll fel så genomfördes ingen testning av det tidigare systemet. Det saknades också testdokumentation från den grupp som hade utvecklat det tidigare systemet. Det visar vikten av att väl dokumentera sitt system för att undvika problem i framtiden.
+Eftersom att gruppen inte hade någon anledning att tro att det tidigare systemet innehöll fel så genomfördes ingen rigorös testning av det tidigare systemet. Det saknades också testdokumentation och  annan dokumentation från den grupp som hade utvecklat det tidigare systemet. Det visar vikten av att väl dokumentera sitt system för att undvika problem i framtiden.
 
 
 \section{Översikt över individuella bidrag}
