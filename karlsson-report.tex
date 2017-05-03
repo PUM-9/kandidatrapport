@@ -67,8 +67,13 @@ Varje punktmoln som Kinect kameran skickar består av ca 307 000 punkter. Det ka
 \section{Metod}
 \label{sec:method-karlsson}
 
-Initialt gjordes en litteraturstudie för att hitta information om hur man registrerar.  PCL ger en bra sammanfattning men utöver det finns inte jättemånga relevanta källor. PCL ger också många handledningsexempel med exempelkod som blev utgångspunkten för utbildningen om registrering i gruppen. Då utredningen är begränsad till framförallt ICP och JR-MPC begränsas antalet ytterligare. Det finns enormt många varianter av ICP, såsom SeqICP, Point-to-Plane ICP Point-to-Point ICP m.fl. Jag har inte hittat någon referens i PCL, vars ICP-implementation gruppen använder sig av, till vilken av dessa PCL implementerar. På grund av det här kommer en generell ICP algoritmen utvärderas. JR-MPC är resultatet av en forskningsstudie som tagit fram algoritmen och därmed finns enbart den källa som används här för den algoritmen. Det finns snarlika algoritmer med enbart sina forskningsdokument som källa men dessa kommer alltså inte behandlas här.
-%Experiment utfördes för att jämföra ICP och JR-MPC. Testet gick ut på att registrera en uppsättning om 36 punktmoln. Var och ett av dessa punktmoln var en skanning av kyrkan, se fig XX, där kyrkan skannats och roterats 10 grader efter varje skanning. Resultatet av experiment 1 ses i fig XX. 
+Här presenteras metoden som använts för att besvara frågeställningarna i kapitlet. De är uppdelade i hur arbetet för att besvara frågorna gick till i förstudien för rapporten samt under utvecklingsarbetet.
+
+\subsection{Förstudie}
+Initialt gjordes en litteraturstudie för att hitta information om hur man går till väga för att sätta ihop två punktmoln, registrerar.  PCL ger en bra sammanfattning men utöver det saknas relevanta källor. PCL ger också många handledningsexempel med exempelkod som blev utgångspunkten för utbildningen om registrering i gruppen. Då utredningen är begränsad till framförallt ICP och JR-MPC begränsas antalet källor ytterligare. Det finns enormt många varianter av ICP, såsom SeqICP, Point-to-Plane ICP Point-to-Point ICP m.fl. Den variant som utvärderas här är den som implementeras av PCL, Point-to-Point. JR-MPC är resultatet av en forskningsstudie som tagit fram algoritmen och därmed finns enbart den källa som används här för den algoritmen. Det finns snarlika algoritmer med enbart sina forskningsdokument som källa men dessa kommer alltså inte behandlas här.
+
+\subsection{Utvecklingsfas}
+Ett experiment utfördes för att jämföra ICP och JR-MPC. Testet gick ut på att registrera en uppsättning om 36 punktmoln. Vart och ett av dessa punktmoln var en skanning av kyrkan, se fig XX, där kyrkan skannats och roterats 10 grader efter varje skanning. 
 
 
 
@@ -83,7 +88,7 @@ Vi började med att införskaffa oss en uppsättning punktmoln på objektet och 
  Den primära algoritm vi använde var ICP. Valet av ICP var initialt baserat på att det var den algoritm vi hittade först samt den som vi fick tag på exempelkod för. Vi gjorde dock vissa begränsade tester med JR-MPC som rekommenderades av kunden CVL. Då JR-MPC inte vid tidpunkten gav bättre resultat än den metod som användes samt betydligt mer manuellt arbete för att kunna köra algoritmen så lades snabbt arbetet med JR-MPC på is. Mer fokus lades på att jobba vidare med ICP och ungefär halvvägs in i projektet hade vi en algoritm som funkade bra för de första 13 punktmolnen. Senare punktmoln hamnade mer och mer fel tills felet blev markant runt 19 registrerade punktmoln.
 
 \subsection{ICP}
-ICP är en optimeringsalgoritm som försöker minimera det totala avståndet från varje punkt i ursprungsmolnet till varje punkt i målmolnet. Det ger algoritmen en tidskomplexitet $ \mathit{O(n*m)} $ eftersom varje punkt i målmolnet måste jämföras med varje punkt i ursprungsmolnet. Som tidigare nämnt så har ICP ett ursprungsmoln som aldrig ändras samt ett målmoln som försöker passas in så det stämmer överens med ursprungsmolnet. ICP har ett antal parametrar för att bestämma hur registreringen ska gå till. De parametrar som undersökts inom gruppen listas nedan och förklaras mer ingående nedan.
+ICP är en optimeringsalgoritm som försöker minimera det totala avståndet från varje punkt i ursprungsmolnet till varje punkt i målmolnet. Det ger algoritmen en tidskomplexitet $ \mathit{O(n*m)} $ där $ \mathit{n} $ är antalet punkter i ursprungsmolnet och $ \mathit{m} $ är antalet punkter i målmolnet. Som tidigare nämnt så har ICP ett ursprungsmoln som aldrig ändras samt ett målmoln som försöker passas in så det stämmer överens med ursprungsmolnet. ICP har ett antal parametrar för att bestämma hur registreringen ska gå till. De parametrar som undersökts inom gruppen listas nedan och förklaras mer ingående nedan.
 \begin{itemize}
 	\item Max Iterations
 	\item Transformation Epsilon
@@ -91,15 +96,16 @@ ICP är en optimeringsalgoritm som försöker minimera det totala avståndet fr�
 	\item RANSAC Outlier Rejection Threshold
 	\item Euclidean Fitness Epsilon
 \end{itemize}
-\textbf{Max Iterations} anger hur många registreringsiterationer som algoritmen får utföra innan den tvingas avsluta.\newline
-\textbf{Transformation Epsilon} avgör hur stor förflyttning algoritmen får göra på målmolnet inom en iteration.\newline
-\textbf{Max Correspondence Distance} anger hur stort avståndet från en punkt i ursprungsmolnet till motsvarande punkt i målmolnet får vara. Är avståndet större än detta kommer algoritmen ignorera punkten i målmolnet vid registreringsförsöket.\newline
-\textbf{RANSAC Outlier Rejection Threshold} anger hur stort avstånd som en punkt tillåts existera från den antagna matematiska modellen för att användas i registreringen. RANSAC, \textit{Random Sample Consensus} är en metod för att avgöra om en punkt följer det matematiska mönster som algoritmen letar efter.\newline
-\textbf{Euclidean Fitness Epsilon} är det fel som accepteras. Är skillnaden i felet mellan två iterationer mindre än det här kommer algoritmen avsluta.\newline
+\textbf{Max Iterations} anger hur många registrerings\-iterationer som algoritmen får utföra innan den tvingas avsluta.\\
+\textbf{Transformation Epsilon} avgör hur stor förflyttning algoritmen får göra på målmolnet inom en iteration.\\
+\textbf{Max Correspondence Distance} anger hur stort avståndet från en punkt i ursprungsmolnet till motsvarande punkt i målmolnet får vara. Är avståndet större än detta kommer algoritmen ignorera punkten i målmolnet vid registreringsförsöket.\\
+\textbf{RANSAC Outlier Rejection Threshold} anger hur stort avstånd som en punkt tillåts existera från den antagna matematiska modellen för att användas i registreringen. RANSAC, \textit{Random Sample Consensus} är en metod för att avgöra om en punkt följer det matematiska mönster som algoritmen letar efter.\\
+\textbf{Euclidean Fitness Epsilon} representerar det fel som accepteras. Är skillnaden i felet mellan två iterationer mindre än det här kommer algoritmen avsluta.\\
+
 
 
 \subsection{JR-MPC}
-JR-MPC använder så kallade GMM, \textit{Gaussian Mixture Model}, för att registrera objektet. Exakt hur matematiken bakom algoritmen ser ut och fungerar är utanför omfattningen av denna rapport men grundläggande principer följer. Genom att 
+JR-MPC använder så kallade GMM, \textit{Gaussian Mixture Model}, för att registrera objektet. Exakt hur matematiken bakom algoritmen ser ut och fungerar är utanför omfattningen av denna rapport men grundläggande principer följer. GMM är en sannolikhetsmodell som används för att lista sannolikheten att ett kluster av punkter i punktmolnet är en del av objektet som ska registreras, detta motsvarar RANSAC filtreringen som görs i ICP. Själva registreringen görs genom en förväntad villkorlig maximering, ECM, \textit{Expectation Conditional Maximization}. För fördjupning om ECM hänvisas till \cite{}.
 
 \subsection{3DCopy metoden}
 Under utvecklingsarbetet och problemfaser med registreringen planerade gruppen om och försökte med en annan lösningsmetod till registreringsproblemet. Under detta arbete hade gruppen som fokus att lyckas med de objekt som, enligt kravspecifikation, definierades som "lätta". Dessa objekt bestod av en träkloss formad som en kub samt en "träbro", se fig XX. Då registreringsalgoritmerna som använts helt ignorerar den kända datan om hur mycket rotation som skett mellan varje skanning så blev det fokus för våran metod. Genom att göra flera skanningar över en rotation på 90 grader kan den plattaste skanningen hittas. Därifrån tas fyra skanningar av objektet, utan lutning, med 90 grader mellan varje skanning och resultatet av dessa blir varje kardinal sida av objektet. Dessa kan därefter registreras på ett virtuellt objekt där varje sida ges av en motsvarande skanning. Principiellt så tänker vi oss att varje skannad sida av ett objekt "klistras på", på ett virtuellt objekt skapat med liknande dimensioner. 
@@ -107,7 +113,7 @@ Under utvecklingsarbetet och problemfaser med registreringen planerade gruppen o
 \section{Diskussion}
 \label{sec:discussion-karlsson}
 
-%Den implementation av JRMPC som vi fick tag på funkade väldigt dåligt för den typ av data som vi hade. På grund av att algoritmen är väldigt komplicerad och inte tillräckligt dokumenterad för att vi skulle kunna hitta parametrar att ändra på för att förbättra resultatet så beslutades att ICP skulle användas och förbättras.
+Den implementation av JRMPC som vi fick tag på funkade väldigt dåligt för den typ av data som vi hade. På grund av att algoritmen är väldigt komplicerad och inte tillräckligt dokumenterad för att vi skulle kunna hitta parametrar att ändra på för att förbättra resultatet så beslutades att ICP skulle användas och optimeras.
 
 \subsection{Diskussion om Metod}
 
