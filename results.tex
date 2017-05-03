@@ -41,6 +41,7 @@ Det ROS-baserade systemet var uppdelat i en serverdel och en klient. Tanken var 
 
 
 \section{Systembeskrivning - ny}
+Som kan läsas tidigare i denna rapport så omförhandlades projektets krav och mål med kunden under projektets gång. Detta ledde till att gruppen gjorde om systemets arkitektur. ROS arkitekturen som presenterats ovan (se kap. 5.1) byttes ut mot att istället skapa ett klassbaserat program, skrivet i C++, som utför de operationer som behövs: registrering, filtrering och meshning. till detta program finns också ett CLI och ett GUI. 
 \subsection{Kommandoradsgränssnitt (CLI)}
 
 Systemet kan kontrolleras av ett CLI som kan ta in olika parametrar för att anpassa registreringen. Det finns även alternativ för att bara registrera eller bara mesha objekt. När man kör programmet med hjälp av kommandoradsgränssnittet väljer man vilka filer eller mappar med filer programmet ska läsa in och använda. Hur de används beror på alternativen. Ett exempel på ett anrop är:\\\\
@@ -84,7 +85,7 @@ Kvalité har varit viktigt för gruppen och kvalitetsansvarig har gjort ett bra 
 
 I mitten av projektet upptäckte gruppen att det system som skulle vidareutvecklas inte fungerade tillräckligt stabilt för att det skulle vara möjligt att integrera med det system som gruppen utvecklade. Gruppen litade på att kunden hade god insikt i det tidigare systemet och eftersom att dessa fel inte togs upp i början av projektet förutsatte gruppen att det tidigare systemet inte innehöll några fel.
 
-Eftersom att gruppen inte hade någon anledning qtt tro att det tidigare systemet innehöll fel så genomfördes ingen testning av det tidigare systemet. Det saknades också testdokumentation från den grupp som hade utvecklat det tidigare systemet. Det visar vikten av att väl dokumentera sitt system för att undvika problem i framtiden.
+Eftersom att gruppen inte hade någon anledning att tro att det tidigare systemet innehöll fel så genomfördes ingen rigorös testning av det tidigare systemet. Det saknades också testdokumentation och  annan dokumentation från den grupp som hade utvecklat det tidigare systemet. Det visar vikten av att väl dokumentera sitt system för att undvika problem i framtiden.
 
 
 \section{Översikt över individuella bidrag}
