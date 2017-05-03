@@ -9,10 +9,9 @@ Nedan följer en beskrivning av det ROS-baserade system som utvecklades innan kr
   
 Systemet bestod hårdvarumässigt av ett rotationsbord, en avståndskamera och en linjärenhet för att flytta avståndskameran längs en axel. För att styra detta fanns det sedan tidigare mjukvara som kan utföra en enskild skanning. Projektet skulle ha resulterat i en mjukvara för att utföra fler skanningar från olika vinklar och sammanfoga dessa till ett komplett objekt som kan skrivas ut på en 3D-skrivare. Det tänkta systemet bestod av en mjukvara som kan användas för att skanna ett fysiskt objekt och skriva ut en kopia av objektet på en 3D-skrivare.
 
-
 Det togs fram en arkitekturbeskrivning som förklarar hur systemet skulle fungera och vilka moduler som skulle finnas. Arkitekturen gav en bra utgångspunkt för hur systemet skulle implementeras. I arkitekturbeskrivningen finns det förklarat vilka noder systemet skulle bestå av och hur de skulle kommunicera med varandra.
 
-Denna arkitektur är uppbyggd i ROS vilket innebär att de flesta noder i det tänkta systemet fungerar som en service som tar emot en request för att utföra någonting och när den är klar svarar den med en response. Detta gör att alla noder har tydliga gränssnitt mellan varandra vilket resulterar i en bra separation mellan olika moduler.
+Denna arkitektur är uppbyggd i ROS vilket innebär att de flesta noder i det tänkta systemet fungerar som en service och ta emot requests för att utföra någonting och när den är klar svara den med ett response. Detta gör att alla noder har tydliga gränssnitt mellan varandra vilket resulterar i en bra separation mellan olika moduler.
 
 Det tänkta systemet kunde samla in fler punktmoln. Detta gjordes av punktmolnsnoden som tar in ett värde för hur noggrant objektet ska skannas. Sedan utförs ett antal skanningar genom att en nod som kallas "TreeD-wrapper" kallas. Nästa steg var att dessa inkompletta punktmoln ska registreras till ett punktmoln. Se fig. \ref{fig:noddiagram} för ett diagram som visar hur dessa ROS noder var tänkta att vara uppbyggda.
 
@@ -34,6 +33,7 @@ Se fig. \ref{fig:systembeskrivning_gamla} för en bild på hur det tänkta syste
 	\label{fig:systembeskrivning_gamla}
 \end{figure}
 
+Som kan ses i figurerna \ref{fig:systembeskrivning_gamla} och \ref{fig:noddiagram} så är klienten den centrala delen i programmet. Den hanterar användarens indata och använder sig av de olika noderna för att utföra de användaren vill. Konceptet var att systemet skulle använda en \textit{pipe and filter} arkitektur. Där klienten skickade runt data i pipen. Men att användaren, genom klienten hade möjlighet att granska resultatet och göra viss handpåläggning mellan de olika stegen. Detta genom att klienten alltid kan spara resultatet från ett steg till fil och använda andra program för handpåläggningen innan den skickas vidare i systemet.
 
 \section{Systembeskrivning - ny}
 \subsection{Kommandoradsgränssnitt (CLI)}
