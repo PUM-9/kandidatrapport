@@ -50,7 +50,7 @@ Systemet kan kontrolleras av ett CLI som kan ta in olika parametrar för att anp
 Det anropet kommer registrera och sedan mesha .pcd filerna i mappen path/to/register/ och döpa det kompletta punktmolnet respektive färdiga meshen till output.pcd och output.stl. Under registreringen och meshningen kommer programmet att skriva ut information om processen på grund av -v flaggan som står för \textit{verbose mode}. Om man undrar vilka alternativ som finns kan man använda -h flaggan så skriver programmet ut vilka alternativ som finns och hur man använder programmet med hjälp av kommandoradsgränssnittet. 
 
 \subsection{GUI}
-För att lättare kunna styra mjukvaran utvecklades också ett GUI. GUI:t har nästintill samma funktionalitet som CLI:t och målet med att ha samma funktionalitet är att det inte ska spela någon roll om man använder CLI eller GUI.
+För att lättare kunna styra systemet utvecklades också ett GUI. GUI:t har nästintill samma funktionalitet som CLI:t och målet med att ha samma funktionalitet är att det inte ska spela någon roll om man använder CLI eller GUI.
 
 \begin{figure}[H]
 	\centering
@@ -60,6 +60,19 @@ För att lättare kunna styra mjukvaran utvecklades också ett GUI. GUI:t har n�
 \end{figure}
 
 De funktioner som finns i GUI:t just nu är Register som öppnar en dialog där man får välja en mapp som innehåller de punktmoln som man vill registrera. Det finns också en Mesh funktion där en dialog öppnas och man får välja det punktmoln som man vill mesha. Det finns också en funktion för att återställa parametervärdena för registreringen, Reset Values. De värden som återställs är Max correspondance distance och max iterations till 15 respektive 100.
+
+\subsection{Meshning}
+
+Den ytrekonstruering som systemet använder, PCLs Poisson surface reconstruction, är väldigt beroende av att det registrerade punktmolnet inte har några punkter som har hamnat fel. Om några punkter är fel eller det är för glest mellan punkterna så kan inte algoritmen räkna ut ytnormalerna korrekt. Om ytnormalerna blir fel så kommer inte meshen att stämma överens med det objekt som punktmolnet föreställer.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=80mm]{figures/3DCopyMeshChurch.PNG}
+	\caption{Mesh av ofullständigt punktmoln som föreställer en kyrka.}
+	\label{fig:3dcopy_mesh_church}
+\end{figure}
+
+I figur \ref{fig:3dcopy_mesh_church} kan man se var de olika problemen uppstår. Ovanpå och undertill kyrkan kan man se att det saknas punkter där det blir släta, rundade ytor som inte följer kanterna. Det syns också tydligt på flera ställen där meshen blir grynig att punkterna inte har hamnat rätt.
 
 \section{Gemensamma erfarenheter}
 %% Goda, mindre bra
