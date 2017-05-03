@@ -16,14 +16,14 @@ Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först 
 \section{Syfte}
 \label{sec:aim}
 
-Syftet med detta projekt var tidigt i projektet att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Projektet skulle bygga vidare på ett tidigare kandidatarbete som utfördes våren 2016. Resultatet av det tidigare projektet var en mjukvara som styr ett rotationsbord och en linjärenhet. Denna linjärenhet styr i sig en avståndskamera som sedan genererar ett punktmoln (se kap. \ref{cha:theory}). Syftet var alltså att vidareutveckla resultatet från det tidigare projektet till ett system som kan kopiera ett tredimensionellt objekt. Tanken var att detta skulle göras genom att ett flertal skanningar tas med olika rotationer och lutningar för att sedan registrera de resulterande punktmolnen till ett komplett punktmoln för objektet. Detta kompletta punktmoln skulle sedan omvandlas till en 3D-mesh (se kap. \ref{sec:definitions}) och sparas i ett format som kan användas för att skriva ut objektet på en 3D-skrivare.  Under projektets gång upptäcktes ett flertal problem med det tidigare projektets mjukvara som gjorde att målet med projektet reviderades. Det nya målet är att likt det gamla men försummar det tidigare projektets mjukvara helt. Detta betyder att systemet tar in ett antal punktmoln som registreras till ett komplett punktmoln som sedan omvandlas till en 3D-mesh. Det nya systemet är modulärt, välbyggt och enkelt att förstå för att göra det möjligt för vidareutveckling, forskning samt för eventuell användning till laborationer.   
+Syftet med detta projekt var tidigt i projektet att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Projektet skulle bygga vidare på ett tidigare kandidatarbete som utfördes våren 2016. Resultatet av det tidigare projektet var en mjukvara som styr ett rotationsbord och en linjärenhet. Denna linjärenhet styr i sig en avståndskamera som sedan genererar ett punktmoln (se kap. \ref{cha:theory}). Syftet var alltså att vidareutveckla resultatet från det tidigare projektet till ett system som kan kopiera ett tredimensionellt objekt. Tanken var att detta skulle göras genom att ett flertal skanningar tas med olika rotationer och lutningar för att sedan registrera de resulterande punktmolnen till ett komplett punktmoln för objektet. Detta kompletta punktmoln skulle sedan omvandlas till en 3D-mesh (se kap. \ref{sec:definitions}) och sparas i ett format som kan användas för att skriva ut objektet på en 3D-skrivare.  Under projektets gång upptäcktes ett flertal problem med det tidigare projektets mjukvara som gjorde att målet med projektet reviderades. Det nya målet är att likt det gamla men försummar det tidigare projektets mjukvara helt. Detta betyder att systemet tar in ett antal punktmoln som registreras till ett komplett punktmoln som sedan omvandlas till en 3D-mesh.
 
 
 \section{Frågeställning}
+\label{sec:research-questions}
 De generella samt specifika frågeställningar som denna rapport kommer ta upp listas nedan.
 
 \subsection{Generella frågeställningar}
-\label{sec:research-questions-general}
 
 \begin{enumerate}
 	\item Hur kan ett system för 3D-kopiering implementeras så att man skapar värde för kunden?
@@ -31,8 +31,7 @@ De generella samt specifika frågeställningar som denna rapport kommer ta upp l
 	\item Vilket stöd kan man få genom att skapa och följa upp en systemanatomi?
 	
 \subsection{Specifika frågeställningar}
-\label{sec:research-questions-specific}
-	
+
 	\item Hur påverkas projektet av en helt reviderad kravspecifikation efter hälften av projektets gång?
 	\item Hur har gruppens tillvägagångssätt ändrats på grund av faktumet att vi vidareutvecklade ett system? 
 	

@@ -1,13 +1,32 @@
 \chapter{Slutsatser}
 \label{cha:conclusion}
+Det inledande målet med projektet var att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Målet reviderades efter halva utvecklingstiden eftersom det system som vi skulle bygga vidare på inte höll de förväntade kraven. Det nya målet med projektet blev istället att utveckla ett system som kan hantera (registrera och mesha) punktmoln och på det viset försumma det tidigare projektets mjukvara. Målet med projektet nåddes, ett system för hantering av punktmoln har skapats. Det finns dock förbättringsmöjligheter med systemet. Att registrera punktmolnen så de bildar ett komplett punktmoln visade sig vara svårare än vad vi trott men vi har lyckats registrera ett visst antal punktmoln som gör systemet användbart. Det stora hindret med registreringen är en lång körtid, detta försvårade utvecklingsarbetet samt testningen. 
+
+Det finns även en del förbättringsmöjligheter angående meshningen. Den genererade meshen ifrån systemet är inte användbar för att skriva ut med hjälp av en 3D-skrivare. Meshen består av oönskad massa som inte är en del av det verkliga objektet. För att ta bort denna oönskade massa måste meshen hanteras manuellt. Detta problem är något som skulle kunna automatiseras så att det önskade objektet genereras direkt. Avsnitten nedan besvarar på forskningsfrågorna som ställdes i avsnitt \ref{sec:research-questions}
+
+\section{Värde för kunden}
+\section{Erfarenheter}
+\section{Systemanatomi}
+För att svara på fråga 3 i \ref{sec:research-questions} så var projektets systemanatomin användbar vid projektets början. Systemanatomin gav ett bra stöd under projektets utvecklande eftersom alla i projektgruppen fick en enkel helhetsbild över vilken funktionalitet systemet skulle innehålla. Projektgruppen skulle bygga ett stort och komplext system och här var systemanatomin till en stor hjälp för projektgruppen då den gav en bättre förståelse för produkten och dess olika funktioner. Systemanatomin gav oss alltså en gemensam förståelse över produkten samt över funktionerna och dess beroenden vilket ledde till att alla i projektmedlemmar var på samma nivå kunskapsmässigt vid projektets start.
+
+Systemanatomin var även till stor hjälp då arkitekturen togs fram då den tydliggjorde vilka funktioner som systemet skulle innehålla och hur närliggande funktionalitet kunde delas in i relevanta moduler. På så sätt hjälpte systemanatomin till att göra systemet så modulärt som möjligt vilket i slutändan ledde till en högre kvalitet på produkten.
+
+\section{Reviderad kravspecifikation}
+Kort sagt så förändrades hela projektet. Efter omförhandling med kunden och samtal med handledaren och examinatorn så ändrades målet med projektet tillsammans med kraven. Under omförhandlingen med kunden kom vi överens att det nya målet var likt det gamla fast vi kopplade bort TreeD, och tillsammans med det, tog bort eller skrev om de kraven som direkt eller indirekt byggde på TreeDs mjukvara. Som tur var så hade vi kod som kunde omvändas efter denna pivotering  
+av projektet. Det är denna kod som det nya systemet bygger på. Det som förvärrade situationen var att omförhandlingen kom vid helt fel tidpunkt eftersom planeringen av den andra halvan av projektet inkluderade mycket mer dokumentskrivande än de tidigare iterationerna.
+
+Utöver detta så påverkades gruppen. Precis innan omförhandlingen så var stämningen i gruppen relativt dålig. Det kännes som att vi tog ett steg framåt och två bakåt nästan varje dag. Gruppens stämning och sammanhållning blev gradvis bättre efter omförhandlingen, men problemen med projektet var som ett mörkt moln som hängde över gruppen.
+
+Det finns inget lätt sätt att hantera en sådan kraftig omförhandling av ett projekts krav och mål som skedde i projektet. Det bästa sättet att handskas med en sådan abrupt pivotering är att kollektivt pusta ut, samla nya krafter och jobba på.  
+\section{Vidareutveckling av ett system}
 
 % En sammanfattning av syftet och forskningsfrågorna.
-% I vilken utsträckning har målet uppnåtts och vad är det svaren på forskningsfrågorna?
+% I vilken utsträckning har målet uppnåtts?
+% Vad är det svaren på forskningsfrågorna?
 
 % Konsekvenserna för målgruppen (och möjligen för forskare och utövare) måste också beskrivas.
 % Det borde finnas en sektion om framtida arbete där idéer för fortsatt arbete beskrivs.
 % Om slutsats kapitlet innehåller ett sådant avsnitt så måste idéerna vara konkreta och väl genomtänkta.
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% lorem.tex ends here
