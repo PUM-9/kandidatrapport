@@ -6,7 +6,9 @@ Det finns även en del förbättringsmöjligheter angående meshningen. Den gene
 
 \section{Värde för kunden}
 
+För att skapa värde för kunden med produkten är det framförallt två delar som är viktiga. För det första att tidigt sammanställa de krav som kunden har på produkten så att arbetet tidigt går i rätt riktning. För det andra att kontinuerligt följa upp dessa krav under projektets gång för att säkerställa att de inte har ändrats. Om dessa två steg följs kommer kunden att i slutändan få en produkt som uppfyller kundens krav.
 
+Något som också tagits hänsyn till i utvecklingen av systemet är dess ursprungliga syfte, att vara del av ett större system. Därför har det fokuserats på att göra 3DCopy modulärt för att det ska vara enkelt för kunden att anlita en annan grupp med liknande programmeringsvana som kan integrera 3DCopy i ett större system, vidareutveckla 3DCopy eller använda 3DCopy för att forska kring registrering och meshgenerering.
 
 \section{Erfarenheter}
 
@@ -15,6 +17,8 @@ Under projektets gång har gruppen fått erfara båda sidorna av hur viktigt det
 Kommunikation var viktigt för gruppen och framförallt uppdelad och lättillgänglig kommunikation. Att snabbt kunna få svar på frågor samt lätt kunna hitta tidigare information har hjälpt gruppen väldigt mycket.
 
 Granskning av kod och dokument är också något som har spelat stor roll i detta projekt och kan appliceras på framtida projekt. Granskningsprocessen är ett utmärkt verktyg då den bidrar med framförallt två viktiga aspekter. För det första så kontrolleras allt gruppen producerar och kvalitén på det producerade håller därför hög standard. För det andra så hjälper den till att sprida kunskap mellan gruppens medlemmar då man tar del av det andra gruppmedlemmar har gjort.
+
+Dessa erfarenheter är av intresse för framtida projekt då 3DCopys projektgrupp har fått stor hjälp av väl genomförda efterforskningar, tydlig kommunikation och noggranna granskningar av dokument. För framtida projekt innebär det en ökad effektivitet om de tar del av och applicerar dessa erfarenheter.
 
 \section{Systemanatomi}
 För att svara på fråga 3 i \ref{sec:research-questions} så var projektets systemanatomin användbar vid projektets början. Systemanatomin gav ett bra stöd under projektets utvecklande eftersom alla i projektgruppen fick en enkel helhetsbild över vilken funktionalitet systemet skulle innehålla. Projektgruppen skulle bygga ett stort och komplext system och här var systemanatomin till en stor hjälp för projektgruppen då den gav en bättre förståelse för produkten och dess olika funktioner. Systemanatomin gav oss alltså en gemensam förståelse över produkten samt över funktionerna och dess beroenden vilket ledde till att alla i projektmedlemmar var på samma nivå kunskapsmässigt vid projektets start.
@@ -27,10 +31,18 @@ av projektet. Det är denna kod som det nya systemet bygger på. Det som förvä
 
 Utöver detta så påverkades gruppen. Precis innan omförhandlingen så var stämningen i gruppen relativt dålig. Det kännes som att vi tog ett steg framåt och två bakåt nästan varje dag. Gruppens stämning och sammanhållning blev gradvis bättre efter omförhandlingen, men problemen med projektet var som ett mörkt moln som hängde över gruppen.
 
-Det finns inget lätt sätt att hantera en sådan kraftig omförhandling av ett projekts krav och mål som skedde i projektet. Det bästa sättet att handskas med en sådan abrupt pivotering är att kollektivt pusta ut, samla nya krafter och jobba på.  
-\section{Vidareutveckling av ett system}
+Det finns inget lätt sätt att hantera en sådan kraftig omförhandling av ett projekts krav och mål som skedde i projektet. Det bästa sättet att handskas med en sådan abrupt pivotering är att kollektivt ta ett djupt andetag, samla nya krafter och jobba på.
 
-% En sammanfattning av syftet och forskningsfrågorna.
+\section{Vidareutveckling av ett system}
+% Hur har gruppens tillvägagångssätt ändrats på grund av faktumet att vi vidareutvecklade ett system? 
+Då gruppen till en början skulle vidareutveckla ett tidigare system påverkades arbetet mycket i vad som fokuserades på i förstudieiterationen. Då vi skulle utveckla ett system som skulle vara tätt integrerat med det tidigare systemet som använde ROS la vi mycket fokus i början på att lära oss ROS och hela arkitekturen för vårt system togs fram med ROS i åtanke.
+
+Mycket arbete las även på att utforska det tidigare systemet och förstå hur det fungerar. Exempelvis hade de punktmoln som genererades av det en del skräpdata som krävde en hel del arbete för att kunna filtrera bort på ett stabilt och konsekvent sätt.
+
+Gruppens tillvägagångssätt påverkades även på så sätt att när det tidigare systemet inte klarade av att användas så som det var planerat var gruppen tvungna att omförhandla kravspecifikationen sent i projektet. Detta resulterade i att en ny arkitektur snabbt behövde tas fram och gruppen behövde snabbt anpassa sig till att utveckla ett nytt program med en lägre koppling till det tidigare systemet.
+
+För att sammanfatta så innebar det tidigare systemet att vi kunde utveckla saker som vi inte hade kunnat göra utan det eftersom det var mycket arbete som vi inte behövde göra. Däremot var det inte helt problemfritt och mycket tid och energi har lagts på att utforska och lära oss systemet och att lösa problem som uppstått med det tidigare systemet.
+
 % I vilken utsträckning har målet uppnåtts?
 % Vad är det svaren på forskningsfrågorna?
 
