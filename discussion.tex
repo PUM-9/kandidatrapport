@@ -12,11 +12,16 @@
 Vad återstår för att kunden skall få ut fullt värde av
 produkten? Det är en definitionsfråga. Om man definierar "fullt värde för kunden" som det värde som kunden förväntade sig innan projektet eller i projektets tidiga skede så krävs minst ett nytt projekt, vars mål är att lösa problemen med TreeD och sen rekonstruera produkten från detta projekt så att den fungerar som den skulle innan omförhandlingen av kraven. Om man istället definierar "fullt värde för kunden" som det värde som kunden förväntar sig efter omförhandlingen av kraven så skulle vi hävda att väldigt lite återstår. Meshningen blev kanske inte så automatiserad som vi hade hoppats och kunden kanske förväntat sig, men detta beror mer på begränsningarna som finns med existerande algoritmer för meshning, än det gör på projektgruppen. Målet med projektet var att använda existerande algoritmer, inte skapa nya, eftersom detta hade tagit mycket längre och krävt helt andra kunskaper. Utöver detta så tycker vi att kunden har fått ut det värde som kan förväntas av projektet efter omförhandlingen av kraven. 
 
+<<<<<<< HEAD
 \subsection{Tidigare projekt}
 
 Något som gruppen har tagit med sig från de tidigare projekt gruppmedlemmarna har genomfört är tydlig struktur på interna dokument samt gruppkontrakt. Strukturen på dokumenten har hjälpt till att hålla en hög standard även på interna dokument, det vill säga dokument som enbart är till för gruppen själva. Gruppkontraktet var uppskattat i tidigare projekt och ger tydliga riktlinjer för bland annat vad som förväntas av gruppens medlemmar, hur konflikter ska lösas och hur gruppen ska arbeta för att nå projektmålet.
 
 Något som förbättrades från tidigare projekt är kommunikationen. Under vissa projekt som gruppens medlemmar tidigare genomfört så har kommunikationen ibland varit bristande. Det har ibland varit svårt att få tag i medlemmar eller svårt att få en överblick av kommunikationen då många olika kommunikationskanaler använts. Projektgruppen löste det snabbt genom att använda slack för all kommunikation inom gruppen och delade upp kommunikationen i olika kanaler beroende på ämne. Gruppen såg också till att allas telefonnummer fanns tillgängliga ifall man behövde kontakta någon omedelbart.
+=======
+\subsection{Alternativa implementationssätt}
+Då projektets krav behövde omförhandlas långt in i projektet togs två olika system fram. Det första systemet som togs fram var byggt på ROS och hade en tät koppling till det tidigare systemet även om det skulle kunna användas fristående med annan hårdvara. Det andra systemet var inte lika beroende på hårdvaran som det första utan läser istället in punktmoln från filer på datorn. Det är inte heller byggt på ROS utan är implementerat helt med hjälp av klasser i C++. Båda de implementerade systemen uppfyller i princip samma systemanatomi, se fig. \ref{fig:system_anatomy}, med den enda skillnaden att det andra systemet inte kan skanna 3D-objekt utan endast läsa in punktmoln från filer.
+>>>>>>> f0cbda9c5dc9bb5b3b8c4bccc80216d42253433c
 
 \section{Metod}
 \label{sec:discussion-method}
