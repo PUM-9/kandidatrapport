@@ -28,6 +28,7 @@ Följande definitioner och förkortningar används på flertalet ställen i den 
 	\item Asynkront verktyg - Ett program eller en tjänst som en person skriver text på och skickar det till andra personer efteråt.
 	\item SVN - Apache Subversion
 	\item Word - Microsoft Word
+	\item WYSIWYG editor - En WYSIWYG (What You See Is What You Get) editor är ett program/system där innehåll kan ändras på ett sätt att det liknar hur den slutgiltiga dokumentet kommer att se ut.
 \end{itemize}
 
 \subsection{Avgränsningar}
@@ -107,36 +108,108 @@ Resultatet som jag kommit fram till från min litteraturstudie och de två enkä
 Knauff och Nejasmic \cite{knauff2014efficiency} visar med hjälp av ett mjukvaruanvändbarhetstest hur effektivt det är att använda sig av \latex jämfört med Microsoft Word. Testet gick ut på att 40 deltagare över olika vetenskapsgrenar skulle skriva olika vetenskapliga texter.
 Det visar sig att \latex användare var långsammare än Word användare, skrev mindre text på samma tid och gjorde fler grammatiska-, formatterings- och typsättningsfel. På de flesta tester var experter i \latex sämre än nybörjare i Word. \latex användare säger sig tycka om att använda det än andra typsättningssystem. Författarna kom till slutsatsen att erfarna \latex användare kan drabbas av produktivitetsförlusta än andra typsättningssystem.
 
-Loch et al. \cite{loch2014master} tar upp om Word är ett lämpligt verktyg för studenter att typsätta matematik istället för \latex. Den artikeln tar också upp hur Word jämför sig med andra matematiska typsättningspaket som studenter har använt. 
+Loch et al. \cite{loch2014master} tar upp om Word är ett lämpligt verktyg för studenter att typsätta matematik istället för \latex. Den artikeln tar också upp hur Word jämför sig med andra matematiska typsättningspaket som studenter har använt. De kommer fram till att nuvarande versioner av Word är kapabla att skapa matematiska texter med hög kvalitet. De säger också att inlärningskurvan inte är väldigt hög och att Word inte ska avfärdas för matematiska texter.  
 
 Wright \cite{wright2010technical} jämför en generell affärsorienterad ordbehandlare, Word med \latex.  
 
 
 \subsection{Enkät 1}
-Resultaten från den första enkäten, den om hur det är att använda sig av synkrona respektive asynkrona verktyg när man skriver dokument visas i listan under. Om mer detaljerade resultat önskas, se Bilaga (Ej inlagd än).
+Resultaten från den första enkäten, den om hur det är att använda sig av synkrona respektive asynkrona verktyg när man skriver dokument visas i listan under. Om mer detaljerade resultat önskas, se Bilaga \ref{appendix:svar_enkat_dokument}
 
-Totalt sett var det 36 personer av 98 som läser kursen, som svarade på enkäten. Det ger ett deltagande på 36,7%.
+Totalt sett var det 36 personer av 98 som läser kursen, som svarade på enkäten. Det ger ett deltagande på 36,7\%.
+
+\textbf{Vilket verktyg använder ni när ni skriver de flesta större/viktiga dokument?}
+\\1/3 av grupperna använder sig av ett asynkront verktyg, alltså Git, SVN och liknande. 2/3 av grupperna använder sig av ett synkront verktyg som Google Docs, ShareLaTeX och liknande.
+\\Svaren från de som valde alternativ 1 (Asynkrona verktyg som Git, SVN och liknande) visas först:
+
+\textbf{Vad för slags versionshanterare använder ni er av?}
+Alla grupper som använder sig av ett asynkront verktyg använder Git.
+
+\textbf{Hur nöjd är du med hur ni versionshanterar era dokument?}
+Från en skala från 1 till 5 där 1 är inte nöjd och fem är nöjd, är medelvärdet 4.466 ~= 4.5.
+
+\textbf{Om du fick ändra vilket asynkront versionshanteringsverktyg ni använde, vilket hade du då valt?}
+Ingen av deltagarna vill byta det asynkrona verktyg de använder till ett annat, utan de vill fortsätta använda Git.
+
+\textbf{Skulle du vilja byta hantering av dokument till synkrona verktyg som Google Docs, ShareLaTeX och liknande?}
+40\% av deltagarna vill byta till ett synkront verktyg istället för det asynkrona verktyg de använder nu. 60\% vill fortsätta använda Git.
+
+\textbf{Om du svarade ja, vilket verktyg skulle du då vilja använda?}
+Av de som vill byta till synkront verktyg skulle 2/3 vilja byta till ShareLaTeX och 1/3 byta till Google Docs.
+
+
+Svaren från de som valde alternativ 2 (Synkrona verktyg som Google Docs, ShareLaTeX och liknande):
+
+\textbf{Vilken webbsida/tjänst använder ni er av för större/viktiga dokument?}
+3/8 av grupperna som använder sig av ett synkront verktyg använder sig av ShareLaTeX. Lika många grupper använder sig istället av Overleaf. En grupp använder sig av Google Docs och en annan grupp använder sig av Office 365 Word. 
+
+
+\textbf{Hur nöjd är du med att använda en tjänst som denna för hantering av dokument?}
+Från en skala från 1 till 5 där 1 är inte nöjd och fem är nöjd, är medelvärdet 3.81.
+
+\textbf{Om du fick byta den tjänst ni använde, vilken hade du då valt?} (19 deltagare)
+13 deltagare ville inte byta den synkrona tjänsten som de använde. 2 deltagare vill använda sig av Google Docs istället. En person vardera ville byta tjänst till Overleaf och ShareLaTeX. En annan ville ha en kombination av en "online-tjänst" och Git.
+
+\textbf{Skulle du vilja byta hantering av dokument till asynkrona verktyg som Git och SVN?}
+15 deltagare vill inte byta till ett asynkront verktyg medan 6 personer ville byta verktyg.
+
+\textbf{Om du svarade ja, vilket verktyg skulle du då vilja använda?}
+De som ville byta till ett asynkront verktyg vill använda sig av Git istället.
+
+Den sista frågan:
+
+\textbf{Vilka verktyg som har listats här tycker du är bra för större dokument?} (36)
+Git var det verktyg som flest personer valde, 2/3 (24) av deltagarna valde det. 22 personer tycker Google Docs är ett bra verktyg för större dokument. 21 deltagare tycker att ShareLaTeX är ett bra verktyg. 14 personer tycker att Overleaf är ett bra verktyg. De verktyg som ett mindre antal personer tycker är bra är SVN på 5 personer, Office 365 Word på 2 personer och Mercurial på 2 personer.
 
 \subsection{Enkät 2}
 Resultaten från den andra enkäten, den om vilka erfarenheter gruppen kan ta ifrån det här projektet visas nedan. Om mer detaljerade resultat önskas, se Bilaga (Ej inlagd än).
 
+\textbf{Överlag hur tycker du att hanteringen av större dokument har gått i gruppen?}
+
+\textbf{Vilket verktyg tycker du har varit bäst att använda?}
+
+\textbf{Varför tycker du det?}
+
+\textbf{För kandidatrapporten, tycker du att det var bättre med separata filer än en gemensam fil?}
+
 \section{Diskussion}
 \label{sec:discussion-tuhkala}
+Nedan kommer min diskussion om resultaten jag fått. De är indelade efter frågeställningarna, som tidigare.
 
 \subsection{Litteraturstudie}
+Att LaTeX användare var långsammare att skriva än Word användare tycker jag inte är jättemärkligt, eftersom att de som använder LaTeX skriver mer än de som skriver Word. Detta för att LaTeX användarna måste skriva kommandon för att åstadkomma en viss sak. Word användare behöver bara klicka på en knapp för de flesta funktioner och det är klart. Word användare använder också ett anpassat program för att skriva dokument, likt en IDE för programmering. LaTeX har inte lika många anpassade program som Word, utan där kompilerar man dokumenten istället och skriver texten i någon annan editor utan stöd för LaTeX kommandon.
+
+Från resultatet ser vi också att inlärningskurvan för Word inte är väldigt stor och kräver inte mycket av en för att förstå det. Jag håller med det eftersom det finns en bra texteditor för Word dokument och att man, som jag skrivit innan, inte skriver kod för att skriva fetstil text, med mera. 
 
 \subsection{Enkät 1}
+
+Att alla grupper som använder sig av asynkrona verktyg använder Git förvånar mig inte, just eftersom det är ett bra verktyg för att versionshantera dokument och källkod. Jag förväntade mig dock att någon grupp använde SVN eller Mercurial. De som använt sig av Git har varit väldigt nöjda och gett ett medelvärde på 4.5 på en skala från 1 till 5 på hur nöjda de varit tycker jag låter rimligt just för att det är ett bra verktyg. Eftersom jag tog ett par snarlika alternativ som till exempel Git, SVN och Mercurial samt ShareLaTeX och Overleaf där funktionaliteten inte skiljer sig så mycket åt kanske det hade varit bättra att bara fråga mer generellt om asynkrona verktyg är bättre att använda än synkrona verktyg.
+
+På frågan "Hur nöjd är du med att använda en tjänst som denna för hantering av dokument?" fick jag svar som jag inte förväntade mig utan de skulle svaras på i senare frågor vilket gav en mindre representativ bild av frågan.
+
+Vissa av alternativen jag hade till frågorna hade inte valts alls, och jag hade inget som frågade varför man inte valde dem. Det kan ju ha varit för att man inte visste vad verktyget var för något, till exempel för Mercurial. Det kan också vara för att de inte visste vad skillnaden var mellan verktygen, om man bara använt ett av dem. Till exempel för valet av ShareLaTeX och Overleaf. Det kan också ha varit för att de inte tyckt att det var något bra alternativ alls. 
+
 
 \subsection{Enkät 2}
 
 \subsection{Metod}
 Litteraturstudien för frågeställning 1 kunde kanske ha gett ett annat eller mer utförligare svar om fler artiklar, bloggar och liknande funnits. Nu när det är rätt så få källor som jag hittat kan det ge en missrepresentativ bild av det.
 
-Enkätundersökningen som gjordes för frågeställning 2 kunde ha gjorts mer utförligare, genom att ställa bättre eller fråga om mer utförligare svar. Till exempel "Rangordna de olika alternativen från det du hade helst använt till det du helst inte velat använda." istället för att endast bara fråga om "Vilka alternativ hade du använt i framtiden för större dokument?". Om fler personer hade svarat på den första enkäten kunde det ha gett en bättre bild på hur det ser ut.
+Enkätundersökningen som gjordes för den andra frågeställningen kunde ha gjorts mer utförligare, genom att ställa bättre eller fråga om mer utförligare svar. Till exempel "Rangordna de olika alternativen från det du hade helst använt till det du helst inte velat använda." istället för att endast bara fråga om "Vilka alternativ hade du använt i framtiden för större dokument?". Om fler personer hade svarat på den första enkäten kunde det ha gett en bättre bild på hur det ser ut.
+
+Urvalsgruppen är alla projektgrupper som läser kandidatprojektet och det kanske inte ger en representativ generell bild av arbete på större dokument än om urvalsgruppen innehållit andra yrken eller liknande.
 
 \section{Slutsatser}
 \label{sec:conclusions-tuhkala}
+Nedan visas slutsatserna som kommit fram från resultatet för de tre frågeställningarna:
 
+\subsection{Litteraturstudie}
+Det jag fått fram genom min litteraturstudie är att LaTeX användare kan vara långsammare att skriva dokument än vad Word användare är. Inlärningskurvan är inte särskilt stor för att använda Word och Word kan användas lika mycket som LaTeX för att skapa matematiska texter med hög kvalitet.
+
+\subsection{Enkät 1}
+Det jag kommit fram till med hjälp av min enkätundersökning är att Git, Google Docs och ShareLaTeX kan vara bra verktyg att använda sig av när man skriver större dokument. Overleaf kan också vara ett bra verktyg att använda sig av. Mindre lämpliga verktyg att använda är SVN, Office 365 Word och Mercurial.
+
+\subsection{Enkät 2}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
