@@ -62,6 +62,8 @@ Som kan läsas tidigare i denna rapport så omförhandlades projektets krav och 
 	\label{fig:class_diagram}
 \end{figure}
 
+Programmet består av två större klasser, \textit{Registration} och \textit{Mesh}. Dessa två klasser används sedan av antingen \textit{Cli}  eller \textit{Gui} klasserna, vilket visas i fig. \ref{fig:class_diagram}  Det har lagts stor vikt vid moduläriteten i programmet då \textit{Registration} och \textit{Mesh} ska fungera självständigt i olika program.
+
 \subsection{Kommandoradsgränssnitt (CLI)}
 
 Systemet kan kontrolleras av ett CLI som kan ta in olika parametrar för att anpassa registreringen. Det finns även alternativ för att bara registrera eller bara mesha objekt. När man kör programmet med hjälp av kommandoradsgränssnittet väljer man vilka filer eller mappar med filer programmet ska läsa in och använda. Hur de används beror på alternativen. Ett exempel på ett anrop är:\\\\
