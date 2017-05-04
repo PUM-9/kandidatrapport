@@ -12,7 +12,7 @@ Systemet bestod hårdvarumässigt av ett rotationsbord, en avståndskamera och e
 Tidigt i arbetet togs en systemanatomi fram, se figur \ref{fig:system_anatomy}, som beskriver vilken funktionalitet systemet skulle ha. Denna hjälpte även till med att dela in närliggande funktionalitet i moduler och låg som underlag för arkitekturbeskrivningen.
 
 \begin{figure}[H]
-	\centering
+	\centering{\tiny }
 	\includegraphics[width=130mm]{figures/system_anatomy.png}
 	\caption{Översikt över systemanatomin}
 	\label{fig:system_anatomy}
@@ -84,7 +84,8 @@ De funktioner som finns i GUI:t just nu är Register som öppnar en dialog där 
 
 \subsection{Registrering}
 
-Systemet implementerar PCLs ICP algoritm för registrering. ICP algoritmen i PCL är en så kallad parvis registreringsalgoritm och regisrerar enbart ett punktmoln till ett annat. Alternativa algoritmer finns för att registrera flera punktmoln samtidigt men på grund av komplexitet valde gruppen att använda den simplare ICP. ICP går ut på att minimera summan av avståndet från varje punkt i det ena punktmolnet till varje punkt i det andra punktmolnet. För att begränsa antalet punkter som måste beräknas används \textit{Max correspondence distance} så att enbart de punkter inom avstånder räknas in i summan för varje punkt. \textit{Transformation epsilon} är ett mått på hur mycket transformationen för punktmolnet som ska matchas in får ändras för varje iteration. Genom att öka detta epsilon kan, vid behov, algoritmen flytta punktmoln längre och därmed nå sitt mål på färre iterationer och algoritmen blir något snabbare. Nackdelen med ett för högt epsilon är dock att punktmolnet kan flyttas förbi optimum som därmed slösar tid. Slutligen används \textit{Max iterations} för att avgöra hur många gånger algoritmen ska köras för varje parvis registrering. Genom att öka detta ökas tidsåtgången men resultatet förbättras också.
+Systemet implementerar PCLs ICP algoritm för registrering. ICP algoritmen i PCL är en så kallad parvis registreringsalgoritm och regisrerar enbart ett punktmoln till ett annat. Alternativa algoritmer finns för att registrera flera punktmoln samtidigt men på grund av komplexitet valde gruppen att använda den simplare ICP. ICP går ut på att minimera summan av avståndet från varje punkt i det ena punktmolnet till varje punkt i det andra punktmolnet. För att begränsa antalet punkter som måste beräknas används parametern \textit{Max correspondence distance} så att enbart de punkter inom avstånder räknas in i summan för varje punkt. \textit{Transformation epsilon} är ett mått på hur mycket transformationen för punktmolnet som ska matchas in får ändras för varje iteration. Genom att öka detta epsilon kan, vid behov, algoritmen flytta punktmoln längre och därmed nå sitt mål på färre iterationer och algoritmen blir något snabbare. Nackdelen med ett för högt epsilon är dock att punktmolnet kan flyttas förbi optimum som därmed slösar tid. Slutligen används \textit{Max iterations} för att avgöra hur många gånger algoritmen ska köras för varje parvis registrering. Genom att öka detta ökas tidsåtgången men resultatet förbättras också.
+
 
 \subsection{Meshning}
 
@@ -96,6 +97,8 @@ Den ytrekonstruering som systemet använder, PCLs Poisson surface reconstruction
 	\caption{Mesh av ofullständigt punktmoln som föreställer en kyrka.}
 	\label{fig:3dcopy_mesh_church}
 \end{figure}
+\label{cha:results_experiences}
+
 
 I figur \ref{fig:3dcopy_mesh_church} kan man se var de olika problemen uppstår. Ovanpå och undertill kyrkan kan man se att det saknas punkter där det blir släta, rundade ytor som inte följer kanterna. Det syns också tydligt på flera ställen där meshen blir grynig att punkterna inte har hamnat rätt.
 
