@@ -30,7 +30,7 @@ Syftet med denna delen är att väga olika algoritmer mot varandra och undersök
 Här listas de definitioner och förkortningar som används i kapitlet.
 
 \begin{itemize}
-	\item Point Cloud Library - Ett C++ bibliotek för hantering av punktmoln.
+	\item Point Cloud Library\cite{pcl_home} - Ett C++ bibliotek för hantering av punktmoln.
 	\item PCL - Point Cloud Library.
 	\item Iterative Closest Point - En algoritm för punktmolnsregistrering.
 	\item ICP - Iterative Closest Point.
@@ -93,13 +93,15 @@ Ett experiment utfördes för att jämföra ICP och JR-MPC. Testet gick ut på a
 
 % Resultatet av experiment 1 ses i fig XX samt fig XX. 
 % Som vi kan se så har ICP lyckats relativt bra, _stegvis bilder_ se fig XX. 
-Vi började med att införskaffa oss en uppsättning punktmoln på objektet och försökte med den exempelkod vi hittat sätta ihop punktmolnen. De första objektet vi började testa med var en porslinskyrka pga att det var det enda vi hade att tillgå. Efter ett par veckor fick vi en låda med träklossar som vi började arbeta med och som blev gruppens primära mål att registrera då dessa rekommenderades av kund som lättare objekt. Den primära algoritm vi använde var ICP. 
+Vi började med att införskaffa oss en uppsättning punktmoln på objektet och försökte med den exempelkod vi hittat sätta ihop punktmolnen. De första objektet vi började testa med var en porslinskyrka p.g.a. att det var det enda vi hade att tillgå. Efter ett par veckor fick vi en låda med träklossar som vi började arbeta med och som blev gruppens primära mål att registrera då dessa rekommenderades av kund som lättare objekt. Den primära algoritm vi använde var ICP. 
 
 Valet av ICP var initialt enbart baserat på att det var den algoritm vi hittade först samt den som vi fick tag på exempelkod för. Vi gjorde dock vissa begränsade tester med JR-MPC som rekommenderades av kunden CVL. Då JR-MPC inte vid tidpunkten gav bättre resultat än den metod som användes samt betydligt mer manuellt arbete för att kunna köra algoritmen så lades arbetet med JR-MPC på is. Mer fokus lades på att jobba vidare med ICP och ungefär halvvägs in i projektet hade vi en algoritm som funkade bra för de första 13 punktmolnen. Senare punktmoln hamnade mer och mer fel tills felet blev markant runt 19 registrerade punktmoln. 
 
 
 \subsection{ICP}
-ICP är en optimeringsalgoritm som försöker minimera det totala avståndet från varje punkt i ursprungsmolnet till varje punkt i målmolnet. Det ger algoritmen en tidskomplexitet $ \mathit{O(n*m)} $ där $ \mathit{n} $ är antalet punkter i ursprungsmolnet och $ \mathit{m} $ är antalet punkter i målmolnet. Som tidigare nämnt så har ICP ett ursprungsmoln som aldrig ändras samt ett målmoln som försöker passas in så det stämmer överens med ursprungsmolnet. ICP har ett antal parametrar för att bestämma hur registreringen ska gå till. De parametrar som undersökts inom gruppen listas nedan och förklaras mer ingående nedan.
+ICP är en optimeringsalgoritm som försöker minimera det totala avståndet från varje punkt i ursprungsmolnet till varje punkt i målmolnet. Det ger algoritmen en tidskomplexitet $ \mathit{O(n*m)} $ där $ \mathit{n} $ är antalet punkter i ursprungsmolnet och $ \mathit{m} $ är antalet punkter i målmolnet. Som tidigare nämnt så har ICP ett ursprungsmoln som aldrig ändras samt ett målmoln som försöker passas in så det stämmer överens med ursprungsmolnet. 
+
+ICP har ett antal parametrar för att bestämma hur registreringen ska gå till. De parametrar som undersökts inom gruppen listas nedan och förklaras mer ingående nedan.
 \begin{itemize}
 	\item Max Iterations
 	\item Transformation Epsilon
@@ -121,14 +123,18 @@ Under utvecklingsarbetet och problemfaser med registreringen planerade gruppen o
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=70mm]{figures/foto_church.png}
+	\includegraphics[width=70mm]{figures/Foto_church.png}
 	\caption{Porslinskyrkan som använts för test av skanning och registrering}
 	\label{fig:foto_church}
 \end{figure}
 
 \subsection{ICP vs. JR-MPC}
 
-Vid jämförande av ICP så finns ett par signifikanta skillnader. På grund av att ICP är en mer rudimentär algoritm än JR-MPC så blir den också lättare att implementera. JR-MPC bygger på mer avancerad matematik som måste förstås för att kunna implementera den. 
+Vid jämförande av ICP så finns ett par signifikanta skillnader. 
+
+På grund av att ICP är en mer rudimentär algoritm än JR-MPC så blir den också lättare att implementera. JR-MPC bygger på mer avancerad matematik som måste förstås för att kunna implementera den.
+
+Enligt \cite{Evangelidis-ECCV-2014} så är ICP en aning snabbare än JR-MPC vilket dock inte har replikerats i projektets begränsade tester. Då tidsåtgången för komplett registrering av 36 punktmoln med ICP är i närheten av 3 timmar så har inte någon ingående studie gjorts. 
 
 Som nämndes i \ref{sec:registrering-karlsson} så påverkas algoritmerna väldigt olika av fel, såsom till exempel avrundningsfel som är oundvikligt med flyttal. Då ICP\footnote{Notera att detta endast gäller vissa ICP algoritmer} bara tillåter parvis registrering, dvs att ett punktmoln registreras med ett annat kommer dessa avrundningsfel växa och bli större ju fler punktmoln som registreras. Dessutom sparas i våran implementation det parvis registrerade punktmolnet som ett färdigt oföränderligt punktmoln och ev avrundningsfel kan bara elimineras genom att köra algoritmen igen med andra parametrar.
 
@@ -144,7 +150,7 @@ Resultatet av experimentet som utfördes presenteras här med ett antal bilder.
 	\label{fig:icp_vs_jrmpc_result}
 \end{figure}
 
-Nedan i fig \ref{fig:registrered_church_serie} ses från övre vänstra till nedre högra bilden delresultatet av 12, 13, 18, 19 samt 20 punktmoln extraherat från en och samma körning. Notera till exempel resultatet för 20 punktmoln där man tydligt i främre vänstra hörnet på kyrkan ser dubbla hörn. Det här kommer av att punktmoln
+Nedan i fig \ref{fig:registrered_church_serie} ses från övre vänstra till nedre högra bilden delresultatet av 12, 13, 18, 19 samt 20 punktmoln extraherat från en och samma körning. Notera till exempel resultatet för 20 punktmoln där man tydligt i främre vänstra hörnet på kyrkan ser dubbla hörn. Det här kommer av att punktmolnen som registreras, enligt ICP, ligger i varandra vid starten. Efter 12 punktmoln behöver därmed nästa moln roteras 130 grader och sannolikheten för ett falskt optimum ökar.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=45mm]{figures/12_pc.png}
@@ -161,13 +167,15 @@ Nedan i fig \ref{fig:registrered_church_serie} ses från övre vänstra till ned
 
 Den implementation av JRMPC som vi fick tag på funkade väldigt dåligt för den typ av data som vi hade. På grund av att algoritmen är väldigt komplicerad och inte tillräckligt dokumenterad för att vi skulle kunna hitta parametrar att ändra på för att förbättra resultatet så beslutades att ICP skulle användas och optimeras.
 
-3DCopy använder sig av \textit{Max Iterations}, \textit{Transformation Epsilon} samt \textit{Max correspondence distance}. Då PCLs standardvärden för \textit{RANSAC outlier rejection threshold} samt \textit{Euclidean fitness epsilon} funkade för gruppen bra och går inte ändra i 3DCopy. Det är dock väldigt lätt att lägga in stöd för det om programmet skulle vidareutvecklas.
+3DCopy använder sig av \textit{Max Iterations}, \textit{Transformation Epsilon} samt \textit{Max correspondence distance}. Då PCLs standardvärden för \textit{RANSAC outlier rejection threshold} samt \textit{Euclidean fitness epsilon} funkade bra för gruppen användes dessa och de går inte ändra i 3DCopy. Det är dock väldigt lätt att lägga in stöd för det om programmet skulle vidareutvecklas.
 
 \subsection{Diskussion om Metod}
 
 
 
 \subsection{Diskussion om Resultat}
+
+\subsubsection{Diskussion om Experiment 1}
 
 
 
