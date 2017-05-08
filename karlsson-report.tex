@@ -94,7 +94,6 @@ Valet av ICP var initialt enbart baserat på att det var den algoritm vi hittade
 
 En annan anledning till att gruppen valde ICP var just att det är en parvis registreringsalgoritm. I det ursprungliga systemet var tanken att registreringen skulle ske efter hand som punktmolnen skapades genom skanning. I ett sådant scenario tillåter en parvis registreringsalgoritm användandet av annars bortkastad processortid.
 
-\cite{registration_comparing}
 
 
 \subsection{ICP}
@@ -188,8 +187,12 @@ JR-MPC har däremot helt misslyckats med registreringen som ledde till att vi, p
 \section{Slutsatser}
 \label{sec:conclusions-karlsson}
 
-Någon definitiv slutsats är svår att dra utifrån de resultat som åstadkommits. Detta styrks ytterligare av 
-%Parvis registrering var att önska i ursprungssystemet då man kan använda annars kastad cpu tid
+Någon definitiv slutsats är svår att dra utifrån de resultat som åstadkommits. Detta styrks ytterligare av Bellekens et al. \cite{registration_comparing} som påstår att valet av algoritm inte har ett definitivt svar. Bellekens et al. kommer fram till slutsatsen att valet beror på vilket ändamål samt vilken indata som kommer användas. Det stämmer bra överens med gruppens egna slutsats, där JR-MPC både var för tidskrävande att sätta sig in i samt inte gick att köra under tiden punktmoln samlades in.
+
+ICP var den bästa algoritmen för gruppens ändamål. Det första systemet som designades gynnades mycket av att ha en parvis registreringsalgoritm eftersom att man då kunde påbörja registreringen direkt när de första två punktmolnen införskaffats. Det registrerade objektet skulle då byggas upp kontinuerligt under en skanning istället för att behöva vänta tills all data var insamlad.
+
+Att skapa ett enhetligt punktmoln från enstaka skanningar kan tes lätt vid en första anblick. Det finns dock en hel del som måste göras rätt. Dels måste en lämplig algoritm väljas, dessutom behöver algoritmens parametrar testas fram med den indata man har. 
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% karlsson-report.tex ends here
