@@ -8,7 +8,7 @@
 
 Nedan följer en beskrivning av det ROS-baserade system som byggde vidare på TreeD och som utvecklades innan kraven i projektet omförhandlades med kunden.
 
-Systemet bestod hårdvarumässigt av ett rotationsbord, en avståndskamera och en linjärenhet för att flytta avståndskameran längs en axel. För att styra detta fanns det sedan tidigare mjukvara som kan utföra en enskild skanning. Projektet skulle ha resulterat i en mjukvara för att utföra fler skanningar från olika vinklar och sammanfoga dessa till ett komplett objekt som kan skrivas ut på en 3D-skrivare.
+Systemet bestod hårdvarumässigt av ett rotationsbord, en avståndskamera och en linjärenhet för att flytta avståndskameran längs en axel. För att styra detta fanns det sedan tidigare mjukvara som kan utföra en enskild skanning. Projektet skulle ha resulterat i en mjukvara för att utföra fler skanningar från olika vinklar och sammanfoga dessa till ett komplett objekt som kunde skrivas ut på en 3D-skrivare.
 
 Tidigt i arbetet togs en systemanatomi fram, se figur \ref{fig:system_anatomy}, som beskriver vilken funktionalitet systemet skulle ha. Denna hjälpte även till med att dela in närliggande funktionalitet i moduler och låg som underlag för arkitekturbeskrivningen.
 
@@ -19,12 +19,11 @@ Tidigt i arbetet togs en systemanatomi fram, se figur \ref{fig:system_anatomy}, 
 	\label{fig:system_anatomy}
 \end{figure}
 
-
 Arkitekturbeskrivningen som togs fram för systemet förklarar hur systemet skulle fungera och vilka moduler som skulle finnas. Arkitekturen gav en bra utgångspunkt för hur systemet skulle implementeras. I arkitekturbeskrivningen finns det förklarat vilka noder systemet skulle bestå av och hur de skulle kommunicera med varandra.
 
-Denna arkitektur är uppbyggd i ROS vilket innebär att de flesta noder i det tänkta systemet fungerar som en service som tar emot ett anrop för att utföra någonting och när den är klar svarar den med resultatet av arbetet. Detta gör att alla noder har tydliga gränssnitt mellan varandra vilket resulterar i en bra separation mellan olika moduler.
+Denna arkitektur var uppbyggd i ROS vilket innebär att de flesta noder i det tänkta systemet fungerade som en service som tog emot ett anrop för att utföra någonting och när den var klar svarade den med resultatet av arbetet. Detta gjorde att alla noder hade tydliga gränssnitt mellan varandra vilket resulterade i en bra separation mellan olika moduler.
 
-Systemet var uppbyggt enligt en förenklad variant av \textit{pipe and filter}-modellen, där resultatet av ett steg skickas vidare som indata till nästa steg i modellen. Detta flöde styrs av klienten så att användaren kan välja att köra hela eller delar av processen. Figur \ref{fig:noddiagram} visar hur systemet var uppbyggt.
+Systemet var uppbyggt enligt en förenklad variant av \textit{pipe and filter}-modellen, där resultatet av ett steg skickas vidare som indata till nästa steg i modellen. Detta flöde styrdes av klienten så att användaren kunde välja att köra hela eller delar av processen. Figur \ref{fig:noddiagram} visar hur systemet var uppbyggt.
 
 \begin{figure}[H]
 	\centering
@@ -33,9 +32,9 @@ Systemet var uppbyggt enligt en förenklad variant av \textit{pipe and filter}-m
 	\label{fig:noddiagram}
 \end{figure}
 
-Det tänkta systemet kunde samla in fler punktmoln. Detta gjordes av punktmolnshanteringsnoden som tar in ett värde för hur noggrant objektet ska skannas. Punktmolnshanteringsnoden utför ett antal skanningar genom att noden TreeD-wrapper kallas. Sedan registrerar punktmolnshanteringsnoden dessa inkompletta punktmoln till ett punktmoln som representerar hela objektet.
+Det tänkta systemet kunde samla in fler punktmoln. Detta gjordes av punktmolnshanteringsnoden som tog in ett värde för hur noggrant objektet skulle skannas. Punktmolnshanteringsnoden utförde ett antal skanningar genom att noden TreeD-wrapper kallades. Sedan registrerade punktmolnshanteringsnoden dessa inkompletta punktmoln till ett punktmoln som representerade hela objektet.
 
-När ett komplett punktmoln har genererats skickas det vidare till meshgenereringsnoden som uppskattar en tredimensionell yta, även kallad mesh, bestående av polygoner utifrån punktmolnet. Denna mesh kan sedan användas för att generera kod som kan köras på en 3D-skrivare för att skriva ut objektet.
+När ett komplett punktmoln hade genererats skickades det vidare till meshgenereringsnoden som uppskattade en tredimensionell yta bestående av polygoner, även kallad mesh, utifrån punktmolnet. Denna mesh kunde sedan användas för att generera kod som kunde köras på en 3D-skrivare för att skriva ut objektet.
 
 Mycket tid under de första iterationerna av projektet spenderades på att utforska och undersöka olika tekniker och algoritmer. Som resultat av det finns det mycket nyttig kunskap i projektgruppen och även en del testkod för att utföra olika delar.
 
@@ -48,7 +47,7 @@ Det ROS-baserade systemet var uppdelat i en serverdel och en klient. Tanken var 
 	\label{fig:systembeskrivning_gamla}
 \end{figure}
 
-Som kan ses i figurerna \ref{fig:noddiagram} och \ref{fig:systembeskrivning_gamla} så är klienten den centrala delen i programmet. Den hanterar användarens indata och använder sig av de olika noderna för att utföra det användaren vill. Konceptet var att systemet skulle använda en \textit{pipe and filter}-arkitektur. Där klienten skickade runt data i pipen men att användaren, genom klienten hade möjlighet att granska resultatet och göra viss handpåläggning mellan de olika stegen. Detta genom att klienten alltid kan spara resultatet från ett steg till fil och använda andra program för handpåläggningen innan den skickas vidare i systemet.
+Som kan ses i figurerna \ref{fig:noddiagram} och \ref{fig:systembeskrivning_gamla} så var klienten den centrala delen i programmet. Den hanterade användarens indata och använde sig av de olika noderna för att utföra det användaren vill. Konceptet var att systemet skulle använda en \textit{pipe and filter}-arkitektur där klienten skickade runt data i pipen men att användaren, genom klienten, hade möjlighet att granska resultatet och göra viss handpåläggning mellan de olika stegen. Detta genom att klienten alltid kunde spara resultatet från ett steg till fil och använda andra program för handpåläggningen innan den skickades vidare i systemet.
 
 \section{Systembeskrivning - 3DCopy}
 
