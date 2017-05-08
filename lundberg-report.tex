@@ -5,13 +5,13 @@
 \section{Inledning}
 \label{sec:introduction-lundberg}
 
-I ROS finns det många verktyg för att bygga upp ett system. ROS gör det enkelt att köra fler processer och kommunicera mellan dessa. Det hjälper även till att tydliggöra uppdelningar av ett program i separata moduler som enkelt kan återanvändas och vidareutvecklas separat utan att påverka de övriga modulerna.
+I ROS finns det många verktyg för att bygga upp ett system. ROS gör det enkelt att köra flera processer och kommunicera mellan dessa. Det hjälper även till att tydliggöra uppdelningar av ett program i separata moduler som enkelt kan återanvändas och vidareutvecklas separat utan att påverka de övriga modulerna.
 
 
 \subsection{Syfte}
 \label{sec:purpose-lundberg}
 
-Syftet med den här rapporten är att utforska olika metoder i ROS för att bygga upp ett system. Rapporten ska även jämföra lösningarna i ROS med andra metoder för att ge fler perspektiv på hur ett system kan byggas upp. 
+Syftet med den här rapporten är att utforska olika metoder för att bygga upp ett system i ROS. Rapporten ska även jämföra lösningarna i ROS med andra metoder för att ge fler perspektiv på hur ett system kan byggas upp. 
 
 \subsection{Frågeställning}
 \label{sec:issue-lundberg}
@@ -23,6 +23,9 @@ Följande frågeställningar ska behandlas och besvaras i denna rapport.
 	
 	\item Hur påverkade valet att använda ROS uppbyggnaden av systemet?
 \end{enumerate}
+
+\subsection{Avgränsningar}
+ROS är ett stort system med många möjliga implementationer av arkitekturer med i grunden samma funktionalitet. Denna rapport behandlar endast de delar av ROS som gruppen har kommit i kontakt med under implementationen av systemet som beskrivs i avsnitt \ref{cha:results-systembeskrivning-treed} och utforskar inte någon annan funktionalitet i ROS.
 
 
 \section{Bakgrund}
@@ -42,13 +45,15 @@ I ett sent skede av projektet behövde stora ändringar göras i arkitekturen vi
 \section{Teori}
 \label{sec:theory-lundberg}
 
+I detta kapitel presenteras den teori som ligger till grund för rapporten.
+
 \subsection{ROS}
-ROS står för Robot Operating System men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra fler processer och kommunicera mellan dessa \cite{quigley2009ros}. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det är ofta en bra tumregel att tänka att en nod motsvarar en modul i arkitekturen, men en modul skulle även kunna bestå av ett flertal noder.
+ROS står för \textit{Robot Operating System} men är inte ett fullt operativsystem i den traditionella meningen. Istället är det ett system som körs i ett vanligt operativsystem och som ger användaren möjlighet att på ett enkelt sätt köra fler processer och kommunicera mellan dessa \cite{quigley2009ros}. En process som körs i ROS kallas för en nod och ROS tillhandahåller verktyg för att styra dessa noder. Det är ofta en bra tumregel att tänka att en nod motsvarar en modul i arkitekturen, men en modul skulle även kunna bestå av ett flertal noder.
 
 ROS har även verktyg för att på ett enkelt och strukturerat sätt kommunicera mellan noder genom meddelanden (eng. messages). Dessa meddelanden är strikt typade och kan skickas mellan noder på två olika sätt:
 
 \begin{enumerate}
-	\item Genom att en nod publicerar på en namngiven kanal (eng. topic) som en annan nod kan lyssna på.
+	\item Genom att en nod publicerar på en namngiven kanal (eng. \textit{topic}) som en annan nod kan lyssna på.
 	
 	\item En nod kan tillhandahålla en service som en annan nod kan kalla på för att utföra något arbete och få tillbaka resultatet i form av ett meddelande.
 \end{enumerate}
@@ -56,9 +61,9 @@ ROS har även verktyg för att på ett enkelt och strukturerat sätt kommunicera
 Den här rapporten ska utforska hur dessa verktyg kan användas för att bygga upp ett system.
 
 \subsection{Pipe and filter-modellen}
-En välkänd modell för att bygga upp mjukvarusystem är pipe and filter-modellen. Den beskrivs av Garlan och Shaw \cite{garlan1993introduction} som en modell där varje komponent i systemet har bestämda indata och utdata. Komponenterna behandlar indatan och producerar utdata som kan skickas vidare till nästa steg i modellen.
+En välkänd modell för att bygga upp mjukvarusystem är \textit{pipe and filter}-modellen. Den beskrivs av Garlan och Shaw \cite{garlan1993introduction} som en modell där varje komponent i systemet har bestämda indata och utdata. Komponenterna behandlar indatan och producerar utdata som kan skickas vidare till nästa steg i modellen.
 
-I en traditionell pipe and filter-modell behandlas indatan kontinuerligt så att utdata produceras innan hela strömmen av indata har nått fram, därav namnet filter \cite{garlan1993introduction}. I detta projekt användes dock ett specialfall av modellen där varje komponent kräver ett helt block av indata som sedan behandlas för att producera ett block av utdata. Det ska noteras att trots att varje modul endast tar kompletta block av indata snarare än strömmar så kan modulerna internt arbeta med strömmar av data och inkrementellt bygga upp resultatet.
+I en traditionell \textit{pipe and filter}-modell behandlas indatan kontinuerligt så att utdata produceras innan hela strömmen av indata har nått fram, därav namnet filter \cite{garlan1993introduction}. I detta projekt användes dock ett specialfall av modellen där varje komponent kräver ett helt block av indata som sedan behandlas för att producera ett block av utdata. Det ska noteras att trots att varje modul endast tar kompletta block av indata snarare än strömmar så kan modulerna internt arbeta med strömmar av data och inkrementellt bygga upp resultatet.
 
 
 \section{Metod}
@@ -82,10 +87,10 @@ Utöver de delarna behövdes även ett sätt att styra processen. För detta än
 
 Då projektet byggde vidare på ett system kallat TreeD från förra året för att styra hårdvaran behövde även det tidigare systemet tas i åtanke när arkitekturen togs fram. Fler alternativ för att kommunicera med det tidigare systemet utforskades men i slutändan beslutades det att en egen nod skulle kalla på det tidigare systemets kommandoradsgränssnitt för att på så vis slippa sätta sig in i tidigare kod för att lista ut vilka funktioner som behövde kallas.
 
-Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet bestämdes det att en variant av pipe and filter-modellen skulle vara lämplig. Där skickas resultatet från ett steg vidare som indata till nästa steg. En stor fördel med denna modell är att den gör det möjligt att byta ut enskilda delar utan att göra om hela systemet \cite{garlan1993introduction}. Detta är något som uppfyller de krav på moduläritet och underhållbarhet som ställdes på systemet.
+Ett viktigt mål med arkitekturen var att systemet skulle vara modulärt. Tidigt i arbetet bestämdes det att en variant av \textit{pipe and filter}-modellen skulle vara lämplig. Där skickas resultatet från ett steg vidare som indata till nästa steg. En stor fördel med denna modell är att den gör det möjligt att byta ut enskilda delar utan att göra om hela systemet \cite{garlan1993introduction}. Detta är något som uppfyller de krav på moduläritet och underhållbarhet som ställdes på systemet.
 
 \subsection{Systemet i ROS}
-För att bygga systemet i ROS togs ett första förslag på en arkitektur fram där de moduler som beskrevs ovan motsvarade en varsin ROS-nod. För att kommunicera med varandra skulle noderna använda sig av kanaler för att ta emot kommandon och skicka resultatet av utförda beräkningar. Att använda kanaler har fördelen att det är ett enkelt och snabbt sätt att komma igång med kommunikation mellan noder. Det var dock ett naivt sätt att implementera systemet i det här fallet då en kanalbaserad lösning gör väldigt lite för att upprätthålla den tänkta arkitekturen. Eftersom vilken nod som helst kan lyssna på en kanal blir det svårare att se kommunikationsvägarna mellan olika noder och därför blir det även svårare för en utomstående att förstå systemets uppbyggnad och vidareutveckla systemet.
+För att bygga systemet i ROS togs ett första förslag på en arkitektur fram där de moduler som beskrevs ovan motsvarade varsin ROS-nod. För att kommunicera med varandra skulle noderna använda sig av kanaler för att ta emot kommandon och skicka resultatet av utförda beräkningar. Att använda kanaler har fördelen att det är ett enkelt och snabbt sätt att komma igång med kommunikation mellan noder. Det var dock ett naivt sätt att implementera systemet i det här fallet då en kanalbaserad lösning gör väldigt lite för att upprätthålla den tänkta arkitekturen. Eftersom vilken nod som helst kan lyssna på en kanal blir det svårare att se kommunikationsvägarna mellan olika noder och därför blir det även svårare för en utomstående att förstå systemets uppbyggnad och vidareutveckla systemet.
 
 För att göra systemet tydligare togs en ny arkitektur fram som istället var baserad på service-anrop. I denna arkitektur tillhandahåller modulerna en service som en annan nod kan kalla på för att utföra ett specifikt arbete. När arbetet är utfört returneras resultatet till noden som utförde service-anropet. Detta system gör det mycket tydligare vad de olika noderna gör och hur de kommunicerar med varandra och det är den slutgiltiga arkitekturen i ROS som togs fram för projektet.
 
@@ -100,8 +105,7 @@ Under framtagandet av arkitekturen dokumenterades arbetet kontinuerligt i form a
 
 \section{Resultat}
 \label{sec:results-lundberg}
-
-Sent i projektet stötte gruppen på problem som inte gick att lösa inom en rimlig tidsram. Därför behövde projektets mål omdefinieras och på grund av det togs även ny arkitektur fram, denna gång utan ROS. I detta avsnitt visas båda de arkitekturer som togs fram för projektet.
+Sent i projektet stötte gruppen som tidigare nämnts på problem som inte gick att lösa inom en rimlig tidsram. Därför behövde projektets mål omdefinieras och på grund av det togs även ny arkitektur fram, denna gång utan ROS. I detta avsnitt visas båda de arkitekturer som togs fram för projektet.
 
 \subsection{Arkitekturen i ROS}
 Den ROS-baserade arkitektur som togs fram för projektet visas i figur \ref{fig:arkitektur}. Varje block i figuren motsvarar en nod i ROS och kommunikationsvägarna mellan noderna illustreras med pilar. All kommunikation mellan noderna utförs i form av service-anrop i ROS.
@@ -116,11 +120,11 @@ Den ROS-baserade arkitektur som togs fram för projektet visas i figur \ref{fig:
 Tidigt i projektet togs ett annat förslag på en arkitektur fram i ROS som är väsentligen samma som den i figur \ref{fig:arkitektur} men med den enda skillnaden att kommunikationen skulle skötas via kanaler istället för service-anrop. Detta skulle innebära att en egen kanal skapades för varje kommunikationsväg som visas i figuren. Detta arkitekturförslag är också intressant för denna rapport då det visar på en del skillnader mellan olika sätt att implementera samma system i ROS.
 
 \subsection{Arkitekturen utan ROS}
-Den nya arkitekturen som togs fram utan ROS är uppbyggd enligt samma modell i grunden. Dock är den skriven helt i C++ och uppbyggd med hjälp av klasser som tillhandahåller den funktionalitet som tidigare låg i ROS-noder. Den nya arkitekturen använder inte heller det tidigare projektet TreeD så wrappern för den mjukvaran är borttagen. I detta system läses punkmolnsdata in från filer av klienten som sedan använder funktionaliteten i klasserna för att behandla punktmolnen. Klassindelningen och kopplingen mellan dem beskrivs i figur \ref{fig:klasser}.
+Den nya arkitekturen som togs fram utan ROS är uppbyggd enligt samma modell i grunden. Dock är den uppbyggd helt objektorienterat i C++ med hjälp av klasser som tillhandahåller den funktionalitet som tidigare låg i ROS-noder. Den nya arkitekturen använder inte heller det tidigare projektet TreeD så wrappern för den mjukvaran är borttagen. I detta system läses punkmolnsdata in från filer av klienten som sedan använder funktionaliteten i klasserna för att behandla punktmolnen. Klassindelningen och kopplingen mellan dem beskrivs i figur \ref{fig:klasser}.
 
 \begin{figure}[h]
 	\centering
-	\includegraphics[width=15cm]{figures/klassdiagram.png}
+	\includegraphics[width=15cm]{figures/klasser_arkitektur.png}
 	\caption{Systemets arkitektur utan ROS.}
 	\label{fig:klasser}
 \end{figure}
