@@ -29,9 +29,10 @@ Följande definitioner och förkortningar används på flertalet ställen i den 
 	\item Asynkront verktyg - Ett program eller en tjänst som en person skriver text på och skickar det till andra personer efteråt.
 	\item SVN - Apache Subversion
 	\item Word - Microsoft Word
-	\item WYSIWYG editor - WYSIWYG editor står för (What You See Is What You Get) editor och är ett program eller system där innehåll kan ändras på ett sätt sådant att det liknar hur det slutgiltiga dokumentet kommer att se ut.
+	\item WYSIWYG-editor - WYSIWYG står för (What You See Is What You Get) och en sådan editor är ett program eller system där innehåll kan ändras på ett sådant sätt att det liknar hur det slutgiltiga dokumentet kommer att se ut.
 	\item Separata filer - Se avsnitt \ref{sec:thesis-info-tuhkala}.
 	\item Gemensam fil - Se avsnitt \ref{sec:thesis-info-tuhkala}.
+	\item Linter - En linter är ett verktyg som flaggar misstänkta fel i kod med avseende på vad som är tillåtet i programmeringsspråket \cite{linter}.
 \end{itemize}
 
 \subsection{Avgränsningar}
@@ -39,7 +40,7 @@ Denna rapport kommer endast att ta upp de två vanligaste typsättningssystemen,
 
 \section{Bakgrund}
 \label{sec:background-tuhkala}
-Vi har arbetat med olika verktyg för att framställa större dokument för projektet i gruppen. Vi har använt oss av LaTeX för alla våra större dokument och använt oss av både asynkrona och synkrona verktyg när vi skrev dessa. För alla större dokument utom kandidatrapporten användes ett synkront verktyg, Overleaf. För kandidatrapporten använde vi oss av ett asynkront verktyg, Git. Den här studien har genomförts för att se vilket av de olika asynkrona och synkrona verktygen som kan vara bättre att använda sig utav för större dokument. Flera andra verktyg har också tagits upp för att se hur andra projektgrupper framställer sina dokument. 
+Vi har arbetat med olika verktyg för att framställa större dokument för projektet i gruppen. Vi har använt oss av \latex för alla våra större dokument och använt oss av både asynkrona och synkrona verktyg när vi skrev dessa. För alla större dokument utom kandidatrapporten användes ett synkront verktyg, Overleaf. För kandidatrapporten använde vi oss av ett asynkront verktyg, Git. Den här studien har genomförts för att se vilket av de olika asynkrona och synkrona verktygen som kan vara bättre att använda sig utav för större dokument. Flera andra verktyg har också tagits upp för att se hur andra projektgrupper framställer sina dokument. 
 
 \section{Teori}
 \label{sec:theory-tuhkala}
@@ -49,10 +50,10 @@ Nedan visas information om det som kommer att tas upp i rapporten. Det ger lite 
 \latex är ett typsättningssystem som är baserat på TeX och skapades för att göra det enklare att skapa generella böcker och artiklar inom TeX. Till skillnad från till exempel Microsoft Word, programmerar man dokumentet, istället för att skriva formaterad text. \latex bygger på att den som skriver inte ska formatera texten, utan ska bara skriva det den vill få sagd, utan att behöva bry sig om hur dokumentet ser ut. Det är därför väldigt enkelt att få stiliga dokument i \latex genom att bara specifiera dokumentets struktur istället för att krångla med hur dokumentet ska se ut.
 
 \subsection{Git}
-Git är ett versionshanteringsprogram som skapades av Linus Torvalds för att hantera källkoden till Linuxkärnan. Git är ett så kallat distribuerat versionshanteringssystem, vilket innebär att alla som använder ett Git repository har allt som det innehåller och behöver inte använda en centraliserad server. Git har också komplett historik över alla ändringar som skett och man kan gå tillbaka till tidigare versioner av dokument och källkod.
+Git \cite{git}\cite{git_history} är ett versionshanteringsprogram som skapades av Linus Torvalds för att hantera källkoden till Linuxkärnan. Git är ett så kallat distribuerat versionshanteringssystem, vilket innebär att alla som använder ett Git repository har allt som det innehåller och behöver inte använda en centraliserad server. Git har också komplett historik över alla ändringar som skett och man kan gå tillbaka till tidigare versioner av dokument och källkod.
 
 \subsection{Apache Subversion}
-Subversion (SVN) är också ett versionshanteringsprogram för mjukvara likt Git, förutom att SVN är ett centraliserat versionshanteringssystem.
+Subversion (SVN) \cite{svn} är också ett versionshanteringsprogram för mjukvara likt Git, förutom att SVN är ett centraliserat versionshanteringssystem.
 
 \subsection{Mercurial}
 
@@ -111,15 +112,15 @@ Resultatet som jag kommit fram till från min litteraturstudie och de två enkä
 
 \subsection{Litteraturstudie}
 Knauff och Nejasmic \cite{knauff2014efficiency} visar med hjälp av ett mjukvaruanvändbarhetstest hur effektivt det är att använda sig av \latex jämfört med Microsoft Word. Testet gick ut på att 40 deltagare över olika vetenskapsgrenar skulle skriva olika vetenskapliga texter.
-Det visar sig att \latex användare var långsammare än Word användare, skrev mindre text på samma tid och gjorde fler grammatiska-, formatterings- och typsättningsfel. På de flesta tester var experter i \latex sämre än nybörjare i Word. \latex användare säger sig tycka om att använda det än andra typsättningssystem. Författarna kom till slutsatsen att erfarna \latex användare kan drabbas av produktivitetsförlusta än andra typsättningssystem.
+Det visar sig att \latex-användare var långsammare än Word-användare, skrev mindre text på samma tid och gjorde fler grammatiska-, formatterings- och typsättningsfel. På de flesta tester var experter i \latex sämre än nybörjare i Word. \latex-användare säger sig tycka om att använda det än andra typsättningssystem. Författarna kom till slutsatsen att erfarna \latex-användare kan drabbas av produktivitetsförlusta än andra typsättningssystem.
 
-Loch et al. \cite{loch2014master} tar upp om Word är ett lämpligt verktyg för studenter att typsätta matematik istället för \latex. Den artikeln tar också upp hur Word jämför sig med andra matematiska typsättningspaket som studenter har använt. De kommer fram till att nuvarande versioner av Word är kapabla att skapa matematiska texter med hög kvalitet. De säger också att inlärningskurvan inte är väldigt hög och att Word inte ska avfärdas för matematiska texter.  
+Loch et al. \cite{loch2014master} diskuterar om Word är ett lämpligt verktyg för studenter att typsätta matematik istället för \latex. Den artikeln tar också upp hur Word jämför sig med andra matematiska typsättningspaket som studenter har använt. De kommer fram till att nuvarande versioner av Word är kapabla att skapa matematiska texter med hög kvalitet. De säger också att inlärningskurvan inte är väldigt hög och att Word inte ska avfärdas för matematiska texter.  
 
 Henrik Henrikssons bidrag i Haavisto et al. \cite{Haavisto954095} tittar på vilka problem som nybörjare i \latex stöter på och hur man kan förhindra sådana problem i framtida projekt. Han kommer fram till att det är mycket konsistensproblem i ett \latex dokument. Många skriver text olika och det finns ingen standard. Förslag på hur man kan lösa problemen är att använda en linter eller sätta upp en standard i början av projektet.
 
 \subsection{Enkät 1}
-Resultaten från den första enkäten, enkäten om hur det är att använda sig av synkrona respektive asynkrona verktyg när man skriver stora dokument visas nedan. Om mer detaljerade resultat önskas, se Bilaga \ref{appendix:svar_enkat_dokument}.\\
-Totalt sett var det 36 av 98 personer som svarade på enkäten. Det ger ett deltagande på 36,7\%.\\
+Resultaten från den första enkäten, enkäten om hur det är att använda sig av synkrona respektive asynkrona verktyg när man skriver stora dokument visas nedan. Om mer detaljerade resultat önskas, se bilaga \ref{appendix:svar_enkat_dokument}.\\
+Totalt sett var det 36 av 98 personer som svarade på enkäten. Det ger ett deltagande på 36,7 \%.\\
 \\\textbf{Vilket verktyg använder ni när ni skriver de flesta större/viktiga dokument?}\\
 En tredjedel av grupperna använder sig av ett asynkront verktyg, alltså Git, SVN och liknande. Resterande grupper använder sig av ett synkront verktyg som ShareLaTeX, Google Docs och liknande.\\\\
 De som valde alternativ 1 (Asynkrona verktyg som Git, SVN och liknande) visas nedan. Totalt sett var det en tredjedel av grupperna som använde detta varav 15 personer som svarade.\\\\
@@ -130,7 +131,7 @@ Från en skala från 1 till 5 där 1 är inte nöjd och 5 är nöjd, är medelv�
 \textbf{Om du fick ändra vilket asynkront versionshanteringsverktyg ni använde, vilket hade du då valt?}\\
 Ingen av deltagarna vill byta det asynkrona verktyg de använder till ett annat, utan de vill fortsätta använda Git.\\\\
 \textbf{Skulle du vilja byta hantering av dokument till synkrona verktyg som Google Docs, ShareLaTeX och liknande?}\\
-40\% av deltagarna vill byta till ett synkront verktyg istället för det asynkrona verktyg de använder nu. 60\% vill fortfarande använda sig av Git.\\\\
+40 \% av deltagarna vill byta till ett synkront verktyg istället för det asynkrona verktyg de använder nu. 60 \% vill fortfarande använda sig av Git.\\\\
 \textbf{Om du svarade ja, vilket verktyg skulle du då vilja använda?}\\
 Av de som vill byta till synkront verktyg skulle två tredjedelar vilja byta till ShareLaTeX och en tredjedel byta till Google Docs.\\\\
 De som valde alternativ 2 (Synkrona verktyg som Google Docs, ShareLaTeX och liknande) visas nedan. Totalt sett var det två tredjedelar av grupperna som använde detta varav 21 personer som svarade.\\\\
@@ -156,7 +157,7 @@ Figur \ref{fig:best_document_tool} visar svaret för frågan. På x-led finns de
 \end{figure}
 
 \subsection{Enkät 2}
-Resultaten från den andra enkäten, den om vilka erfarenheter gruppen kan ta ifrån det här projektet visas nedan. Om mer detaljerade resultat önskas, se Bilaga \ref{appendix:svar_enkat_dokument_erfarenheter}. Totalt var det 6 personer som svarade på enkäten.\\
+Resultaten från den andra enkäten, den om vilka erfarenheter gruppen kan ta med sig ifrån det här projektet visas nedan. Om mer detaljerade resultat önskas, se bilaga \ref{appendix:svar_enkat_dokument_erfarenheter}. Totalt var det 6 personer som svarade på enkäten.\\
 \textbf{Överlag hur tycker du att hanteringen av större dokument har gått i gruppen?}\\
 Fem av sex personer tycker att hanteringen av större dokument har gått bra, och en av dem tycker att det gått väldigt bra. En person tycker att det gått helt okej men kunde varit bättre.\\\\
 \textbf{Vilket verktyg tycker du har varit bäst att använda?}\\
@@ -171,16 +172,16 @@ Alla deltagare i enkäten tyckte att separata filer var bättre att använda än
 Nedan kommer min diskussion om resultaten jag fått. De är indelade efter frågeställningarna.
 
 \subsection{Vilka fördelar och nackdelar finns det med att använda \latex eller Word när man skriver dokument?}
-Att LaTeX användare var långsammare att skriva än Word användare tycker jag inte är jättemärkligt, eftersom att de som använder LaTeX skriver mer än de som skriver Word. Detta för att LaTeX användarna måste skriva kommandon för att åstadkomma en viss sak medan Word användare behöver bara använda sig av WYSIWYG-editor som finns inbyggd i Word där man klickar på knappar och drar tabeller i dokumentet. Word användare använder också ett anpassat program för att skriva dokument, likt en IDE för programmering. LaTeX har inte lika många anpassade editorer som Word, utan där kompilerar man dokumenten istället och skriver texten i någon annan editor som vanligtvis inte har stöd för LaTeX kommandon.
+Att \latex-användare var långsammare att skriva dokument än Word-användare tycker jag inte är jättemärkligt, eftersom att de som använder \latex skriver mer än de som skriver Word. Detta för att \latex-användarna måste skriva kommandon för att åstadkomma en viss sak medan Word-användare behöver bara använda sig av WYSIWYG-editor som finns inbyggd i Word där man klickar på knappar och drar tabeller i dokumentet. Word-användare använder också ett anpassat program för att skriva dokument, likt en IDE för programmering. \latex har inte lika många anpassade editorer som Word, utan där kompilerar man dokumenten istället och skriver texten i någon annan editor som vanligtvis inte har stöd för \latex kommandon.
 
-Från resultatet ser vi också att inlärningskurvan för Word inte är väldigt stor och kräver inte mycket av en för att förstå och använda programmet. Det håller jag med om eftersom man behöver inte lära sig kommandon, hur man kompilerar och hur man sätter upp sin \latex-miljö. I Word får man ett program som är en WYSIWYG-editor, där man för det mesta skriver texten man vill få fram.
+Från resultatet ser vi också att inlärningskurvan för Word inte är väldigt stor och kräver inte mycket av användaren för att förstå och använda programmet. Det håller jag med om eftersom man behöver inte lära sig kommandon, hur man kompilerar och hur man sätter upp sin \latex-miljö. I Word får man ett program som är en WYSIWYG-editor, där man för det mesta skriver texten man vill få fram.
 
-Det Henrik Henriksson tog upp i sin rapport om att ha en standardisering på \latex dokument skulle ha gjort att våra dokument såg likadant ut överallt. Det hade varit bättre, för till exempel när vi använde Overleaf var det några som använda mellanslag för indentering och andra som använde tabbar för det. För en del av medlemmarna i gruppen var det första gången de använda \latex och det hade kunnat vara lättare för dem om man hade en standardisering och instruktioner för hur \latex fungerar. Att använda en linter hade också hjälpt att hitta fel i dokumentet fortare än att behöva kompilera och få kompileringsfel. Overleaf hade ingen linter vilket hade gjort det svårt att införa det där men det finns som sagt alternativ till det.
+Det Henrik Henriksson tog upp i sin rapport om att ha en standardisering på \latex dokument skulle ha gjort att våra dokument såg likadant ut överallt. Det hade varit bättre, för till exempel när vi använde Overleaf var det några som använda mellanslag för indentering och andra som använde tabbar för det. För en del av medlemmarna i gruppen var det första gången de använda \latex och det hade kunnat vara lättare för dem om man hade en standardisering och instruktioner för hur \latex fungerar. Att använda en linter hade också hjälpt att hitta fel i dokumentet fortare än att behöva kompilera och få kompileringsfel. Overleaf hade ingen linter vilket hade gjort det svårt att införa det där, men det finns som sagt alternativ till det.
 
 \subsection{Vilka verktyg lämpar sig för att skriva större dokument?}
-Att alla grupper som använder sig av asynkrona verktyg använder Git förvånar mig inte, just eftersom det är ett bra verktyg för att versionshantera dokument och källkod bland annat. Jag förväntade mig dock att någon grupp använde SVN eller Mercurial. De som använt sig av Git har varit väldigt nöjda och gett ett medelvärde på 4.5 på en skala från 1 till 5 på hur nöjda de varit tycker jag låter rimligt, för att det är ett väldigt bra verktyg. Eftersom jag tog ett par snarlika alternativ som till exempel Git, SVN och Mercurial samt ShareLaTeX och Overleaf där funktionaliteten inte skiljer sig så mycket åt kanske det hade varit bättre att bara fråga mer generellt om asynkrona verktyg är bättre att använda än synkrona verktyg.
+Att alla grupper som använder sig av asynkrona verktyg använder Git förvånar mig inte, just eftersom det är ett bra verktyg för att versionshantera dokument och källkod bland annat. Jag förväntade mig dock att någon grupp använde SVN eller Mercurial. De som använt sig av Git har varit väldigt nöjda och gett ett medelvärde på 4,5 på en skala från 1 till 5 på hur nöjda de varit tycker jag låter rimligt, för att det är ett väldigt bra verktyg. Eftersom jag tog ett par snarlika alternativ som till exempel Git, SVN och Mercurial samt ShareLaTeX och Overleaf där funktionaliteten inte skiljer sig så mycket åt kanske det hade varit bättre att bara fråga mer generellt om asynkrona verktyg är bättre att använda än synkrona verktyg.
 
-För synkrona verktyg skiljer medelvärdet med 0.7 till 3.8 än för 4.5 för asynkrona. Det är också väldigt bra och jag tycker också det är bra att kunna ändra på dokument samtidigt i Overleaf och Google Docs. Majoriteten vill inte byta synkron verktyg eller byta till ett asynkront. Det tror jag kan bero på att de inte testat att använda sig av ett asynkront verktyg.
+För synkrona verktyg skiljer medelvärdet med 0,7 till 3,8 än för 4,5 för asynkrona. Det är också väldigt bra och jag tycker också det är bra att kunna ändra på dokument samtidigt i Overleaf och Google Docs. Majoriteten vill inte byta synkrona verktyg eller byta till ett asynkront. Det tror jag kan bero på att de inte testat att använda sig av ett asynkront verktyg tidigare för dokument.
 
 På den sista frågan i resultatet finns det flera alternativ som ligger i topp: Git, Google Docs, ShareLaTeX och Overleaf. Ett av dem är asynkront och resten är synkrona. Jag har själv använt alla förutom ShareLaTeX fast jag tror inte det skiljer sig mycket med Overleaf, och jag tycker att alla är väldigt bra att använda för att skapa stora dokument. Om det fanns ett verktyg som kunde kombinera versionshantering med att skriva samtidigt i samma dokument tror jag det skulle ha varit bättre att använda. Detta för att man får allt i båda världar: Versionshantering och historik samt att kunna skriva samtidigt. Hur det skulle fungera vet jag dock inte.
 
@@ -205,7 +206,7 @@ Den andra enkätundersökningen kunde ha haft en till fråga "Vad var det som va
 Nedan visas slutsatserna som kommit fram från resultatet för de tre frågeställningarna:
 
 \subsection{Vilka fördelar och nackdelar finns det med att använda \latex eller Word när man skriver dokument?}
-Det jag fått fram genom min litteraturstudie är att båda alternativen har fördelar och nackdelar samt att det inte skiljer sig mycket mellan dem. Word användare skriver dokument snabbare än vad \latex användare gör. Inlärningskurvan är inte särskilt stor för att lära sig och använda Word. För att skriva större matematiska texter är det ingen skillnad mellan alternativen eftersom båda gör det med hög kvalitet. Att ha en standardisering och utbildning i \latex kan hjälpa nybörjare.
+Det jag fått fram genom min litteraturstudie är att båda alternativen har fördelar och nackdelar samt att det inte skiljer sig mycket mellan dem. Word-användare skriver dokument snabbare än vad \latex-användare gör. Inlärningskurvan är inte särskilt stor för att lära sig och använda Word. För att skriva större matematiska texter är det ingen skillnad mellan alternativen eftersom båda gör det med hög kvalitet. Att ha en standardisering och utbildning i \latex kan hjälpa nybörjare.
 
 \subsection{Vilka verktyg lämpar sig för att skriva större dokument?}
 Det jag kommit fram till med hjälp av min enkätundersökning är att Git, Google Docs och ShareLaTeX kan vara bra verktyg att använda sig av när man skriver större dokument. Overleaf kan också vara ett bra verktyg att använda sig av. Mindre lämpliga verktyg att använda är SVN, Office 365 Word och Mercurial. De verktyg som dem använde i gruppen är de väldigt nöjda med.
