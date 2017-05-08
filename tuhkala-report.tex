@@ -4,60 +4,69 @@
 
 \section{Inledning}
 \label{sec:introduction-tuhkala}
-Att skapa bra och stiliga dokument är viktigt för att det ska se professionellt ut. I den här rapporten kommer en undersökning som är gjord av Hannes Tuhkala om vilka fördelar och nackdelar \latex och Word har för att skriva större dokument. Rapporten tar också upp vilka verktyg som lämpar sig för att skriva större dokument.
+Att skapa bra och stiliga dokument är viktigt för att det ska se professionellt ut. I den här rapporten kommer en undersökning som är gjord av Hannes Tuhkala om vilka fördelar och nackdelar som \latex och Word har för att skriva stora dokument. Rapporten tar också upp vilka verktyg som lämpar sig för att skriva stora dokument.
 
 \subsection{Syfte}
 \label{sec:purpose-tuhkala}
-Huvudsyftet med den här rapporten är att ta reda på vilka för- respektive nackdelar som finns med att använda \latex och Word för att framställa dokument. Det andra syftet är att undersöka om vilka asynkrona eller synkrona verktyg som lämpar sig för att skriva större dokument samt vilka erfarenheter projektgruppen kan ta med sig ifrån projektet.
+Syftet med den här rapporten är att ta reda på vilka för- respektive nackdelar som finns med att använda \latex och Word för att framställa dokument. Syftet är också att undersöka vilka asynkrona eller synkrona verktyg som är lämpliga att använda för att skriva stora dokument samt vilka erfarenheter projektgruppen kan ta med sig ifrån projektet gällande dokumenthantering.
 
 \subsection{Frågeställning}
 \label{sec:issue-tuhkala}
 De frågeställningar som rapporten behandlar är:
 
-\begin{itemize}
-	\item [1] Vilka fördelar och nackdelar finns det med att använda \latex eller Word när man skriver dokument?
-	\item [2] Vilka verktyg lämpar sig för att skriva större dokument?
-	\item [3] Vilka erfarenheter kan tas med ifrån det här projektet gällande framställning av större dokument?
-\end{itemize}
+\begin{enumerate}
+	\item Vilka fördelar och nackdelar finns det med att använda \latex eller Word när man skriver dokument?
+	\item Vilka verktyg lämpar sig för att skriva större dokument?
+	\item Vilka erfarenheter kan tas med ifrån det här projektet gällande framställning av större dokument?
+\end{enumerate}
 
 \subsection{Definitioner, akronym och förkortningar}
 Följande definitioner och förkortningar används på flertalet ställen i den här rapporten:
 
 \begin{itemize}
-	\item Ett större dokument - Definierar jag som något som flera personer arbetar på och är åtminstone flertalet sidor långt.
+	\item Ett större dokument - Definierar här som ett dokument som två eller flera personer arbetar på och är åtminstone sju sidor långt.
 	\item Synkront verktyg - Ett program eller en tjänst som flera personer kan skriva samtidigt på utan att man behöver vänta på att någon annan skrivit färdigt.
 	\item Asynkront verktyg - Ett program eller en tjänst som en person skriver text på och skickar det till andra personer efteråt.
 	\item SVN - Apache Subversion
 	\item Word - Microsoft Word
 	\item WYSIWYG editor - WYSIWYG editor står för (What You See Is What You Get) editor och är ett program eller system där innehåll kan ändras på ett sätt sådant att det liknar hur det slutgiltiga dokumentet kommer att se ut.
+	\item Separata filer - Se avsnitt \ref{sec:thesis-info-tuhkala}.
+	\item Gemensam fil - Se avsnitt \ref{sec:thesis-info-tuhkala}.
 \end{itemize}
 
 \subsection{Avgränsningar}
-Denna rapport kommer endast att ta upp de två vanligaste typsättningssystemen, \latex och Microsoft Word eftersom de är de mest användna och kända. Det finns liknande system som dessa, till exempel OpenOffice eller LibreOffice, och de kommer inte att behandlas alls i rapporten för att de inte är lika välanvändna och kända. Rapporten kommer också att ta upp olika asynkrona verktyg som Git, SVN och Mercurial samt synkrona verktyg som Google Docs, ShareLaTeX och Overleaf. Dessa valdes också för att de är vanligaste och mest användna.
+Denna rapport kommer endast att ta upp de två vanligaste typsättningssystemen, \latex och Microsoft Word eftersom de är de mest använda och kända. Det finns liknande system som dessa, till exempel OpenOffice eller LibreOffice och de kommer inte att behandlas i rapporten för att de inte är lika välanvända och kända. Rapporten kommer också att ta upp olika asynkrona verktyg som Git, SVN och Mercurial samt synkrona verktyg som Google Docs, ShareLaTeX och Overleaf. Dessa valdes också för att de är de vanligaste tjänsterna och mest använda.
 
 \section{Bakgrund}
 \label{sec:background-tuhkala}
-Vi har arbetat med olika verktyg för att framställa större dokument för projektet i gruppen. Vi har använt oss av LaTeX för alla våra större dokument och använt oss av både asynkrona och synkrona verktyg när vi skrev dokumenten. För alla större dokument utom kandidatrapporten användes ett synkront verktyg, Overleaf. För kandidatrapporten använde vi oss av ett asynkront verktyg, Git. Den här studien har genomförts för att se vilket av de olika asynkrona och synkrona verktygen kan vara bättre att använda sig utav för större dokument. Flera andra verktyg har också tagits upp för att se hur andra projektgrupper framställer sina dokument. 
+Vi har arbetat med olika verktyg för att framställa större dokument för projektet i gruppen. Vi har använt oss av LaTeX för alla våra större dokument och använt oss av både asynkrona och synkrona verktyg när vi skrev dessa. För alla större dokument utom kandidatrapporten användes ett synkront verktyg, Overleaf. För kandidatrapporten använde vi oss av ett asynkront verktyg, Git. Den här studien har genomförts för att se vilket av de olika asynkrona och synkrona verktygen som kan vara bättre att använda sig utav för större dokument. Flera andra verktyg har också tagits upp för att se hur andra projektgrupper framställer sina dokument. 
 
 \section{Teori}
 \label{sec:theory-tuhkala}
 Nedan visas information om det som kommer att tas upp i rapporten. Det ger lite teori om vad \latex, Git och SVN är för något.
 
 \subsection{\latex}
-\latex är ett typsättningssystem som är baserat på TeX och skapades för att göra det enklare att skapa generella böcker och artiklar inom TeX. Till skillnad från till exempel Microsoft Word, programmerar man dokumentet, istället för att skriva formatterad text. \latex bygger på att den som skriver inte ska formattera texten, utan ska bara skriva det den vill få sagd, utan att behöva bry sig om hur dokumentet ser ut. Det är därför väldigt enkelt att få stiliga dokument i \latex genom att bara specifiera dokumentets struktur istället för att krångla med hur dokumentet ska se ut.
+\latex är ett typsättningssystem som är baserat på TeX och skapades för att göra det enklare att skapa generella böcker och artiklar inom TeX. Till skillnad från till exempel Microsoft Word, programmerar man dokumentet, istället för att skriva formaterad text. \latex bygger på att den som skriver inte ska formatera texten, utan ska bara skriva det den vill få sagd, utan att behöva bry sig om hur dokumentet ser ut. Det är därför väldigt enkelt att få stiliga dokument i \latex genom att bara specifiera dokumentets struktur istället för att krångla med hur dokumentet ska se ut.
 
 \subsection{Git}
 Git är ett versionshanteringsprogram som skapades av Linus Torvalds för att hantera källkoden till Linuxkärnan. Git är ett så kallat distribuerat versionshanteringssystem, vilket innebär att alla som använder ett Git repository har allt som det innehåller och behöver inte använda en centraliserad server. Git har också komplett historik över alla ändringar som skett och man kan gå tillbaka till tidigare versioner av dokument och källkod.
 
 \subsection{Apache Subversion}
-Subversion (SVN) är också ett versionshanteringsprogram för mjukvara likt Git, förutom att SVN är ett centraliserat versionshanteringssystem. Man kan bland annat versionshantera källkod, webbsidor och dokumentation. 
+Subversion (SVN) är också ett versionshanteringsprogram för mjukvara likt Git, förutom att SVN är ett centraliserat versionshanteringssystem.
+
+\subsection{Mercurial}
+
+
+\subsection{Kandidatrapport}
+\label{sec:thesis-info-tuhkala}
+Kandidatrapporten är skriven i \latex och använder mallen för avhandlingar skapad av Ola Leifler \cite{thesis_template}. Mallen är upplagd så att det finns separata filer för varje del av rapporten istället för en enstaka stor fil. Det innebär att introduktion, bakgrund, metod, de individuella bidragen samt de andra delarna i rapporten är separata filer.
 
 \section{Metod}
 \label{sec:method-tuhkala}
 För att kunna besvara frågeställningarna har jag delat upp dem i tre sektioner för hur jag gick tillväga för att svara på dem.
 
 \subsection{Första frågeställningen}
-För min första frågeställning gjordes en litteraturstudie för att samla in information om frågan. Detta för att se hur tidigare arbeten ställer sig till för de två olika typsättningssystemen som jag tar upp i frågeställningen.
+För min första frågeställning gjordes en litteraturstudie för att samla information om vilka för- och nackdelar som finns med att använda \latex eller Word när man skriver dokument. Detta för att se hur tidigare arbeten ställer sig till sde två olika typsättningssystemen som jag tar upp i frågeställningen.
 
 \subsection{Andra frågeställningen}
 För min andra frågeställning gjordes en enkätundersökning som skickades ut till alla som läser kursen TDDD96, Kandidatprojekt i programvaruutveckling. I enkäten ställdes först dessa frågor:
@@ -65,7 +74,7 @@ För min andra frågeställning gjordes en enkätundersökning som skickades ut 
 	\item Vilken grupp är du i?
 	\item Vilket verktyg använder ni när ni skriver de flesta större/viktiga dokument?
 \end{itemize}
-Beroende på hur de svarade på föregående fråga "Vilket verktyg använder ni när ni skriver de flesta större/viktiga dokument?" får de olika frågor. Om dem valde alternativ 1 (Asynkrona verktyg som Git, SVN och liknande) fick de följande frågor:
+Beroende på hur de svarade på föregående fråga "Vilket verktyg använder ni när ni skriver de flesta större/viktiga dokument?" får de olika frågor. Om de valde alternativ 1 (Asynkrona verktyg som Git, SVN och liknande) fick de följande frågor:
 \begin{itemize}
 	\item Vad för slags versionshanterare använder ni er av?
 	\item Hur nöjd är du med hur ni versionshanterar era dokument?
@@ -73,7 +82,7 @@ Beroende på hur de svarade på föregående fråga "Vilket verktyg använder ni
 	\item Skulle du vilja byta hantering av dokument till synkrona verktyg som Google Docs, ShareLaTeX och liknande?
 	\item Om du svarade ja, vilket verktyg skulle du då vilja använda?
 \end{itemize}
-Om dem valde alternativ 2 (Synkrona verktyg som Google Docs, ShareLaTeX och liknande) fick de besvara dessa frågor istället:
+Om de valde alternativ 2 (Synkrona verktyg som Google Docs, ShareLaTeX och liknande) fick de besvara dessa frågor istället:
 \begin{itemize}
 	\item Vilken webbsida/tjänst använder ni er av för större/viktiga dokument?
 	\item Hur nöjd är du med att använda en tjänst som denna för hantering av dokument?
@@ -105,8 +114,6 @@ Knauff och Nejasmic \cite{knauff2014efficiency} visar med hjälp av ett mjukvaru
 Det visar sig att \latex användare var långsammare än Word användare, skrev mindre text på samma tid och gjorde fler grammatiska-, formatterings- och typsättningsfel. På de flesta tester var experter i \latex sämre än nybörjare i Word. \latex användare säger sig tycka om att använda det än andra typsättningssystem. Författarna kom till slutsatsen att erfarna \latex användare kan drabbas av produktivitetsförlusta än andra typsättningssystem.
 
 Loch et al. \cite{loch2014master} tar upp om Word är ett lämpligt verktyg för studenter att typsätta matematik istället för \latex. Den artikeln tar också upp hur Word jämför sig med andra matematiska typsättningspaket som studenter har använt. De kommer fram till att nuvarande versioner av Word är kapabla att skapa matematiska texter med hög kvalitet. De säger också att inlärningskurvan inte är väldigt hög och att Word inte ska avfärdas för matematiska texter.  
-
-%Wright \cite{wright2010technical} jämför en generell affärsorienterad ordbehandlare, Word med \latex.  
 
 Henrik Henrikssons bidrag i Haavisto et al. \cite{Haavisto954095} tittar på vilka problem som nybörjare i \latex stöter på och hur man kan förhindra sådana problem i framtida projekt. Han kommer fram till att det är mycket konsistensproblem i ett \latex dokument. Många skriver text olika och det finns ingen standard. Förslag på hur man kan lösa problemen är att använda en linter eller sätta upp en standard i början av projektet.
 
