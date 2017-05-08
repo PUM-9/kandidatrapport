@@ -30,8 +30,7 @@ Syftet med denna delen är att väga olika algoritmer mot varandra och undersök
 Här listas de definitioner och förkortningar som används i kapitlet.
 
 \begin{itemize}
-	\item Point Cloud Library\cite{pcl_home} - Ett C++ bibliotek för hantering av punktmoln.
-	\item PCL - Point Cloud Library.
+	\item Point Cloud Library (PCL) \cite{pcl_home} - Ett C++ bibliotek för hantering av punktmoln.
 	\item Iterative Closest Point - En algoritm för punktmolnsregistrering.
 	\item ICP - Iterative Closest Point.
 	\item JR-MPC - Joint Registration of Multiple Point Clouds
@@ -58,7 +57,7 @@ När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det in
 \subsection{Registrering}
 \label{sec:registrering-karlsson}
 
-Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett koordinatsystem med all information från indatan. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, \textit{Iterative Closest Point} eller GMMReg. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel så lider ICP av så kallad \textit{felutbredning} och JR-MPC, \textit{Joint Registration of Multiple Point Clouds}, lider av längre körtid\cite{Evangelidis-ECCV-2014}.
+Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett koordinatsystem med all information från indatan. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, \textit{Iterative Closest Point} eller GMMReg. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel så lider ICP av så kallad \textit{felutbredning} och JR-MPC, \textit{Joint Registration of Multiple Point Clouds}, lider av längre körtid \cite{Evangelidis-ECCV-2014}.
 
 \subsection{Kinect Fusion}
 
@@ -116,7 +115,7 @@ ICP har ett antal parametrar för att bestämma hur registreringen ska gå till.
 \textbf{Euclidean Fitness Epsilon} representerar det fel som accepteras. Är skillnaden i felet mellan två iterationer mindre än det här kommer algoritmen avsluta.
 
 \subsection{JR-MPC}
-JR-MPC använder så kallade GMM, \textit{Gaussian Mixture Model}, för att registrera objektet. Exakt hur matematiken bakom algoritmen ser ut och fungerar är utanför omfattningen av denna rapport men grundläggande principer följer. GMM är en sannolikhetsmodell som används för att lista sannolikheten att ett kluster av punkter i punktmolnet är en del av objektet som ska registreras, detta motsvarar RANSAC filtreringen som görs i ICP. Själva registreringen görs genom en förväntad villkorlig maximering, ECM, \textit{Expectation Conditional Maximization} som optimerar registreringen med begränsade variationer i registreringsparameterar. För fördjupning om ECM hänvisas till \cite{}.
+JR-MPC använder så kallade GMM, \textit{Gaussian Mixture Model}, för att registrera objektet. Exakt hur matematiken bakom algoritmen ser ut och fungerar är utanför omfattningen av denna rapport men grundläggande principer följer. GMM är en sannolikhetsmodell som används för att lista sannolikheten att ett kluster av punkter i punktmolnet är en del av objektet som ska registreras, detta motsvarar RANSAC filtreringen som görs i ICP. Själva registreringen görs genom en förväntad villkorlig maximering, ECM, \textit{Expectation Conditional Maximization} som optimerar registreringen med begränsade variationer i registreringsparameterar. För fördjupning om ECM hänvisas till \cite{roche2011algorithm}.
 
 \subsection{3DCopy metoden}
 Under utvecklingsarbetet och problemfaser med registreringen planerade gruppen om och försökte med en annan lösningsmetod till registreringsproblemet. Under detta arbete hade gruppen som fokus att lyckas med de objekt som, enligt kravspecifikation, definierades som "lätta". Dessa objekt bestod av en träkloss formad som en kub samt en "träbro", se fig \ref{fig:foto_church}. Då registreringsalgoritmerna som använts helt ignorerar den kända datan om hur mycket rotation som skett mellan varje skanning så blev det fokus för våran metod. Genom att göra flera skanningar över en rotation på 90 grader kan den plattaste skanningen hittas. Därifrån tas fyra skanningar av objektet, utan lutning, med 90 grader mellan varje skanning och resultatet av dessa blir varje kardinal sida av objektet. Vid vidareutveckling av algoritmen hade dessutom en sista skanning gjorts för att få med ovansidan av objektet. Dessa kan därefter registreras på ett virtuellt objekt där varje sida ges av en motsvarande skanning. Principiellt så tänker vi oss att varje skannad sida av ett objekt "klistras på", på ett virtuellt objekt skapat med liknande dimensioner. 
@@ -171,7 +170,7 @@ Den implementation av JRMPC som vi fick tag på funkade väldigt dåligt för de
 
 \subsection{Diskussion om Metod}
 
-Litteraturstudien som genomfördes som förstudie hade kunnat vara större. Avsaknaden av relevanta källor är något som märkts vid flera tillfällen under projektet. Man bör dock inte underskatta utvecklingsarbete i utbildningssyfte som var litteraturstudiens primära mål. Då de källor som hittades inte hade så mycket överlappande information kunde få jämförelser göras och Evangelidis et al.\cite{Evangelidis-ECCV-2014} fick stå för det mesta av faktan. Dock så är det ett publicerat forskningsdokument som funnits tillgängligt under längre tid och som presenterar en bra metod och ett väl dokumenterat tekniskt resultat.
+Litteraturstudien som genomfördes som förstudie hade kunnat vara större. Avsaknaden av relevanta källor är något som märkts vid flera tillfällen under projektet. Man bör dock inte underskatta utvecklingsarbete i utbildningssyfte som var litteraturstudiens primära mål. Då de källor som hittades inte hade så mycket överlappande information kunde få jämförelser göras och Evangelidis et al. \cite{Evangelidis-ECCV-2014} fick stå för det mesta av faktan. Dock så är det ett publicerat forskningsdokument som funnits tillgängligt under längre tid och som presenterar en bra metod och ett väl dokumenterat tekniskt resultat.
 
 Experiment 1 gav bra resultat och kan reproduceras med identiskt resultat vid varje körning. Det som saknas är en tidsjämförelse men eftersom att resultatet fortfarande inte är så bra som önskat vid registrering av 36 punktmoln har tillgängliga resurser lagts på att förbättra resultatet mer än att förkorta körtiden. Dock har ett filter implementerats som filtrerar bort redundant information som både ger bättre resultat, eftersom äldre punktmoln inte får mer och mer vikt under registreringens gång, samt reducerade körtiden signifikant. Den generella känslan i gruppen är att JR-MPC fortfarande är snabbare men eftersom att den inte lyckas producera något som är i närheten av korrekt så är körtiden inte jämförbar. 
 
