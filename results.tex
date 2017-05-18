@@ -87,7 +87,7 @@ Systemet registrerar punktmoln parvis genom att använda PCLs implementation av 
 \subsection{Meshning}
 Den ytrekonstruering som systemet använder, PCLs \textit{Poisson surface reconstruction}, är väldigt beroende av att det registrerade punktmolnet inte har några punkter som har hamnat fel. Om några punkter är fel eller om det är för glest mellan punkterna så kan inte algoritmen räkna ut ytnormalerna korrekt. Om ytnormalerna blir fel kommer inte meshen att stämma överens med det objekt som punktmolnet föreställer.
 
-I figur \ref{fig:einstein_mesh_without_imposition} visas en mesh, som föreställer Einstein, gjord med 3DCopy. Det syns tydligt att olika problem uppstår. För det första saknas det punkter ovanpå och undertill av objektet, det leder till ett hål vertikalt rakt igenom objektet. För det andra blir ytorna på den genererade meshen gryniga och liknar därför inte det skannade objektet till 100 \%. Det sista och största problemet med meshen är att det uppstår oönskad massa, vilket syns tydligt under Einsteins vänstra del av hakan.
+I figur \ref{fig:einstein_mesh_without_imposition} visas en mesh, som föreställer Einstein, gjord med 3DCopy. Det syns tydligt att olika problem uppstår. Dels blir ytorna på den genererade meshen gryniga och liknar därför inte det skannade objektet till 100 \%. Det sista och största problemet med meshen är att det uppstår oönskad massa, vilket syns tydligt på Einsteins undre del av hakan.
 
 \begin{figure}[H]
 	\centering
@@ -99,7 +99,7 @@ I figur \ref{fig:einstein_mesh_without_imposition} visas en mesh, som förestäl
 	\label{fig:einstein_mesh_without_imposition}
 \end{figure}
 
-I figur \ref{fig:einstein_mesh_with_imposition} visas resultat efter manuell hantering av den genererade meshen i figur \ref{fig:einstein_mesh_without_imposition}. Det hål som fanns rakt igenom objektet har täppts till och den oönskade massan har plockats bort. Det syns även att de gryniga ytorna har slätats till, vilket i sig leder till att man går miste om detaljer i objektet.
+I figur \ref{fig:einstein_mesh_with_imposition} visas resultat efter manuell hantering av den genererade meshen i figur \ref{fig:einstein_mesh_without_imposition}. Den oönskade massan som fanns under Einsteins haka har plockats bort. Det syns även att de gryniga ytorna har slätats till, vilket i sig leder till att man går miste om detaljer i objektet.
 
 \begin{figure}[H]
 	\centering
