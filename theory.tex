@@ -25,7 +25,7 @@ Det finns två stycken typer av punktmoln, ett så kallat komplett punktmoln och
 
 \section{Point Cloud Library}
 
-Point Cloud Library (PCL) är ett bibliotek till C++ som bidrar med algoritmer till att behandla 3D-objekt. PCL innehåller algoritmer för:
+Point Cloud Library (PCL) är ett bibliotek till C++ som bidrar med algoritmer till att behandla 3D-objekt. PCL innehåller bland annat algoritmer för:
 
 \begin{itemize}
 	\item filtrering
@@ -43,29 +43,25 @@ Nedan beskrivs de olika algoritmerna som PCL innehåller. De algoritmer som besk
 
 %%%%%% GAMMALT %%%%%%%%%
 
+%Point Cloud Library (PCL) är ett bibliotek till C++. PCL presenterar ett avancerat tillvägagångssätt angående ämnet 3D-uppfattning och är tänkt att ge stöd för vanliga 3D-byggstenar som olika applikationer behöver. Biblioteket innehåller algoritmer för bland annat:
+%
+%\begin{itemize}
+%	\item filtrering
+%	\item registrering
+%	\item ytrekonstruering
+%\end{itemize}
+%PCL är alltså ett bibliotek avsett att ge stöd till att behandla punktmolnsdata, i form av olika bearbetningsalgoritmer \cite{rusu20113d}.
+%
+%Varje algoritm i PCL är definierad via basklasser. Dessa basklasser försöker integrera all vanlig funktionalitet tillsammans med algoritmerna som sedan används igenom hela kedjan i den önskade processen. Detta gör att implementationen av den aktuella %algoritmen hålls modulär och tydlig. Den grundläggande kedjan för en önskad process i PCL är som följer:
 
-Point Cloud Library (PCL) är ett bibliotek till C++. PCL presenterar ett avancerat tillvägagångssätt angående ämnet 3D-uppfattning och är tänkt att ge stöd för vanliga 3D-byggstenar som olika applikationer behöver. Biblioteket innehåller algoritmer för:
+%\begin{itemize}
+%	\item skapa bearbetningsobjektet (filtrering, registrering, segmentering, etc.)
+%	\item skicka in det givna punktmolnets data till modulen
+%	\item ange parametrar
+%	\item gör beräkningen för att få resultatet.
+%\end{itemize}
 
-\begin{itemize}
-	\item filtrering
-	\item registrering
-	\item segmentering
-	\item modellanpassning
-	\item ytrekonstruering
-	\item funktionsestimering.
-\end{itemize}
-PCL är alltså ett bibliotek avsett att ge stöd till att behandla punktmolnsdata, i form av olika bearbetningsalgoritmer \cite{rusu20113d}.
-
-Varje algoritm i PCL är definierad via basklasser. Dessa basklasser försöker integrera all vanlig funktionalitet tillsammans med algoritmerna som sedan används igenom hela kedjan i den önskade processen. Detta gör att implementationen av den aktuella algoritmen hålls modulär och tydlig. Den grundläggande kedjan för en önskad process i PCL är som följer:
-
-\begin{itemize}
-	\item skapa bearbetningsobjektet (filtrering, registrering, segmentering, etc.)
-	\item skicka in det givna punktmolnets data till modulen
-	\item ange parametrar
-	\item gör beräkningen för att få resultatet.
-\end{itemize}
-
-PCL använder sig av sitt egna visualiseringsbibliotek, baserat på visualiseringsverktyget VTK \cite{VTK_book}, för att visualisera punktmoln. PCLs visualiseringsbibliotek integrerar PCL med VTK med syfte att snabbt kunna visualisera resultaten av de olika algoritmernas arbete. Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
+%PCL använder sig av sitt egna visualiseringsbibliotek, baserat på visualiseringsverktyget VTK \cite{VTK_book}, för att visualisera punktmoln. PCLs visualiseringsbibliotek integrerar PCL med VTK med syfte att snabbt kunna visualisera resultaten av de olika %algoritmernas arbete. Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
 
 %%%%% GAMMALT %%%%%%%%%
 
@@ -76,14 +72,11 @@ PCL har stöd för flera olika metoder för filtrering. Första steget i vår fi
 
 För att undvika att punktmoln blir för stora, det vill säga får för många punkter så att de tar för lång tid att behandla, kan nedsampling (från eng. \textit{"down sampling"}) användas för att ta bort punkter och samtidigt uppskatta den yta som representeras så nära som möjligt. För att göra detta i PCL delas punktmolnet som ska nedsamplas in i voxels, vilket kan ses som att punktmolnet delas in i ett antal kuber. Sedan ersätts alla punkter i varje kub med en punkt som ligger i centrum för alla punkterna i kuben. På detta sätt ges en nära uppskattning av den representerade ytan med mycket färre punkter än det ursprungliga punktmolnet \cite{voxel_grid}.
  
-\subsection{Segmentering}
-PCLs segmenteringsbibliotek innehåller algoritmer för att dela in ett punktmoln i olika kluster. Dessa kluster används för att bryta ner molnet i olika beståndsdelar som kan behandlas oberoende av andra delar. Detta görs ofta för att bearbeta olika eller en specifik del av ett punktmoln. Till exempel kan ett plan segmenteras utifrån en uppsättning av punkter om så önskas \cite{pcl_segmentation}. 
- 
-\subsection{Modellanpassning}
-Modellanpassning i PCL innebär att det finns färdiga metoder och modeller, till exempel plan och cylindrar, som kan kombineras och användas för att upptäcka specifika modeller i ett punktmoln. Detta sub-bibliotek används flitigt av segmenteringsbiblioteket för att upptäcka segment av vanliga geometriska figurer \cite{pcl_model_fitting}.
 
 \subsection{Registrering}
-Att anpassa olika punkter i ett punktmoln så att de representerar en komplett modell över objektet kallas för punktmolnsregistrering. Registrering är ett stort problem och PCL erbjuder ett registreringsbibliotek för ändamålet. Målet med registreringen är att hitta de relativa positionerna och orienteringarna för de separata punktmolnen (tagna från olika vyer) så att varje punkt i respektive moln överlappar perfekt med varandra \cite{pcl_registration}. För mer information angående registreringen och dess algoritmer, se Michaels Karlssons individuella utredning i kapitel \ref{cha:indiv-report-karlsson}.
+Att kombinera två punktmoln till ett punktmoln som innehåller samma information kallas för att "registrera punktmoln". Detta är en komplicerad process där både translationen och rotationen, runt alla axlar, kan behöva ändras. Målet med parvis registrering, registrering av två punktmoln, är att flytta ett moln så att alla punkter som överlappar i de två separata molnet överlappar i resultatmolnet. I PCL finns ett registreringsbibliotek som innehåller algoritmer för registrering\cite{pcl_registration}. För mer information angående registreringen och dess algoritmer, se Michaels Karlssons individuella utredning i kapitel \ref{cha:indiv-report-karlsson}.  
+
+%Att anpassa olika punkter i ett punktmoln så att de representerar en komplett modell över objektet kallas för punktmolnsregistrering. Registrering är ett stort problem och PCL erbjuder ett registreringsbibliotek för ändamålet. Målet med registreringen är att hitta de relativa positionerna och orienteringarna för de separata punktmolnen (tagna från olika vyer) så att varje punkt i respektive moln överlappar perfekt med varandra \cite{pcl_registration}. För mer information angående registreringen och dess algoritmer, se Michaels Karlssons individuella utredning i kapitel \ref{cha:indiv-report-karlsson}.
 
 För att registrera punktmoln finns ett antal olika algoritmer med olika för- och nackdelar. En vanlig algoritm är \textit{Iterative Closest Point} (ICP). Det är en så kallad parvis registreringsalgoritm som registrerar enbart ett punktmoln till ett annat. ICP går ut på att minimera summan av avståndet från varje punkt i det ena punktmolnet till varje punkt i det andra punktmolnet.
 
@@ -96,8 +89,6 @@ Att rekonstruera en ojämn yta till en jämn kan vara viktigt om molnet är brus
 
 Meshning av ett punktmoln görs efter att punktmolnen registrerats så de bildar ett komplett punktmoln. Att skapa en meshrepresentation av ett komplett punktmoln innebär att skapa en yta utan punkter. Meshrepresentationen av punktmolnet är alltså en vattentät 3D-modell uppbyggd av polygoner. Den algoritm som används för att mesha ett punktmoln i detta projekt är en trianguleringsalgoritm (Poisson surface reconstruction) som körs på ett punktmoln med normaler för att erhålla en yta baserad på grannarna till respektive punkt. För detta krävs alltså ett punktmolnsobjekt som innehåller normalerna till varje punkt i punktmolnet. I detta punktmoln med normaler kan sedan önskade parametrar sättas innan själva trianguleringsalgoritmen körs för att generera den önskade meshen \cite{pcl_surface_reconstruction}\cite{pcl_triangulation_algorithm}. 
 
-\subsection{Funktionsestimering}
-PCLs funktionsbibliotek innehåller datastrukturer och mekanismer för att estimera 3D-funktioner från punktmolnsdata. 3D-funktioner beskriver geometriska mönster vid en viss punkt baserat på informationen som finns tillgänglig kring punkten \cite{pcl_feature_estimation}.
 
 \section{3D-skrivare}
 En 3D-skrivare kan användas för att skriva ut 3D-objekt i plast utifrån modeller i en dator. För att kunna göra detta har skrivaren ett styrkort som exekverar så kallad G-code \cite{gcode}. Denna G-code beskriver vilka motorer som ska flyttas och hur mycket. En 3D-modell som är sparad i datorn, i form av en mesh, måste alltså behandlas genom att använda en algoritm för att generera G-code utifrån modellen. Detta görs ofta genom en typ av programvara som kallas för slicer. Namnet kommer av att programmet delar upp modellen i olika lager och sedan genererar hur skrivaren måste röra för att skriva ut ett lager. På detta sätt byggs sedan hela den ursprungliga modellen upp lager för lager. Två vanliga slicer-programvaror är \textit{Cura} \cite{cura} och \textit{Slic3r} \cite{slic3r}.
