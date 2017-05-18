@@ -24,6 +24,26 @@ Det finns två stycken typer av punktmoln, ett så kallat komplett punktmoln och
 \end{figure}
 
 \section{Point Cloud Library}
+
+Point Cloud Library (PCL) är ett bibliotek till C++ som bidrar med algoritmer till att behandla 3D-objekt. PCL innehåller algoritmer för:
+
+\begin{itemize}
+	\item filtrering
+	\item registrering
+	\item segmentering
+	\item modellanpassning
+	\item ytrekonstruering
+	\item funktionsestimering.
+\end{itemize}
+PCL är alltså ett bibliotek avsett att ge stöd till att behandla punktmolnsdata, i form av olika bearbetningsalgoritmer \cite{rusu20113d}.
+
+PCL använder sig av ett eget visualiseringsbibliotek för att visualisera punktmoln. Visualiseringsbiblioteket i PCL integrerar med visualiseringsverktyget VTK \cite{VTK_book} för att snabbt kunna visualisera resultaten av de olika algoritmernas arbete \cite{rusu20113d}.
+
+Nedan beskrivs de olika algoritmerna som PCL innehåller. De algoritmer som beskrivs är de algoritmer som är relevanta för detta projekt.
+
+%%%%%% GAMMALT %%%%%%%%%
+
+
 Point Cloud Library (PCL) är ett bibliotek till C++. PCL presenterar ett avancerat tillvägagångssätt angående ämnet 3D-uppfattning och är tänkt att ge stöd för vanliga 3D-byggstenar som olika applikationer behöver. Biblioteket innehåller algoritmer för:
 
 \begin{itemize}
@@ -46,6 +66,8 @@ Varje algoritm i PCL är definierad via basklasser. Dessa basklasser försöker 
 \end{itemize}
 
 PCL använder sig av sitt egna visualiseringsbibliotek, baserat på visualiseringsverktyget VTK \cite{VTK_book}, för att visualisera punktmoln. PCLs visualiseringsbibliotek integrerar PCL med VTK med syfte att snabbt kunna visualisera resultaten av de olika algoritmernas arbete. Nedan beskrivs de olika områderna som PCLs algoritmer behandlar \cite{rusu20113d}.
+
+%%%%% GAMMALT %%%%%%%%%
 
 \subsection{Filtrering}
 PCLs filtreringsbibliotek innehåller algoritmer för att filtrera bort skräppunkter från ett punktmoln. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Det gör att skräppunkter infaller i punkmolnet. För att kunna behandla punktmolnet måste dessa skräppunkter först filtreras bort.
