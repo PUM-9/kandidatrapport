@@ -87,17 +87,33 @@ Systemet registrerar punktmoln parvis genom att använda PCLs implementation av 
 \subsection{Meshning}
 Den ytrekonstruering som systemet använder, PCLs \textit{Poisson surface reconstruction}, är väldigt beroende av att det registrerade punktmolnet inte har några punkter som har hamnat fel. Om några punkter är fel eller om det är för glest mellan punkterna så kan inte algoritmen räkna ut ytnormalerna korrekt. Om ytnormalerna blir fel kommer inte meshen att stämma överens med det objekt som punktmolnet föreställer.
 
+I figur \ref{fig:einstein_mesh_without_imposition} visas en mesh, som föreställer Einstein, gjord med 3DCopy. Det syns tydligt att olika problem uppstår. Dels blir ytorna på den genererade meshen gryniga och liknar därför inte det skannade objektet till 100 \%. Det sista och största problemet med meshen är att det uppstår oönskad massa, vilket syns tydligt på Einsteins undre del av hakan.
+
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=80mm]{figures/3DCopyMeshChurch.PNG}
-	\caption{Mesh av icke komplett punktmoln som föreställer en kyrka.}
-	\label{fig:3dcopy_mesh_church}
+	\includegraphics[width=30mm]{figures/ein_mesh_without_imposition1.png}
+	\includegraphics[width=30mm]{figures/ein_mesh_without_imposition2.png}
+	\includegraphics[width=30mm]{figures/ein_mesh_without_imposition3.png}
+	\includegraphics[width=30mm]{figures/ein_mesh_without_imposition4.png}
+	\caption{Mesh utan handpåläggning, objektet föreställer Einstein.}
+	\label{fig:einstein_mesh_without_imposition}
 \end{figure}
-\label{cha:results_experiences}
 
-I figur \ref{fig:3dcopy_mesh_church} kan man se var de olika problemen uppstår. Ovanpå och undertill kyrkan kan man se att det saknas punkter där det blir släta, rundade ytor som inte följer kanterna. Det syns också tydligt på flera ställen där meshen blir grynig att punkterna inte har hamnat rätt.
+I figur \ref{fig:einstein_mesh_with_imposition} visas resultat efter manuell hantering av den genererade meshen i figur \ref{fig:einstein_mesh_without_imposition}. Den oönskade massan som fanns under Einsteins haka har plockats bort. Det syns även att de gryniga ytorna har slätats till, vilket i sig leder till att man går miste om detaljer i objektet.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=30mm]{figures/ein_mesh_with_imposition1.png}
+	\includegraphics[width=30mm]{figures/ein_mesh_with_imposition2.png}
+	\includegraphics[width=30mm]{figures/ein_mesh_with_imposition3.png}
+	\includegraphics[width=30mm]{figures/ein_mesh_with_imposition4.png}
+	\caption{Mesh med handpåläggning, objektet föreställer Einstein.}
+	\label{fig:einstein_mesh_with_imposition}
+\end{figure}
+
 
 \section{Gemensamma erfarenheter}
+\label{cha:results_experiences}
 %% Goda, mindre bra
 %% I projektets alla faser
 %% Tekniska, process-relaterade
