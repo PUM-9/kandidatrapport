@@ -59,7 +59,7 @@ För att registrera punktmoln finns ett antal olika algoritmer med olika för- o
 För att begränsa antalet punkter som måste beräknas används parametern \textit{Max correspondence distance} så att enbart de punkter inom avståndet räknas in i summan för varje punkt. \textit{Transformation epsilon} är ett mått på hur mycket transformationen för punktmolnet som ska matchas in får ändras för varje iteration. Genom att öka detta epsilon kan, vid behov, algoritmen flytta punktmolnet längre och därmed nå sitt mål på färre iterationer. Nackdelen med ett för högt epsilon är dock att punktmolnet kan flyttas förbi optimum som därmed slösar tid. Slutligen kan \textit{Max iterations} användas för att avgöra hur många gånger algoritmen ska köras för varje parvis registrering. Genom att öka antalet iterationer ökar tidsåtgången men resultatet förbättras också \cite{pcl_icp_docs}.
 
 \subsection{Ytrekonstruering}
- För att återskapa ytor från en 3D modell används PCLs ytrekonstrueringsbibliotek. Detta betyder t.ex. att ett punktmoln rekonstrueras till en vattentät modell. De algoritmer som biblioteket tillhandahåller används i projektet för att generera en mesh utifrån ett komplett punktmoln\cite{pcl_surface_reconstruction}.  
+ För att återskapa ytor från en 3D modell används PCLs ytrekonstrueringsbibliotek. I projektets sammanhang betyder det att ett punktmoln rekonstrueras till en vattentät modell. De algoritmer som biblioteket tillhandahåller används i projektet för att generera en mesh utifrån ett komplett punktmoln\cite{pcl_surface_reconstruction}.  
 
 %%PCLs ytrekonstrueringsbibliotek innehåller algoritmer för att rekonstruera de ursprungliga ytorna från 3D-skanningar. Beroende på uppgiften kan PCL till exempel rekonstruera en ojämn yta till en jämn, en meshrepresentation av ett komplett punktmoln eller en yta med normaler \cite{pcl_surface_reconstruction}.
 
@@ -74,11 +74,15 @@ En 3D-skrivare kan användas för att skriva ut 3D-objekt i plast utifrån model
 \section{Systemanatomi}
 En systemanatomi är en beskrivning av ett systems funktionalitet. Ofta består en systemanatomi av en graf, där noder representerar systemets olika funktioner och bågar representerar beroenden. Systemanatomin säger ingenting om hur systemet ska implementeras utan ger en utvecklingsgrupp en bra översikt av vad systemet ska göra. En systemanatomi kan inte ersätta andra modeller men är ett bra komplement.  
 
+
 %%En systemanatomi är en visuell beskrivning av ett system som används för att bättre förstå systemet och dess interna beroenden. En systemanatomi säger inget om hur systemet ska implementeras eller hur det är uppbyggt rent tekniskt utan det enda den säger är vilken funktionalitet systemet ska innehålla och vad systemet ska kunna utföra. Därför kan en systemanatomi inte ersätta andra modeller eller designverktyg utan det är enbart ett annat sätt att beskriva systemet och vad det ska göra \cite{system_anatomy}.
 
 
 \section{Hållbar utveckling}
-Hållbar utveckling är en relevant aspekt i dagens utveckling av programvaror eftersom de används kontinuerligt av samhället. En programvaras effekt på samhället beror, i detta fall, på hur programvaran har producerats och hur den används \cite{raturi2014developing}. Hållbarhet definieras som "förmåga att uthärda" och "bevara funktionen hos ett system under en utsträckt tidsperiod". Att analysera hållbarhet hos ett mjukvarusystem innebär för de som utvecklar systemet att ha dessa fyra områden i åtanke \cite{lago2015framing}:
+
+Hållbar utveckling är en relevant aspekt i dagens utveckling av programvaror eftersom de används kontinuerligt av samhället. En programvara som utvecklats kan både hjälpa samhället framåt men också påverka samhället negativt beroende på hur den producerats och hur den används \cite{raturi2014developing}.
+
+Hållbarhet definieras som "förmåga att uthärda" och "bevara funktionen hos ett system under en utsträckt tidsperiod". Att analysera hållbarhet hos ett mjukvarusystem innebär för de som utvecklar systemet att ha dessa fyra områden i åtanke \cite{lago2015framing}:
 
 \begin{itemize}
 	\item Ekonomiskt -  Systemet ska bevara kapital och värde.
