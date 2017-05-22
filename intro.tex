@@ -1,12 +1,13 @@
 \chapter{Inledning}
 \label{cha:introduction}
 
+Denna rapport redogör för hur ett system för 3D-kopiering har konstruerats. 
 %% Vad är det för spännande projekt ni gjort?
 %% Varför skall jag forsätta läsa rapporten?
 \section{Motivering}
 \label{sec:motivation}
 
-Denna rapport redogör för hur ett system för 3D-kopiering har konstruerats. 
+
 
 Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först på 2010-talet har 3D-skrivare blivit tillgängliga även för vanliga konsumenter. Även i industrin har det blivit allt vanligare att använda 3D-skrivare för att skapa prototyper. Det finns dock ett problem: för att kunna använda 3D-skrivaren måste man antingen kunna CAD-mjukvara eller förlita sig på andra människors 3D-modeller. Genom att använda ett system för 3D-kopiering kan ett verkligt objekt istället kopieras.
 
@@ -35,7 +36,7 @@ De generella samt specifika frågeställningar som denna rapport kommer behandla
 
 \begin{enumerate}
 	\item [4.] Hur påverkas projektet av en helt reviderad kravspecifikation efter hälften av projektets gång?
-	\item [5.] Hur har gruppens tillvägagångssätt ändrats på grund av faktumet att vi vidareutvecklade ett system? 
+	\item [5.] Hur har gruppens tillvägagångssätt ändrats på grund av faktumet att ett system skulle vidareutvecklas? 
 	
 \end{enumerate}
 
@@ -43,7 +44,7 @@ De generella samt specifika frågeställningar som denna rapport kommer behandla
 \label{sec:delimitations}
 Denna rapport hade innan projektets revidering avgränsningar att systemet inte skulle utveckla det tidigare systemet TreeD även om behov skulle finnas. Det visade sig att behov fanns och därför reviderades projektet istället.
 
-De nya avgränsningarna till projektet är att systemet enbart kommer behandla punktmoln tagna med den tillgängliga hårdvaran och inga andra punktmoln. Systemet ska enbart klara av att registrera dessa punktmoln och sedan generera en 3D-mesh för utskrift. Systemet ska inte behandla punktmolnen på något annat vis.
+De nya avgränsningarna till projektet var att systemet enbart kommer behandla punktmoln tagna med den tillgängliga hårdvaran. Systemet ska enbart klara av att registrera dessa punktmoln och sedan generera en 3D-mesh för utskrift. Systemet ska inte behandla punktmolnen på något annat vis.
 
 \section{Definitioner}
 \label{sec:definitions}
@@ -51,7 +52,7 @@ Här definieras vissa begrepp och förkortningar som används senare i rapporten
 
 \begin{itemize}
 	\item ICP - \textit{Iterative closest point}, en optimeringsalgoritm för att minimera avståndet mellan punkterna i två mängder av punkter. Vanligt använd för att registrera punktmoln.
-	\item Point Cloud Library (PCL) - Ett C++ bibliotek för hantering av punktmoln.
+	\item Point Cloud Library (PCL) - Ett C++-bibliotek för hantering av punktmoln.
 	\item Robot Operating System (ROS) - En samling av ramverk för att utveckla mjukvara för robotar
 	\item CLI - Förkortning för det engelska uttrycket \textit{command line interface}, kommandoradsgränssnitt på svenska.
 	\item GUI - Förkortning för det engelska uttrycket \textit{graphical user interface}, grafiskt användargränssnitt på svenska.
