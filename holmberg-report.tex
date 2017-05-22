@@ -233,9 +233,9 @@ I detta avsnitt diskuteras resultatet, den metod som användes samt källkritik.
 
 \subsection{Resultat}
 
-Som resultatet visar lyckades de båda testen identifiera samma fel trots att det med hänsyn till kontext var mycket mer omfattande. Och detta resultat kan bero på många olika saker. Dels hade systemet som testades enbart två systeminteraktioner och dessa två använder ingen delad kod. Därför är sannolikheten för att de påverkar något i koden som förstör för den andra interaktionen väldigt liten.
+Som resultatet visar lyckades de båda testen identifiera samma fel trots att det med hänsyn till kontext var mycket mer omfattande. Detta resultat kan bero på många olika saker. Dels hade systemet som testades enbart två systeminteraktioner och dessa två använder ingen delad kod. Därför är sannolikheten för att de påverkar något i koden som förstör för den andra interaktionen väldigt liten.
 
-Dessa interaktioner är också testade sedan tidigare i andra systemtest och därför kan alla fel i koden redan vara lösta. Så sannolikheten för att det skulle finnas något fel kvar minskar ytterligare. Så det resultat som erhölls är ganska sannolikt med tanke på omständigheterna. Hade systemet varit större med fler interaktioner som delvis använder samma kod hade testningen med hänsyn till kontext eventuellt hittat fler fel.
+Dessa interaktioner är också testade sedan tidigare i andra systemtest och därför kan alla fel i koden redan vara lösta. Sannolikheten för att det skulle finnas något fel kvar minskar därför ytterligare. Resultatet som erhölls är därför ganska sannolikt med tanke på omständigheterna. Hade systemet varit större med fler interaktioner som delvis använder samma kod hade testningen med hänsyn till kontext eventuellt hittat fler fel.
 
 \subsection{Metod}
 
@@ -249,7 +249,7 @@ Den kontextkänsliga testningen borde också jämförts med en annan GUI testnin
 
 \subsection{Källkritik}
 
-För litteraturstudien hittades bara en relevant artikel som berörde den bit som var mest kritisk för att utföra testerna, nämligen en som tog upp hur man testar GUI:n med hänsyn till kontext. Den artikeln är skriven av personer med lång erfarenhet inom just GUI testning vilket framgick när sökandet efter ytterligare artiklar genomfördes eftersom många artiklar som dök upp var skrivna av samma personer. En anledning  till att det var svårt att hitta ytterligare artiklar kan vara att Yuan et al. \cite{yuan2011gui} har valt att kalla det för kontext. Då de också definierar begreppet kontext i sin artikel indikerar det att de eventuellt är en av få eller den enda artikeln inom just detta ämne. Eller så har andra artiklar valt en annan benämning än just kontext.
+För litteraturstudien hittades bara en relevant artikel som berörde den bit som var mest kritisk för att utföra testerna, nämligen en som tog upp hur man testar GUI:n med hänsyn till kontext. Den artikeln är skriven av personer med lång erfarenhet inom just GUI testning vilket framgick när sökandet efter ytterligare artiklar genomfördes eftersom många artiklar som dök upp var skrivna av samma personer. En anledning  till att det var svårt att hitta ytterligare artiklar kan vara att Yuan et al. \cite{yuan2011gui} har valt att kalla det för kontext. Då de också definierar begreppet kontext i sin artikel indikerar det att de eventuellt är en av få eller den enda artikeln inom just detta ämne. Andra artiklar kan också använda sig av en annan benämning än just kontext.
 
 \section{Slutsatser}
 \label{sec:conclusions-holmberg}
