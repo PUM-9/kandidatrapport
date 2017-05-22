@@ -4,7 +4,7 @@
 \section{Punktmoln}
 På senare år har det blivit möjligt att representera objekt i form av ett 3D-representerat punkt\-moln. Detta har blivit möjligt på grund av utvecklandet av kameror samt laserskannrar. Ett punktmoln är en mängd av punkter i ett tredimensionellt koordinatsystem som representerar ett objekt. Punkterna i punktmolnet representerar ofta de yttre kanterna av objektet \cite{point_cloud}.
 
-Det finns två stycken typer av punktmoln, ett så kallat komplett punktmoln och ett icke komplett punktmoln. Ett komplett punktmoln, se figur \ref{fig:point_cloud_torus}, betyder att punktmolnet innehåller samtliga punkter som behövs för att representera objektet. Ett icke komplett punktmoln, se figur \ref{fig:point_cloud_church}, betyder att punktmolnet endast representerar en sida av objektet och alltså inte innehåller tillräckligt med punkter för att representera hela objektet.
+Det finns två typer av punktmoln, ett så kallat komplett punktmoln och ett icke komplett punktmoln. Ett komplett punktmoln, se figur \ref{fig:point_cloud_torus}, betyder att punktmolnet innehåller samtliga punkter som behövs för att representera objektet. Ett icke komplett punktmoln, se figur \ref{fig:point_cloud_church}, betyder att punktmolnet endast representerar en sida av objektet och alltså inte innehåller tillräckligt med punkter för att representera hela objektet.
 
 \begin{figure}[H]
 	\centering
@@ -12,7 +12,7 @@ Det finns två stycken typer av punktmoln, ett så kallat komplett punktmoln och
 	\includegraphics[width=30mm]{figures/Point_cloud_torus2.png}
 	\includegraphics[width=30mm]{figures/Point_cloud_torus3.png}
 	\includegraphics[width=30mm]{figures/Point_cloud_torus4.png}
-	\caption{Ett komplett punktmoln som representerar ett torus objekt.}
+	\caption{Ett komplett punktmoln som representerar ett torusobjekt.}
 	\label{fig:point_cloud_torus}
 \end{figure}
 
@@ -42,7 +42,7 @@ PCL använder sig av ett eget visualiseringsbibliotek för att visualisera punkt
 Nedan beskrivs de olika algoritmerna som PCL innehåller. De algoritmer som beskrivs är de algoritmer som är relevanta för detta projekt.
 
 \subsection{Filtrering}
-PCLs filtreringsbibliotek innehåller algoritmer för att filtrera bort skräppunkter från ett punktmoln. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Det gör att skräppunkter infaller i punkmolnet. För att kunna behandla punktmolnet måste dessa skräppunkter först filtreras bort.
+PCLs filtreringsbibliotek innehåller algoritmer för att filtrera bort skräppunkter från ett punktmoln. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Detta gör att skräppunkter infaller i punkmolnet. För att kunna behandla punktmolnet måste dessa skräppunkter först filtreras bort.
 
 PCL har stöd för flera olika metoder för filtrering. Första steget i vår filtrering är att ta bort alla punkter som ligger utanför ett visst intervall av koordinater. Syftet med detta är att ta bort sådant som måste ligga utanför det skannade objektet. I nästa steg kontrolleras det för varje punkt hur många grannar den punkten har inom en viss radie. Alla punkter som har under ett visst antal grannar tas bort vilket leder till att enstaka punkter som inte ligger i närheten av något objekt tas bort \cite{pcl_filtering}.
 
@@ -50,7 +50,7 @@ För att undvika att punktmoln blir för stora, det vill säga får för många 
  
 
 \subsection{Registrering}
-Att kombinera två punktmoln till ett punktmoln som innehåller samma information kallas för att "registrera punktmoln". Detta är en komplicerad process där både translationen och rotationen, runt alla axlar, kan behöva ändras. Målet med parvis registrering, registrering av två punktmoln, är att flytta ett moln så att alla punkter som överlappar i de två separata molnet, överlappar i resultatmolnet. I PCL finns ett registreringsbibliotek som innehåller algoritmer för registrering\cite{pcl_registration}. För mer information angående registreringen och dess algoritmer, se Michaels Karlssons individuella utredning i kapitel \ref{cha:indiv-report-karlsson}. 
+Att kombinera två punktmoln till ett punktmoln som innehåller samma information kallas för att "registrera punktmoln". Detta är en komplicerad process där både translationen och rotationen, runt alla axlar, kan behöva ändras. Målet med parvis registrering, registrering av två punktmoln, är att flytta ett moln så att alla punkter som överlappar i de två separata molnet, överlappar i resultatmolnet. I PCL finns ett registreringsbibliotek som innehåller algoritmer för registrering\cite{pcl_registration}. För mer information angående registreringen och dess algoritmer, se Michael Karlssons individuella utredning i kapitel \ref{cha:indiv-report-karlsson}. 
 
 %Att anpassa olika punkter i ett punktmoln så att de representerar en komplett modell över objektet kallas för punktmolnsregistrering. Registrering är ett stort problem och PCL erbjuder ett registreringsbibliotek för ändamålet. Målet med registreringen är att hitta de relativa positionerna och orienteringarna för de separata punktmolnen (tagna från olika vyer) så att varje punkt i respektive moln överlappar perfekt med varandra \cite{pcl_registration}. För mer information angående registreringen och dess algoritmer, se Michaels Karlssons individuella utredning i kapitel \ref{cha:indiv-report-karlsson}.
 
@@ -59,7 +59,7 @@ För att registrera punktmoln finns ett antal olika algoritmer med olika för- o
 För att begränsa antalet punkter som måste beräknas används parametern \textit{Max correspondence distance} så att enbart de punkter inom avståndet räknas in i summan för varje punkt. \textit{Transformation epsilon} är ett mått på hur mycket transformationen för punktmolnet som ska matchas in får ändras för varje iteration. Genom att öka detta epsilon kan, vid behov, algoritmen flytta punktmolnet längre och därmed nå sitt mål på färre iterationer. Nackdelen med ett för högt epsilon är dock att punktmolnet kan flyttas förbi optimum som därmed slösar tid. Slutligen kan \textit{Max iterations} användas för att avgöra hur många gånger algoritmen ska köras för varje parvis registrering. Genom att öka antalet iterationer ökar tidsåtgången men resultatet förbättras också \cite{pcl_icp_docs}.
 
 \subsection{Ytrekonstruering}
- För att återskapa ytor från en 3D modell används PCLs ytrekonstrueringsbibliotek. I projektets sammanhang betyder det att ett punktmoln rekonstrueras till en vattentät modell. De algoritmer som biblioteket tillhandahåller används i projektet för att generera en mesh utifrån ett komplett punktmoln\cite{pcl_surface_reconstruction}.  
+För att återskapa ytor från en 3D-modell används PCLs ytrekonstrueringsbibliotek. I projektets sammanhang betyder det att ett punktmoln rekonstrueras till en vattentät modell. De algoritmer som biblioteket tillhandahåller används i projektet för att generera en mesh utifrån ett komplett punktmoln \cite{pcl_surface_reconstruction}.  
 
 %%PCLs ytrekonstrueringsbibliotek innehåller algoritmer för att rekonstruera de ursprungliga ytorna från 3D-skanningar. Beroende på uppgiften kan PCL till exempel rekonstruera en ojämn yta till en jämn, en meshrepresentation av ett komplett punktmoln eller en yta med normaler \cite{pcl_surface_reconstruction}.
 
@@ -69,7 +69,7 @@ Meshning av ett punktmoln görs efter att punktmolnen registrerats så de bildar
 
 
 \section{3D-skrivare}
-En 3D-skrivare kan användas för att skriva ut 3D-objekt i plast utifrån modeller i en dator. För att kunna göra detta har skrivaren ett styrkort som exekverar så kallad G-code \cite{gcode}. Denna G-code beskriver vilka motorer som ska flyttas och hur mycket. En 3D-modell som är sparad i datorn, i form av en mesh, måste alltså behandlas genom att använda en algoritm för att generera G-code utifrån modellen. Detta görs ofta genom en typ av programvara som kallas för slicer. Namnet kommer av att programmet delar upp modellen i olika lager och sedan genererar hur skrivaren måste röra för att skriva ut ett lager. På detta sätt byggs sedan hela den ursprungliga modellen upp lager för lager. Två vanliga slicer-programvaror är \textit{Cura} \cite{cura} och \textit{Slic3r} \cite{slic3r}.
+En 3D-skrivare kan användas för att skriva ut 3D-objekt i plast utifrån modeller i en dator. För att kunna göra detta har skrivaren ett styrkort som exekverar så kallad G-code \cite{gcode}. Denna G-code beskriver vilka motorer som ska flyttas och hur mycket. En 3D-modell som är sparad i datorn, i form av en mesh, måste alltså behandlas genom att använda en algoritm för att generera G-code utifrån modellen. Detta görs ofta genom en typ av programvara som kallas för slicer. Namnet kommer av att programmet delar upp modellen i olika lager och sedan genererar hur skrivaren måste röra sig för att skriva ut ett lager. På detta sätt byggs sedan hela den ursprungliga modellen upp lager för lager. Två vanliga slicer-programvaror är \textit{Cura} \cite{cura} och \textit{Slic3r} \cite{slic3r}.
 
 \section{Systemanatomi}
 En systemanatomi är en beskrivning av ett systems funktionalitet. Ofta består en systemanatomi av en graf, där noder representerar systemets olika funktioner och bågar representerar beroenden. Systemanatomin säger ingenting om hur systemet ska implementeras utan ger en utvecklingsgrupp en bra översikt av vad systemet ska göra. En systemanatomi kan inte ersätta andra modeller men är ett bra komplement.  
