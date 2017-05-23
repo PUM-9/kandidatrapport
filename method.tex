@@ -4,17 +4,35 @@
 
 \section{Utvecklingsmetodik}
 
-I projektet har man försökt använda en iterativ process med vissa inslag av vattenfallsmodellen på grund av den korta tidsperiod som projektet genomfördes under. Utvecklingsledaren har varit ansvarig för att ta fram vad som skulle göras i varje iteration och planera iterationerna i samråd med övriga gruppmedlemmar. Teamledaren har varit ansvarig för att planera de administrativa delarna av projektet. För att planera en iteration så utgick man från kravspecifikationen och bröt ner den till aktiviteter. Målet med varje skapad aktivitet var att den skulle vara genomförbar på mindre än en vecka. Detta var tanken i teorin men i praktiken höll inte alltid planeringen. När aktiviteterna var skapade så gjorde utvecklingsledaren med inrådan från bland annat arkitekten en tidsuppskattning på varje aktivitet och hur många som borde jobba med aktiviteten. Efter planeringen gick gruppen igenom aktiviteterna. När alla visste vad som skulle göras under iterationen valde gruppmedlemmarna vilka aktiviteter de ville delta i. Vidare under iterationen planerades vad som skulle göras i varje aktivitet av de som hade valt den aktiviteten.
+I projektet har en iterativ process använts med vissa inslag av vattenfallsmodellen. Utvecklingsledaren ansvarade för att ta fram vad som skulle genomföras i varje iteration och planera iterationerna i samråd med övriga gruppmedlemmar. Teamledaren ansvarade för att planera de administrativa delarna av projektet. För att planera en iteration så utgick gruppen från kravspecifikationen och bröt ner den till aktiviteter. Målet med varje aktivitet var att den skulle vara genomförbar på mindre än en vecka. När aktiviteterna var skapade så gjorde utvecklingsledaren med inrådan från bland annat arkitekten en tidsuppskattning på varje aktivitet och hur många som borde jobba med aktiviteten. Efter planeringen gick gruppen igenom aktiviterna så att alla i gruppen blev informerade om vad som skulle genomföras under iterationen. När alla i gruppen var informerade om aktiviteterna så valde gruppmedlemmarna vilka aktiviteter som de ville delta i. Vidare under iterationen planerades vad som skulle göras i varje aktivitet av de gruppmedlemmar som hade valt den aktiviteten.
+
+% EV DISKUSSION
+I projektet har gruppen försökt att använda en iterativ process med vissa inslag av vattenfallsmodellen på grund av den korta tidsperiod, cirka fem månader, som projektet genomfördes under.
+Detta var tanken i teorin men i praktiken höll inte alltid planeringen.
+% SLUT EV DISKUSSION
 
 \subsection{Förstudie}
 
-Projektet startades med en förstudie där gruppen sammanställde diverse dokument. Syftet med dessa dokument var att både gruppmedlemmarna själva och externa parter skulle få en bättre insikt i vad projektet gick ut på och vad dess mål var. Dokumenten utformades och togs fram av den eller de personer i gruppen som var bäst lämpade för ett visst dokument, med det menas den person som passade bäst för ett visst dokument med avseende på dennes roll. Detta ledde även till att den personen fick mer erfarenheter och kunskaper om vad dennes roll innebar.
+Projektet inleddes med en förstudiefas där gruppen sammanställde diverse dokument. Syftet med dessa dokument var att både gruppmedlemmarna själva och externa parter skulle få en bättre insikt i vad projektet gick ut på och vad dess mål var. Dokumenten utformades och togs fram av den eller de personer i gruppen som var bäst lämpade för ett visst dokument, med det menas den person som passade bäst för ett visst dokument med avseende på dennes roll.
 
-Gruppen började sedan att studera de områden, verktyg och ramverk som man visste skulle behövas för projektet. Den information som gruppen hade från början var den som kunden tillhandahållit och utifrån denna information upptäcktes en del nya områden som behövde undersökas. Under förstudien delade utvecklingsledaren ut olika områden att undersöka. Efter ett område undersökts skrevs ett kort dokument som beskrev slutsatserna och relevanta länkar från undersökningen. De största områdena som undersöktes var ROS och PCL. Framförallt undersöktes ROS eftersom det hade en stor påverkan på hur arkitekturen och implementation skulle genomföras. Att undersöka ROS noggrant var dessutom välbehövligt eftersom ingen i gruppen hade arbetat med det tidigare. Eftersom det hade så stor påverkan så avslutades den undersökningen med en lista av guider som alla gruppmedlemmar genomförde. När alla genomfört de guiderna genomfördes en kodutmaning där alla gruppmedlemmar skrev en chattklient med hjälp av ROS. Detta avslutade förstudiefasen med att alla fick skriva lite kod.
+% EV DISKUSSION
+Detta ledde även till att den personen fick mer erfarenheter och kunskaper om vad dennes roll innebar.
+% SLUT EV DISKUSSION
+
+Gruppen började sedan att studera de områden, verktyg och ramverk som skulle behövas för projektet, framförallt ROS. Den information som gruppen hade från början var den som kunden tillhandahållit och utifrån denna information upptäcktes en del nya områden som behövde undersökas, framförallt PCL. Under förstudien delade utvecklingsledaren ut olika områden att undersöka. Efter ett område undersökts skrevs ett kort dokument som beskrev slutsatserna och innehöll relevanta länkar från undersökningen. De största områdena som undersöktes var ROS och PCL. Framförallt undersöktes ROS eftersom det hade en stor påverkan på hur arkitekturen och implementation skulle genomföras. Att undersöka ROS noggrant var dessutom viktigt då tidigare erfarenhet inom ROS saknades hos samtliga gruppmedlemmar. 
+Undersökningarna inom ROS avslutades först med att alla i gruppen genomförde de guider som rekommmenderades på ROS hemsida. Efter att guiderna var genomförda så skrev alla gruppmedlemmar varsin chattklient med hjälp av ROS.
+
+% SKRIVIT OM
+Eftersom det hade så stor påverkan så avslutades den undersökningen med en lista av guider som alla gruppmedlemmar genomförde. När alla genomfört de guiderna genomfördes en kodutmaning där alla gruppmedlemmar skrev en chattklient med hjälp av ROS. Detta avslutade förstudiefasen med att alla i gruppen fick skriva lite kod.
+% SLUT SKRIVIT OM
 
 \subsection{Iteration 1}
 
-En två veckor lång iteration där målet var att få klart basfunktionaliteten för produkten. Första veckan hade fokus på att skriva kod, skapa ett gränssnitt till den existerande mjukvaran samt att registrera och mesha punktmoln. Andra veckan var det mer fokus på dokumentation, samt att färdigställa så mycket som möjligt av det som påbörjades under första veckan. Gruppen hade satt ett väldigt högt mål för iteration ett och blev därför inte klar med allt som var tänkt. Gruppmedlemmarna var nöjda med resultatet ändå, just på grund av det högt satta målet.
+Iteration 1 omfattar de två första veckorna efter förstudiefasen. Huvudmålet för iteration 1 var att få klart basfunktionaliteten för produkten. Under första veckan så låg fokus på att skriva kod, skapa ett gränssnitt till den existerande mjukvaran, samt att registrera och mesha punktmoln. Under andra veckan så flyttades fokus till att färdigställa den dokumentation som skulle lämnas in efter iteration 1, samt att färdigställa så mycket som möjligt av det som påbörjades under första veckan.
+
+% RESULTAT
+Gruppen hade satt ett väldigt högt mål för iteration ett och blev därför inte klar med allt som var tänkt. Gruppmedlemmarna var nöjda med resultatet ändå, just på grund av det högt satta målet.
+% SLUT RESULTAT
 
 \subsection{Iteration 2}
 

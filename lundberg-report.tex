@@ -105,7 +105,7 @@ Under framtagandet av arkitekturen dokumenterades arbetet kontinuerligt i form a
 
 \section{Resultat}
 \label{sec:results-lundberg}
-Sent i projektet stötte gruppen som tidigare nämnts på problem som inte gick att lösa inom en rimlig tidsram. Därför behövde projektets mål omdefinieras och på grund av det togs även en ny arkitektur fram, denna gång utan ROS. I detta avsnitt visas båda de arkitekturer som togs fram för projektet.
+Sent i projektet stötte gruppen som tidigare nämnts på problem som inte gick att lösa inom en rimlig tidsram. Därför behövde projektets mål omdefinieras och på grund av det togs även en ny arkitektur fram, denna gång utan ROS. I detta kapitel visas båda de arkitekturer som togs fram för projektet.
 
 \subsection{Arkitekturen i ROS}
 Den ROS-baserade arkitektur som togs fram för projektet visas i figur \ref{fig:arkitektur}. Varje block i figuren motsvarar en nod i ROS och kommunikationsvägarna mellan noderna illustreras med pilar. All kommunikation mellan noderna utförs i form av service-anrop i ROS.
@@ -137,7 +137,7 @@ Resultatet av arbetet var två olika arkitekturer och implementationer av i grun
 
 Under arbetet med att ta fram och implementera dessa arkitekturer framkom en del för- och nackdelar med båda alternativen. Dessa diskuteras i detta avsnitt.
 
-Det ROS-baserade systemet implementerades med service-anrop som beskrevs i avsnitt \ref{sec:results-lundberg}. Detta sätt att kommunicera gör det tydligt hur en nod kommunicerar med andra noder och hur systemet hänger ihop. Det undviker även att programflödet blir rörigt eftersom varje modul har en avgränsad uppgift och inte går utanför sina avgränsningar genom att till exempel kalla på funktioner i andra moduler eller skicka data via andra kommunikationsvägar. Sådan kod blir väldigt svår att förstå och underhålla.
+Det ROS-baserade systemet implementerades med service-anrop som beskrevs i kapitel \ref{sec:results-lundberg}. Detta sätt att kommunicera gör det tydligt hur en nod kommunicerar med andra noder och hur systemet hänger ihop. Det undviker även att programflödet blir rörigt eftersom varje modul har en avgränsad uppgift och inte går utanför sina avgränsningar genom att till exempel kalla på funktioner i andra moduler eller skicka data via andra kommunikationsvägar. Sådan kod blir väldigt svår att förstå och underhålla.
 
 Dock märktes det senare under utvecklingsarbetet att den service-baserade strukturen gjorde systemet stelt och det resulterade i mycket mer arbete för att till exempel kunna kommunicera delresultat från en nod som tar väldigt lång tid att slutföra sitt arbete. För att kunna se delresultat från en nod som körs genom ett service-anrop skulle noden behöva publicera delresultaten på en kanal som en annan nod kan lyssna på. Detta gör dock att systemets modell bryts vilket gör att många av de fördelar som finns med att använda service-anrop går förlorade.
 
