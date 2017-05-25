@@ -5,9 +5,9 @@
 \section{Inledning}
 \label{sec:introduction-holmberg}
 
-När man interagerar med mjukvara gör man det oftast genom ett grafiskt användargräns\-snitt. Då byggs en sekvens av interaktioner upp som bara blir längre och längre. Eftersom varje interaktion påverkar mjukvaran kan det uppstå fel som beror på hur denna sekvens är uppbyggd. Dessa fel behöver inte uppstå förrän sekvensen består av flera hundra olika interaktioner.
+När människor interagerar med mjukvara gör de det oftast genom ett grafiskt användargräns\-snitt. Då byggs en sekvens av interaktioner upp som bara blir längre och längre. Eftersom varje interaktion påverkar mjukvaran kan det uppstå fel som beror på hur denna sekvens är uppbyggd. Dessa fel behöver inte uppstå förrän sekvensen består av flera hundra olika interaktioner.
 
-Kontexten är det som medför problem vid GUI-testning. Det är nästintill omöjligt att testa alla olika kombinationer av interaktioner som användarna kommer att utsätta mjukvaran för. Därför är det viktigt att vid test av GUI:t ta fram testfall som testar så många olika sekvenser som möjligt utan att testningen tar för lång tid. Den här utredningen undersöker hur man kan ta fram de sekvenser som är mest kritiska att testa samt hur det tillämpades på projektet.
+Kontexten är det som medför problem vid GUI-testning. Det är nästintill omöjligt att testa alla olika kombinationer av interaktioner som användarna kommer att utsätta mjukvaran för. Därför är det viktigt att vid test av GUI:t ta fram testfall som testar så många olika sekvenser som möjligt utan att testningen tar för lång tid. Den här utredningen undersöker hur sekvenser som är mest kritiska att testa kan tas fram samt hur det tillämpades på projektet.
 
 \subsection{Syfte}
 \label{sec:purpose-holmberg}
@@ -38,7 +38,7 @@ Följande definitioner och förkortningar används på flera ställen i denna de
 \section{Bakgrund}
 \label{sec:background-holmberg}
 
-Ett av kraven för 3DCopy projektet var att det skulle finnas ett grafiskt användargränssnitt för mjukvaran som utvecklades. Då projektet ska utföras inom ett visst antal timmar måste man begränsa tiden som en uppgift får ta. Eftersom GUI testning kan ta i princip obegränsad tid så är det viktigt att hitta en gräns för när GUI testningen kan anses vara klar. Det är också viktigt att mjukvaran som kunden ska få är vältestad, därför är kontexter vid testning något som kan undersökas för att testa tillräckligt mycket på kort tid.
+Ett av kraven för 3DCopy projektet var att det skulle finnas ett grafiskt användargränssnitt för mjukvaran som utvecklades. Då projektet skulle utföras inom ett visst antal timmar måste tiden som en uppgift, exempelvis GUI testning, får ta begränsas. Eftersom GUI testning kan ta i princip obegränsad tid så är det viktigt att hitta en gräns för när GUI testningen kan anses vara klar. Det är också viktigt att mjukvaran som kunden ska få är vältestad, därför är kontexter vid testning något som kan undersökas för att testa tillräckligt mycket på kort tid.
 
 Som testledare är man ansvarig för alla tester som ska utföras på systemet och det känns därför relevant att undersöka detta område då det är en viktig del av projektet.
 
@@ -55,7 +55,7 @@ Kontexten för en interaktion är sekvensen av tidigare interaktioner med GUI:t.
 
 Enligt Yuan et al. \cite{yuan2011gui} är kontexten i vilken en interaktion med GUI:t utförs extremt viktigt och medför problem gällande testning av ett GUI. Kontexten kommer då att påverka framtida interaktioner och deras resultat. Ordningen av dessa interaktioner är essentiell för kontexten till en interaktion. För testning av ett GUI innebär detta att varje interaktion måste testas i flera kontexter. Till exempel kanske en viss interaktion genererar ett fel men enbart i en speciell kontext.
 
-Så för att kunna identifiera fel är det framförallt tre saker som är viktigt. För det första är kontexten till en interaktion eller sekvens viktig, den kan vara avgörande för att hitta vissa fel. För det andra är positionen av interaktionerna i sekvensen viktig, det kan vara så att enbart en viss ordning av interaktioner triggar ett fel. För det tredje är ordningen som interaktionerna och sekvenserna testas i viktig då den påverkar vilka fel som hittas vid testning av GUI \cite{yuan2011gui}.
+För att kunna identifiera fel är det framförallt tre saker som är viktigt. För det första är kontexten till en interaktion eller sekvens viktig, den kan vara avgörande för att hitta vissa fel. För det andra är positionen av interaktionerna i sekvensen viktig, det kan vara så att enbart en viss ordning av interaktioner triggar ett fel. För det tredje är ordningen som interaktionerna och sekvenserna testas i viktig då den påverkar vilka fel som hittas vid testning av GUI \cite{yuan2011gui}.
 
 \subsection{Framtagning av testfall}
 \label{sec:testcase-holmberg}
@@ -65,16 +65,17 @@ Den metod som föreslås av X. Yuan et al. \cite{yuan2011gui} innehåller följa
 \begin{itemize}
 	\item [1] Generera EFG
 	\item [2] Generera EIG
-	\item [3] Välja styrka på testen
+	\item [3] Välja styrka på testen (Förklaras mer ingående i avsnitt \ref{sec:testcase-generation-holmberg})
 \end{itemize}
 
 \subsubsection{Modellering av GUI}
 
 Det första steget är att representera GUI:t som en event-flow-graph (EFG). En EFG representerar alla möjliga sekvenser av interaktioner som är möjliga att göra med GUI:t. Ett exempel på en EFG återfinns senare i rapporten i figur \ref{fig:3dcopy_guiefg}. Subvägarna i EFG:n representerar olika sekvenser av interaktioner. Men antalet subvägar i EFG:n ökar exponentiellt med längden på sekvensen. På grund av den exponentiella ökningen är det i princip omöjligt att kunna testa alla olika subvägar för sekvenser som består av fler än två interaktioner. För att minimera antalet noder i EFG:n gör man istället en event-interaktion-graph (EIG) \cite{yuan2011gui}. 
 
-Andra steget är alltså att generera en EIG utifrån sin EFG. En EIG är en EFG utan noder (interaktioner) som inte påverkar mjukvaran bakom GUI:t, d.v.s. öppnandet av exempelvis menyer och fönster. Ett exempel på en EIG återfinns senare i rapporten i figur \ref{fig:3dcopy_guieig}. Metoden för att gå från en EFG till en EIG beskrivs av Xie och Memon \cite{xie2008using}. Metoden går ut på att man tar bort alla interaktioner som inte påverkar systemet med hjälp av regler för grafomskrivning \cite{yuan2011gui}. 
+Andra steget är alltså att generera en EIG utifrån sin EFG. En EIG är en EFG utan noder (interaktioner) som inte påverkar mjukvaran bakom GUI:t, d.v.s. öppnandet av exempelvis menyer och fönster. Ett exempel på en EIG återfinns senare i rapporten i figur \ref{fig:3dcopy_guieig}. Metoden för att gå från en EFG till en EIG beskrivs av Xie och Memon \cite{xie2008using}. Metoden går ut på att man tar bort alla interaktioner som inte påverkar systemet med hjälp av regler för grafomskrivning \cite{yuan2011gui}.
 
 \subsection{Generering av testfall}
+\label{sec:testcase-generation-holmberg}
 
 Första steget när man ska generera testfallen är att välja styrka. Styrkan kan vara två eller högre och säger hur många interaktioner som man är intresserad av. Till exempel skulle en styrka av två innebära att man väljer alla par av interaktioner från EIG:n som har en båge mellan sig. Eftersom att det är riktade bågar måste interaktionen som bågen utgår från vara först i paret. Dessa tupler som bildas efter man har valt styrkan utnyttjas sedan för att kunna ta fram kriterier för tillräcklighet hos testfallen \cite{yuan2011gui}. 
 
@@ -86,6 +87,10 @@ Enligt Yuan et al. \cite{yuan2011gui} om både "t-cover" och "t\textsuperscript{
 
 \section{Metod}
 \label{sec:method-holmberg}
+
+Här beskrivs den metod som har använts vid litteraturstudien och de tester som har utförts på GUI:t.
+
+\subsection{Litteraturstudie}
 
 Först genomfördes en litteraturstudie för att samla information. Sedan testas 3DCopys GUI först med och sedan utan hänsyn till kontext för att se vilka fel som hittas av vilken testning. Dessa tekniker utvärderas sedan baserat på testresultatet.
 
@@ -211,6 +216,8 @@ GUI:t testas sedan genom att utföra dessa testfall i den ordning som visas i ta
 \label{sec:results-holmberg}
 
 Här presenteras de resultat som erhölls från både litteraturstudien och de tester som genomfördes på GUI:t.
+
+\subsection{Litteraturstudie}
 
 Litteraturstudien visar ett tydligt samband mellan kontexten och vilka fel som testerna lyckas hitta. Kontexten är alltså avgörande för hur interaktionen kommer att påverka mjukvaran \cite{yuan2011gui}. 
 
