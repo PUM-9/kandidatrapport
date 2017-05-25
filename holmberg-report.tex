@@ -88,11 +88,11 @@ Enligt Yuan et al. \cite{yuan2011gui} om både "t-cover" och "t\textsuperscript{
 \section{Metod}
 \label{sec:method-holmberg}
 
-Här beskrivs den metod som har använts vid litteraturstudien och de tester som har utförts på GUI:t.
+Här beskrivs den metod som har använts vid litteraturstudien och de tester som har utförts på GUI:t. Först genomfördes en litteraturstudie för att samla information. Sedan testades 3DCopys GUI först med och sedan utan hänsyn till kontext för att se vilka fel som hittades av vilken testning. Dessa tekniker utvärderades sedan baserat på testresultatet.
 
 \subsection{Litteraturstudie}
 
-Först genomfördes en litteraturstudie för att samla information. Sedan testas 3DCopys GUI först med och sedan utan hänsyn till kontext för att se vilka fel som hittas av vilken testning. Dessa tekniker utvärderas sedan baserat på testresultatet.
+Som första steg utfördes en litteraturstudie för att hitta information om kontexters påverkan vid GUI testning. De sökningar som utfördes under litteraturstudien har genomförts med antingen Google Scholar eller den söktjänst som tillhandahålls av Linköpings Universitets bibliotek. De sökord som användes i litteraturstudien är "GUI testing context" och "context GUI testing". Typ av källa (bok, artikel m.m) har inte medvetet begränsats i litteraturstudien. Endast de två första sidorna med resultat har tagits hänsyn till i litteraturstudien. 
 
 \subsection{Testning av 3DCopys GUI med hänsyn till kontext}
 
@@ -246,7 +246,7 @@ Dessa interaktioner är också testade sedan tidigare i andra systemtest och dä
 
 \subsection{Metod}
 
-En stor brist i litteraturstudien är avsaknaden av ytterligare källor. "Kontext", i kombination med testningsrelaterade termer, var de sökord som användes under sökandet av ytterligare källor. Det hade eventuellt varit fördelaktigt att utforska andra termer som beskriver kontext då inga ytterligare relevanta källor hittades. Att söka efter andra termer var dock något som inte genomfördes på grund av tidsbrist.
+En stor brist i litteraturstudien är avsaknaden av ytterligare källor. "Context", i kombination med GUI och testningsrelaterade termer, var de sökord som användes under sökandet av ytterligare källor. Det hade eventuellt varit fördelaktigt att utforska andra termer som beskriver kontext då inga ytterligare relevanta källor hittades. Att söka efter andra termer var dock något som inte genomfördes på grund av tidsbrist.
 
 Den främsta bristen i metoden är att felet i meshningen inte hade hittats och blivit löst innan dessa tester. Eftersom att den enda filen som kunde meshas tog väldigt lång tid var det inte realistiskt att genomföra alla tester med den och därför är inte alla testfall med hänsyn till kontext genomförda med den filen. Det medför i sin tur att de testerna aldrig exekverade koden som utför meshningen och det kan därför finnas kontextkänsliga fel i den biten av koden som inte hittades.
 
