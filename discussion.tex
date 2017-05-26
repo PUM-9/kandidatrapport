@@ -17,6 +17,10 @@ Att förbereda sig inför projekt med ordentliga förundersökningar och tränin
 
 När vi i framtiden stöter på ett projekt som bygger vidare på existerande mjukvara eller hårdvara så kommer ingen av oss glömma att testa och dokumentera testerna på det existerande systemet innan någon påbyggnad eller vidareutveckling kommer ske.
 
+Vikten av att kunna uppskatta tiden olika aktiviteter tar är också något som gruppen tar med sig från projektet. Framförallt så höll inte planeringen av undersökningarna inom PCL. Det var till stor del på grund av att PCL krävde mycket teoretiska förkunskaper för att kunna förstå hur de funktioner som PCL tillhandahöll ska användas. Det stora kravet på förkunskaper var inte uppenbart vid planeringen av undersökningarna och resterande aktiviteter fick hela tiden planeras om med hänsyn till dessa undersökningar. Därför kommer gruppmedlemmarna i framtida projekt att ta hänsyn till om de nödvändiga förkunskaper finns för att kunna genomföra projektet på det sätt som är planerat.
+
+De rollspecifika dokument som skrevs i förstudien av projektet var bra då varje gruppmedlems erfarenhet inom deras specifika roll var varierande. Vissa gruppmedlemmar hade bra erfarenhet av rollen och visste hur de skulle gå tillväga. Andra gruppmedlemmar hade roller där de saknade eller hade väldigt lite erfarenhet inom de rollspecifika uppgifter som skulle genomföras. De rollspecifika dokumenten som skulle skrivas tvingade gruppmedlemmarna att sätta sig in i sin roll och snabbt få en uppfattning om vad som förväntades av dem. Det som gruppen kan ta med sig av denna erfarenhet är att tidigt i projekt tilldela uppgifter som tillhör den roll som projektmedlemmarna har för att de snabbt ska komma in i deras roll och få bättre insikt i vad som förväntas av dem inom projektet.
+
 Erfarenheterna inom \textit{Slack} kommer bli användbara i det framtida arbetslivet och kommande projekt då det är ett vanligt förekommande verktyg. Även \textit{Trello} är ett vanligt förekommande verktyg även om det finns en del annan mjukvara med liknande funktionalitet. Grundprincipen med att dela upp arbetet i aktiviteter och uppdatera statusen på dem är definitivt något vi kommer ta med oss. Vi lärde oss också att försöka göra aktiviteterna så små som möjligt och involvera hela gruppen i processen att skapa aktiviteter. Det resulterade i en bättre användning av \textit{Trello} samtidigt som det blev lättare att komma igång med arbetet.
 
 Under projektets gång har vi använt oss av kodgranskning, även om några i grupppen var lite skeptiska till att någon måste läsa deras kod och godkänna den innan den togs in i den slutgiltiga kodbasen. Men genom att läsa varandras kod har vi lärt oss nya saker och förbättrat koden vi skriver. I programmering blir man aldrig fullärd och vetskapen om att läsa andras kod kan vara väldigt lärorikt är definitivt något vi tar med oss. Det kommer vara till stor hjälp i vår utveckling som utvecklare.
@@ -42,28 +46,13 @@ För att registrera punktmoln finns det många algoritmer och sätt att implemen
 
 \section{Metod}
 \label{sec:discussion-method}
-Som tydligt kan ses i denna rapport har inte projektet gått så som det var planerat. Vi har under projektets gång (speciellt under projektets andra halva) varit kritiska över hur vi gått tillväga. I avsnitt \ref{cha:results_experiences} har vi listat de erfarenheter som vi kunnat dokumentera under projektets gång. Bland dessa finns erfarenheter om vad vi borde ha gjort annorlunda. Vi borde ha testat det befintliga systemet mer rigoröst tidigt istället för att blint lita på att det fungerade felfritt.
+Som tydligt kan ses i denna rapport har inte projektet gått så som det var planerat. Vi har under projektets gång (speciellt under projektets andra halva) varit kritiska över hur vi gått tillväga. I avsnitt \ref{cha:results_experiences} har vi listat de erfarenheter som vi kunnat dokumentera under projektets gång. Bland dessa finns erfarenheter om vad vi borde ha gjort annorlunda. Vi borde ha testat det befintliga systemet mer rigoröst tidigt istället för att lita på att det fungerade felfritt.
 
 När det gäller metoden som vi använt i projektet så anser vi att själva kärnan, eller idén bakom metoden har varit bra men att några av detaljerna av implementationen av denna metod har varit mindre bra. Som grupp håller alla med om att vi borde fokuserat mycket mindre på ROS i början av projektet.I efterhand så tycker vi att tanken var väldigt bra, att alla gjorde handledningsexempel och en kodutmaning tillsammans stärkte gruppens sammanhållning och skapade en bra anda i gruppen. Vi borde ha fokuserat på t.ex. PCL eller registrering av punktmoln istället för ROS eftersom systemet, både innan och efter omförhandlingen, inte var så beroende av ROS som vi trodde att det skulle vara.
 
-Efter förstudiefasen och iteration 1 så började fler och fler problem uppstå med projektet. De flesta av dessa problem hade sin grund i det befintliga systemet. Detta gjorde att vi mindre och mindre höll fast vid den metod vi använt tidigare och gruppens sammanhållning blev sämre.      
-% Diskutera och kritisera den tillämpande metoden.
-% En studie är sällan perfekt. Det finns nästan alltid saker man kunde ha gjort annorlunda om studien upprepas eller med andra resurser.
-% Gå igenom de viktigaste begränsningarna med din metod och diskutera potentiella konsekvenser för resultaten, anslut tillbaka till metoden samt teorin som presenteras vid behov.
+Efter förstudiefasen och iteration 1 så började fler och fler problem uppstå med projektet. De flesta av dessa problem hade sin grund i det befintliga systemet. Detta gjorde att vi mindre och mindre höll fast vid den metod vi använt tidigare och gruppens sammanhållning blev sämre.
 
-% Diskussionen ska också visa en medvetenhet om metodologiska begrepp som replikabilitet (replicability), tillförtlitlighet och gitlighet.
-	% Tillförlitlighet är en term för huruvida man kan förvänta sig få samma resultat om en studie upprepas med samma metod.
-	% Konceptet av replikabilitet har redan diskuterats i kapitlet metod (?).
-	% Begreppet giltlighet handlar om att en mätning faktiskt mäter det man tänkt att den ska mäta (en studie med hög giltlighet har således hög trovärdighet).
-
-% Metoddiskussionen ska också innehålla en paragraf av källkritik. Det är här författarnas syn på användningen och urvalet av källor beskrivs.
-
-
-% Ibland kand et vara så att den mest relevanta information för studien inte finns i vetenskapliga artiklar utan och utvecklaren själv eller öppna källprojekt. 
-% Det måste då klart anges att ansträngningar har gjorts för att få tillgång till denna information, till exempel genom direkt kommunikation med utvecklare och / eller genom diskussionsforum etc.
-% Åtgärder måste också göras för att indikera bristen på relevant forskningslitteratur. Det exakta sättet av sådana undersökningar måste klart anges i metod kapitlet.
-% Avsnittet om källkritik måste kritiskt diskutera dessa tillvägagångssätt.
-% Vanligtvis finns det relevant relaterad forskning, om inte till forskningsfrågorna så brukar det finnas till området i sig.
+Något som förändrades genom projektets gång är längden på aktiviteterna, det vill säga deras omfattning mätt i tid. De stora undersöknings- och efterforskningsaktiviteterna som gruppen skapade i början var svåra att överblicka och få en uppfattning om hur långt arbetet hade kommit. Det förändrades då gruppen valde att skapa mindre aktiviteter när problemet med de större upptäcktes. Hade gruppen från början gjort mindre och mer lättöverskådliga aktiviteter så hade eventuellt undersökningarna i början gått bättre och inte påverkat tidsplanen så negativt som de gjorde.
 
 \section{Arbetet i vidare sammanhang}
 \label{sec:work-wider-context}

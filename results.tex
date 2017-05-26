@@ -74,12 +74,39 @@ För att lättare kunna styra systemet utvecklades också ett GUI. GUI:t har nä
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=130mm]{figures/3DCopyGUI.PNG}
-	\caption{GUI:t för 3DCopy.}
-	\label{fig:3dcopy_gui_res}
+	\includegraphics[width=130mm]{figures/3DCopyGUIWeb.PNG}
+	\caption{Huvudvyn i 3DCopy.}
+	\label{fig:3DCopyGUIWeb}
 \end{figure}
 
-De funktioner som finns i GUI:t är \textit{Register} som öppnar en dialog där man får välja en mapp som innehåller de punktmoln som man vill registrera. Det finns också en \textit{Mesh}-funktion där en dialog öppnas och man får välja det punktmoln som man vill mesha. Slutligen finns det en funktion för att återställa parametervärdena för registreringen, \textit{Reset Values}. De värden som återställs är \textit{Max correspondence distance} och \textit{Max iterations} till 15 respektive 100.
+De funktioner som finns i GUI:t är \textit{Add Registration Job} och \textit{Add Mesh Job}. \textit{Add Registration Job} öppnar ett formulär där parametrar på registreringen ska sättas och de filer som ska registreras ska väljas.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=130mm]{figures/3DCopyGUIRegJobForm.PNG}
+	\caption{Formuläret för att skapa ett registreringsjobb.}
+	\label{fig:3DCopyGUIRegJobForm}
+\end{figure}
+
+\textit{Add Mesh Job} öppnar ett formulär där parametrar på meshningen ska sättas och den fil som ska meshas ska väljas.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=130mm]{figures/3DCopyGUIMeshJobForm.PNG}
+	\caption{Formuläret för att skapa ett meshningsjobb.}
+	\label{fig:3DCopyGUIMeshJobForm}
+\end{figure}
+
+Det finns även tre funktioner för varje jobb som finns i jobblistan. De funktionerna är \textit{View Job}, \textit{Start Job} och \textit{Delete Job}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=130mm]{figures/3DCopyJobInList.PNG}
+	\caption{Ett jobb i jobblistan.}
+	\label{fig:3DCopyJobInList}
+\end{figure}
+
+\textit{View Job} visar information om det specifika jobbet, bland annat de filer som är associerade och de parametrar som valdes för jobbet. \textit{Start Job} startar jobbet på servern, jobben körs inte automatiskt efter de har skapats utan de måste manuellt startas. Slutligen kan \textit{Delete Job} väljas. \textit{Delete Job} tar bort jobbet, det vill säga all information om jobbet i databasen och alla filer på servern som associeras med jobbet.
 
 \subsection{Registrering}
 Systemet registrerar punktmoln parvis genom att använda PCLs implementation av ICP. De punktmoln som läses in i antingen CLI:t eller GUI:t behandlas av registreringsklassen och utför registreringen. För att registreringen ska fungera för olika fall kan användaren själv sätta värden på parametrarna \textit{Max correspondence distance}, \textit{Transformation epsilon} och \textit{Max iterations}.
