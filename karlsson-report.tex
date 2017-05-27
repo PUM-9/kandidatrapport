@@ -7,7 +7,7 @@
 \label{sec:introduction-karlsson}
 
 %% Skriv här
-I den här delen behandlas undersökningen av olika registreringsalgoritmer utförd av Michael Karlsson i samband med TDDD96 \textit{Kandidatprojekt i programvaruutveckling} samt de problem som projektgruppen stött på gällande registrering av punktmoln.
+I denna rapport behandlas undersökningen av olika registreringsalgoritmer utförd av Michael Karlsson i samband med TDDD96 \textit{Kandidatprojekt i programvaruutveckling} samt de problem som projektgruppen stött på gällande registrering av punktmoln.
 
 \subsection{Syfte}
 \label{sec:purpose-karlsson}
@@ -33,7 +33,6 @@ Här listas de definitioner och förkortningar som används i kapitlet.
 	\item Point Cloud Library (PCL) \cite{pcl_home} - Ett C++ bibliotek för hantering av punktmoln.
 	\item Iterative Closest Point (ICP) - En algoritm för punktmolnsregistrering.
 	\item JR-MPC \cite{Evangelidis-ECCV-2014} - Joint Registration of Multiple Point Clouds
-	\item SeqICP - SequentialICP
 \end{itemize}
 
 
@@ -50,18 +49,18 @@ I ett tidigt stadie av projektet upptäckte gruppen att en stor del skulle handl
 \section{Teori}
 \label{sec:theory-karlsson}
 
-När man vill återskapa fysiska objekt digitalt fastnar man oftast i att det inte finns några bra verktyg för att läsa in 3D-objekt. Man behöver då ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion. Den metod projektgruppen använt sig av har dock bestått av en avståndskamera på en linjärenhet med objektet monterat på ett rotationsbord med två rotationsaxlar. Med hjälp av detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt. Det primära målet har varit att enhetligt registrera de punktmoln som kommit av skanningar med denna uppställning till en komplett representation av objektet.
+För att återskapa fysiska objekt digitalt saknas lämpliga verktyg, såsom tex en 3D-kamera. Istället behöver man ta flera bilder av objektet från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion, se avsnitt \ref{sec:kinect-karlsson}. Den metod projektgruppen använt sig av har dock bestått av en avståndskamera på en linjärenhet med objektet monterat på ett rotationsbord med två rotationsaxlar. Med hjälp av detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt. Det primära målet har varit att enhetligt registrera de punktmoln som kommit av skanningar med denna uppställning till en komplett representation av objektet.
 
 
 \subsection{Registrering}
 \label{sec:registrering-karlsson}
 
-Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett koordinatsystem med all information från indatan. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, \textit{Iterative Closest Point} eller GMMReg. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel så lider ICP av så kallad \textit{felutbredning} och JR-MPC, \textit{Joint Registration of Multiple Point Clouds}, lider av längre körtid \cite{Evangelidis-ECCV-2014}.
+Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett, i ett gemensamt koordinatsystem med all information från punktmolnen. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, eller GMMReg. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel så lider ICP av så kallad \textit{felutbredning}, där ett litet fel i ett stadie orsakar större fel i senare stadier och JR-MPC, lider av längre körtid \cite{Evangelidis-ECCV-2014}.
 
 \subsection{Kinect Fusion}
-
+\label{sec:kinect-karlsson}
 Kinect Fusion använder sig av Microsofts egna avstånds- och RGB-kamera, Kinect, för att mappa upp ett 3D-objekt i den verkliga världen. Avståndskameran mäter upp punktmolnet för scenen framför den samtidigt som en synkroniserad RGB-kamera ger färgdata till varje punkt. 
-Varje punktmoln som Kinect-kameran skickar består av ca. 307 000 punkter. Det kan jämföras med hårdvaran som vi använt oss av där maximala antalet punkter i en skanning är ca. 786 000 punkter. De punktmoln som vi arbetat med har dock generellt innehållit ca 30-60\,000 punkter efter filtrering av skräpdata.
+Varje punktmoln som Kinect-kameran skickar består av ca. 307 000 punkter. Det kan jämföras med hårdvaran som använts av gruppen där maximala antalet punkter i en skanning är ca. 786 000 punkter. De punktmoln som använts har dock generellt innehållit ca 30-60\,000 punkter efter filtrering av skräpdata.
 
 \section{Metod}
 \label{sec:method-karlsson}
@@ -71,9 +70,9 @@ Här presenteras metoden som använts för att besvara frågeställningarna i ka
 \subsection{Förstudie}
 Initialt gjordes en litteraturstudie för att hitta information om hur man går till väga för att registrera punktmoln.  PCL ger många handledningsexempel med exempelkod som blev utgångspunkten för utbildningen om registrering i gruppen. PCL ger också en bra sammanfattning men utöver det saknas relevanta källor. Då utredningen är begränsad till framförallt ICP och JR-MPC begränsas antalet källor ytterligare. Det finns enormt många varianter av ICP, såsom SeqICP, Point-to-Plane ICP Point-to-Point ICP m.fl. Den variant som utvärderas här är den som implementeras av PCL, Point-to-Point. 
 
-JR-MPC är resultatet av en forskningsstudie som tagit fram algoritmen och därmed finns enbart den källa som används här för den algoritmen. Det finns snarlika algoritmer med enbart sina forskningsdokument som källa men dessa kommer alltså inte behandlas här.
+JR-MPC är resultatet av en forskningsstudie som tagit fram algoritmen och därmed finns enbart den källa som används här för den algoritmen. 
 
-\subsection{Utvecklingsfas}
+\subsection{Experiment}
 Ett experiment utfördes för att jämföra ICP och JR-MPC. Testet gick ut på att registrera en uppsättning av 36 punktmoln. Vart och ett av dessa punktmoln var en skanning av kyrkan, se figur \ref{fig:karlsson-single_scan-church}, där kyrkan skannats och roterats 10 grader efter varje skanning. 
 
 \begin{figure}[H]
@@ -98,10 +97,10 @@ En annan anledning till att gruppen valde ICP var just att det är en parvis reg
 \subsection{ICP}
 ICP är en optimeringsalgoritm som försöker minimera det totala avståndet från varje punkt i ursprungsmolnet till varje punkt i målmolnet. Det ger algoritmen en tidskomplexitet $ \mathit{O(n*m)} $ där $ \mathit{n} $ är antalet punkter i ursprungsmolnet och $ \mathit{m} $ är antalet punkter i målmolnet. Som tidigare nämnts har ICP ett ursprungsmoln som aldrig ändras samt ett målmoln som algoritmen försöker passa in så att det stämmer överens med ursprungsmolnet. 
 
-ICP har ett antal parametrar för att bestämma hur registreringen ska gå till. De parametrar som undersökts inom gruppen listas nedan och förklaras mer ingående nedan.
+ICP har ett antal parametrar för att bestämma hur registreringen ska gå till. De parametrar som undersökts inom gruppen beskrivs nedan.
 \begin{itemize}
 	\item \textbf{Max Iterations} anger hur många registrerings\-iterationer som algoritmen får utföra innan den tvingas avsluta.
-	\item \textbf{Transformation Epsilon} avgör hur stor förflyttning algoritmen får göra på målmolnet inom en iteration
+	\item \textbf{Transformation Epsilon} avgör hur stor förflyttning algoritmen får göra på målmolnet inom en iteration.
 	\item \textbf{Max Correspondence Distance} anger hur stort avståndet från en punkt i ursprungsmolnet till motsvarande punkt i målmolnet får vara. Är avståndet större än detta kommer algoritmen ignorera punkten i målmolnet vid registreringsförsöket.
 	\item \textbf{RANSAC Outlier Rejection Threshold} anger hur stort avstånd som en punkt tillåts existera från den antagna matematiska modellen för att användas i registreringen. RANSAC, \textit{Random Sample Consensus} är en metod för att avgöra om en punkt följer det matematiska mönster som algoritmen letar efter.
 	\item \textbf{Euclidean Fitness Epsilon} representerar det fel som accepteras. Är skillnaden i felet mellan två iterationer mindre än det här kommer algoritmen avsluta.
