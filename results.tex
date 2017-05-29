@@ -8,7 +8,7 @@
 
 Nedan följer en beskrivning av det ROS-baserade system som byggde vidare på TreeD och som utvecklades innan kraven i projektet omförhandlades med kunden.
 
-Systemet bestod hårdvarumässigt av ett rotationsbord, en avståndskamera och en linjärenhet för att flytta avståndskameran längs en axel. För att styra detta fanns det sedan tidigare mjukvara som kan utföra en enskild skanning. Projektet skulle ha resulterat i en mjukvara för att utföra fler skanningar från olika vinklar och sammanfoga dessa till ett komplett objekt som kunde skrivas ut på en 3D-skrivare.
+Systemet bestod hårdvarumässigt av ett rotationsbord, en avståndskamera och en linjärenhet för att flytta avståndskameran längs en axel. För att styra detta fanns det sedan tidigare mjukvara, TreeD, som kan utföra en enskild skanning. Projektet skulle ha resulterat i en mjukvara för att utföra fler skanningar från olika vinklar och sammanfoga dessa till ett komplett objekt som kunde skrivas ut på en 3D-skrivare.
 
 Tidigt i arbetet togs en systemanatomi fram, se figur \ref{fig:system_anatomy}, som beskriver vilken funktionalitet systemet skulle ha. Denna hjälpte även till med att dela in närliggande funktionalitet i moduler och låg som underlag för arkitekturbeskrivningen.
 
@@ -47,11 +47,11 @@ Det ROS-baserade systemet var uppdelat i en serverdel och en klient. Tanken var 
 	\label{fig:systembeskrivning_gamla}
 \end{figure}
 
-Som kan ses i figurerna \ref{fig:noddiagram} och \ref{fig:systembeskrivning_gamla} så var klienten den centrala delen i programmet. Den hanterade användarens indata och använde sig av de olika noderna för att utföra det användaren vill. Konceptet var att systemet skulle använda en \textit{pipe and filter}-arkitektur där klienten skickade runt data i pipen men att användaren, genom klienten, hade möjlighet att granska resultatet och göra viss handpåläggning mellan de olika stegen. Detta genom att klienten alltid kunde spara resultatet från ett steg till fil och använda andra program för handpåläggningen innan den skickades vidare i systemet.
+Som kan ses i figurerna \ref{fig:noddiagram} och \ref{fig:systembeskrivning_gamla} var klienten den centrala delen i programmet. Den hanterade användarens indata och använde sig av de olika noderna för att utföra det användaren vill. Konceptet var att systemet skulle använda en \textit{pipe and filter}-arkitektur där klienten skickade runt data i pipen men att användaren, genom klienten, hade möjlighet att granska resultatet och göra viss handpåläggning mellan de olika stegen. Detta genom att klienten alltid kunde spara resultatet från ett steg till en fil och använda andra program för handpåläggningen innan den skickades vidare i systemet.
 
 \section{Systembeskrivning - 3DCopy}
 
-Som kan läsas tidigare i denna rapport så omförhandlades projektets krav och mål med kunden under projektets gång. Detta ledde till att gruppen gjorde om systemets arkitektur. ROS-arkitekturen som presenterats i avsnitt 5.1 ersattes. Istället skapades ett objektorienterat program, skrivet i C++. Detta program utför både registrering, filtrering och meshning. När sedan den meshen genererats kan programmet skriva ut objektet med hjälp av en 3D-skrivare. Till detta program finns också ett CLI och ett GUI.
+Som kan läsas tidigare i denna rapport omförhandlades projektets krav och mål med kunden under projektets gång. Detta ledde till att gruppen gjorde om systemets arkitektur. ROS-arkitekturen som presenterats i avsnitt \ref{cha:results-systembeskrivning-treed} ersattes. Istället skapades ett objektorienterat program, skrivet i C++. Detta program utför både registrering, filtrering och meshning. När sedan meshen genererats kan programmet skriva ut objektet med hjälp av en 3D-skrivare. Till detta program finns också ett CLI och ett GUI.
 
 \subsection{Arkitektur}
 Programmet består av två större klasser, \textit{Registration} och \textit{Mesh}. Dessa två klasser används sedan av antingen \textit{Cli}  eller \textit{Gui} klasserna, vilket visas i figur \ref{fig:class_diagram}.  Det har lagts stor vikt vid moduläriteten i programmet då \textit{Registration} och \textit{Mesh} ska fungera självständigt i olika program.
@@ -67,7 +67,7 @@ Programmet består av två större klasser, \textit{Registration} och \textit{Me
 
 Systemet kan kontrolleras av ett CLI som kan ta in olika parametrar för att anpassa registreringen. Det finns även alternativ för att bara registrera eller bara mesha objekt. Under en körning av programmet med hjälp av kommandoradsgränssnittet väljs vilka filer eller mappar med filer programmet ska läsa in och använda. Hur de används beror på alternativen. Ett exempel på ett anrop är:\\\\
 \texttt{3DCopy -v --max-corr-dist 15 path/to/register/ output}\\\\
-Det anropet kommer registrera och sedan mesha punktmolnsfilerna i mappen \textit{path/to/register/} och döpa det kompletta punktmolnet respektive färdiga meshen till \textit{output.pcd} och \textit{output.stl}. Under registreringen och meshningen kommer programmet att skriva ut information om processen på grund av \texttt{-v} flaggan som står för \textit{verbose mode}. Om man undrar vilka alternativ som finns kan man använda \texttt{-h} flaggan så skriver programmet ut de alternativ som finns samt hur man använder programmet med hjälp av kommandoradsgränssnittet. 
+Det anropet kommer registrera och sedan mesha punktmolnsfilerna i mappen \textit{path/to/register/} och döpa det kompletta punktmolnet respektive färdiga meshen till \textit{output.pcd} och \textit{output.stl}. Under registreringen och meshningen kommer programmet att skriva ut information om processen på grund av \texttt{-v} flaggan som står för \textit{verbose mode}. Om man undrar vilka alternativ som finns kan man använda \texttt{-h} flaggan. Då skriver programmet ut de alternativ som finns samt hur man använder programmet med hjälp av kommandoradsgränssnittet. 
 
 \subsection{Grafiskt användargränssnitt (GUI)}
 För att lättare kunna styra systemet utvecklades också ett GUI. GUI:t har nästintill samma funktionalitet som CLI:t och målet med att ha samma funktionalitet är att det inte ska spela någon roll om man använder CLI eller GUI.
@@ -79,7 +79,7 @@ För att lättare kunna styra systemet utvecklades också ett GUI. GUI:t har nä
 	\label{fig:3DCopyGUIWeb}
 \end{figure}
 
-De funktioner som finns i GUI:t är \textit{Add Registration Job} och \textit{Add Mesh Job}. \textit{Add Registration Job} öppnar ett formulär där parametrar på registreringen ska sättas och de filer som ska registreras ska väljas.
+De funktioner som finns i GUI:t är \textit{Add Registration Job} och \textit{Add Mesh Job}. \textit{Add Registration Job} öppnar ett formulär där parametrar på registreringen ska sättas och de filer som ska registreras väljs.
 
 \begin{figure}[H]
 	\centering
@@ -88,7 +88,7 @@ De funktioner som finns i GUI:t är \textit{Add Registration Job} och \textit{Ad
 	\label{fig:3DCopyGUIRegJobForm}
 \end{figure}
 
-\textit{Add Mesh Job} öppnar ett formulär där parametrar på meshningen ska sättas och den fil som ska meshas ska väljas.
+\textit{Add Mesh Job} öppnar ett formulär där parametrar på meshningen ska sättas och den fil som ska meshas väljs.
 
 \begin{figure}[H]
 	\centering
@@ -156,7 +156,7 @@ Att göra efterforskningar innan man börjar med någonting är väldigt viktigt
 
 Betydelsen av kommunikation var stor under projektets gång. Verktygen \textit{Slack} och \textit{Trello} har använts flitigt och varit givande för gruppen. Med \textit{Slack} har vi alltid kunnat nå varandra snabbt och smidigt. Vi har kunnat hålla informationsflöden skilda och sorterade i olika kanaler. Funktioner som påminnelser och trådar har också varit till stor hjälp för att lätt kunna komma åt den informationen som man vill åt i flödena.
 
-För att ha en översikt i hur det går med olika delar av projektet har gruppen använt \textit{Trello}. Genom att ha olika listor för statusen av dokument och funktioner under utveckling har gjort att man som gruppmedlem lätt kunnat se hur det går och vad man behöver göra.
+För att ha en översikt i hur det går med olika delar av projektet har gruppen använt \textit{Trello}. Genom att ha olika listor för statusen av dokument och funktioner under utveckling gjorde att varje gruppmedlem lätt kunnat se hur det går och vad som behöver göras.
 
 
 \subsection{Erfarenheter gällande kvalité}
