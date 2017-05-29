@@ -27,12 +27,13 @@ Syftet är att undersöka hur viktig kontexten för interaktioner är vid testni
 
 Denna rapport fokuserar enbart på att undersöka testning av grafiska användargränssnitt där hänsyn har tagits till kontext. Denna begränsning tillämpas främst på de artiklar som har använts i denna rapport. Själva undersökningen är begränsad till en litteraturstudie samt resultatet av testningen som genomfördes på gruppens GUI.
 
-\subsection{Definitioner, akronym och förkortningar}
-Följande definitioner och förkortningar används på flera ställen i denna del av rapporten:
+\subsection{Definitioner}
+Följande definitioner används på flera ställen i denna del av rapporten:
 \begin{itemize}
-	\item GUI (Graphical user interface) - Det grafiska användargränssnittet som används för att interagera med mjukvaran.
-	\item Interaktion - När användaren av GUI:t interagerar med GUI:t genom att till exempel trycka på en knapp
+	\item GUI (Graphical user interface) - Ett grafiskt användargränssnitt för ett program eller system.
+	\item Interaktion - När användaren av GUI:t interagerar med GUI:t genom att till exempel trycka på en knapp.
 	\item Kontext - Kontexten för en interaktion är sekvensen av interaktioner som har utförts på GUI:t innan den aktuella interaktionen.
+	\item Systeminteraktion - En interaktion som inte enbart påverkar och använder GUI kod.
 \end{itemize}
 
 \section{Bakgrund}
@@ -40,7 +41,7 @@ Följande definitioner och förkortningar används på flera ställen i denna de
 
 Ett av kraven för 3DCopy projektet var att det skulle finnas ett grafiskt användargränssnitt för mjukvaran som utvecklades. Då projektet skulle utföras inom ett visst antal timmar måste tiden som en uppgift, exempelvis GUI testning, får ta begränsas. Eftersom GUI testning kan ta i princip obegränsad tid är det viktigt att hitta en gräns för när GUI testningen kan anses vara klar. Det är också viktigt att mjukvaran som kunden ska få är vältestad, därför är kontexter vid testning något som kan undersökas för att testa tillräckligt mycket på kort tid.
 
-Eftersom att testledaren har ansvar för alla tester som ska utföras på systemet är detta ett relevant område att undersöka då testningen är en viktig del av projektet.
+Eftersom att testledaren har ansvar för alla tester som ska utföras på 3DCopy är detta ett relevant område att undersöka då testningen är en viktig del av projektet.
 
 \section{Teori}
 \label{sec:theory-holmberg}
@@ -72,7 +73,7 @@ Den metod som föreslås av X. Yuan et al. \cite{yuan2011gui} innehåller följa
 
 Det första steget är att representera GUI:t som en event-flow-graph (EFG). En EFG representerar alla möjliga sekvenser av interaktioner som är möjliga att göra med GUI:t. Ett exempel på en EFG återfinns senare i rapporten i figur \ref{fig:3dcopy_guiefg}. Subvägarna i EFG:n representerar olika sekvenser av interaktioner. Men antalet subvägar i EFG:n ökar exponentiellt med längden på sekvensen. På grund av den exponentiella ökningen är det i princip omöjligt att kunna testa alla olika subvägar för sekvenser som består av fler än två interaktioner. För att minimera antalet noder i EFG:n omvandlas den istället till en event-interaktion-graph (EIG) \cite{yuan2011gui}. 
 
-Andra steget är alltså att generera en EIG utifrån sin EFG. En EIG är en EFG utan noder (interaktioner) som inte påverkar mjukvaran bakom GUI:t, d.v.s. öppnandet av exempelvis menyer och fönster. Ett exempel på en EIG återfinns senare i rapporten i figur \ref{fig:3dcopy_guieig}. Metoden för att gå från en EFG till en EIG beskrivs av Xie och Memon \cite{xie2008using}. Metoden går ut på att alla interaktioner som inte påverkar systemet tas bort med hjälp av regler för grafomskrivning \cite{yuan2011gui}.
+Andra steget är alltså att generera en EIG utifrån sin EFG. En EIG är en EFG utan noder (interaktioner) som inte påverkar mjukvaran bakom GUI:t, d.v.s. öppnandet av exempelvis menyer och fönster. Ett exempel på en EIG återfinns senare i rapporten i figur \ref{fig:3dcopy_guieig}. Metoden för att gå från en EFG till en EIG beskrivs av Xie och Memon \cite{xie2008using}. Metoden går ut på att alla interaktioner som enbart påverkar GUI:t tas bort med hjälp av regler för grafomskrivning \cite{yuan2011gui}.
 
 \subsection{Generering av testfall}
 \label{sec:testcase-generation-holmberg}
@@ -114,7 +115,7 @@ GUI:t har 5 olika interaktioner som kan utföras. Det går att trycka på någon
 	\label{fig:3dcopy_guiefg}
 \end{figure}
 
-Utifrån EFG:n ska sedan EIG:n skapas. Det som händer vid skapandet av EIG:n är att noderna GUI, Edit MCD och Edit MI tas bort eftersom att de inte interagerar med systemet.
+Utifrån EFG:n ska sedan EIG:n skapas. Det som händer vid skapandet av EIG:n är att noderna GUI, Edit MCD och Edit MI tas bort eftersom att de inte interagerar med mer än enbart GUI:t.
 
 \begin{figure}[H]
 	\centering
@@ -242,9 +243,9 @@ I detta avsnitt diskuteras resultatet, den metod som användes samt källkritik.
 
 Från litteraturstudien kan det konstateras att kontexten är avgörande för hur en interaktion påverkar mjukvaran och därmed vilka fel som kan identifieras under testningen.
 
-Som resultatet visar lyckades de båda testen identifiera samma fel trots att det med hänsyn till kontext var mycket mer omfattande. Detta resultat kan bero på många olika saker. Dels hade systemet som testades enbart två systeminteraktioner och dessa två använder ingen delad kod. Därför är sannolikheten för att de påverkar något i koden som förstör för den andra interaktionen väldigt liten.
+Som resultatet visar lyckades de båda testen identifiera samma fel trots att det med hänsyn till kontext var mycket mer omfattande. Detta resultat kan bero på många olika saker. Dels hade 3DCopy som testades enbart två systeminteraktioner och dessa två använder ingen delad kod. Därför är sannolikheten för att de påverkar något i koden som förstör för den andra interaktionen väldigt liten.
 
-Dessa interaktioner är också testade sedan tidigare i andra systemtest och därför kan alla fel i koden redan vara lösta. Sannolikheten för att det skulle finnas något fel kvar minskar därför ytterligare. Resultatet som erhölls är därför ganska sannolikt med tanke på omständigheterna. Hade systemet varit större med fler interaktioner som delvis använder samma kod hade testningen med hänsyn till kontext eventuellt hittat fler fel.
+Dessa interaktioner är också testade sedan tidigare i andra systemtest och därför kan alla fel i koden redan vara lösta. Sannolikheten för att det skulle finnas något fel kvar minskar därför ytterligare. Resultatet som erhölls är därför ganska sannolikt med tanke på omständigheterna. Hade 3DCopy varit större vid testningen med fler interaktioner som delvis använder samma kod hade testningen med hänsyn till kontext eventuellt hittat fler fel.
 
 \subsection{Metod}
 
@@ -258,14 +259,14 @@ Den kontextkänsliga testningen borde också jämförts med en annan GUI testnin
 
 \subsection{Källkritik}
 
-För litteraturstudien hittades bara en relevant artikel som berörde den bit som var mest kritisk för att utföra testerna, nämligen en som tog upp hur GUI:n testas med hänsyn till kontext. Den artikeln är skriven av personer med lång erfarenhet inom just GUI testning vilket framgick när sökandet efter ytterligare artiklar genomfördes eftersom många artiklar som dök upp var skrivna av samma personer. En anledning  till att det var svårt att hitta ytterligare artiklar kan vara att Yuan et al. \cite{yuan2011gui} har valt att kalla det för kontext. Då de också definierar begreppet kontext i sin artikel indikerar det att de eventuellt är en av få eller den enda artikeln inom just detta ämne. Andra artiklar kan också använda sig av en annan benämning än just kontext.
+I litteraturstudien hittades bara en relevant artikel som berörde den bit som var mest kritisk för att utföra testerna, nämligen en som tog upp hur GUI:n testas med hänsyn till kontext. Den artikeln är skriven av personer med lång erfarenhet inom just GUI testning vilket framgick när sökandet efter ytterligare artiklar genomfördes eftersom många artiklar som dök upp var skrivna av samma personer. En anledning  till att det var svårt att hitta ytterligare artiklar kan vara att Yuan et al. \cite{yuan2011gui} har valt att kalla det för kontext. Då de också definierar begreppet kontext i sin artikel indikerar det att de eventuellt är en av få eller den enda artikeln inom just detta ämne. Andra artiklar kan också använda sig av en annan benämning än just kontext.
 
 \section{Slutsatser}
 \label{sec:conclusions-holmberg}
 
 Att ta hänsyn till kontexten vid GUI testning är definitivt något som bör göras. Den är ofta avgörande för att hitta vissa fel. Det hade varit intressant att skapa exempel GUI:n med medvetet placerade fel som beror på andra interaktioner för att kunna undersöka detta noggrannare. Det fanns dock inte tid att göra en sådan undersökning i denna rapport. Därför får betydelsen av kontexter begränsas till litteraturstudien.
 
-Gällande metoden för att ta fram testfall med hänsyn till kontext användes samma metod som i Yuan et al. \cite{yuan2011gui}. Något som blev tydligt då testerna utfördes manuellt är att metoden inte tar hänsyn till hur resurs- eller tidskrävande en interaktion är den placeras i sekvensen. Det är något som kan vara något för en framtida undersökning. Att undersöka hur de mest krävande interaktionerna ska placeras i sekvenserna för att maximera antalet testade kontexter och samtidigt minimera tids- och resurskostnader.
+Gällande metoden för att ta fram testfall med hänsyn till kontext användes samma metod som i Yuan et al. \cite{yuan2011gui}. Något som blev tydligt då testerna utfördes manuellt är att metoden inte tar hänsyn till hur resurs- eller tidskrävande en interaktion är när den placeras i sekvensen. Det är något som kan vara intressant för en framtida undersökning. Att undersöka hur de mest krävande interaktionerna ska placeras i sekvenserna för att maximera antalet testade kontexter och samtidigt minimera tids- och resurskostnader.
 
 Testerna visade att för projektets GUI, i det stadie som GUI:t befann sig i vid testningen, spelade inte kontexten någon roll för att hitta fel. Det beror sannolikt på att mängden interaktioner var liten samt att systeminteraktionerna var väl separerade och inte delade någon kod. Det indikerar att hänsyn till kontexten blir viktigare ju större mängd interaktioner GUI:t har samt hur stor del av koden som interaktionerna har gemensamt. Hade mer tid funnits skulle en undersökning med olika GUI:n med varierande antal interaktioner varit intressant för att vidare kunna undersöka denna teori.
 
