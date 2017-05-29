@@ -2,9 +2,9 @@
 \label{cha:theory}
 
 \section{Punktmoln}
-Ett punktmoln är en mängd av punkter i ett tredimensionellt koordinatsystem som representerar ett objekt. Punkterna i punktmolnet representerar ofta de yttre kanterna av objektet \cite{point_cloud}.
+Ett punktmoln är en mängd av punkter i ett tredimensionellt koordinatsystem. Varje punkt i punktmolnet består av tre värden som representerar punktens XYZ-koordinater. Tillsammans kan dessa punkter representera ett objekt. Detta görs ofta genom att punkterna representerar utkanterna av objektet. \cite{point_cloud}. 
 
-Det finns två typer av punktmoln, ett så kallat komplett punktmoln och ett icke komplett punktmoln. Ett komplett punktmoln, se figur \ref{fig:point_cloud_torus}, betyder att punktmolnet innehåller samtliga punkter som behövs för att representera objektet. Ett icke komplett punktmoln, se figur \ref{fig:point_cloud_church}, betyder att punktmolnet endast representerar en sida av objektet och alltså inte innehåller tillräckligt med punkter för att representera hela objektet.
+Det finns två typer av punktmoln, ett så kallat komplett punktmoln och ett icke komplett punktmoln. Ett komplett punktmoln, se figur \ref{fig:point_cloud_torus}, betyder att punktmolnet innehåller samtliga punkter som behövs för att representera objektet. Ett icke komplett punktmoln, se figur \ref{fig:point_cloud_church}, betyder att punktmolnet endast representerar en del av objektet. Flera stycken icke kompletta punktmoln kan kombineras för att skapa ett komplett punktmoln. Denna process kallas registrering och kommer förklaras noggrannare senare i rapporten.
 
 \begin{figure}[H]
 	\centering
