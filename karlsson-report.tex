@@ -20,7 +20,7 @@ Syftet med den här delen är att väga olika algoritmer mot varandra och unders
 \label{sec:issue-karlsson}
 
 \begin{enumerate}
-	\item Hur skapas ett enhetligt punktmoln från enstaka bilder tagna med en\newline  fast avståndskamera?
+	\item Hur skapas ett enhetligt punktmoln från bilder tagna med en fast avståndskamera?
 	\item Hur gör man för att välja algoritm och hur resonerade gruppen när de valde ICP?	
 \end{enumerate}
 
@@ -49,34 +49,35 @@ I ett tidigt stadie av projektet upptäckte gruppen att en stor del skulle handl
 \section{Teori}
 \label{sec:theory-karlsson}
 
-För att återskapa fysiska objekt digitalt saknas lämpliga verktyg, såsom tex en 3D-kamera. Istället behöver flera bilder av objektet tas från olika vinklar för att kunna sammanfoga dessa till det fulla objektet. Det finns många metoder för detta, exempelvis Kinect Fusion, se avsnitt \ref{sec:kinect-karlsson}. Den metod projektgruppen använt sig av har dock bestått av en avståndskamera på en linjärenhet med objektet monterat på ett rotationsbord med två rotationsaxlar. Med hjälp av detta rotationsbord kan men förhållandevis enkelt se hela objektet från en fast punkt. Det primära målet har varit att enhetligt registrera de punktmoln som kommit av skanningar med denna uppställning till en komplett representation av objektet.
+För att återskapa fysiska objekt digitalt saknas lämpliga verktyg, såsom tex en 3D-kamera. Istället behöver flera bilder av objektet tas från olika vinklar för att kunna sammanfoga dessa till det kompletta objektet. Det finns många metoder för detta, exempelvis Kinect Fusion, se avsnitt \ref{sec:kinect-karlsson}. Den metod projektgruppen använt sig av har dock bestått av en avståndskamera på en linjärenhet med objektet monterat på ett rotationsbord med två rotationsaxlar. Med hjälp av detta rotationsbord kan hela objektet ses från en fast punkt. Det primära målet har varit att enhetligt registrera de punktmoln som kommit av skanningar med denna uppställning till en komplett representation av objektet.
 
 
 \subsection{Registrering}
 \label{sec:registrering-karlsson}
 
-Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett, i ett gemensamt koordinatsystem med all information från punktmolnen. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, eller GMMReg, \textit{Gaussian Mixture Model Registration}. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel lider ICP av så kallad \textit{felutbredning}, där ett litet fel i ett stadie orsakar större fel i senare stadier och JR-MPC, som utnyttjar GMM, lider av längre körtid \cite{Evangelidis-ECCV-2014}.
+Registrering är den generella metoden att sätta ihop två eller flera punktmoln till ett i ett gemensamt koordinatsystem med all information från punktmolnen. Det finns väldigt många olika algoritmer för att utföra detta såsom till exempel ICP, eller GMMReg, \textit{Gaussian Mixture Model Registration}. De flesta tillgängliga algoritmer har någon form av svaghet eller nackdel. Till exempel lider ICP av så kallad \textit{felutbredning}, där ett litet fel i ett stadie orsakar större fel i senare stadier och JR-MPC, som utnyttjar GMM, lider av längre körtid \cite{Evangelidis-ECCV-2014}.
 
 \subsection{Kinect Fusion}
 \label{sec:kinect-karlsson}
 Kinect Fusion använder sig av Microsofts egna avstånds- och RGB-kamera, Kinect, för att mappa upp ett 3D-objekt i den verkliga världen. Avståndskameran mäter upp punktmolnet för scenen framför den samtidigt som en synkroniserad RGB-kamera ger färgdata till varje punkt. 
-Varje punktmoln som Kinect-kameran skickar består av ca. 307 000 punkter. Det kan jämföras med hårdvaran som använts av gruppen där maximala antalet punkter i en skanning är ca. 786 000 punkter. De punktmoln som använts har dock generellt innehållit ca 30-60\,000 punkter efter filtrering av skräpdata. Skräpdata är de punkter som inte är intressanta.
+Varje punktmoln som Kinect-kameran skickar består av ca. 307 000 punkter. Det kan jämföras med hårdvaran som använts av gruppen där maximala antalet punkter i en skanning är ca. 786 000 punkter. De punktmoln som använts har dock generellt innehållit ca 30-60\,000 punkter efter filtrering av skräpdata. Skräpdata är de punkter som inte är intressanta. Registreringen som görs av Kinect Fusion är en variant av ICP.
 
 \section{Metod}
 \label{sec:method-karlsson}
 
-Här presenteras metoden som använts för att besvara frågeställningarna i kapitlet. De är uppdelade i hur arbetet för att besvara frågorna gick till i förstudien för rapporten samt under utvecklingsarbetet.
+Här presenteras metoden som använts för att besvara frågeställningarna i rapporten. De är uppdelade i hur arbetet för att besvara frågorna gick till i förstudien för rapporten samt under utvecklingsarbetet.
 
 \subsection{Litteraturstudie}
 Initialt gjordes en litteraturstudie för att hitta information om vilka tillvägagångssätt för att registrera punktmoln som finns. De söktermer som använts är "registration pointcloud" samt "registration algorithm". Sökmotorn som använts är Google Scholar. De källor som undersökts har begränsats till att vara relaterade till JR-MPC samt ICP.
 
 \subsection{Experiment}
-Ett experiment utfördes för att jämföra ICP och JR-MPC. Testet gick ut på att registrera en uppsättning av 36 punktmoln. Vart och ett av dessa punktmoln var en skanning av kyrkan, se figur \ref{fig:karlsson-single_scan-church}, där kyrkan skannats och roterats 10 grader efter varje skanning. 3DCopy användes för att testa ICP medan JR-MPC testades med kod som tillhandahålls av skaparna, skriven i MatLab. För JR-MPC är enbart inläsningen av indata modifierad. För ICP valdes \textit{Max Correspondence Distance} till 15, \textit{Max Iterations} sattes till 100 samt \textit{Transformation Epsilon} var satt till $ 1e-8 $. Övriga parametrar i PCLs implementation av ICP användes utan modifikation. För beskrivning av dessa parametrar, se avsnitt \ref{sec:icp-karlsson}. Varje algoritm kördes tre gånger och resultatet mellan körningarna jämfördes.
+Ett experiment utfördes för att jämföra ICP och JR-MPC. Experimentet gick ut på att registrera en uppsättning av 36 punktmoln. Vart och ett av dessa punktmoln var en skanning av kyrkan, se figur \ref{fig:karlsson-single_scan-church}, där kyrkan skannats och roterats 10 grader efter varje skanning. 3DCopy användes för att testa ICP medan JR-MPC testades med kod som tillhandahålls av skaparna, skriven i MatLab. För JR-MPC är enbart inläsningen av indata modifierad. För ICP valdes \textit{Max Correspondence Distance} till 15, \textit{Max Iterations} sattes till 100 samt \textit{Transformation Epsilon} var satt till $ 1e-8 $. Övriga parametrar i PCLs implementation av ICP användes utan modifikation. För beskrivning av dessa parametrar, se avsnitt \ref{sec:icp-karlsson}. Varje algoritm kördes tre gånger och resultatet mellan körningarna jämfördes. Testdatan finns tillgänglig på %TODO add address here %
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=100mm]{figures/icke_komplett_moln_kyrka.png}
-	\caption{Ett icke komplett punktmoln som representerar en skanning av en kyrka.}
+	\includegraphics[width=50mm]{figures/Foto_church.png}
+	\includegraphics[width=90mm]{figures/icke_komplett_moln_kyrka.png}
+	\caption{Kyrkan som skannats samt ett resulterande punktmoln från en enkel skanning.}
 	\label{fig:karlsson-single_scan-church}
 \end{figure}
 
@@ -105,7 +106,7 @@ ICP har ett antal parametrar för att bestämma hur registreringen ska gå till.
 \end{itemize}
 
 \subsubsection{JR-MPC}
-JR-MPC använder så kallade GMM, \textit{Gaussian Mixture Model}, för att registrera objektet. Exakt hur matematiken bakom algoritmen ser ut och fungerar är utanför omfattningen av denna rapport men grundläggande principer följer. GMM är en sannolikhetsmodell som används för att lista sannolikheten att ett kluster av punkter i punktmolnet är en del av objektet som ska registreras, detta motsvarar RANSAC filtreringen som görs i ICP. Själva registreringen görs genom en förväntad villkorlig maximering, ECM, \textit{Expectation Conditional Maximization} som optimerar registreringen med begränsade variationer i registreringsparameterar. För fördjupning om ECM hänvisas till Roche \cite{roche2011algorithm}.
+JR-MPC använder en så kallade GMM, \textit{Gaussian Mixture Model}, för att registrera objektet. Exakt hur matematiken bakom algoritmen ser ut och fungerar är utanför omfattningen av denna rapport men grundläggande principer följer. GMM är en sannolikhetsmodell som används för att lista sannolikheten att ett kluster av punkter i punktmolnet är en del av objektet som ska registreras, detta motsvarar RANSAC filtreringen som görs i ICP. Själva registreringen görs genom en villkorlig maximering, ECM, \textit{Expectation Conditional Maximization} som optimerar registreringen med begränsade variationer i registreringsparameterar. För fördjupning om ECM hänvisas till Roche \cite{roche2011algorithm}.
 
 \subsection{ICP vs. JR-MPC}
 
@@ -125,7 +126,7 @@ Resultatet av experimentet som utfördes presenteras här med hjälp av ett anta
 	\centering
 	\includegraphics[width=65mm]{figures/first_registered_church.png}
 	\includegraphics[width=65mm]{figures/JRMPC_result.png}
-	\caption{Till vänster: Resultat från registrering med ICP, Till höger: Resultat från registrering med JR-MPC}
+	\caption{Till vänster: resultat från registrering med ICP. Till höger: resultat från registrering med JR-MPC.}
 	\label{fig:icp_vs_jrmpc_result}
 \end{figure}
 
@@ -137,31 +138,29 @@ Figur \ref{fig:icp_vs_jrmpc_result} visar resultatet av experimentet. ICP algori
 	\includegraphics[width=45mm]{figures/18_pc.png}
 	\includegraphics[width=45mm]{figures/19_pc.png}
 	\includegraphics[width=45mm]{figures/20_pc.png}
-	\caption{Serie av delresultat från registrering med ICP}
+	\caption{Serie av delresultat från registrering med ICP.}
 	\label{fig:registered_church_serie}
 \end{figure}
 
-Den poäng som beräknas av ICP visade på att resultatet från de olika körningarna var identiskt. För JR-MPC gjordes en visuell granskning av resultatet och någon skillnad kunde inte hittas.
+Den poäng (eng. \textit{Fitness score}) som beräknas av ICP visade på att resultatet från de olika körningarna var identiskt. För JR-MPC gjordes en visuell granskning av resultatet och någon skillnad kunde inte identifieras.
 
 
 \section{Diskussion}
 \label{sec:discussion-karlsson}
 
-Den implementation av JR-MPC som vi fick tag på funkade väldigt dåligt för den typ av data som vi hade. På grund av att algoritmen är väldigt komplicerad och inte tillräckligt dokumenterad för att vi skulle kunna hitta parametrar att ändra på för att förbättra resultatet beslutades att ICP skulle användas och optimeras.
+JR-MPC funkade väldigt dåligt för den typ av data som vi hade. På grund av att algoritmen är väldigt komplicerad och inte ger något delresultat är det svårt att göra några ändringar för att uppnå bättre resultat.
 
 3DCopy använder sig av \textit{Max Iterations}, \textit{Transformation Epsilon} samt \textit{Max correspondence distance}. Då PCLs standardvärden för \textit{RANSAC outlier rejection threshold} samt \textit{Euclidean fitness epsilon} funkade bra för gruppen användes dessa och de kan inte ändras i 3DCopy. Det är dock väldigt lätt att lägga in stöd för det om programmet skulle vidareutvecklas.
 
 \subsection{Metod}
 
-Litteraturstudien som genomfördes som förstudie hade kunnat vara större. Avsaknaden av relevanta källor är något som märkts vid flera tillfällen under projektet. Man bör dock inte underskatta utvecklingsarbete i utbildningssyfte som var litteraturstudiens primära mål. Då de källor som hittades inte hade mycket överlappande information kunde få jämförelser göras och Evangelidis et al. \cite{Evangelidis-ECCV-2014} fick stå för det mesta av faktan. Dock är det ett publicerat forskningsdokument som funnits tillgängligt under längre tid och som presenterar en bra metod och ett väl dokumenterat tekniskt resultat.
+Litteraturstudien som genomfördes som förstudie hade kunnat vara större. Avsaknaden av relevanta källor är något som märkts vid flera tillfällen, både under projektet samt denna rapports framtagande. Man bör dock inte underskatta utvecklingsarbete i utbildningssyfte som var litteraturstudiens primära mål. Då de källor som hittades inte hade mycket överlappande information kunde få jämförelser göras och Evangelidis et al. \cite{Evangelidis-ECCV-2014} fick stå för det mesta av faktan. Dock är det ett publicerat forskningsdokument som funnits tillgängligt under längre tid och som presenterar en bra metod och ett väl dokumenterat tekniskt resultat.
 
-Experimentet gav bra resultat och gav identiskt resultat vid varje körning. Det som saknas är en tidsjämförelse men eftersom att resultatet inte är så bra som önskat vid registrering av 36 punktmoln lades tillgängliga resurser på att förbättra resultatet mer än att förkorta körtiden. Efter att experimentet var utfört skapades dock ett filter som filtrerar bort redundant information som både ger bättre resultat, eftersom äldre punktmoln inte får mer och mer vikt under registreringens gång, samt reducerade körtiden signifikant. På grund av tidsbrist kunde dock experimentet inte göras om. 
+Experimentet gav både bra och identiskt resultat vid varje körning. Det som saknas är en tidsjämförelse men eftersom att resultatet inte är så bra som önskat vid registrering av 36 punktmoln lades tillgängliga resurser på att förbättra resultatet mer än att förkorta körtiden. Efter att experimentet var utfört skapades dock ett filter som filtrerar bort redundant information som både ger bättre resultat, eftersom äldre punktmoln inte får mer och mer vikt under registreringens gång, samt reducerade körtiden signifikant. På grund av tidsbrist kunde dock experimentet inte göras om. 
 
 \subsection{Resultat}
 
-En ordentlig jämförelse mellan algoritmerna som fanns tillgängliga försvårades av att JR-MPC är så matematiskt avancerad. För ordentlig analys uppskattar författaren att det krävs en kandidat i matematik. På grund av detta var det väldigt svårt att överhuvudtaget förstå och analysera JR-MPC på samma sätt som gjordes, förhållandevis enkelt, med ICP. 
-
-3DCopy-metoden som togs fram var i teorin bra men löste egentligen inte de problem gruppen hade, vilket ledde till att denna lösningsgången frångicks. 
+En ordentlig jämförelse mellan algoritmerna som fanns tillgängliga försvårades av att JR-MPC är så matematiskt avancerad. För ordentlig analys uppskattar författaren att det krävs en kandidat i matematik. På grund av detta var det svårt att överhuvudtaget förstå och analysera JR-MPC på samma sätt som gjordes, förhållandevis enkelt, med ICP.
 
 
 \subsubsection{Experiment}
@@ -173,11 +172,11 @@ Första analysen av registreringsresultat resulterade i ett antagande om att ett
 \section{Slutsatser}
 \label{sec:conclusions-karlsson}
 
-Någon definitiv slutsats är svår att dra utifrån de resultat som åstadkommits. Detta styrks ytterligare av Bellekens et al. \cite{registration_comparing} som påstår att valet av algoritm inte har ett definitivt svar. Bellekens et al. kommer fram till slutsatsen att valet av algoritm beror på vilket ändamål samt vilken indata som kommer användas. Det stämmer bra överens med gruppens egna slutsats, där JR-MPC både var för tidskrävande att sätta sig in i samt inte gick att köra under tiden punktmoln samlades in.
+Någon definitiv slutsats är svår att dra utifrån de resultat som åstadkommits. Detta styrks ytterligare av Bellekens et al. \cite{registration_comparing} som påstår att valet av algoritm inte har ett definitivt svar. Bellekens et al. påstår att valet av algoritm beror på vilket ändamål samt vilken indata som kommer användas. Det stämmer bra överens med gruppens egna slutsats, där JR-MPC både var för tidskrävande att sätta sig in i samt inte gick att köra under tiden punktmoln samlades in.
 
-ICP var den bästa algoritmen för gruppens ändamål då den var enkel att implementera och jämfört med alternativet fungerade mycket bättre för den uppgift den skulle användas till. Det första systemet som designades gynnades mycket av att ha en parvis registreringsalgoritm eftersom att registreringen kunde påbörjas direkt när de första två punktmolnen införskaffats. Det registrerade objektet skulle då byggas upp kontinuerligt under en skanning istället för att behöva vänta tills all data var insamlad.
+ICP var den bästa algoritmen för gruppens ändamål då den var enkel att implementera och jämfört med alternativet fungerade mycket bättre för uppgiften den skulle användas till. Det första systemet som designades gynnades mycket av att ha en parvis registreringsalgoritm eftersom att registreringen kunde påbörjas direkt när de första två punktmolnen införskaffats. Det registrerade objektet skulle då byggas upp kontinuerligt under en skanning istället för att behöva vänta tills all data var insamlad.
 
-Att skapa ett enhetligt punktmoln från enstaka skanningar kan tes lätt vid en första anblick. Det finns dock en hel del som måste göras rätt. Dels måste en lämplig algoritm väljas, dessutom behöver algoritmens parametrar testas fram med den indata som används.
+Att skapa ett enhetligt punktmoln från enstaka skanningar kan tes lätt vid en första anblick. Det finns dock en hel del som måste göras rätt. Dels måste en lämplig algoritm väljas, vilket i sig är ett stort arbete. Dessutom behöver algoritmens parametrar testas fram med den indata som används.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
