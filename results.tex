@@ -54,7 +54,7 @@ Som kan ses i figurerna \ref{fig:noddiagram} och \ref{fig:systembeskrivning_gaml
 Som kan läsas tidigare i denna rapport omförhandlades projektets krav och mål med kunden under projektets gång. Detta ledde till att gruppen gjorde om systemets arkitektur. ROS-arkitekturen som presenterats i avsnitt \ref{cha:results-systembeskrivning-treed} ersattes. Istället skapades ett objektorienterat program, skrivet i C++. Detta program utför både registrering, filtrering och meshning. När sedan meshen genererats kan programmet skriva ut objektet med hjälp av en 3D-skrivare. Till detta program finns också ett CLI och ett GUI.
 
 \subsection{Arkitektur}
-Programmet består av två större klasser, \textit{Registration} och \textit{Mesh}. Dessa två klasser används sedan av antingen \textit{Cli}  eller \textit{Gui} klasserna, vilket visas i figur \ref{fig:class_diagram}.  Det har lagts stor vikt vid moduläriteten i programmet då \textit{Registration} och \textit{Mesh} ska fungera självständigt i olika program.
+Programmet består av två större klasser, \textit{Registration} och \textit{Mesh}. Dessa två klasser används sedan av \textit{Cli} vilket visas i figur \ref{fig:class_diagram}.  Det har lagts stor vikt vid moduläriteten i programmet då \textit{Registration} och \textit{Mesh} ska fungera självständigt i olika program.
 
 \begin{figure}[H]
 	\centering
