@@ -47,6 +47,7 @@ För att undvika att punktmoln blir för stora, det vill säga att de får för 
  
 
 \subsection{Registrering}
+\label{sec:theory_registration}
 Att kombinera två punktmoln till ett punktmoln som innehåller samma information kallas för att registrera punktmoln. Detta är en komplicerad process där både translationen och rotationen, runt alla axlar, kan behöva ändras. Målet med parvis registrering är att flytta ett punktmoln till det andra punktmolnet så att alla punkter i de två separata punktmolnen överlappar med varandra. I PCL finns det ett registreringsbibliotek som innehåller algoritmer för registrering \cite{pcl_registration}.
 
 För att registrera punktmoln finns ett antal olika algoritmer med olika för- och nackdelar. En vanlig algoritm är \textit{Iterative Closest Point} (ICP). Det är en så kallad parvis registreringsalgoritm som registrerar enbart ett punktmoln till ett annat. ICP går ut på att minimera summan av avståndet från varje punkt i det ena punktmolnet till varje punkt i det andra punktmolnet.
