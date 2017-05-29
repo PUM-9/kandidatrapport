@@ -5,9 +5,6 @@
 %% Varför skall jag forsätta läsa rapporten?
 \section{Motivering}
 \label{sec:motivation}
-
-
-
 Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först på 2010-talet har 3D-skrivare blivit tillgängliga även för vanliga konsumenter. Även i industrin har det blivit allt vanligare att använda 3D-skrivare för att skapa prototyper. Det finns dock ett problem: för att kunna använda 3D-skrivaren måste man antingen kunna CAD-mjukvara eller förlita sig på andra människors 3D-modeller. Genom att använda ett system för 3D-kopiering kan ett verkligt objekt istället kopieras.
 
 
@@ -19,12 +16,14 @@ Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först 
 Nedan beskrivs två syften med detta projekt. Det första syftet som beskrivs, vidareutveckling av TreeD, var syftet med projektet innan projektet reviderades medan det andra syftet, 3DCopy, var syftet med projektet efter revidering.
 
 \subsection{Vidareutveckling av TreeD}
-Syftet med detta projekt var till en början att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Projektet skulle bygga vidare på ett tidigare kandidatarbete som utfördes våren 2016. Det kandidatarbete som genomfördes våren 2016 resulterade i en mjukvara som styr ett rotationsbord och en linjärenhet. På denna linjärenhet finns det en avståndskamera som används för att generera punktmoln. 
+Syftet med detta projekt var till en början att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Projektet skulle bygga vidare på ett tidigare kandidatarbete som utfördes våren 2016 och som kallas TreeD. Det kandidatarbetet resulterade i en mjukvara, också kallad TreeD, som styr ett rotationsbord och en linjärenhet. På denna linjärenhet finns det en avståndskamera som används för att generera punktmoln. 
 
-Syftet med projektet var alltså att vidareutveckla resultatet från det tidigare kandidatprojektet till ett system som kan kopiera ett tredimensionellt objekt. Tanken var att detta skulle göras genom att ett flertal skanningar tas med olika rotationer och lutningar. De genererade punktmolnen skulle sedan registreras till ett komplett punktmoln som sedan omvandlas till en 3D-mesh. Denna 3D-mesh kan sedan skrivas ut med hjälp av en 3D-skrivare.
+Syftet med projektet var alltså att bygga vidare på TreeD till ett system som kan kopiera ett tredimensionellt objekt. Tanken var att detta skulle göras genom att ett flertal skanningar tas med olika rotationer och lutningar. De genererade punktmolnen skulle sedan registreras till ett komplett punktmoln som sedan skulle omvandlas till en 3D-mesh. Denna 3D-mesh skulle sedan kunna skrivas ut med hjälp av en 3D-skrivare.
 
 \subsection{3DCopy}
-Med revideringen av projektet reviderades även syftet. Det nya syftet är likt det gamla men försummar det tidigare projektets mjukvara helt. Detta betyder att systemet tar in ett antal punktmoln som registreras till ett komplett punktmoln som sedan omvandlas till en 3D-mesh. Denna 3D-mesh kan sedan skrivas ut med hjälp av en 3D-skrivare.
+Med revideringen av projektet reviderades även syftet till att inte bero på TreeD. Det nya syftet var att utveckla ett mindre automatiserat system, framförallt med hänsyn till att skanna objekt. Systemet skulle kunna läsa in färdiga punktmoln som sparats på datorn. Genom att endast läsa in punktmoln från filer är programmet inte beroende av att det underliggande systemet för att styra hårdvaran är stabilt.
+
+Efter att punktmolnen lästs in skulle de sedan behandlas genom att registrera alla punktmoln till ett komplett punktmoln och sedan generera en mesh utifrån detta. Den genererade meshen kan sedan skrivas ut med hjälp av en 3D-skrivare. På detta sätt skulle mjukvaran kunna användas till att kopiera tredimensionella objekt även om processen inte skulle vara helt automatiserad.
 
 
 \section{Frågeställning}
