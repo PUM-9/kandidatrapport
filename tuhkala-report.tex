@@ -15,7 +15,7 @@ Syftet med den här rapporten är att ta reda på vilka för- respektive nackdel
 De frågeställningar som rapporten behandlar är:
 
 \begin{enumerate}
-	\item Vilka fördelar och nackdelar finns det med att använda \latex eller Word när man skriver dokument?
+	\item Vilka fördelar och nackdelar finns det med att använda \latex eller Word för att skriva dokument?
 	\item Vilka verktyg lämpar sig för att skriva större dokument?
 	\item Vilka erfarenheter kan tas med ifrån det här projektet gällande framställning av större dokument?
 \end{enumerate}
@@ -64,11 +64,10 @@ Kandidatrapporten är skriven i \latex och använder mallen för avhandlingar sk
 
 \section{Metod}
 \label{sec:method-tuhkala}
-För att kunna besvara frågeställningarna, har dem delats upp i tre olika sektioner för att beskriva hur det gick till att besvara dem.
-%För att kunna besvara frågeställningarna har dem delats upp i tre sektioner för hur jag gick tillväga för att svara på dem.
+För att kunna besvara de olika frågeställningarna, har dem delats upp i tre olika sektioner för att beskriva hur det gick tillväga att besvara dem.
 
 \subsection{Första frågeställningen}
-För min första frågeställning gjordes en litteraturstudie för att samla information om vilka för- och nackdelar som finns med att använda \latex eller Word när man skriver dokument. Detta för att se hur tidigare arbeten ställer sig till de två olika typsättningssystemen som tas upp i frågeställningen.
+För min första frågeställning gjordes en litteraturstudie för att samla information om vilka för- och nackdelar som finns med att använda \latex eller Word när man skriver dokument. Detta för att se hur tidigare arbeten ställer sig till de två olika typsättningssystemen som tas upp i frågeställningen. Litteraturstudien gjordes genom att leta efter relevent litteratur på databaserna: Linköpings universitets biblioteksdatabas \cite{liu_bibliotek}, Google Scholar \cite{google_scholar} och på DiVA \cite{diva_portal}. De söktermer som använts för att hitta relevent litteratur var \textit{Latex}, \textit{Microsoft Word} och \textit{Document Preparation System}. Endast de artiklar som varit releventa för frågeställningen har valts. De artiklar som har använts är Knauff och Nejasmic \cite{knauff2014efficiency}, Loch et al. \cite{loch2014master} samt Henrik Henrikssons bidrag i Haavisto et al. \cite{Haavisto954095}.
 
 \subsection{Andra frågeställningen}
 För min andra frågeställning gjordes en enkätundersökning som skickades ut till alla som läser kursen TDDD96, Kandidatprojekt i programvaruutveckling. I enkäten ställdes först dessa frågor:
@@ -109,7 +108,7 @@ För min tredje frågeställning gjordes också en enkätundersökning men enbar
 
 \section{Resultat}
 \label{sec:results-tuhkala}
-Resultatet som kommits fram till från min litteraturstudie och de två enkäter som beskrevs i metoden visas nedan.
+Resultatet från litteraturstudien och de två enkäter som beskrevs i metoden visas nedan.
 
 \subsection{Litteraturstudie}
 Knauff och Nejasmic \cite{knauff2014efficiency} visar med hjälp av ett mjukvaruanvändbarhetstest hur effektivt det är att använda sig av \latex jämfört med Microsoft Word. Testet gick ut på att 40 deltagare över olika vetenskapsgrenar skulle skriva olika vetenskapliga texter.
@@ -172,7 +171,7 @@ Alla deltagare i enkäten tyckte att separata filer var bättre att använda än
 \label{sec:discussion-tuhkala}
 Nedan kommer min diskussion om resultaten jag fått. De är indelade efter frågeställningarna.
 
-\subsection{Vilka fördelar och nackdelar finns det med att använda \latex eller Word när man skriver dokument?}
+\subsection{Vilka fördelar och nackdelar finns det med att använda \latex eller Word för att skriva dokument?}
 Att \latex-användare var långsammare att skriva dokument än Word-användare tycker jag inte är jättemärkligt, eftersom att de som använder \latex skriver mer än de som skriver Word. Detta för att \latex-användarna måste skriva kommandon för att åstadkomma en viss sak medan Word-användare behöver bara använda sig av WYSIWYG-editor som finns inbyggd i Word där man klickar på knappar och drar tabeller i dokumentet. Word-användare använder också ett anpassat program för att skriva dokument, likt en IDE för programmering. \latex har inte lika många anpassade editorer som Word, utan där kompilerar man dokumenten istället och skriver texten i någon annan editor som vanligtvis inte har stöd för \latex kommandon.
 
 Från resultatet ser vi också att inlärningskurvan för Word inte är väldigt stor och kräver inte mycket av användaren för att förstå och använda programmet. Det håller jag med om eftersom man behöver inte lära sig kommandon, hur man kompilerar och hur man sätter upp sin \latex-miljö. I Word får man ett program som är en WYSIWYG-editor, där man för det mesta skriver texten man vill få fram.
@@ -180,7 +179,7 @@ Från resultatet ser vi också att inlärningskurvan för Word inte är väldigt
 Det Henrik Henriksson tog upp i sin rapport om att ha en standardisering på \latex dokument skulle ha gjort att våra dokument såg likadant ut överallt. Det hade varit bättre, för till exempel när vi använde Overleaf var det några som använda mellanslag för indentering och andra som använde tabbar för det. För en del av medlemmarna i gruppen var det första gången de använda \latex och det hade kunnat vara lättare för dem om man hade en standardisering och instruktioner för hur \latex fungerar. Att använda en linter hade också hjälpt att hitta fel i dokumentet fortare än att behöva kompilera och få kompileringsfel. Overleaf hade ingen linter vilket hade gjort det svårt att införa det där, men det finns som sagt alternativ till det.
 
 \subsection{Vilka verktyg lämpar sig för att skriva större dokument?}
-Att alla grupper som använder sig av asynkrona verktyg använder Git förvånar mig inte, just eftersom det är ett bra verktyg för att versionshantera dokument och källkod bland annat. Jag förväntade mig dock att någon grupp använde SVN eller Mercurial. De som använt sig av Git har varit väldigt nöjda och gett ett medelvärde på 4,5, på en skala från 1 till 5 på hur nöjda de varit. Det tycker jag låter rimligt, för att det är ett väldigt bra verktyg. Eftersom jag tog ett par snarlika alternativ som till exempel Git, SVN och Mercurial samt ShareLaTeX och Overleaf där funktionaliteten inte skiljer sig så mycket åt kanske det hade varit bättre att bara fråga mer generellt om asynkrona verktyg är bättre att använda än synkrona verktyg.
+Att alla grupper som använder sig av asynkrona verktyg använder Git förvånar mig inte, just eftersom det är ett bra verktyg för att versionshantera dokument och källkod bland annat. Jag förväntade mig dock att någon grupp använde SVN eller Mercurial. De som använt sig av Git har varit väldigt nöjda och gett på en skala från 1 till 5 medelvärdet 4,5 på hur nöjda de varit. Det tycker jag låter rimligt, för att det är ett väldigt bra verktyg. Eftersom jag tog ett par snarlika alternativ som till exempel Git, SVN och Mercurial samt ShareLaTeX och Overleaf där funktionaliteten inte skiljer sig så mycket åt kanske det hade varit bättre att bara fråga mer generellt om asynkrona verktyg är bättre att använda än synkrona verktyg.
 
 För synkrona verktyg är medelvärdet på hur nöjda deltagarna var 3,8. Det skiljer sig med 0,7 jämfört med 4,5 som var medelvärdet hos deltagarna för de asynkrona verktygen. Det är också väldigt bra och jag tycker också det är bra att kunna ändra på dokument samtidigt i Overleaf och Google Docs. Majoriteten vill inte byta synkrona verktyg eller byta till ett asynkront. Det tror jag kan bero på att de inte testat att använda sig av ett asynkront verktyg tidigare för dokument.
 
@@ -209,7 +208,7 @@ De flesta källor som använts i teorin är tagna direkt från deras egna webbsi
 \label{sec:conclusions-tuhkala}
 Nedan visas slutsatserna som kommit fram från resultatet för de tre frågeställningarna:
 
-\subsection{Vilka fördelar och nackdelar finns det med att använda \latex eller Word när man skriver dokument?}
+\subsection{Vilka fördelar och nackdelar finns det med att använda \latex eller Word för att skriva dokument?}
 Det jag fått fram genom min litteraturstudie är att båda alternativen har fördelar och nackdelar samt att det inte skiljer sig mycket mellan dem. Word-användare skriver dokument snabbare än vad \latex-användare gör. Inlärningskurvan är inte särskilt stor för att lära sig att använda Word. För att skriva större matematiska texter är det ingen skillnad mellan alternativen eftersom båda gör det med hög kvalitet. Att ha en standardisering och utbildning i \latex kan hjälpa nybörjare.
 
 \subsection{Vilka verktyg lämpar sig för att skriva större dokument?}
