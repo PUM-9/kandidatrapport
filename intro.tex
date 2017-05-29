@@ -63,18 +63,24 @@ Här definieras vissa begrepp och förkortningar som används senare i rapporten
 	\item Robot Operating System (ROS) - Ett ramverk för att utveckla mjukvara för robotar.
 	\item CLI - Förkortning för det engelska uttrycket \textit{command line interface}, kommandoradsgränssnitt på svenska.
 	\item GUI - Förkortning för det engelska uttrycket \textit{graphical user interface}, grafiskt användargränssnitt på svenska.
+	\item Pipe and filter-modellen - En vanlig modell inom mjukvaruutveckling. Går ut på att programmet är uppdelat i moduler där varje modul har strikt in- och utdata och där utdata från en modul kan skickas som indata i nästa modul.
 	\item 3DCopy - Namnet på detta projekt samt namnet på den slutgiltiga produkten. En mjukvara som registrerar och meshar punktmoln.
 	\item TreeD - Namnet på det tidigare projekt 3DCopy skulle bygga vidare på. Även namnet på en mjukvara för att styra ett rotationsbord och en linjärenhet med avståndskamera.
-	\item Slack - Det kommunikationsverktyg som gruppen har använt under projektets gång.
-	\item Trello - Verktyg som gruppen använt för att underlätta hantering av aktiviteter.
-	\item Git - Versionshanteringssystem som gruppen har använt under projektets gång.
-	\item 3D-mesh - En vattentät modell av ett objekt som är uppbyggd av polygoner.
+	\item Slack - Ett kommunikationsverktyg där kommunikationen kan delas in i kanaler. Används ofta av företag för att underlätta kommunikation inom projektgrupper.
+	\item Trello - Ett onlineverktyg för att hantera listor. Användes i projektet för hålla reda på och följa upp aktiviteter som skulle utföras.
+	\item Git - Ett distribuerat versionshanteringssystem.
+	\item 3D-mesh - En vattentät modell av ett objekt som är uppbyggd av polygoner. Kallas även för bara mesh.
+	\item Meshning - Att generera en 3D-mesh utifrån ett punktmoln.
+	\item PCD-fil - Ett vanligt filformat för att spara punktmoln är PCD.
+	\item STL-fil - Ett vanligt filformat för att spara en 3D-mesh är STL.
+	\item CAD-mjukvara - Programvara för att designa fysiska objekt i datorn.
 	\item Voxel - Ett punktmoln kan delas in i så kallade voxels vilket kan ses som kuber.
 	\item Rotationsbord - En hårdvaruenhet som används för att rotera ett objekt.
 	\item Linjärenhet - En hårdvaruenhet som används för att förflytta en avståndskamera eller annat föremål längs en axel.
 	\item ROS-nod - En enskild process som kommunicerar med andra noder inom ramverket ROS.
-	\item Nedsampling - Uttrycket innebär att punkter kan tas bort ifrån ett punktmoln för att samtidigt uppskatta en ny yta som representerar den gamla så nära som möjligt, det är alltså en form av filtrering.
+	\item Nedsampling - Metod för att minska antalet punkter i ett punktmoln med så liten förlust av information som möjligt.
 	\item Parvis registrering - En teknik för att registrera punktmoln där man tar två punktmoln och registrerar de till ett resultatmoln.
+	\item Styrkort - Ett kretskort som används för att styra hårdvara av något slag.
 \end{itemize} 
 
 %\nocite{scigen}
