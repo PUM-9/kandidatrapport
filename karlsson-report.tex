@@ -71,7 +71,7 @@ Här presenteras metoden som använts för att besvara frågeställningarna i ra
 Initialt gjordes en litteraturstudie för att hitta information om vilka tillvägagångssätt för att registrera punktmoln som finns. De söktermer som använts är "registration pointcloud" samt "registration algorithm". Sökmotorn som använts är Google Scholar. De källor som undersökts har begränsats till att vara relaterade till JR-MPC samt ICP.
 
 \subsection{Experiment}
-Ett experiment utfördes för att jämföra ICP och JR-MPC. Experimentet gick ut på att registrera en uppsättning av 36 punktmoln. Vart och ett av dessa punktmoln var en skanning av kyrkan, se figur \ref{fig:karlsson-single_scan-church}, där kyrkan skannats och roterats 10 grader efter varje skanning. 3DCopy användes för att testa ICP medan JR-MPC testades med kod som tillhandahålls av skaparna, skriven i MatLab. För JR-MPC är enbart inläsningen av indata modifierad. För ICP valdes \textit{Max Correspondence Distance} till 15, \textit{Max Iterations} sattes till 100 samt \textit{Transformation Epsilon} var satt till $ 1e-8 $. Övriga parametrar i PCLs implementation av ICP användes utan modifikation. För beskrivning av dessa parametrar, se avsnitt \ref{sec:icp-karlsson}. Varje algoritm kördes tre gånger och resultatet mellan körningarna jämfördes. Testdatan finns tillgänglig på %TODO add address here %
+Ett experiment utfördes för att jämföra ICP och JR-MPC. Experimentet gick ut på att registrera en uppsättning av 36 punktmoln. Vart och ett av dessa punktmoln var en skanning av kyrkan, se figur \ref{fig:karlsson-single_scan-church}, där kyrkan skannats och roterats 10 grader efter varje skanning. 3DCopy användes för att testa ICP medan JR-MPC testades med kod som tillhandahålls av skaparna, skriven i MatLab. För JR-MPC är enbart inläsningen av indata modifierad. För ICP valdes \textit{Max Correspondence Distance} till 15, \textit{Max Iterations} sattes till 100 samt \textit{Transformation Epsilon} var satt till $ 1e-8 $. Övriga parametrar i PCLs implementation av ICP användes utan modifikation. För beskrivning av dessa parametrar, se avsnitt \ref{sec:icp-karlsson}. Varje algoritm kördes tre gånger och resultatet mellan körningarna jämfördes. Testdatan finns tillgänglig på FTP\footnote{ftp://mickwald.asuscomm.com:1916}. PCD-filerna användes för 3DCopy medan TXT-filerna användes för JR-MPC. TXT-filerna skapades genom att kopiera PCD-filerna, byta filändelse samt ta bort den \textit{header} som finns i PCD-filerna. Punkterna i TXT-filen är därmed identiska med PCD-filerna.
 
 \begin{figure}[H]
 	\centering
@@ -91,6 +91,8 @@ Här presenteras av resultatet av den litteraturstudie som genomförts samt den 
 PCL \cite{pcl_home} ger många handledningsexempel med exempelkod som var utgångspunkten för gruppens registreringsalgoritm. PCL ger också en bra sammanfattning men utöver det saknas relevanta källor. Då utredningen är begränsad till ICP och JR-MPC begränsas antalet källor ytterligare. Det finns enormt många varianter av ICP, såsom SequentialICP, Point-to-Plane ICP, Point-to-Point ICP m.fl. Den variant som utvärderas här är den som implementeras av PCL, Point-to-Point. 
 
 JR-MPC \cite{Evangelidis-ECCV-2014} är resultatet av en forskningsstudie som tagit fram algoritmen och därmed finns enbart den källa som används här för den algoritmen.
+
+Bellekens et al. \cite{beller2014modern} presenterar en genomgående studie där olika algoritmer jämförs. 
 
 \subsubsection{ICP}
 \label{sec:icp-karlsson}
@@ -172,11 +174,10 @@ Första analysen av registreringsresultat resulterade i ett antagande om att ett
 \section{Slutsatser}
 \label{sec:conclusions-karlsson}
 
-Någon definitiv slutsats är svår att dra utifrån de resultat som åstadkommits. Detta styrks ytterligare av Bellekens et al. \cite{registration_comparing} som påstår att valet av algoritm inte har ett definitivt svar. Bellekens et al. påstår att valet av algoritm beror på vilket ändamål samt vilken indata som kommer användas. Det stämmer bra överens med gruppens egna slutsats, där JR-MPC både var för tidskrävande att sätta sig in i samt inte gick att köra under tiden punktmoln samlades in.
+Vid digitalt återskapande av fysiska objekt skapas generellt flera punktmoln som ska registreras, dvs sys ihop. För att utföra denna registrering väljs en registreringsalgoritm som är lämpad för uppgiften, framförallt beroende på hur punktmolnen som samlats in ser ut. För ICP handlar det mest om att punktmolnen ska vara någorlunda rätt placerade i ett tänkt gemensamt koordinatsystem. När detta är uppfyllt kan punktmolnen registreras, och förutsatt att man har tillräckligt mycket data kan ett enhetligt punktmoln skapas som representerar det fysiska objektet som skannats.
 
-ICP var den bästa algoritmen för gruppens ändamål då den var enkel att implementera och jämfört med alternativet fungerade mycket bättre för uppgiften den skulle användas till. Det första systemet som designades gynnades mycket av att ha en parvis registreringsalgoritm eftersom att registreringen kunde påbörjas direkt när de första två punktmolnen införskaffats. Det registrerade objektet skulle då byggas upp kontinuerligt under en skanning istället för att behöva vänta tills all data var insamlad.
+För gruppens mål funkade ICP bäst, men tidiga tester som gjordes gav skäl att undersöka andra algoritmer. Därmed är det svårt att dra någon konkret slutsats om vilken algoritm som är bäst. Det material som tagits fram är inte tillräckligt för att dra en konkret slutsats. Slutsatsen som Bellekens et al. \cite{beller2014modern} kommer fram till är dock väldigt rimlig, med mer testdata till grund för deras slutsats är författaren av denna rapport benägen att hålla med.
 
-Att skapa ett enhetligt punktmoln från enstaka skanningar kan tes lätt vid en första anblick. Det finns dock en hel del som måste göras rätt. Dels måste en lämplig algoritm väljas, vilket i sig är ett stort arbete. Dessutom behöver algoritmens parametrar testas fram med den indata som används.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
