@@ -2,9 +2,9 @@
 \label{cha:theory}
 
 \section{Punktmoln}
-Ett punktmoln är en mängd av punkter i ett tredimensionellt koordinatsystem som representerar ett objekt. Punkterna i punktmolnet representerar ofta de yttre kanterna av objektet \cite{point_cloud}.
+Ett punktmoln är en mängd av punkter i ett tredimensionellt koordinatsystem. Varje punkt i punktmolnet består av tre värden som representerar punktens XYZ-koordinater. Tillsammans kan dessa punkter representera ett objekt. Detta görs ofta genom att punkterna representerar utkanterna av objektet. \cite{point_cloud}. 
 
-Det finns två typer av punktmoln, ett så kallat komplett punktmoln och ett icke komplett punktmoln. Ett komplett punktmoln, se figur \ref{fig:point_cloud_torus}, betyder att punktmolnet innehåller samtliga punkter som behövs för att representera objektet. Ett icke komplett punktmoln, se figur \ref{fig:point_cloud_church}, betyder att punktmolnet endast representerar en sida av objektet och alltså inte innehåller tillräckligt med punkter för att representera hela objektet.
+Det finns två typer av punktmoln, ett så kallat komplett punktmoln och ett icke komplett punktmoln. Ett komplett punktmoln, se figur \ref{fig:point_cloud_torus}, betyder att punktmolnet innehåller samtliga punkter som behövs för att representera objektet. Ett icke komplett punktmoln, se figur \ref{fig:point_cloud_church}, betyder att punktmolnet endast representerar en del av objektet. Flera stycken icke kompletta punktmoln kan kombineras för att skapa ett komplett punktmoln. Denna process kallas registrering och kommer förklaras noggrannare senare i rapporten.
 
 \begin{figure}[H]
 	\centering
@@ -41,12 +41,13 @@ Nedan beskrivs de olika algoritmerna från PCL som är relevanta för projektet.
 \subsection{Filtrering}
 PCLs filtreringsbibliotek innehåller algoritmer för att filtrera bort skräppunkter från ett punkt\-moln. Dessa skräppunkter kan uppstå vid skanning av ett objekt eftersom avståndskameran kan reagera på bakgrunden och inte bara på objektet. Detta gör att skräppunkter infaller i punkmolnet. För att kunna behandla punktmolnet måste dessa skräppunkter först filtreras bort.
 
-PCL har stöd för flera olika metoder för filtrering. Första steget i vår filtrering är att ta bort alla punkter som ligger utanför ett visst intervall av koordinater. Syftet med detta är att ta bort sådant som måste ligga utanför det skannade objektet. I nästa steg kontrolleras det för varje punkt hur många grannar den punkten har inom en viss radie. Alla punkter som har under ett visst antal grannar tas bort vilket leder till att enstaka punkter som inte ligger i närheten av något objekt tas bort \cite{pcl_filtering}.
+PCL har stöd för flera olika metoder för filtrering. Ett sätt att filtrera punktmoln är att ta bort alla punkter som ligger utanför ett visst intervall av koordinater. Syftet med detta är att ta bort sådan som måste ligga utanför det skannade objektet. En annan metod är att för varje punkt i punktmolnet kontrollera hur många grannar den punkten har inom en viss radie. Alla punkter som har under ett visst antal grannar tas bort vilket leder till att enstaka punkter som inte ligger i närheten av något objekt tas bort. Ofta används dessa filtreringsmetoder tillsammans för att försäkra sig om att all skräpdata tagits bort \cite{pcl_filtering}.
 
 För att undvika att punktmoln blir för stora, det vill säga att de får för många punkter vilket gör att att de tar för lång tid att behandla, kan nedsampling användas för att ta bort punkter och samtidigt uppskatta den yta som representeras så nära som möjligt. För att göra detta i PCL delas punktmolnet som ska nedsamplas in i voxels, vilket kan ses som att punktmolnet delas in i ett antal kuber. Sedan ersätts alla punkter i varje voxel med en punkt som ligger i centrum för alla punkterna i voxeln. På detta sätt ges en nära uppskattning av den representerade ytan med mycket färre punkter än det ursprungliga punktmolnet \cite{voxel_grid}.
  
 
 \subsection{Registrering}
+\label{sec:theory_registration}
 Att kombinera två punktmoln till ett punktmoln som innehåller samma information kallas för att registrera punktmoln. Detta är en komplicerad process där både translationen och rotationen, runt alla axlar, kan behöva ändras. Målet med parvis registrering är att flytta ett punktmoln till det andra punktmolnet så att alla punkter i de två separata punktmolnen överlappar med varandra. I PCL finns det ett registreringsbibliotek som innehåller algoritmer för registrering \cite{pcl_registration}.
 
 För att registrera punktmoln finns ett antal olika algoritmer med olika för- och nackdelar. En vanlig algoritm är \textit{Iterative Closest Point} (ICP). Det är en så kallad parvis registreringsalgoritm som registrerar enbart ett punktmoln till ett annat. ICP går ut på att minimera summan av avståndet från varje punkt i det ena punktmolnet till varje punkt i det andra punktmolnet.

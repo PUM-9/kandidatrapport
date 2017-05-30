@@ -5,10 +5,7 @@
 %% Varför skall jag forsätta läsa rapporten?
 \section{Motivering}
 \label{sec:motivation}
-
-
-
-Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först på 2010-talet har 3D-skrivare blivit tillgängliga även för vanliga konsumenter. Även i industrin har det blivit allt vanligare att använda 3D-skrivare för att skapa prototyper. Det finns dock ett problem: för att kunna använda 3D-skrivaren måste man antingen kunna CAD-mjukvara eller förlita sig på andra människors 3D-modeller. Genom att använda ett system för 3D-kopiering kan ett verkligt objekt istället kopieras.
+Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först på 2010-talet har 3D-skrivare blivit tillgängliga även för vanliga konsumenter. Även i industrin har det blivit allt vanligare att använda 3D-skrivare för att skapa prototyper. Det finns dock ett problem: för att kunna använda 3D-skrivaren måste man antingen kunna CAD-mjukvara eller förlita sig på andra människors 3D-modeller. Även om man kan CAD-mjukvara kan det vara svårt eller tidsödande att rita upp ett komplicerat objekt från grunden. Genom att använda ett system för 3D-kopiering kan ett verkligt objekt istället kopieras.
 
 
 %% Vad skall rapporten leda till? (Beskriva projekt, samla 
@@ -19,12 +16,14 @@ Tekniken för att kunna skriva ut 3D-objekt har funnits i många år men först 
 Nedan beskrivs två syften med detta projekt. Det första syftet som beskrivs, vidareutveckling av TreeD, var syftet med projektet innan projektet reviderades medan det andra syftet, 3DCopy, var syftet med projektet efter revidering.
 
 \subsection{Vidareutveckling av TreeD}
-Syftet med detta projekt var till en början att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Projektet skulle bygga vidare på ett tidigare kandidatarbete som utfördes våren 2016. Det kandidatarbete som genomfördes våren 2016 resulterade i en mjukvara som styr ett rotationsbord och en linjärenhet. På denna linjärenhet finns det en avståndskamera som används för att generera punktmoln. 
+Syftet med detta projekt var till en början att konstruera en mjukvara för att styra ett system som kopierar tredimensionella objekt. Projektet skulle bygga vidare på ett tidigare kandidatarbete som utfördes våren 2016 och som kallas TreeD. Det kandidatarbetet resulterade i en mjukvara, också kallad TreeD, som styr ett rotationsbord och en linjärenhet. På denna linjärenhet finns det en avståndskamera som används för att generera punktmoln. 
 
-Syftet med projektet var alltså att vidareutveckla resultatet från det tidigare kandidatprojektet till ett system som kan kopiera ett tredimensionellt objekt. Tanken var att detta skulle göras genom att ett flertal skanningar tas med olika rotationer och lutningar. De genererade punktmolnen skulle sedan registreras till ett komplett punktmoln som sedan omvandlas till en 3D-mesh. Denna 3D-mesh kan sedan skrivas ut med hjälp av en 3D-skrivare.
+Syftet med projektet var alltså att bygga vidare på TreeD till ett system som kan kopiera ett tredimensionellt objekt. Tanken var att detta skulle göras genom att ett flertal skanningar tas med olika rotationer och lutningar. De genererade punktmolnen skulle sedan registreras till ett komplett punktmoln som sedan skulle omvandlas till en 3D-mesh. Denna 3D-mesh skulle sedan kunna skrivas ut med hjälp av en 3D-skrivare.
 
 \subsection{3DCopy}
-Med revideringen av projektet reviderades även syftet. Det nya syftet är likt det gamla men försummar det tidigare projektets mjukvara helt. Detta betyder att systemet tar in ett antal punktmoln som registreras till ett komplett punktmoln som sedan omvandlas till en 3D-mesh. Denna 3D-mesh kan sedan skrivas ut med hjälp av en 3D-skrivare.
+Med revideringen av projektet reviderades även syftet till att inte bero på TreeD. Det nya syftet var att utveckla ett mindre automatiserat system, framförallt med hänsyn till att skanna objekt. Systemet skulle kunna läsa in färdiga punktmoln som sparats på datorn. Genom att endast läsa in punktmoln från filer är programmet inte beroende av att det underliggande systemet för att styra hårdvaran är stabilt.
+
+Efter att punktmolnen lästs in skulle de sedan behandlas genom att registrera alla punktmoln till ett komplett punktmoln och sedan generera en mesh utifrån detta. Den genererade meshen kan sedan skrivas ut med hjälp av en 3D-skrivare. På detta sätt skulle mjukvaran kunna användas till att kopiera tredimensionella objekt även om processen inte skulle vara helt automatiserad.
 
 
 \section{Frågeställning}
@@ -43,7 +42,7 @@ De generella samt specifika frågeställningar som denna rapport kommer att beha
 
 \begin{enumerate}
 	\item [4.] Hur påverkas projektet av en helt reviderad kravspecifikation efter hälften av projektets gång?
-	\item [5.] Hur har gruppens tillvägagångssätt ändrats på grund av faktumet att ett system skulle vidareutvecklas? 
+	\item [5.] Hur har gruppen anpassat sitt tillvägagångssätt vid vidareutvecklingen av ett system?
 	
 \end{enumerate}
 
@@ -63,18 +62,24 @@ Här definieras vissa begrepp och förkortningar som används senare i rapporten
 	\item Robot Operating System (ROS) - Ett ramverk för att utveckla mjukvara för robotar.
 	\item CLI - Förkortning för det engelska uttrycket \textit{command line interface}, kommandoradsgränssnitt på svenska.
 	\item GUI - Förkortning för det engelska uttrycket \textit{graphical user interface}, grafiskt användargränssnitt på svenska.
+	\item Pipe and filter-modellen - En vanlig modell inom mjukvaruutveckling. Går ut på att programmet är uppdelat i moduler där varje modul har strikt in- och utdata och där utdata från en modul kan skickas som indata i nästa modul.
 	\item 3DCopy - Namnet på detta projekt samt namnet på den slutgiltiga produkten. En mjukvara som registrerar och meshar punktmoln.
 	\item TreeD - Namnet på det tidigare projekt 3DCopy skulle bygga vidare på. Även namnet på en mjukvara för att styra ett rotationsbord och en linjärenhet med avståndskamera.
-	\item Slack - Det kommunikationsverktyg som gruppen har använt under projektets gång.
-	\item Trello - Verktyg som gruppen använt för att underlätta hantering av aktiviteter.
-	\item Git - Versionshanteringssystem som gruppen har använt under projektets gång.
-	\item 3D-mesh - En vattentät modell av ett objekt som är uppbyggd av polygoner.
+	\item Slack - Ett kommunikationsverktyg där kommunikationen kan delas in i kanaler. Används ofta av företag för att underlätta kommunikation inom projektgrupper.
+	\item Trello - Ett onlineverktyg för att hantera listor. Användes i projektet för hålla reda på och följa upp aktiviteter som skulle utföras.
+	\item Git - Ett distribuerat versionshanteringssystem.
+	\item 3D-mesh - En vattentät modell av ett objekt som är uppbyggd av polygoner. Kallas även för bara mesh.
+	\item Meshning - Att generera en 3D-mesh utifrån ett punktmoln.
+	\item PCD-fil - Ett vanligt filformat för att spara punktmoln är PCD.
+	\item STL-fil - Ett vanligt filformat för att spara en 3D-mesh är STL.
+	\item CAD-mjukvara - Programvara för att designa fysiska objekt i datorn.
 	\item Voxel - Ett punktmoln kan delas in i så kallade voxels vilket kan ses som kuber.
 	\item Rotationsbord - En hårdvaruenhet som används för att rotera ett objekt.
 	\item Linjärenhet - En hårdvaruenhet som används för att förflytta en avståndskamera eller annat föremål längs en axel.
 	\item ROS-nod - En enskild process som kommunicerar med andra noder inom ramverket ROS.
-	\item Nedsampling - Uttrycket innebär att punkter kan tas bort ifrån ett punktmoln för att samtidigt uppskatta en ny yta som representerar den gamla så nära som möjligt, det är alltså en form av filtrering.
+	\item Nedsampling - Metod för att minska antalet punkter i ett punktmoln med så liten förlust av information som möjligt.
 	\item Parvis registrering - En teknik för att registrera punktmoln där man tar två punktmoln och registrerar de till ett resultatmoln.
+	\item Styrkort - Ett kretskort som används för att styra hårdvara av något slag.
 \end{itemize} 
 
 %\nocite{scigen}
