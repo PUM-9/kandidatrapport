@@ -109,7 +109,20 @@ Det finns även tre funktioner för varje jobb som finns i jobblistan. De funkti
 \textit{View Job} visar information om det specifika jobbet, bland annat de filer som är associerade och de parametrar som valdes för jobbet. \textit{Start Job} startar jobbet på servern, jobben körs inte automatiskt efter de har skapats utan de måste manuellt startas. Slutligen kan \textit{Delete Job} väljas. \textit{Delete Job} tar bort jobbet, det vill säga all information om jobbet i databasen och alla filer på servern som associeras med jobbet.
 
 \subsection{Registrering}
-Systemet registrerar punktmoln parvis genom att använda PCLs implementation av ICP. De punktmoln som läses in i antingen CLI:t eller GUI:t behandlas av registreringsklassen och utför registreringen. För att registreringen ska fungera för olika fall kan användaren själv sätta värden på parametrarna \textit{Max correspondence distance}, \textit{Transformation epsilon} och \textit{Max iterations}.
+Systemet registrerar punktmoln parvis genom att använda PCLs implementation av ICP. De punktmoln som läses in i antingen CLI:t eller GUI:t behandlas av registreringsklassen och utför registreringen. För att registreringen ska fungera för olika fall kan användaren själv sätta värden på parametrarna \textit{Max correspondence distance}, \textit{Transformation epsilon} och \textit{Max iterations}. I figur \ref{fig:registrering_resultat} kan en bildserie ses. Denna bildserie föreställer resultatet från registrering med 1, 5, 11, 17, 23, 29 respektive 35 punktmoln. Punktmolnen som har använts vid registreringen i bilden föreställer en byst av Einstein och är tagna med tio graders skillnad. Bildserien visar hur bystens konturer växer fram allt efter som att fler punktmoln registreras. Efter den sista registreringen har ett punktmoln som föreställer bysten, utan lutning, framställts. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=50mm]{figures/Result_0.png}
+	\includegraphics[width=50mm]{figures/Result_5.png}
+	\includegraphics[width=50mm]{figures/Result_11.png}
+	\includegraphics[width=50mm]{figures/Result_17.png}
+	\includegraphics[width=50mm]{figures/Result_23.png}
+	\includegraphics[width=50mm]{figures/Result_29.png}
+	\includegraphics[width=50mm]{figures/Result_35.png}
+	\caption{Resultatet av registrering med 1, 5, 11, 17, 23, 29 respektive 35 punktmoln.}
+	\label{fig:registrering_resultat}
+\end{figure}
 
 \subsection{Meshning}
 Den ytrekonstruering som systemet använder, PCLs \textit{Poisson surface reconstruction}, är väldigt beroende av att det registrerade punktmolnet inte har några punkter som har hamnat fel. Om några punkter är fel eller om det är för glest mellan punkterna så kan inte algoritmen räkna ut ytnormalerna korrekt. Om ytnormalerna blir fel kommer inte meshen att stämma överens med det objekt som punktmolnet föreställer.
