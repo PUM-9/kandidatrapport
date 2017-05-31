@@ -64,7 +64,9 @@ Meshning av ett punktmoln görs efter att punktmolnen registrerats så de bildar
 En 3D-skrivare kan användas för att skriva ut 3D-objekt i olika material vanligast är plast. Detta görs utifrån datormodeller som skapats i till exempel CAD eller med system som 3DCopy.. För att kunna göra detta har skrivaren ett styrkort som exekverar så kallad G-code \cite{gcode}. Denna G-code beskriver vilka motorer som ska flyttas och hur mycket. En 3D-modell som är sparad i datorn, i form av en mesh, måste alltså behandlas genom att använda en algoritm för att generera G-code utifrån modellen. Detta görs ofta genom en typ av programvara som kallas för slicer. Namnet kommer av att programmet delar upp modellen i olika lager och sedan genererar hur skrivaren måste röra sig för att skriva ut ett lager. På detta sätt byggs sedan hela den ursprungliga modellen upp lager för lager. Två vanliga slicer-programvaror är \textit{Cura} \cite{cura} och \textit{Slic3r} \cite{slic3r}.
 
 \section{Systemanatomi}
-En systemanatomi är en beskrivning av ett systems funktionalitet. Ofta består en systemanatomi av en graf, där noder representerar systemets olika funktioner och bågar representerar beroenden. Systemanatomin säger ingenting om hur systemet ska implementeras utan den ger en bra överblick över systemet som är till god hjälp vid framtagningen av till exempel en arkitektur för systemet. En systemanatomi är alltså ett bra komplement till andra konceptuella modeller över ett system.
+En systemanatomi är en beskrivning av ett systems funktionalitet. Ofta består en systemanatomi av en graf, där noder representerar systemets olika funktioner och bågar representerar beroenden. 
+
+Systemanatomin säger ingenting om hur systemet ska implementeras utan den ger en bra överblick över systemet som är till god hjälp vid framtagningen av till exempel en arkitektur för systemet. En systemanatomi är alltså ett bra komplement till andra konceptuella modeller över ett system \cite{system_anatomy}.
 
 
 Systemanatomin säger ingenting om hur systemet ska implementeras utan ger en utvecklingsgrupp en bra översikt av vad systemet ska göra. En systemanatomi kan inte ersätta andra modeller men är ett bra komplement \cite{system_anatomy}.
@@ -78,12 +80,11 @@ Enligt Lago et al. \cite{lago2015framing} definieras hållbarhet som "\textit{f�
 
 
 	\begin{itemize}
-		\item "\textit{Ekonomiskt -  Systemet ska bevara kapital och värde.}"
-		\item "\textit{Socialt - Systemet ska underhålla samhället.}"
-		\item "\textit{Miljö - Systemet ska skydda den mänskliga välfärden genom att skydda naturens tillgångar.}"
-		\item "\textit{Tekniskt - Systemet ska utvecklas för att stödja långtidsanvändning.}" 
+		\item Ekonomiskt -  Systemet ska bevara kapital och värde.
+		\item Socialt - Systemet ska underhålla samhället.
+		\item Miljö - Systemet ska skydda den mänskliga välfärden genom att skydda naturens tillgångar.
+		\item Tekniskt - Systemet ska utvecklas för att stödja långtidsanvändning.
 	\end{itemize}
-"
 
 En mer ingående beskrivning om hur 3DCopy främjar hållbar utveckling diskuteras i avsnitt \ref{disc:hållbar_utveckling}.
 
