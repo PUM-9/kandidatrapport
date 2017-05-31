@@ -1,5 +1,5 @@
 %%% Code:
-\documentclass[bachelor,lith,swedish]{liuthesis}
+\documentclass[bachelor,lith,swedish,twoside]{liuthesis}
 %% Settings go in settings.tex
 \include{settings}
 \usepackage{rotating}
@@ -12,6 +12,14 @@
 \usepackage{pgfplots}
 \usepackage{tikz}
 \usepackage{caption}
+
+\usepackage{afterpage}
+
+\newcommand\blankpage{%
+	\null
+	\thispagestyle{empty}%
+	\addtocounter{page}{-1}%
+	\newpage}
 
 \captionsetup{width=.75\textwidth,font={bf,scriptsize},skip=0.3cm,within=none}
 

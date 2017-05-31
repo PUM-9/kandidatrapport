@@ -520,6 +520,7 @@
     \end{abstract}
  }
 }
+\cleardoublepage
 }
 
 \newcommand{\gettitle}{\swedishenglish{\@titleswedish}{\@titleenglish}}
@@ -596,6 +597,7 @@
     \swedishenglish{013-28 10 00}{+46 13 28 10 00}, \href{http://www.liu.se}{www.liu.se}}
 \end{textblock*}
     }
+	\cleardoublepage
   }
 
 \newcommand{\makegraduatetitle}{
@@ -633,6 +635,7 @@
      Linköping \@publicationyear\\
    }
    }
+   \cleardoublepage
 }
 
 \ifstudent
