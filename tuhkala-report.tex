@@ -33,7 +33,7 @@ Följande definitioner och förkortningar används på flertalet ställen i den 
 	\item WYSIWYG-editor - WYSIWYG står för (What You See Is What You Get) och med en WYSIWYG-editor kan innehåll ändras i ett program, oftast text, där programmet sedan visar hur det slutgiltiga dokumentet kommer att se ut.
 	\item Separata filer - Se avsnitt \ref{sec:thesis-info-tuhkala}.
 	\item Gemensam fil - Se avsnitt \ref{sec:thesis-info-tuhkala}.
-	\item Linter - Om det finns misstänkta fel i kod, som leder till att det inte kompilerar, så varnar en linter för det. Den tittar på kommandon och språkbruk som inte är tillåtna i programmeringsspråket och används ofta i olika editorer \cite{linter}.
+	\item Linter - En lint \cite{linter} är ett program som letar efter misstänkta fel i kod, som leder till att det inte kompilerar. Det letar efter fel i programmeringskod som är skrivet i C. En mer generell benämning för detta, oavsett vilket programmeringsspråk som används, är en linter.
 \end{itemize}
 
 \subsection{Avgränsningar}
@@ -48,10 +48,10 @@ Gruppen har arbetat med olika verktyg för att framställa större dokument för
 Nedan visas information om det som kommer att behandlas i rapporten. Det ger lite teori om bland annat vad \latex, Git, SVN och Mercurial är för något.
 
 \subsection{\latex}
-\latex \cite{latex_project}\cite{latex_wiki} är ett typsättningssystem som är baserat på TeX och skapades för att göra det enklare att skriva böcker och artiklar. Till skillnad från till exempel Microsoft Word, programmeras dokumentet, istället för att skriva formaterad text. \latex bygger på att den som skriver inte ska formatera texten, utan ska bara skriva det den vill få sagd, utan att behöva bry sig om hur dokumentet ska se ut. Det är därför väldigt enkelt att få stiliga dokument i \latex genom att endast specifiera dokumentets struktur istället för att krångla med hur dokumentet ska se ut.
+\latex \cite{latex_project}\cite{kottwitz2011latex} är ett typsättningssystem som är baserat på TeX och skapades för att göra det enklare att skriva böcker och artiklar. Till skillnad från till exempel Microsoft Word, programmeras dokumentet, istället för att skriva formaterad text. \latex bygger på att den som skriver inte ska formatera texten, utan ska bara skriva det den vill få sagd, utan att behöva bry sig om hur dokumentet ska se ut. Det är därför väldigt enkelt att få stiliga dokument i \latex genom att endast specifiera dokumentets struktur, istället för att krångla med hur dokumentet ska se ut.
 
 \subsection{Git}
-Git \cite{git_history}\cite{git} är ett versionshanteringsprogram som skapades av Linus Torvalds för att hantera källkoden till Linuxkärnan. Git är ett distribuerat versionshanteringssystem. Det innebär att alla som använder ett Git repository har tillgång till allt som det innehåller. Man behöver således inte kontakta en centraliserad server varje gång en ändring sker. Alla ändringar som skett sparas. Det finns alltså en komplett historik över allt som ändrats, tagits bort och lagts till. Det går också att gå tillbaka till tidigare versioner av dokument och källkod.
+Git \cite{git_history} är ett versionshanteringsprogram som skapades av Linus Torvalds för att hantera källkoden till Linuxkärnan. Git är ett distribuerat versionshanteringssystem. Det innebär att alla som använder ett Git repository har tillgång till allt som det innehåller. Man behöver således inte kontakta en centraliserad server varje gång en ändring sker. Alla ändringar som skett sparas. Det finns alltså en komplett historik över allt som ändrats, tagits bort och lagts till. Det går också att gå tillbaka till tidigare versioner av dokument och källkod.
 
 \subsection{Apache Subversion}
 Subversion (SVN) \cite{svn} är också ett versionshanteringsprogram för mjukvara, likt Git, förutom att SVN är ett centraliserat versionshanteringssystem.
