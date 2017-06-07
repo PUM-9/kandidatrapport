@@ -34,6 +34,8 @@ Följande definitioner används på flera ställen i denna del av rapporten:
 	\item Interaktion - När användaren av GUI:t interagerar med GUI:t genom att till exempel trycka på en knapp.
 	\item Kontext - Kontexten för en interaktion är sekvensen av interaktioner som har utförts på GUI:t innan den aktuella interaktionen.
 	\item Systeminteraktion - En interaktion som inte enbart påverkar och använder GUI kod.
+	\item EFG (Event-flow-graph) - En graf som visar alla möjliga interaktioner som kan utföras på GUI:t.
+	\item EIG (Event-interaktion-graph) - En EFG där alla interaktioner som enbart påverkar GUI:t är borttagna.
 \end{itemize}
 
 \section{Bakgrund}
@@ -264,9 +266,17 @@ I litteraturstudien hittades bara en relevant artikel som berörde den bit som v
 \section{Slutsatser}
 \label{sec:conclusions-holmberg}
 
+Här presenteras slutsatserna för frågeställningarna i avsnitt \cite{sec:issue-holmberg}.
+
+\subsection{Hur viktig är kontexten för interaktioner vid testning av GUI?}
+
 Att ta hänsyn till kontexten vid GUI testning är definitivt något som bör göras. Den är ofta avgörande för att hitta vissa fel. Det hade varit intressant att skapa exempel GUI:n med medvetet placerade fel som beror på andra interaktioner för att kunna undersöka detta noggrannare. Det fanns dock inte tid att göra en sådan undersökning i denna rapport. Därför får betydelsen av kontexter begränsas till litteraturstudien.
 
+\subsection{Hur bör testfall utformas för att ta hänsyn till kontexten?}
+
 Gällande metoden för att ta fram testfall med hänsyn till kontext användes samma metod som i Yuan et al. \cite{yuan2011gui}. Något som blev tydligt då testerna utfördes manuellt är att metoden inte tar hänsyn till hur resurs- eller tidskrävande en interaktion är när den placeras i sekvensen. Det är något som kan vara intressant för en framtida undersökning. Att undersöka hur de mest krävande interaktionerna ska placeras i sekvenserna för att maximera antalet testade kontexter och samtidigt minimera tids- och resurskostnader.
+
+\subsection{Hade hänsyn till kontexter någon påverkan vid testning av 3DCopys GUI?}
 
 Testerna visade att för projektets GUI, i det stadie som GUI:t befann sig i vid testningen, spelade inte kontexten någon roll för att hitta fel. Det beror sannolikt på att mängden interaktioner var liten samt att systeminteraktionerna var väl separerade och inte delade någon kod. Det indikerar att hänsyn till kontexten blir viktigare ju större mängd interaktioner GUI:t har samt hur stor del av koden som interaktionerna har gemensamt. Hade mer tid funnits skulle en undersökning med olika GUI:n med varierande antal interaktioner varit intressant för att vidare kunna undersöka denna teori.
 
